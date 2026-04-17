@@ -92,10 +92,6 @@ details.q[open] summary::before{transform:rotate(90deg)}
 ol.tasks{padding-left:0;list-style:none;counter-reset:zad}
 ol.tasks > li{counter-increment:zad}
 ol.tasks > li details.q summary::after{content:"Zad. " counter(zad);margin-left:auto;font-weight:700;color:var(--muted);font-size:.85rem}
-.section-header-icons{display:flex;align-items:center;gap:10px}
-.pill.red{background:#ef476f;color:#fff}
-.pill.green{background:#06d6a0;color:#15183a}
-.pill.blue{background:#118ab2;color:#fff}
 @media(max-width:640px){
   nav.toc ol{columns:1}
   .chain .arrow{transform:rotate(90deg)}
@@ -169,7 +165,7 @@ ol.tasks > li details.q summary::after{content:"Zad. " counter(zad);margin-left:
 
 <section id="mapa">
   <h2>🗺️ Nowa mapa Europy — państwa, które narodziły się po 1918 r.</h2>
-  <p>I wojna światowa zniszczyła trzy wielkie imperia: <b>Rosję</b> (rewolucja 1917), <b>Niemcy</b> (abdykacja cesarza), <b>Austro-Węgry</b> oraz <b>Turcję osmańską</b>. Z ich gruzów powstały nowe państwa.</p>
+  <p>I wojna światowa zniszczyła cztery wielkie imperia: <b>Rosję</b> (rewolucja 1917), <b>Niemcy</b> (abdykacja cesarza), <b>Austro-Węgry</b> oraz <b>Turcję osmańską</b>. Z ich gruzów powstały nowe państwa.</p>
 
   <div class="chain">
     <div class="step"><b>Z Austro-Węgier</b><br>Austria, Węgry, Czechosłowacja, Królestwo SHS (potem Jugosławia), część Polski, Rumunia (powiększona)</div>
@@ -261,7 +257,7 @@ ol.tasks > li details.q summary::after{content:"Zad. " counter(zad);margin-left:
   <div class="timeline">
     <div class="ev"><b>1920</b> — powstaje NSDAP (Narodowosocjalistyczna Niemiecka Partia Robotników).</div>
     <div class="ev"><b>1923</b> — nieudany <b>pucz monachijski</b> (pucz piwiarniany). Hitler trafia do więzienia, pisze tam <i>Mein Kampf</i>.</div>
-    <div class="ev"><b>1932</b> — NSDAP wygrywa wybory parlamentarne.</div>
+    <div class="ev"><b>1932</b> — NSDAP staje się największą partią w Reichstagu (37% głosów w lipcu), choć nie zdobywa bezwzględnej większości.</div>
     <div class="ev"><b>30 stycznia 1933</b> — prezydent Hindenburg mianuje Hitlera <b>kanclerzem</b>.</div>
     <div class="ev"><b>luty 1933</b> — pożar Reichstagu → zawieszenie swobód obywatelskich.</div>
     <div class="ev"><b>30 czerwca 1934</b> — <b>noc długich noży</b>: Hitler każe wymordować dowódców SA i rywali w partii (m.in. Röhma). Umacnia władzę.</div>
@@ -293,8 +289,8 @@ ol.tasks > li details.q summary::after{content:"Zad. " counter(zad);margin-left:
 
   <h3>Przebieg</h3>
   <div class="timeline">
-    <div class="ev"><b>1917</b> — <b>Lenin</b> i bolszewicy obalają Rząd Tymczasowy (rewolucja październikowa).</div>
-    <div class="ev"><b>1918–1921</b> — wojna domowa. Powstaje <b>Czeka</b> (tajna policja polityczna) — terror „czerwonych" wobec przeciwników.</div>
+    <div class="ev"><b>1917</b> — <b>Lenin</b> i bolszewicy obalają Rząd Tymczasowy (rewolucja październikowa). W grudniu powstaje <b>Czeka</b> (tajna policja polityczna).</div>
+    <div class="ev"><b>1918–1921</b> — wojna domowa. Czeka rozpętuje „czerwony terror" wobec przeciwników politycznych.</div>
     <div class="ev"><b>1921</b> — Lenin wprowadza <b>NEP</b> (Nowa Polityka Ekonomiczna) — ograniczony powrót prywatnego handlu, by uratować gospodarkę od głodu.</div>
     <div class="ev"><b>1922</b> — powstaje <b>ZSRR</b> (Związek Socjalistycznych Republik Radzieckich).</div>
     <div class="ev"><b>1924</b> — śmierć Lenina. Walka o władzę: <b>Stalin kontra Trocki</b>.</div>
@@ -320,7 +316,7 @@ ol.tasks > li details.q summary::after{content:"Zad. " counter(zad);margin-left:
   <div class="chain">
     <div class="step"><b>1.</b> Stalin zarządza <b>przymusową kolektywizację</b> — chłopi mają oddać ziemię, zwierzęta i narzędzia do kołchozów.</div>
     <div class="arrow">➜</div>
-    <div class="step"><b>2.</b> Ukraina — „spichlerz ZSRR" — opiera się najmocniej. Opornych chłopów (<b>kułaków</b>) deportuje się na Syberię.</div>
+    <div class="step"><b>2.</b> Ukraina — „spichlerz ZSRR" — opiera się najmocniej. Zamożniejszych chłopów (tzw. <b>kułaków</b>) oraz opornych masowo deportuje się na Syberię.</div>
     <div class="arrow">➜</div>
     <div class="step"><b>3.</b> Stalin podnosi normy obowiązkowych dostaw zboża i odbiera wszystko, łącznie z ziarnem na zasiew.</div>
     <div class="arrow">➜</div>
@@ -341,11 +337,11 @@ ol.tasks > li details.q summary::after{content:"Zad. " counter(zad);margin-left:
   <h2>🤝 Rapallo (1922) i Locarno (1925) — dyplomatyczne pułapki</h2>
 
   <h3>Układ w Rapallo — 16 kwietnia 1922</h3>
-  <p>Podczas konferencji w Genui <b>Niemcy i Rosja Radziecka</b> (dwa państwa pomijane przez Zachód) potajemnie zawarły układ we włoskim Rapallo:</p>
+  <p>Podczas konferencji w Genui <b>Niemcy i Rosja Radziecka</b> (dwa państwa pomijane przez Zachód) niespodziewanie zawarły układ we włoskim Rapallo. Sam traktat został jawnie ogłoszony i zaszokował aliantów; tajna była dopiero towarzysząca mu współpraca wojskowa.</p>
   <ul>
     <li>Nawiązanie stosunków dyplomatycznych i współpraca gospodarcza.</li>
     <li>Zrzeczenie się wzajemnych roszczeń z czasów wojny.</li>
-    <li>Tajna współpraca wojskowa: w ZSRR Niemcy szkolili czołgistów i lotników <b>omijając traktat wersalski</b>.</li>
+    <li><b>Tajna</b> współpraca wojskowa (od 1923 r.): w ZSRR Niemcy szkolili czołgistów i lotników, <b>omijając traktat wersalski</b>.</li>
   </ul>
   <div class="warn">Dla Polski to fatalna wiadomość — dwa wielkie mocarstwa sąsiednie zaczęły się dogadywać ponad jej głową.</div>
 
@@ -688,7 +684,7 @@ ol.tasks > li details.q summary::after{content:"Zad. " counter(zad);margin-left:
     </li>
     <li>
       <details class="q">
-        <summary>Kim była Czeka i co zastąpiło ją później?<span class="level mid">Średnie</span></summary>
+        <summary>Czym była Czeka i co zastąpiło ją później?<span class="level mid">Średnie</span></summary>
         <div class="answer"><b>Odpowiedź:</b> Czeka (Nadzwyczajna Komisja) to pierwsza bolszewicka policja polityczna utworzona w 1917 r., prowadząca „czerwony terror". Od 1922 r. przekształcona kolejno w GPU, OGPU, a w 1934 r. w NKWD — właściwe narzędzie wielkiego terroru Stalina.</div>
       </details>
     </li>
