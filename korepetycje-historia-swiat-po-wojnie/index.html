@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Świat po I wojnie światowej — Korepetycje z historii (klasa 7)</title>
+<style>
+:root{
+  --bg:#0f1226;
+  --bg2:#161a3d;
+  --card:#1c2150;
+  --ink:#eef1ff;
+  --muted:#a7afd4;
+  --accent:#ffd166;
+  --accent2:#ef476f;
+  --ok:#06d6a0;
+  --easy:#06d6a0;
+  --mid:#ffd166;
+  --hard:#ef476f;
+  --line:rgba(255,255,255,.12);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:radial-gradient(1200px 800px at 10% -10%, #2a2f77 0%, transparent 60%),radial-gradient(1000px 700px at 90% 0%, #5b2a77 0%, transparent 55%),linear-gradient(180deg,#0f1226 0%,#0b0e20 100%);color:var(--ink);font-family:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
+.container{max-width:1100px;margin:0 auto;padding:28px 22px 80px}
+header.hero{
+  background:linear-gradient(135deg,#ef476f 0%,#ffd166 50%,#06d6a0 100%);
+  border-radius:22px;padding:34px 28px;margin-bottom:28px;color:#15183a;
+  box-shadow:0 20px 50px rgba(0,0,0,.45);
+  position:relative;overflow:hidden;
+}
+header.hero::after{
+  content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.35),transparent 70%);
+}
+.kicker{display:inline-block;background:#15183a;color:#ffd166;padding:6px 12px;border-radius:999px;font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+h1{font-size:clamp(1.7rem,3vw,2.6rem);margin:.4em 0 .2em;line-height:1.15}
+.sub{font-size:1.05rem;opacity:.85}
+nav.toc{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin-bottom:28px}
+nav.toc h2{margin-top:0;color:var(--accent)}
+nav.toc ol{margin:0;padding-left:22px;columns:2;column-gap:26px}
+nav.toc a{color:var(--ink);text-decoration:none;border-bottom:1px dashed rgba(255,255,255,.2)}
+nav.toc a:hover{color:var(--accent);border-color:var(--accent)}
+section{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 26px;margin:22px 0;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+section h2{color:var(--accent);margin-top:0;font-size:1.55rem;border-bottom:2px solid rgba(255,209,102,.25);padding-bottom:8px}
+section h3{color:#ffd8e5;margin-top:1.4em}
+p{margin:.7em 0}
+mark{background:rgba(255,209,102,.25);color:#fff;padding:1px 6px;border-radius:6px}
+.lead{font-size:1.08rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.card h4{margin:.1em 0 .3em;color:var(--accent)}
+.pill{display:inline-block;background:#2a2f77;color:#ffd166;padding:3px 10px;border-radius:999px;font-size:.8rem;margin-right:6px}
+.timeline{position:relative;margin:20px 0;padding-left:26px;border-left:3px solid var(--accent)}
+.timeline .ev{margin-bottom:14px;position:relative}
+.timeline .ev::before{content:"";position:absolute;left:-35px;top:6px;width:14px;height:14px;background:var(--accent);border-radius:50%;box-shadow:0 0 0 4px rgba(255,209,102,.25)}
+.timeline .ev b{color:var(--accent)}
+.ex{background:rgba(6,214,160,.08);border-left:4px solid var(--ok);border-radius:10px;padding:12px 16px;margin:12px 0}
+.ex::before{content:"💡 Przykład: ";color:var(--ok);font-weight:700}
+.warn{background:rgba(239,71,111,.08);border-left:4px solid var(--accent2);border-radius:10px;padding:12px 16px;margin:12px 0}
+.warn::before{content:"⚠ Uwaga: ";color:var(--accent2);font-weight:700}
+.info{background:rgba(255,209,102,.08);border-left:4px solid var(--accent);border-radius:10px;padding:12px 16px;margin:12px 0}
+.info::before{content:"📘 Wyjaśnienie: ";color:var(--accent);font-weight:700}
+table{width:100%;border-collapse:collapse;margin:14px 0}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:rgba(255,255,255,.06);color:var(--accent)}
+tbody tr:hover{background:rgba(255,255,255,.03)}
+.chain{display:flex;flex-wrap:wrap;gap:12px;align-items:stretch;margin:12px 0}
+.chain .step{flex:1 1 180px;background:linear-gradient(135deg,#2a2f77,#5b2a77);border-radius:12px;padding:12px 14px;position:relative;min-width:180px}
+.chain .step b{color:var(--accent)}
+.chain .arrow{display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--accent)}
+.leaders{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
+.leader{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:14px;padding:12px;text-align:center}
+.leader svg{width:100%;height:auto}
+.leader b{display:block;color:var(--accent);margin-top:8px;font-size:1.05rem}
+.leader span{display:block;color:var(--muted);font-size:.9rem}
+.glossary{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.glossary .term{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.glossary .term b{color:var(--accent);display:block;margin-bottom:4px}
+.map-wrap{background:#fff;border-radius:14px;padding:12px;margin:14px 0}
+details.q{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:10px 0;transition:all .2s}
+details.q[open]{border-color:var(--accent)}
+details.q summary{cursor:pointer;font-weight:600;list-style:none;display:flex;align-items:center;gap:10px}
+details.q summary::-webkit-details-marker{display:none}
+details.q summary::before{content:"▶";color:var(--accent);transition:transform .2s}
+details.q[open] summary::before{transform:rotate(90deg)}
+.level{display:inline-block;padding:2px 8px;border-radius:999px;font-size:.75rem;font-weight:700;margin-left:6px;color:#15183a}
+.level.easy{background:var(--easy)}
+.level.mid{background:var(--mid)}
+.level.hard{background:var(--hard);color:#fff}
+.answer{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);color:#eafff7}
+.answer b{color:var(--ok)}
+ol.tasks{padding-left:0;list-style:none;counter-reset:zad}
+ol.tasks > li{counter-increment:zad}
+ol.tasks > li details.q summary::after{content:"Zad. " counter(zad);margin-left:auto;font-weight:700;color:var(--muted);font-size:.85rem}
+@media(max-width:640px){
+  nav.toc ol{columns:1}
+  .chain .arrow{transform:rotate(90deg)}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="hero">
+  <span class="kicker">Klasa 7 • Historia • Rozdział 6</span>
+  <h1>Świat po I wojnie światowej</h1>
+  <p class="sub">Karta powtórzeniowa: od traktatu wersalskiego do konferencji monachijskiej. Systemy totalitarne, nowa mapa Europy i droga ku II wojnie światowej.</p>
+</header>
+
+<nav class="toc">
+  <h2>📚 Spis treści</h2>
+  <ol>
+    <li><a href="#wersal">Konferencja wersalska 1919</a></li>
+    <li><a href="#mapa">Nowa mapa Europy</a></li>
+    <li><a href="#faszyzm">Faszyzm we Włoszech</a></li>
+    <li><a href="#nazizm">Nazizm w Niemczech</a></li>
+    <li><a href="#komunizm">Komunizm w ZSRR</a></li>
+    <li><a href="#holod">Wielki głód na Ukrainie</a></li>
+    <li><a href="#uklady">Rapallo i Locarno</a></li>
+    <li><a href="#monachium">Konferencja monachijska</a></li>
+    <li><a href="#kultura">Kultura międzywojnia</a></li>
+    <li><a href="#porownanie">Porównanie totalitaryzmów</a></li>
+    <li><a href="#pojecia">Słownik pojęć</a></li>
+    <li><a href="#przywodcy">Wizerunki przywódców</a></li>
+    <li><a href="#zadania">45 zadań z rozwiązaniami</a></li>
+  </ol>
+</nav>
+
+<section id="wersal">
+  <h2>🕊️ Konferencja wersalska 1919 — porządek po wielkiej wojnie</h2>
+  <p class="lead">Kiedy w 1918 r. umilkły armaty I wojny światowej, zwycięzcy zebrali się w Paryżu, by narzucić pokonanym nowy ład. Konferencja trwała od stycznia 1919 do stycznia 1920 r., a jej sercem był pałac wersalski pod Paryżem.</p>
+
+  <div class="info">Wyobraź sobie, że po wielkiej szkolnej bójce dyrekcja zwołuje komisję i każe winnym sprzątać boisko, płacić za zniszczone rzeczy i obiecać, że nigdy więcej nie będą się bić. Tak mniej więcej wyglądał traktat wersalski — tylko w skali całej Europy.</div>
+
+  <h3>Najważniejsi uczestnicy („Wielka Czwórka")</h3>
+  <div class="grid">
+    <div class="card"><h4>🇺🇸 Woodrow Wilson</h4>Prezydent USA. Autor „14 punktów" — projektu sprawiedliwego pokoju i Ligi Narodów.</div>
+    <div class="card"><h4>🇫🇷 Georges Clemenceau</h4>Premier Francji. Chciał maksymalnie osłabić Niemcy — bał się kolejnej wojny.</div>
+    <div class="card"><h4>🇬🇧 David Lloyd George</h4>Premier Wielkiej Brytanii. Szukał kompromisu między surowością a rozsądkiem.</div>
+    <div class="card"><h4>🇮🇹 Vittorio Orlando</h4>Premier Włoch. Domagał się obiecanych terytoriów — wyszedł rozczarowany.</div>
+  </div>
+
+  <h3>Postanowienia traktatu wersalskiego (28 czerwca 1919)</h3>
+  <ul>
+    <li><b>Odpowiedzialność za wojnę</b> — Niemcy uznane za głównego winnego i zobowiązane do wypłaty ogromnych <b>reparacji wojennych</b> (132 mld marek w złocie).</li>
+    <li><b>Utrata terytoriów</b>:
+      <ul>
+        <li>Alzacja i Lotaryngia wracają do <b>Francji</b>.</li>
+        <li>Wielkopolska i Pomorze Gdańskie do <b>Polski</b>; Gdańsk staje się Wolnym Miastem pod opieką Ligi Narodów.</li>
+        <li>Zagłębie Saary — na 15 lat pod zarządem Ligi Narodów.</li>
+        <li>Niemcy tracą <b>wszystkie kolonie</b> zamorskie.</li>
+      </ul>
+    </li>
+    <li><b>Ograniczenia militarne</b>: armia ograniczona do <b>100 tys. żołnierzy</b>, zakaz posiadania lotnictwa, czołgów, okrętów podwodnych.</li>
+    <li><b>Demilitaryzacja Nadrenii</b> — brak wojska na zachód od Renu (strefa buforowa chroniąca Francję).</li>
+    <li><b>Zakaz zjednoczenia (Anschlussu)</b> z Austrią.</li>
+    <li><b>Powołanie Ligi Narodów</b> — pierwszej międzynarodowej organizacji mającej zapobiegać wojnom.</li>
+  </ul>
+
+  <div class="warn">Niemcy nazwali traktat <i>„dyktatem wersalskim"</i>. Poczucie krzywdy i upokorzenia ułatwi później Hitlerowi dojście do władzy.</div>
+
+  <h3>Mały traktat wersalski</h3>
+  <p>Podpisany tego samego dnia co wielki traktat. Nałożony na Polskę i inne nowe państwa, zobowiązywał do <b>ochrony praw mniejszości narodowych</b> (Niemców, Żydów, Ukraińców). Polska wypowiedziała go w 1934 r.</p>
+</section>
+
+<section id="mapa">
+  <h2>🗺️ Nowa mapa Europy — państwa, które narodziły się po 1918 r.</h2>
+  <p>I wojna światowa zniszczyła cztery wielkie imperia: <b>Rosję</b> (rewolucja 1917), <b>Niemcy</b> (abdykacja cesarza), <b>Austro-Węgry</b> oraz <b>Turcję osmańską</b>. Z ich gruzów powstały nowe państwa.</p>
+
+  <div class="chain">
+    <div class="step"><b>Z Austro-Węgier</b><br>Austria, Węgry, Czechosłowacja, Królestwo SHS (potem Jugosławia), część Polski, Rumunia (powiększona)</div>
+    <div class="arrow">➜</div>
+    <div class="step"><b>Z Rosji</b><br>Polska, Finlandia, Estonia, Łotwa, Litwa</div>
+    <div class="arrow">➜</div>
+    <div class="step"><b>Z Niemiec</b><br>Polska (Wielkopolska, Pomorze), Wolne Miasto Gdańsk</div>
+  </div>
+
+  <div class="map-wrap">
+  <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" aria-label="Uproszczona mapa Europy po I wojnie światowej">
+    <defs>
+      <style>
+        .c{font:bold 10px Segoe UI,sans-serif;fill:#15183a}
+        .l{font:9px Segoe UI,sans-serif;fill:#15183a}
+      </style>
+    </defs>
+    <rect x="0" y="0" width="600" height="360" fill="#cfe8ff"/>
+    <!-- Uproszczone kontury -->
+    <polygon points="260,60 330,70 340,120 300,160 250,150 230,100" fill="#ffd166" stroke="#15183a"/>
+    <text class="c" x="275" y="110">POLSKA</text>
+    <polygon points="170,70 250,70 230,100 200,130 150,120" fill="#ef476f" stroke="#15183a"/>
+    <text class="c" x="180" y="100">NIEMCY</text>
+    <polygon points="175,135 220,125 240,165 200,175 160,160" fill="#06d6a0" stroke="#15183a"/>
+    <text class="l" x="180" y="155">CZECHOSŁOWACJA</text>
+    <polygon points="100,100 150,110 155,140 120,150 90,130" fill="#a0c4ff" stroke="#15183a"/>
+    <text class="c" x="105" y="125">FRANCJA</text>
+    <polygon points="200,180 260,170 270,220 220,230 180,210" fill="#ffadad" stroke="#15183a"/>
+    <text class="l" x="210" y="205">AUSTRIA • WĘGRY</text>
+    <polygon points="220,230 290,225 310,280 240,290 210,260" fill="#bdb2ff" stroke="#15183a"/>
+    <text class="l" x="230" y="260">JUGOSŁAWIA</text>
+    <polygon points="290,225 360,220 380,265 340,280 300,270" fill="#caffbf" stroke="#15183a"/>
+    <text class="c" x="315" y="255">RUMUNIA</text>
+    <polygon points="340,65 420,55 445,115 405,135 350,120" fill="#fdffb6" stroke="#15183a"/>
+    <text class="c" x="365" y="95">ZSRR</text>
+    <polygon points="300,20 360,20 380,50 340,55 310,45" fill="#9bf6ff" stroke="#15183a"/>
+    <text class="l" x="315" y="40">FIN • EST • ŁOT • LIT</text>
+    <polygon points="130,160 180,165 200,200 160,220 120,200" fill="#ffc6ff" stroke="#15183a"/>
+    <text class="c" x="140" y="190">WŁOCHY</text>
+    <text x="450" y="30" class="c">Morze Bałtyckie</text>
+    <text x="20" y="340" class="l">Uproszczony szkic: nowe państwa w Europie po 1918 r.</text>
+  </svg>
+  </div>
+
+  <div class="ex">Wyobraź sobie klasę, w której trzej duzi uczniowie (Niemcy, Austro-Węgry, Rosja) przez lata przejmowali miejsca młodszych. Gdy po bójce wszyscy trzej „dostali szlaban", nagle <b>ujawniło się</b>, że klasa ma dużo więcej uczniów, niż się wszystkim wydawało.</div>
+</section>
+
+<section id="faszyzm">
+  <h2>🇮🇹 Faszyzm we Włoszech — Mussolini i marsz na Rzym</h2>
+
+  <h3>Przyczyny</h3>
+  <ul>
+    <li>Włochy wygrały wojnę, ale <b>czuły się oszukane</b> — nie otrzymały wszystkich obiecanych terytoriów („okaleczone zwycięstwo").</li>
+    <li>Wysokie bezrobocie, inflacja, biedni weterani wojenni.</li>
+    <li>Strach burżuazji przed <b>komunistyczną rewolucją</b> na wzór rosyjski.</li>
+    <li>Słaby, rozdrobniony parlament nie radził sobie z kryzysem.</li>
+  </ul>
+
+  <h3>Przebieg</h3>
+  <div class="timeline">
+    <div class="ev"><b>1919</b> — Benito Mussolini zakłada Związki Kombatanckie (<i>Fasci di Combattimento</i>) — stąd nazwa „faszyzm".</div>
+    <div class="ev"><b>28 października 1922</b> — <b>Marsz na Rzym</b>: tysiące czarnych koszul maszeruje na stolicę. Król Wiktor Emanuel III ustępuje i mianuje Mussoliniego premierem.</div>
+    <div class="ev"><b>1925–1926</b> — Mussolini przyjmuje tytuł <i>Duce</i> („Wódz"), rozwiązuje partie opozycyjne, wprowadza dyktaturę.</div>
+    <div class="ev"><b>1929</b> — <b>Traktaty laterańskie</b> z papieżem — powstaje Państwo Watykańskie, Kościół popiera reżim.</div>
+  </div>
+
+  <h3>Skutki</h3>
+  <ul>
+    <li>Państwo totalitarne: jedna partia, kontrola szkół, mediów, gospodarki (tzw. <b>państwo korporacyjne</b>).</li>
+    <li>Agresywna polityka zagraniczna: podbój <b>Etiopii</b> (1935–36), wsparcie Franco w Hiszpanii.</li>
+    <li>Sojusz z Hitlerem — <b>Oś Berlin–Rzym</b> (1936) — prowadzi prosto do II wojny światowej.</li>
+  </ul>
+
+  <div class="ex">Marsz na Rzym to jak sytuacja, w której grupa najgłośniejszych uczniów przychodzi pod gabinet dyrektora i mówi: „Albo nas słuchasz, albo zaczynamy awanturę". Dyrektor (król) wybrał „spokój" — i oddał stery awanturnikom.</div>
+</section>
+
+<section id="nazizm">
+  <h2>🦅 Nazizm w Niemczech — Hitler, NSDAP i III Rzesza</h2>
+
+  <h3>Przyczyny</h3>
+  <ul>
+    <li><b>Upokorzenie traktatem wersalskim</b> — reparacje rujnowały gospodarkę.</li>
+    <li><b>Wielki kryzys gospodarczy (1929)</b> — w 1932 r. bezrobotnych było 6 mln Niemców.</li>
+    <li>Słaba <b>Republika Weimarska</b> — częste zmiany rządów, inflacja (1923 — bochenek chleba za miliardy marek).</li>
+    <li>Strach przed komunizmem + propaganda, że „winni są Żydzi i traktat wersalski".</li>
+  </ul>
+
+  <h3>Droga Hitlera do władzy</h3>
+  <div class="timeline">
+    <div class="ev"><b>1920</b> — powstaje NSDAP (Narodowosocjalistyczna Niemiecka Partia Robotników).</div>
+    <div class="ev"><b>1923</b> — nieudany <b>pucz monachijski</b> (pucz piwiarniany). Hitler trafia do więzienia, pisze tam <i>Mein Kampf</i>.</div>
+    <div class="ev"><b>1932</b> — NSDAP staje się największą partią w Reichstagu (37% głosów w lipcu), choć nie zdobywa bezwzględnej większości.</div>
+    <div class="ev"><b>30 stycznia 1933</b> — prezydent Hindenburg mianuje Hitlera <b>kanclerzem</b>.</div>
+    <div class="ev"><b>luty 1933</b> — pożar Reichstagu → zawieszenie swobód obywatelskich.</div>
+    <div class="ev"><b>30 czerwca 1934</b> — <b>noc długich noży</b>: Hitler każe wymordować dowódców SA i rywali w partii (m.in. Röhma). Umacnia władzę.</div>
+    <div class="ev"><b>sierpień 1934</b> — po śmierci Hindenburga Hitler łączy urzędy — zostaje <i>Führerem</i>.</div>
+    <div class="ev"><b>1935</b> — <b>ustawy norymberskie</b> pozbawiają Żydów obywatelstwa i praw.</div>
+    <div class="ev"><b>9/10 listopada 1938</b> — <b>noc kryształowa</b>: pogrom Żydów w całych Niemczech — palone synagogi, sklepy, aresztowania.</div>
+  </div>
+
+  <h3>Skutki</h3>
+  <ul>
+    <li>Totalna kontrola państwa: gestapo, SS, obozy koncentracyjne (pierwszy — Dachau, 1933).</li>
+    <li>Remilitaryzacja Nadrenii (1936), Anschluss Austrii (1938) — łamanie traktatu wersalskiego.</li>
+    <li>Ideologia rasistowska — „czysta rasa aryjska", antysemityzm państwowy, <b>Lebensraum</b> (przestrzeń życiowa na wschodzie).</li>
+    <li>Prosta droga do II wojny światowej i Holokaustu.</li>
+  </ul>
+
+  <div class="ex">Hitler nie chwycił władzy przemocą — został <b>legalnie mianowany</b> kanclerzem. To jak sytuacja, w której ktoś został wybrany przewodniczącym klasy obietnicami porządku, a potem zakazał mówić wszystkim, którzy się z nim nie zgadzają.</div>
+</section>
+
+<section id="komunizm">
+  <h2>☭ Komunizm w ZSRR — od Lenina do Stalina</h2>
+
+  <h3>Przyczyny rewolucji</h3>
+  <ul>
+    <li>Olbrzymia nędza chłopów i robotników w carskiej Rosji.</li>
+    <li>Klęski Rosji w I wojnie światowej — głód, dezercje.</li>
+    <li>Nieudolność cara Mikołaja II → rewolucja lutowa 1917 → rewolucja październikowa 1917 (Lenin, bolszewicy).</li>
+  </ul>
+
+  <h3>Przebieg</h3>
+  <div class="timeline">
+    <div class="ev"><b>1917</b> — <b>Lenin</b> i bolszewicy obalają Rząd Tymczasowy (rewolucja październikowa). W grudniu powstaje <b>Czeka</b> (tajna policja polityczna).</div>
+    <div class="ev"><b>1918–1921</b> — wojna domowa. Czeka rozpętuje „czerwony terror" wobec przeciwników politycznych.</div>
+    <div class="ev"><b>1921</b> — Lenin wprowadza <b>NEP</b> (Nowa Polityka Ekonomiczna) — ograniczony powrót prywatnego handlu, by uratować gospodarkę od głodu.</div>
+    <div class="ev"><b>1922</b> — powstaje <b>ZSRR</b> (Związek Socjalistycznych Republik Radzieckich).</div>
+    <div class="ev"><b>1924</b> — śmierć Lenina. Walka o władzę: <b>Stalin kontra Trocki</b>.</div>
+    <div class="ev"><b>1927–1929</b> — Stalin wygrywa, Trocki zostaje wygnany (zabity w Meksyku w 1940 r.).</div>
+    <div class="ev"><b>1928</b> — koniec NEP; rusza <b>pierwsza pięciolatka</b> — industrializacja i <b>kolektywizacja</b>.</div>
+    <div class="ev"><b>1934</b> — Czeka → OGPU → <b>NKWD</b>. Zaczyna się <b>wielki terror</b>: masowe aresztowania, procesy pokazowe, łagry.</div>
+    <div class="ev"><b>1937–1938</b> — apogeum czystek stalinowskich — ofiary idą w miliony.</div>
+  </div>
+
+  <h3>Skutki</h3>
+  <ul>
+    <li>Totalitarna dyktatura jednej partii (WKP(b)).</li>
+    <li>Tysiące <b>łagrów</b> w ramach systemu <b>GUŁAG</b> — obozy pracy, głównie na Syberii.</li>
+    <li>Kolektywizacja rolnictwa: przymusowe <b>kołchozy</b> (spółdzielnie) i <b>sowchozy</b> (państwowe gospodarstwa).</li>
+    <li>Kult jednostki Stalina, zniszczenie wolności słowa, religii, sztuki.</li>
+  </ul>
+</section>
+
+<section id="holod">
+  <h2>🌾 Wielki głód na Ukrainie (Hołodomor) 1932–1933</h2>
+
+  <h3>Przyczyny — łańcuch zdarzeń</h3>
+  <div class="chain">
+    <div class="step"><b>1.</b> Stalin zarządza <b>przymusową kolektywizację</b> — chłopi mają oddać ziemię, zwierzęta i narzędzia do kołchozów.</div>
+    <div class="arrow">➜</div>
+    <div class="step"><b>2.</b> Ukraina — „spichlerz ZSRR" — opiera się najmocniej. Zamożniejszych chłopów (tzw. <b>kułaków</b>) oraz opornych masowo deportuje się na Syberię.</div>
+    <div class="arrow">➜</div>
+    <div class="step"><b>3.</b> Stalin podnosi normy obowiązkowych dostaw zboża i odbiera wszystko, łącznie z ziarnem na zasiew.</div>
+    <div class="arrow">➜</div>
+    <div class="step"><b>4.</b> Wsie są otoczone, ludziom zakazuje się ich opuszczać. Wybucha <b>głód na wielką skalę</b>.</div>
+  </div>
+
+  <h3>Skutki</h3>
+  <ul>
+    <li>Śmierć głodową poniosło od <b>3,5 do 7 milionów ludzi</b> (szacunki historyków).</li>
+    <li>Złamanie ukraińskiej tożsamości narodowej i niezależności chłopów.</li>
+    <li>Dziś uznawany przez wiele państw (w tym Polskę) za <b>ludobójstwo</b>.</li>
+  </ul>
+
+  <div class="warn">Hołodomor nie był klęską naturalną — to była <b>celowa polityka</b> Stalina wymierzona w Ukraińców i ich pragnienie samodzielności.</div>
+</section>
+
+<section id="uklady">
+  <h2>🤝 Rapallo (1922) i Locarno (1925) — dyplomatyczne pułapki</h2>
+
+  <h3>Układ w Rapallo — 16 kwietnia 1922</h3>
+  <p>Podczas konferencji w Genui <b>Niemcy i Rosja Radziecka</b> (dwa państwa pomijane przez Zachód) niespodziewanie zawarły układ we włoskim Rapallo. Sam traktat został jawnie ogłoszony i zaszokował aliantów; tajna była dopiero towarzysząca mu współpraca wojskowa.</p>
+  <ul>
+    <li>Nawiązanie stosunków dyplomatycznych i współpraca gospodarcza.</li>
+    <li>Zrzeczenie się wzajemnych roszczeń z czasów wojny.</li>
+    <li><b>Tajna</b> współpraca wojskowa (od 1923 r.): w ZSRR Niemcy szkolili czołgistów i lotników, <b>omijając traktat wersalski</b>.</li>
+  </ul>
+  <div class="warn">Dla Polski to fatalna wiadomość — dwa wielkie mocarstwa sąsiednie zaczęły się dogadywać ponad jej głową.</div>
+
+  <h3>Układ w Locarno — 16 października 1925</h3>
+  <p>Konferencja w szwajcarskim Locarno. Uczestnicy: Niemcy, Francja, Wielka Brytania, Włochy, Belgia, Polska i Czechosłowacja.</p>
+  <ul>
+    <li><b>Niemcy uznały</b> swoje zachodnie granice (z Francją i Belgią) — gwarancja demilitaryzacji Nadrenii.</li>
+    <li><b>NIE uznały</b> granic wschodnich z Polską i Czechosłowacją — Berlin otwarcie dawał do zrozumienia, że chce je zmienić.</li>
+    <li>Francja i W. Brytania praktycznie zgodziły się na „dwie prędkości" granic — mocne na zachodzie, słabsze na wschodzie.</li>
+  </ul>
+  <div class="ex">Locarno dla Polski było jak klasowa umowa: „Obrońmy Krzysia, ale z Kasią to już jego sprawa, niech się sam ogarnia". Polska została sama z zagrożeniem ze strony Niemiec i ZSRR.</div>
+</section>
+
+<section id="monachium">
+  <h2>🇨🇿 Konferencja monachijska — 29–30 września 1938</h2>
+
+  <h3>Przyczyny</h3>
+  <ul>
+    <li>Hitler domagał się przyłączenia <b>Kraju Sudeckiego</b> (część Czechosłowacji z niemiecką mniejszością).</li>
+    <li>Francja i Wielka Brytania prowadziły politykę <b>appeasementu</b> — ustępstw wobec agresora, by uniknąć wojny.</li>
+  </ul>
+
+  <h3>Przebieg</h3>
+  <p>W Monachium spotkali się: <b>Adolf Hitler</b> (Niemcy), <b>Benito Mussolini</b> (Włochy), <b>Neville Chamberlain</b> (W. Brytania), <b>Édouard Daladier</b> (Francja). Czechosłowacji nie zaproszono — decydowano o niej <b>bez niej</b>.</p>
+
+  <h3>Postanowienia</h3>
+  <ul>
+    <li>Czechosłowacja miała oddać Niemcom Kraj Sudecki.</li>
+    <li>W zamian Hitler obiecał, że „to jego ostatnie roszczenie terytorialne w Europie".</li>
+  </ul>
+
+  <h3>Skutki</h3>
+  <ul>
+    <li>Czechosłowacja straciła pas graniczny z fortyfikacjami — stała się bezbronna.</li>
+    <li>W marcu 1939 Hitler zajął resztę Czech — obietnica okazała się kłamstwem.</li>
+    <li>Zachód stracił wiarygodność; Stalin zrozumiał, że może dogadać się z Hitlerem (pakt Ribbentrop–Mołotow, sierpień 1939).</li>
+    <li>Monachium stało się <b>symbolem zdrady</b> i błędnej polityki ustępstw.</li>
+  </ul>
+
+  <div class="warn">Chamberlain wracał z Monachium z kartką Hitlera i mówił: „Przywożę wam pokój na nasze czasy!". Już rok później wybuchła II wojna światowa.</div>
+</section>
+
+<section id="kultura">
+  <h2>🎨 Kultura i nauka międzywojnia</h2>
+  <div class="grid">
+    <div class="card"><h4>Futuryzm</h4>Kult maszyny, prędkości i nowoczesności. Twórca: Marinetti (Włochy). Zrywał z tradycją.</div>
+    <div class="card"><h4>Dadaizm</h4>Antysztuka — bunt wobec świata, który zgotował wojnę. Używał przypadku i prowokacji.</div>
+    <div class="card"><h4>Surrealizm</h4>„Nadrealizm" — świat snów, podświadomości. Najbardziej znany: Salvador Dalí.</div>
+    <div class="card"><h4>Modernizm</h4>Nowoczesny ruch w architekturze i sztuce: funkcjonalizm, proste bryły (Le Corbusier, Bauhaus).</div>
+  </div>
+</section>
+
+<section id="porownanie">
+  <h2>⚖️ Porównanie trzech totalitaryzmów</h2>
+  <table>
+    <thead>
+      <tr><th>Cecha</th><th>Faszyzm (Włochy)</th><th>Nazizm (Niemcy)</th><th>Komunizm (ZSRR)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Przywódca</td><td>Mussolini („Duce")</td><td>Hitler („Führer")</td><td>Lenin → Stalin</td></tr>
+      <tr><td>Rok dojścia do władzy</td><td>1922 (marsz na Rzym)</td><td>1933 (kanclerz)</td><td>1917 (rewolucja)</td></tr>
+      <tr><td>Partia</td><td>PNF (Narodowa Partia Faszystowska)</td><td>NSDAP</td><td>WKP(b), później KPZR</td></tr>
+      <tr><td>Ideologia</td><td>Kult państwa i wodza</td><td>Rasizm, antysemityzm, Lebensraum</td><td>Walka klas, własność wspólna</td></tr>
+      <tr><td>Policja polityczna</td><td>OVRA</td><td>Gestapo, SS</td><td>Czeka → NKWD</td></tr>
+      <tr><td>Obozy</td><td>Zesłania, więzienia</td><td>Obozy koncentracyjne (Dachau 1933)</td><td>GUŁAG — łagry</td></tr>
+      <tr><td>Gospodarka</td><td>Państwo korporacyjne</td><td>Zbrojenia, kontrola państwa</td><td>Własność państwowa, pięciolatki</td></tr>
+      <tr><td>Symbol</td><td>Fasces (rózgi liktorskie)</td><td>Swastyka</td><td>Sierp i młot</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="pojecia">
+  <h2>📖 Słownik pojęć — musisz znać!</h2>
+  <div class="glossary">
+    <div class="term"><b>Mały traktat wersalski</b>Umowa z 28 VI 1919 zobowiązująca Polskę i inne nowe państwa do ochrony praw mniejszości narodowych.</div>
+    <div class="term"><b>Faszyzm</b>Totalitarny system polityczny narodzony we Włoszech (Mussolini). Kult państwa, wodza, przemocy. Zwalcza demokrację i komunizm.</div>
+    <div class="term"><b>Komunizm</b>Ideologia i ustrój dążący do zniesienia własności prywatnej i klas społecznych. W praktyce (ZSRR) — krwawa dyktatura partii.</div>
+    <div class="term"><b>Nazizm</b>Niemiecka odmiana faszyzmu (narodowy socjalizm). Dodaje rasizm, antysemityzm i teorię „rasy panów".</div>
+    <div class="term"><b>Noc długich noży</b>30 VI 1934 — Hitler nakazał wymordowanie przywódców SA (m.in. Röhma) i rywali, by umocnić władzę.</div>
+    <div class="term"><b>Noc kryształowa</b>9/10 XI 1938 — pogrom Żydów w Niemczech: palone synagogi, niszczone sklepy, aresztowania. Nazwa od potłuczonych szyb.</div>
+    <div class="term"><b>Marsz na Rzym</b>28 X 1922 — pochód czarnych koszul Mussoliniego, po którym król mianował go premierem.</div>
+    <div class="term"><b>Ustawy norymberskie</b>1935 — prawo pozbawiające Żydów obywatelstwa niemieckiego i zakazujące małżeństw mieszanych.</div>
+    <div class="term"><b>Polityka NEP</b>Nowa Polityka Ekonomiczna (1921–1928) — Lenin częściowo dopuścił prywatny handel, by ratować gospodarkę po wojnie domowej.</div>
+    <div class="term"><b>NKWD</b>Ludowy Komisariat Spraw Wewnętrznych — sowiecka policja polityczna, narzędzie terroru Stalina (czystki, GUŁAG).</div>
+    <div class="term"><b>Czeka</b>Pierwsza bolszewicka policja polityczna (1917–1922). Prowadziła „czerwony terror". Prekursor NKWD.</div>
+    <div class="term"><b>GUŁAG</b>Główny Zarząd Obozów Pracy — sieć setek obozów pracy przymusowej w ZSRR. Miliony więźniów.</div>
+    <div class="term"><b>Łagier</b>Pojedynczy sowiecki obóz pracy w systemie GUŁAG — głównie na Syberii i dalekiej północy.</div>
+    <div class="term"><b>Kolektywizacja</b>Przymusowe łączenie gospodarstw chłopskich w kołchozy (od 1928). Towarzyszyły jej głód, deportacje kułaków.</div>
+    <div class="term"><b>Kołchoz</b>Spółdzielcze gospodarstwo rolne w ZSRR — formalnie „wspólne", realnie sterowane przez państwo.</div>
+    <div class="term"><b>Sowchoz</b>Państwowe gospodarstwo rolne w ZSRR, gdzie chłopi byli pracownikami najemnymi państwa.</div>
+    <div class="term"><b>Surrealizm</b>Kierunek w sztuce (lata 20.) — świat snu, fantazji, podświadomości. Przedstawiciel: Salvador Dalí.</div>
+    <div class="term"><b>Futuryzm</b>Awangardowy kierunek (Marinetti, ok. 1909) — kult maszyny, prędkości, nowoczesności, zerwanie z tradycją.</div>
+    <div class="term"><b>Dadaizm</b>Antysztuka po I wojnie — absurd, przypadek, prowokacja jako protest przeciw cywilizacji, która doprowadziła do wojny.</div>
+    <div class="term"><b>Modernizm</b>Nowoczesny nurt w sztuce i architekturze (Bauhaus, Le Corbusier) — funkcjonalizm, proste bryły, odrzucenie ozdób.</div>
+    <div class="term"><b>Autorytaryzm</b>Łagodniejsza forma dyktatury — silna władza jednego człowieka/partii, ale bez totalnej kontroli życia obywateli (np. Polska po 1926, Portugalia Salazara).</div>
+    <div class="term"><b>Demilitaryzacja</b>Zakaz stacjonowania wojska i utrzymywania umocnień na danym obszarze (np. Nadrenia po Wersalu).</div>
+    <div class="term"><b>Appeasement</b>Polityka ustępstw wobec agresora w nadziei, że się nasyci i zachowa pokój. Symbolem jest Monachium 1938 (Chamberlain).</div>
+  </div>
+</section>
+
+<section id="przywodcy">
+  <h2>👤 Wizerunki przywódców — musisz rozpoznać</h2>
+  <p>Poniżej uproszczone portrety — charakterystyczne cechy pomogą ci rozpoznać każdego z nich na zdjęciu.</p>
+
+  <div class="leaders">
+    <div class="leader">
+      <svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg" aria-label="Mussolini">
+        <rect width="120" height="140" fill="#1c2150"/>
+        <ellipse cx="60" cy="72" rx="32" ry="40" fill="#f2d0a4"/>
+        <path d="M28,62 Q60,30 92,62 L92,45 Q60,18 28,45 Z" fill="#2b2b2b"/>
+        <circle cx="50" cy="70" r="3" fill="#1a1a1a"/>
+        <circle cx="70" cy="70" r="3" fill="#1a1a1a"/>
+        <path d="M50,90 Q60,95 70,90" stroke="#2b2b2b" stroke-width="2" fill="none"/>
+        <path d="M30,110 L90,110 L98,140 L22,140 Z" fill="#1a1a1a"/>
+        <path d="M45,115 L75,115 L75,140 L45,140 Z" fill="#6b6b6b"/>
+      </svg>
+      <b>Benito Mussolini</b>
+      <span>Włochy • łysa głowa, wystająca szczęka, mundur czarnych koszul</span>
+    </div>
+
+    <div class="leader">
+      <svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg" aria-label="Stalin">
+        <rect width="120" height="140" fill="#1c2150"/>
+        <ellipse cx="60" cy="72" rx="32" ry="40" fill="#f2d0a4"/>
+        <path d="M25,55 Q60,25 95,55 L95,70 Q60,40 25,70 Z" fill="#3b2a1d"/>
+        <circle cx="50" cy="72" r="3" fill="#1a1a1a"/>
+        <circle cx="70" cy="72" r="3" fill="#1a1a1a"/>
+        <path d="M38,85 Q60,78 82,85 Q82,92 60,90 Q38,92 38,85 Z" fill="#3b2a1d"/>
+        <path d="M55,92 L65,92 L65,100 L55,100 Z" fill="#f2d0a4"/>
+        <path d="M30,110 L90,110 L98,140 L22,140 Z" fill="#5a4b2a"/>
+        <rect x="52" y="110" width="16" height="8" fill="#ffd166"/>
+      </svg>
+      <b>Józef Stalin</b>
+      <span>ZSRR • gęsty wąs, ciemne włosy zaczesane w tył, mundur generalski</span>
+    </div>
+
+    <div class="leader">
+      <svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg" aria-label="Lenin">
+        <rect width="120" height="140" fill="#1c2150"/>
+        <ellipse cx="60" cy="72" rx="32" ry="40" fill="#f2d0a4"/>
+        <path d="M35,50 Q60,40 85,50 Q78,55 60,55 Q42,55 35,50 Z" fill="#7a5230"/>
+        <circle cx="50" cy="72" r="3" fill="#1a1a1a"/>
+        <circle cx="70" cy="72" r="3" fill="#1a1a1a"/>
+        <path d="M45,88 Q55,85 60,95" stroke="#7a5230" stroke-width="2" fill="none"/>
+        <path d="M60,95 Q65,85 75,88" stroke="#7a5230" stroke-width="2" fill="none"/>
+        <path d="M50,98 L70,98 L72,108 L48,108 Z" fill="#7a5230"/>
+        <path d="M30,110 L90,110 L98,140 L22,140 Z" fill="#2b2b2b"/>
+        <path d="M50,115 L70,115 L70,125 L50,125 Z" fill="#fff"/>
+      </svg>
+      <b>Włodzimierz Lenin</b>
+      <span>ZSRR • łysina, rudawa bródka i wąsy, wysokie kości policzkowe</span>
+    </div>
+
+    <div class="leader">
+      <svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg" aria-label="Trocki">
+        <rect width="120" height="140" fill="#1c2150"/>
+        <ellipse cx="60" cy="72" rx="32" ry="40" fill="#f2d0a4"/>
+        <path d="M28,55 Q60,28 92,55 L92,68 Q60,45 28,68 Z" fill="#1a1a1a"/>
+        <circle cx="50" cy="70" r="6" fill="#fff" stroke="#1a1a1a"/>
+        <circle cx="70" cy="70" r="6" fill="#fff" stroke="#1a1a1a"/>
+        <circle cx="50" cy="70" r="2" fill="#1a1a1a"/>
+        <circle cx="70" cy="70" r="2" fill="#1a1a1a"/>
+        <line x1="56" y1="70" x2="64" y2="70" stroke="#1a1a1a"/>
+        <path d="M42,88 Q50,85 55,95" stroke="#1a1a1a" stroke-width="2" fill="none"/>
+        <path d="M65,95 Q70,85 78,88" stroke="#1a1a1a" stroke-width="2" fill="none"/>
+        <path d="M50,95 L70,95 L72,110 L48,110 Z" fill="#1a1a1a"/>
+        <path d="M30,110 L90,110 L98,140 L22,140 Z" fill="#2a3a5a"/>
+      </svg>
+      <b>Lew Trocki</b>
+      <span>ZSRR • okrągłe okulary, gęste ciemne włosy, bródka i wąsy</span>
+    </div>
+
+    <div class="leader">
+      <svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg" aria-label="Hitler">
+        <rect width="120" height="140" fill="#1c2150"/>
+        <ellipse cx="60" cy="72" rx="32" ry="40" fill="#f2d0a4"/>
+        <path d="M30,55 Q60,30 90,55 L82,62 Q60,48 40,62 Z" fill="#2b2b2b"/>
+        <path d="M70,45 Q80,40 85,55 L80,58 Q72,52 70,50 Z" fill="#2b2b2b"/>
+        <circle cx="50" cy="72" r="3" fill="#1a1a1a"/>
+        <circle cx="70" cy="72" r="3" fill="#1a1a1a"/>
+        <rect x="55" y="85" width="10" height="6" fill="#2b2b2b"/>
+        <path d="M55,95 L65,95" stroke="#1a1a1a" stroke-width="2" fill="none"/>
+        <path d="M30,110 L90,110 L98,140 L22,140 Z" fill="#5a5a2a"/>
+        <rect x="55" y="112" width="14" height="14" fill="#d90429"/>
+        <rect x="58" y="115" width="8" height="8" fill="#fff"/>
+      </svg>
+      <b>Adolf Hitler</b>
+      <span>Niemcy • grzywka z boku, mały wąsik „szczoteczka", brązowy mundur</span>
+    </div>
+  </div>
+</section>
+
+<section id="zadania">
+  <h2>📝 45 zadań sprawdzających</h2>
+  <p>Rozwiń każde zadanie, spróbuj odpowiedzieć samodzielnie, a następnie sprawdź klucz.</p>
+
+  <h3>🟢 Poziom łatwy (zadania 1–15)</h3>
+  <ol class="tasks">
+    <li>
+      <details class="q">
+        <summary>Gdzie i kiedy rozpoczęła się konferencja pokojowa po I wojnie światowej?<span class="level easy">Łatwe</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> W Paryżu, w styczniu 1919 r. (konferencja paryska, znana też jako wersalska — od miejsca podpisania traktatu).</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Kiedy i gdzie podpisano traktat wersalski?<span class="level easy">Łatwe</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> 28 czerwca 1919 r. w pałacu wersalskim pod Paryżem.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Wymień „Wielką Czwórkę" konferencji wersalskiej.<span class="level easy">Łatwe</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> Woodrow Wilson (USA), Georges Clemenceau (Francja), David Lloyd George (W. Brytania), Vittorio Orlando (Włochy).</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Do ilu żołnierzy ograniczono armię Niemiec?<span class="level easy">Łatwe</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> Do 100 tysięcy żołnierzy.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Jaką międzynarodową organizację powołała konferencja wersalska?<span class="level easy">Łatwe</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> Ligę Narodów — pierwszą organizację mającą utrzymywać pokój na świecie.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Kto założył faszyzm we Włoszech?<span class="level easy">Łatwe</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> Benito Mussolini.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Kiedy odbył się marsz na Rzym?<span class="level easy">Łatwe</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> 28 października 1922 r.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>W którym roku Hitler został kanclerzem Niemiec?<span class="level easy">Łatwe</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> 30 stycznia 1933 r.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Jak nazywała się niemiecka partia Hitlera?<span class="level easy">Łatwe</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> NSDAP — Narodowosocjalistyczna Niemiecka Partia Robotników.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Kto poprowadził rewolucję październikową w 1917 r.?<span class="level easy">Łatwe</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> Włodzimierz Lenin, na czele bolszewików.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>W którym roku powstał ZSRR?<span class="level easy">Łatwe</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> W 1922 r.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Jak nazywała się sowiecka sieć obozów pracy?<span class="level easy">Łatwe</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> GUŁAG (Główny Zarząd Obozów Pracy). Pojedyncze obozy nazywano łagrami.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>W jakich latach trwał wielki głód na Ukrainie (Hołodomor)?<span class="level easy">Łatwe</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> W latach 1932–1933.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Kiedy odbyła się konferencja w Monachium?<span class="level easy">Łatwe</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> 29–30 września 1938 r.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Wymień trzy państwa, które powstały w Europie po I wojnie światowej.<span class="level easy">Łatwe</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> Np. Polska, Czechosłowacja, Jugosławia (Królestwo SHS). Dopuszczalne także: Finlandia, Estonia, Łotwa, Litwa, Austria, Węgry.</div>
+      </details>
+    </li>
+  </ol>
+
+  <h3>🟡 Poziom średni (zadania 16–30)</h3>
+  <ol class="tasks" start="16">
+    <li value="16">
+      <details class="q">
+        <summary>Wyjaśnij termin „mały traktat wersalski".<span class="level mid">Średnie</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> Umowa podpisana 28 VI 1919 r. równolegle z traktatem wersalskim. Zobowiązywała Polskę i inne nowo powstałe państwa do zapewnienia ochrony praw mniejszości narodowych (np. Niemców, Żydów, Ukraińców). Polska wypowiedziała ją w 1934 r.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Dlaczego Włosi mówili o „okaleczonym zwycięstwie" po I wojnie światowej?<span class="level mid">Średnie</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> Włochy były po stronie zwycięzców, ale nie otrzymały wszystkich obiecanych im w tajnym traktacie londyńskim terytoriów (m.in. części Dalmacji). Poczucie oszukania ułatwiło Mussoliniemu dojście do władzy.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Jakie były trzy główne postanowienia militarne traktatu wersalskiego wobec Niemiec?<span class="level mid">Średnie</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> 1) ograniczenie armii do 100 tys. żołnierzy, 2) zakaz posiadania lotnictwa, czołgów i okrętów podwodnych, 3) demilitaryzacja Nadrenii (strefa bez wojska na zachód od Renu).</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Wymień cztery przyczyny dojścia Hitlera do władzy.<span class="level mid">Średnie</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> 1) Upokorzenie traktatem wersalskim i reparacje, 2) wielki kryzys gospodarczy 1929 r. i masowe bezrobocie, 3) słabość Republiki Weimarskiej i częste zmiany rządów, 4) strach przed komunizmem oraz nazistowska propaganda i szukanie „wrogów" (Żydów, komunistów).</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Co to była „noc długich noży"?<span class="level mid">Średnie</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> Operacja z 30 czerwca 1934 r., podczas której Hitler kazał zamordować dowódców bojówek SA (m.in. Ernsta Röhma) oraz innych rywali politycznych. Umocnił dzięki temu władzę i zyskał poparcie armii.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Czym była „noc kryształowa" i skąd nazwa?<span class="level mid">Średnie</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> Pogrom Żydów w Niemczech i Austrii z 9 na 10 listopada 1938 r. — palono synagogi, niszczono sklepy, aresztowano ok. 30 tys. Żydów. Nazwa pochodzi od potłuczonego szkła (kryształów) z wybitych witryn, którym zaścielone były ulice.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Wyjaśnij pojęcie NEP i podaj, kto ją wprowadził.<span class="level mid">Średnie</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> Nowa Polityka Ekonomiczna wprowadzona przez Lenina w 1921 r. Po katastrofalnych skutkach „komunizmu wojennego" dopuszczono ograniczony prywatny handel, drobną wytwórczość i swobodę chłopów. NEP zakończył Stalin w 1928 r., rozpoczynając pięciolatki.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Czym różnią się kołchozy od sowchozów?<span class="level mid">Średnie</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> Kołchoz to formalnie „spółdzielnia" rolna — chłopi oddawali ziemię do wspólnego gospodarowania, a dochód dzielono. Sowchoz to państwowe gospodarstwo rolne — państwo było właścicielem, a chłopi najemnymi pracownikami. W praktyce obie formy były sterowane przez państwo.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Czym była Czeka i co zastąpiło ją później?<span class="level mid">Średnie</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> Czeka (Nadzwyczajna Komisja) to pierwsza bolszewicka policja polityczna utworzona w 1917 r., prowadząca „czerwony terror". Od 1922 r. przekształcona kolejno w GPU, OGPU, a w 1934 r. w NKWD — właściwe narzędzie wielkiego terroru Stalina.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Kto rywalizował z Trockim o władzę po Leninie i kto zwyciężył?<span class="level mid">Średnie</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> Po śmierci Lenina (1924) o władzę walczył Stalin, ale także Grigorij Zinowjew i Lew Kamieniew. Zwyciężył Stalin, który najpierw sprzymierzył się z nimi przeciw Trockiemu (wygnany w 1929, zabity w Meksyku w 1940), a potem wyeliminował także swoich dotychczasowych sojuszników.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Wymień dwa ustalenia układu w Rapallo z 1922 r.<span class="level mid">Średnie</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> 1) Nawiązanie stosunków dyplomatycznych i zrzeczenie się wzajemnych roszczeń finansowych między Niemcami a Rosją Radziecką. 2) Współpraca gospodarcza i tajna współpraca wojskowa (szkolenie czołgistów i lotników niemieckich w ZSRR, wbrew traktatowi wersalskiemu).</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Dlaczego układ w Locarno był niekorzystny dla Polski?<span class="level mid">Średnie</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> Bo gwarantował jedynie zachodnie granice Niemiec (z Francją i Belgią), natomiast wschodnie granice z Polską i Czechosłowacją pozostawały nieuznane przez Niemcy. Był to otwarty sygnał, że Berlin uważa te granice za tymczasowe, a Francja i W. Brytania nie są gotowe ich gwarantować.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Wyjaśnij politykę appeasementu i wskaż jej symboliczny moment.<span class="level mid">Średnie</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> Appeasement to polityka ustępstw wobec agresora w nadziei uniknięcia wojny. Symbolem jest konferencja monachijska z 30 IX 1938 r., gdy Francja i W. Brytania (premier Chamberlain) zgodziły się, by Hitler zajął Kraj Sudecki Czechosłowacji.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Wymień ofiary rozbioru Czechosłowacji w 1938 r. i sprawców.<span class="level mid">Średnie</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> Ofiara: Czechosłowacja, której nie zaproszono na konferencję. Sprawcy decyzji: Hitler (Niemcy), Mussolini (Włochy), Chamberlain (W. Brytania), Daladier (Francja). Czechosłowacja musiała oddać Niemcom Kraj Sudecki.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Wymień i krótko opisz dwa kierunki sztuki międzywojennej.<span class="level mid">Średnie</span></summary>
+        <div class="answer"><b>Odpowiedź (dwa przykłady):</b> <b>Surrealizm</b> — sztuka snu i podświadomości (Salvador Dalí). <b>Dadaizm</b> — „antysztuka", prowokacja i absurd jako protest wobec cywilizacji, która doprowadziła do wojny. Dopuszczalne też: futuryzm (kult maszyny), modernizm (funkcjonalna architektura, Bauhaus).</div>
+      </details>
+    </li>
+  </ol>
+
+  <h3>🔴 Poziom trudny (zadania 31–45)</h3>
+  <ol class="tasks" start="31">
+    <li value="31">
+      <details class="q">
+        <summary>Podaj ciąg przyczynowo-skutkowy: od traktatu wersalskiego do dojścia Hitlera do władzy.<span class="level hard">Trudne</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> 1) Surowe warunki traktatu (reparacje, utrata ziem, armia 100 tys.) wywołały w Niemczech poczucie krzywdy i kryzys gospodarczy. 2) W 1923 r. hiperinflacja zniszczyła oszczędności klasy średniej. 3) Wielki kryzys 1929 r. dobił gospodarkę — 6 mln bezrobotnych. 4) Osłabła Republika Weimarska, rosło poparcie skrajnych partii — NSDAP i KPD. 5) Obietnice Hitlera (praca, chleb, „wstawanie z kolan") dały mu zwycięstwo w wyborach 1932. 6) 30 I 1933 Hindenburg mianował Hitlera kanclerzem. 7) Pożar Reichstagu i „noc długich noży" pozwoliły zbudować dyktaturę.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Porównaj faszyzm, nazizm i komunizm — wskaż trzy cechy wspólne i trzy różnice.<span class="level hard">Trudne</span></summary>
+        <div class="answer"><b>Cechy wspólne:</b> 1) system totalitarny z jedną, wszechwładną partią, 2) kult przywódcy i wszechobecna propaganda, 3) terror, tajna policja i obozy dla przeciwników. <b>Różnice:</b> 1) faszyzm/nazizm kładą nacisk na naród i państwo, komunizm — na klasę robotniczą i zniesienie własności prywatnej; 2) nazizm wprowadził ideologię rasową i antysemityzm państwowy, a komunizm walczył z „klasami" (kułacy, burżuazja), faszyzm był nacjonalistyczny, ale pierwotnie bez rasizmu; 3) komunizm upaństwowił gospodarkę całkowicie, faszyzm zachował własność prywatną pod silną kontrolą państwa (państwo korporacyjne).</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Wyjaśnij, jak konferencja w Monachium przyczyniła się do wybuchu II wojny światowej.<span class="level hard">Trudne</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> Monachium pokazało Hitlerowi, że Zachód ustąpi przed groźbą wojny. Czechosłowacja straciła umocnienia sudeckie i szybko padła (III 1939). Stalin ocenił, że nie może liczyć na zachodnich sojuszników — zawarł pakt Ribbentrop–Mołotow (VIII 1939), który otworzył drogę do napaści na Polskę 1 IX 1939 r. Appeasement zamiast zapobiec wojnie — ją przyspieszył.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Wyjaśnij, czym różnił się autorytaryzm od totalitaryzmu.<span class="level hard">Trudne</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> <b>Totalitaryzm</b> (nazizm, komunizm, częściowo faszyzm) dąży do pełnej kontroli nad wszystkimi dziedzinami życia obywatela — gospodarką, kulturą, religią, rodziną, nauką. Opiera się na jednej partii, jednej ideologii, terrorze i propagandzie. <b>Autorytaryzm</b> ogranicza się do władzy politycznej — lider lub grupa rządzą twardą ręką, likwidują opozycję, ale nie narzucają jednej ideologii ani nie wkraczają tak głęboko w życie prywatne (np. Polska sanacyjna po 1926, Portugalia Salazara, Hiszpania Franco po 1939).</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Podaj szczegółowy ciąg przyczynowo-skutkowy wielkiego głodu na Ukrainie.<span class="level hard">Trudne</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> 1) Stalin kończy NEP (1928) i ogłasza przymusową kolektywizację — chłopi mają oddać ziemię i zwierzęta do kołchozów. 2) Ukraina stawia największy opór — chłopi palą zboże i zabijają bydło. 3) Władze deportują tzw. kułaków na Syberię. 4) Państwo narzuca astronomiczne normy dostaw zboża — odbiera także ziarno siewne i zapasy na zimę. 5) Wsie zostają otoczone, a ludności zakazuje się je opuszczać i kupować żywność. 6) W latach 1932–1933 głód zabija od 3,5 do 7 mln Ukraińców. <b>Skutek długofalowy:</b> złamanie ukraińskiej tożsamości i niezależności; dziś uznawane za ludobójstwo.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Dlaczego układ w Rapallo był groźny dla Polski?<span class="level hard">Trudne</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> Polska leżała między Niemcami a ZSRR i była zagrożona z obu stron. Rapallo oznaczało, że dwa największe wrogie państwa zaczęły współpracować — politycznie, gospodarczo i tajnie wojskowo. Niemcy szkolili w ZSRR swoich czołgistów i lotników, omijając zakazy traktatu wersalskiego. Stwarzało to ryzyko, że w przyszłości mogą się porozumieć kosztem Polski — co faktycznie stało się w 1939 r. w pakcie Ribbentrop–Mołotow.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Opisz drogę Mussoliniego do władzy w latach 1919–1925.<span class="level hard">Trudne</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> 1919 — Mussolini zakłada Związki Kombatanckie (<i>Fasci di Combattimento</i>), ściągając weteranów i niezadowolonych. 1920–1922 — bojówki „czarnych koszul" rozbijają strajki i związki lewicowe, zyskując poparcie przemysłowców i ziemian obawiających się komunistów. 1921 — przekształcenie w Narodową Partię Faszystowską (PNF). 28 X 1922 — marsz na Rzym; król Wiktor Emanuel III zamiast wprowadzić stan wyjątkowy, mianuje Mussoliniego premierem. 1924 — zabójstwo opozycyjnego posła Matteottiego ujawnia brutalność reżimu, ale opozycja nie reaguje zdecydowanie. 1925–1926 — Mussolini przyjmuje tytuł „Duce", likwiduje partie, wprowadza cenzurę i dyktaturę.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Co łączy ustawy norymberskie z nocą kryształową?<span class="level hard">Trudne</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> Oba wydarzenia są etapami polityki antysemickiej nazistów. Ustawy norymberskie (1935) były <b>prawną</b> eliminacją Żydów ze społeczeństwa — pozbawiły ich obywatelstwa i zakazały małżeństw mieszanych. Noc kryształowa (9/10 XI 1938) była <b>faktycznym aktem przemocy</b> — pogromem w skali kraju. Razem pokazują ciąg: najpierw odebrać prawa, potem zastosować otwartą przemoc. Stanowiły drogę do Holokaustu.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Wyjaśnij, co oznacza termin „dyktat wersalski" i dlaczego Niemcy się nim posługiwali.<span class="level hard">Trudne</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> „Dyktat" (niem. <i>Diktat</i>) znaczy „narzucone, podyktowane". Niemcy używali tego słowa, bo nie dopuszczono ich do negocjacji traktatu — po prostu kazano im podpisać gotowy dokument. Uważali go za niesprawiedliwy: utrata ziem, reparacje, okrojenie armii, „zbrodnia wojny" nałożona tylko na nich. Termin „dyktat wersalski" stał się narzędziem propagandy wszystkich niemieckich nacjonalistów — od Republiki Weimarskiej po Hitlera — uzasadniającym rewizję granic i odbudowę armii.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Wyjaśnij związki między kolektywizacją, wielkim terrorem i systemem GUŁAG.<span class="level hard">Trudne</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> Kolektywizacja (od 1928) wywołała masowy opór chłopów. Stalin odpowiedział deportacjami kułaków — to pierwsza fala ludności trafiającej do obozów. Wielki terror (1937–1938) poszerzył represje na kadrę partii, wojskowych, inteligencję — ofiary skazywano w pokazowych procesach. NKWD (kierowane przez Jeżowa, potem Berię) prowadziło aresztowania i przesłuchania. Skazanych wysyłano do łagrów systemu GUŁAG, gdzie pracą niewolniczą budowano kanały, koleje, kopalnie. W ten sposób terror polityczny łączył się z „tanią siłą roboczą" dla sowieckiej industrializacji.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Które państwa powstały z rozpadu Austro-Węgier? Wymień je i krótko scharakteryzuj.<span class="level hard">Trudne</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> 1) <b>Austria</b> — mała, niemieckojęzyczna republika; zakaz Anschlussu z Niemcami. 2) <b>Węgry</b> — kraj, który stracił ok. 2/3 dawnego terytorium (traktat w Trianon), co wywołało silny rewizjonizm. 3) <b>Czechosłowacja</b> — wielonarodowe państwo Czechów i Słowaków, z dużą mniejszością niemiecką. 4) <b>Królestwo SHS (od 1929 Jugosławia)</b> — połączenie Serbów, Chorwatów i Słoweńców. 5) Części ziem przejęły także <b>Polska</b> (Galicja, Śląsk Cieszyński) i <b>Rumunia</b> (Siedmiogród, Bukowina).</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Wyjaśnij, jak demilitaryzacja Nadrenii miała chronić Francję i co się z nią stało.<span class="level hard">Trudne</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> Nadrenia to obszar Niemiec na zachód od Renu, graniczący z Francją i Belgią. Demilitaryzacja (zakaz stacjonowania wojska i umocnień) tworzyła strefę buforową — atak na Francję stawał się powolny i dawał czas na mobilizację. Traktat wersalski zakazywał wojsk niemieckich w Nadrenii bezterminowo; Locarno to potwierdziło. W marcu 1936 r. Hitler złamał zakaz — wojska niemieckie wkroczyły do Nadrenii. Francja i W. Brytania nie zareagowały, co zachęciło Hitlera do kolejnych agresji (Austria 1938, Sudety 1938).</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Porównaj sposób dojścia do władzy Mussoliniego, Hitlera i Stalina.<span class="level hard">Trudne</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> <b>Mussolini</b> — presja uliczna (marsz na Rzym 1922) + legalne mianowanie przez króla. Pozór legalności przy faktycznym szantażu. <b>Hitler</b> — droga wyborcza i parlamentarna: wygrane wybory NSDAP, legalna nominacja na kanclerza (30 I 1933), a dopiero potem stopniowa likwidacja demokracji (pożar Reichstagu, ustawy upoważniające, noc długich noży). <b>Stalin</b> — walka wewnątrzpartyjna po śmierci Lenina (1924); wygrana dzięki kontroli aparatu partyjnego (był sekretarzem generalnym). Nie musiał przejmować władzy w państwie — miał ją dzięki pozycji w partii, a potem zlikwidował wszystkich rywali. Wspólne: wszyscy trzej zaczęli legalnie, a dopiero potem budowali dyktaturę.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Wyjaśnij, dlaczego po Monachium Stalin zdecydował się zawrzeć pakt z Hitlerem.<span class="level hard">Trudne</span></summary>
+        <div class="answer"><b>Odpowiedź:</b> Monachium pokazało Stalinowi, że Francja i W. Brytania nie będą realnie walczyć o sojuszników w Europie Środkowej i wolą appeasement. Stalin obawiał się, że Hitler uderzy na ZSRR, a Zachód nie pomoże. Lepszą kalkulacją stało się zawarcie paktu z Hitlerem (23 VIII 1939, Ribbentrop–Mołotow) — zyskiwał czas na zbrojenia i terytoria (wschodnia Polska, kraje bałtyckie, Besarabia, Finlandia). Był to cyniczny, ale z punktu widzenia Stalina racjonalny wybór, wynikający z braku zaufania do Zachodu po Monachium.</div>
+      </details>
+    </li>
+    <li>
+      <details class="q">
+        <summary>Oceń skutki traktatu wersalskiego dla Europy — podaj argumenty „za" i „przeciw".<span class="level hard">Trudne</span></summary>
+        <div class="answer"><b>Odpowiedź — argumenty „za":</b> odrodzenie Polski i innych państw ujarzmionych przez zaborców; realizacja prawa narodów do samostanowienia; powstanie Ligi Narodów i pierwszego systemu bezpieczeństwa zbiorowego. <b>Argumenty „przeciw":</b> bardzo surowe warunki wobec Niemiec (reparacje, wina wojny, utrata kolonii) budziły tam stałą chęć rewanżu; granice nowych państw nie pokrywały się idealnie z narodami — liczne mniejszości, konflikty (np. Niemcy w Sudetach, Węgrzy w Rumunii); Liga Narodów była słaba — bez USA i armii nie potrafiła powstrzymać agresji. <b>Wniosek:</b> traktat przyniósł porządek na 20 lat, ale jednocześnie zasiał ziarno II wojny światowej.</div>
+      </details>
+    </li>
+  </ol>
+</section>
+
+<footer style="text-align:center;color:var(--muted);margin-top:30px;font-size:.9rem">
+  <p>✍️ Powodzenia na kartkówce! Pamiętaj: zawsze rozumiej <b>ciąg przyczynowo-skutkowy</b>, a nie tylko daty.</p>
+  <p style="opacity:.6">Karta powtórzeniowa • Historia klasa 7 • Rozdział 6</p>
+</footer>
+
+</div>
+</body>
+</html>
