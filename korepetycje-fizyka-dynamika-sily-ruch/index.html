@@ -1,0 +1,2274 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamika — Kurs Fizyki · Klasa 7</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]});"></script>
+<style>
+  :root{
+    /* vintage scientific journal palette */
+    --paper:#F4ECDB;
+    --paper-2:#EDE2C7;
+    --paper-3:#E3D4B4;
+    --paper-deep:#D4C299;
+    --ink:#1A1C24;
+    --ink-2:#3A3C48;
+    --ink-3:#6B6D76;
+    --vermillion:#C54528;
+    --vermillion-dk:#9A351E;
+    --vermillion-lt:#E67B5F;
+    --ochre:#BD8A2B;
+    --ochre-bg:#F1E3B5;
+    --teal:#27585A;
+    --teal-bg:#C7D9D9;
+    --moss:#5C6A38;
+    --moss-bg:#D9DEBE;
+    --plum:#7A3A48;
+    --plum-bg:#E8D2D6;
+    --rule:#C2B390;
+    --rule-soft:#D6C9A8;
+    --shadow-soft:0 1px 2px rgba(26,28,36,0.06),0 8px 24px rgba(26,28,36,0.06);
+    --shadow-lift:0 4px 8px rgba(26,28,36,0.1),0 20px 50px rgba(26,28,36,0.14);
+    --shadow-pop:4px 4px 0 var(--ink);
+    --display:'Fraunces','Playfair Display',Georgia,serif;
+    --body:'Manrope',system-ui,-apple-system,sans-serif;
+    --mono:'JetBrains Mono','IBM Plex Mono',Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:16.5px;
+    line-height:1.72;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  /* paper grain overlay */
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.14 0 0 0 0.2 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity:0.55;mix-blend-mode:multiply;pointer-events:none;z-index:1;
+  }
+  main,header,footer{position:relative;z-index:2}
+
+  /* ============== HERO ============== */
+  header.hero{
+    padding:48px 48px 56px;
+    background:
+      radial-gradient(ellipse at 85% 15%,rgba(189,138,43,0.18) 0%,transparent 55%),
+      radial-gradient(ellipse at 10% 90%,rgba(39,88,90,0.13) 0%,transparent 55%),
+      linear-gradient(180deg,var(--paper) 0%,var(--paper-2) 100%);
+    border-bottom:1px solid var(--rule);
+    position:relative;overflow:hidden;
+  }
+  .hero .tag{
+    position:absolute;top:32px;
+    font-family:var(--mono);font-size:0.72rem;
+    letter-spacing:0.22em;text-transform:uppercase;font-weight:500;
+  }
+  .hero .tag-l{left:48px;color:var(--ink-3)}
+  .hero .tag-r{right:48px;color:var(--vermillion)}
+  .hero-grid{
+    max-width:1200px;margin:0 auto;
+    display:grid;grid-template-columns:1.25fr 1fr;
+    gap:50px;align-items:center;
+    padding-top:64px;
+  }
+  .rozdzial-label{
+    font-family:var(--mono);font-size:0.78rem;
+    letter-spacing:0.28em;text-transform:uppercase;
+    color:var(--vermillion);font-weight:500;
+    margin-bottom:22px;
+    display:flex;align-items:center;gap:14px;
+  }
+  .rozdzial-label::before{
+    content:"";width:36px;height:2px;background:var(--vermillion);
+  }
+  .hero h1{
+    font-family:var(--display);
+    font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 0;
+    font-weight:600;
+    font-size:clamp(3rem,7.8vw,6.6rem);
+    line-height:0.92;
+    letter-spacing:-0.03em;
+    color:var(--ink);
+    margin:0 0 22px;
+  }
+  .hero h1 em{
+    font-style:italic;font-weight:400;
+    color:var(--vermillion);
+    font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1;
+    display:inline-block;
+  }
+  .hero .podtyt{
+    font-size:1.08rem;color:var(--ink-2);
+    max-width:560px;margin:0 0 30px;
+    line-height:1.6;
+  }
+  .hero .meta{
+    display:flex;flex-wrap:wrap;gap:10px 22px;
+    font-family:var(--mono);font-size:0.76rem;
+    letter-spacing:0.16em;text-transform:uppercase;
+    color:var(--ink-2);font-weight:500;
+  }
+  .hero .meta span{position:relative;padding-right:22px}
+  .hero .meta span:not(:last-child)::after{
+    content:"·";position:absolute;right:6px;color:var(--vermillion);font-weight:700;
+  }
+  /* orbital SVG illustration */
+  .hero-orbit{max-width:380px;margin:0 auto;aspect-ratio:1;position:relative}
+  .hero-orbit svg{width:100%;height:100%;display:block}
+  .hero-orbit .orbit{transform-origin:170px 170px}
+  .hero-orbit .orbit-1{animation:spin1 34s linear infinite}
+  .hero-orbit .orbit-2{animation:spin2 22s linear infinite reverse}
+  .hero-orbit .orbit-3{animation:spin3 44s linear infinite}
+  @keyframes spin1{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+  @keyframes spin2{from{transform:rotate(60deg)}to{transform:rotate(420deg)}}
+  @keyframes spin3{from{transform:rotate(-60deg)}to{transform:rotate(300deg)}}
+
+  .hero-footer{
+    max-width:1200px;margin:56px auto 0;
+    padding-top:22px;border-top:1px solid var(--rule);
+    display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+    font-family:var(--mono);font-size:0.7rem;
+    letter-spacing:0.18em;text-transform:uppercase;
+    color:var(--ink-3);
+  }
+  .hero-footer span:nth-child(2){
+    font-style:italic;text-transform:none;letter-spacing:0.02em;
+    font-family:var(--display);font-size:0.9rem;color:var(--ink-2);
+  }
+
+  /* ============== MAIN ============== */
+  main{
+    max-width:1000px;margin:0 auto;
+    padding:72px 40px 40px;
+    counter-reset:rozdzial 0;
+  }
+
+  /* section headers */
+  main > h2{
+    counter-increment:rozdzial;
+    font-family:var(--display);
+    font-variation-settings:"opsz" 144,"SOFT" 50;
+    font-weight:600;
+    font-size:clamp(2.2rem,4.5vw,3.4rem);
+    line-height:1.04;
+    letter-spacing:-0.028em;
+    color:var(--ink);
+    margin:100px 0 32px;
+    padding:0;background:none;border:none;box-shadow:none;border-radius:0;
+    position:relative;
+  }
+  main > h2:first-of-type{margin-top:0}
+  main > h2::before{
+    content:"§ " counter(rozdzial,decimal-leading-zero);
+    display:block;
+    font-family:var(--mono);font-size:0.78rem;font-weight:500;
+    letter-spacing:0.22em;text-transform:uppercase;
+    color:var(--vermillion);
+    margin-bottom:16px;
+  }
+  main > h2::after{
+    content:"";display:block;
+    width:72px;height:3px;background:var(--vermillion);
+    margin-top:24px;
+  }
+  h3{
+    font-family:var(--display);font-weight:600;
+    font-variation-settings:"opsz" 48;
+    font-size:clamp(1.35rem,2vw,1.65rem);
+    color:var(--ink);
+    margin:48px 0 14px;
+    letter-spacing:-0.01em;
+  }
+  h4{
+    font-family:var(--body);font-weight:700;
+    font-size:0.82rem;letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--vermillion);
+    margin:20px 0 10px;
+  }
+  p{margin:0 0 14px}
+  strong{font-weight:700;color:var(--ink)}
+  em{font-style:italic}
+  ul,ol{margin:10px 0 18px;padding-left:26px}
+  ul li,ol li{margin:6px 0}
+  a{color:var(--vermillion)}
+
+  /* ============== TOC ============== */
+  nav.spis{
+    background:var(--paper-2);
+    border:1px solid var(--rule);
+    border-radius:2px;
+    padding:44px 48px 36px;
+    margin:20px 0 60px;
+    position:relative;
+    box-shadow:var(--shadow-soft);
+  }
+  nav.spis::before{
+    content:"INDEKS · TABULA RERUM";
+    position:absolute;top:-11px;left:32px;
+    background:var(--paper);padding:0 14px;
+    font-family:var(--mono);font-size:0.7rem;letter-spacing:0.24em;
+    color:var(--vermillion);font-weight:500;
+  }
+  nav.spis strong{display:none}
+  nav.spis > ul{list-style:none;padding:0;margin:0;counter-reset:toc 0}
+  nav.spis > ul > li{
+    padding:14px 0;
+    border-bottom:1px dotted var(--rule);
+    counter-increment:toc;
+    display:grid;grid-template-columns:54px 1fr;align-items:baseline;gap:14px;
+  }
+  nav.spis > ul > li::before{
+    content:counter(toc,decimal-leading-zero);
+    font-family:var(--mono);font-size:0.84rem;
+    color:var(--vermillion);font-weight:500;letter-spacing:0.05em;
+  }
+  nav.spis > ul > li:last-child{border-bottom:none}
+  nav.spis a{
+    font-family:var(--display);
+    font-variation-settings:"opsz" 36;
+    font-size:1.22rem;font-weight:500;
+    color:var(--ink);text-decoration:none;
+    border-bottom:1px solid transparent;
+    transition:border-color 0.2s,color 0.2s;
+  }
+  nav.spis a:hover{color:var(--vermillion);border-color:var(--vermillion)}
+  nav.spis ul ul{list-style:none;margin:10px 0 0;padding:0;grid-column:2}
+  nav.spis ul ul li{
+    padding:4px 0;border:none;display:list-item;
+  }
+  nav.spis ul ul li::before{content:""}
+  nav.spis ul ul a{
+    font-family:var(--body);font-size:0.94rem;font-weight:500;
+    color:var(--ink-2);
+  }
+
+  /* ============== CARDS ============== */
+  .karta{
+    background:var(--paper-2);
+    border:1px solid var(--rule);
+    border-radius:2px;
+    padding:28px 34px;
+    margin:22px 0;
+    box-shadow:var(--shadow-soft);
+    position:relative;
+  }
+  .karta h4{margin-top:0}
+  .karta.info{
+    background:linear-gradient(180deg,var(--teal-bg) 0%,rgba(199,217,217,0.35) 100%);
+    border-color:var(--teal);border-left:4px solid var(--teal);
+  }
+  .karta.info h4{color:var(--teal)}
+  .karta.wazne{
+    background:linear-gradient(180deg,var(--ochre-bg) 0%,rgba(241,227,181,0.35) 100%);
+    border-color:var(--ochre);border-left:4px solid var(--ochre);
+  }
+  .karta.wazne h4{color:var(--ochre)}
+  .karta.wzor{
+    background:var(--paper);
+    border:2px solid var(--ink);border-left:2px solid var(--ink);
+    box-shadow:var(--shadow-pop);
+    text-align:center;padding:36px 42px;
+  }
+  .karta.wzor h4{color:var(--ink)}
+  .karta.przyklad{
+    background:linear-gradient(180deg,var(--moss-bg) 0%,rgba(217,222,190,0.35) 100%);
+    border-color:var(--moss);border-left:4px solid var(--moss);
+  }
+  .karta.przyklad h4{color:var(--moss)}
+  .karta.uwaga{
+    background:linear-gradient(180deg,var(--plum-bg) 0%,rgba(232,210,214,0.35) 100%);
+    border-color:var(--plum);border-left:4px solid var(--plum);
+  }
+  .karta.uwaga h4{color:var(--plum)}
+
+  /* ============== FIGURES ============== */
+  .rysunek{
+    background:var(--paper);
+    border:1px solid var(--rule);
+    border-radius:2px;
+    padding:24px 22px 22px;
+    margin:36px 0;
+    position:relative;
+    box-shadow:var(--shadow-soft);
+    display:flex;justify-content:center;
+  }
+  .rysunek::before{
+    content:"FIGURA · FIG.";
+    position:absolute;top:-10px;left:24px;
+    background:var(--paper);padding:0 12px;
+    font-family:var(--mono);font-size:0.68rem;letter-spacing:0.26em;
+    color:var(--vermillion);font-weight:500;
+  }
+  .rysunek svg{max-width:100%;height:auto;display:block}
+
+  /* ============== TABLES ============== */
+  table{
+    width:100%;border-collapse:collapse;
+    margin:20px 0;
+    background:var(--paper);
+    border:1px solid var(--ink);
+    border-radius:0;overflow:hidden;
+    box-shadow:none;
+  }
+  thead tr,th{
+    background:var(--ink);color:var(--paper);
+    padding:12px 16px;text-align:left;
+    font-family:var(--mono);font-size:0.74rem;
+    letter-spacing:0.16em;text-transform:uppercase;font-weight:500;
+  }
+  td{
+    padding:13px 16px;border-bottom:1px solid var(--rule);
+    font-family:var(--body);
+  }
+  tr:last-child td{border-bottom:none}
+  tr:nth-child(even) td{background:rgba(212,194,153,0.18)}
+
+  /* ============== TIP ============== */
+  .tip{
+    background:transparent;
+    border-left:3px solid var(--ochre);
+    padding:10px 22px;margin:22px 0;
+    font-family:var(--display);font-weight:400;font-style:italic;
+    font-variation-settings:"opsz" 20;
+    font-size:1.08rem;color:var(--ink-2);
+    border-radius:0;
+  }
+
+  /* ============== ZADANIA ============== */
+  .zadania{margin:24px 0 48px}
+  ol.lista-zadan{list-style:none;padding:0;margin:0;counter-reset:zad}
+  ol.lista-zadan > li{
+    position:relative;
+    background:var(--paper-2);
+    border:1px solid var(--rule);
+    border-left:6px solid var(--ink);
+    border-radius:2px;
+    padding:30px 34px 30px 124px;
+    margin:22px 0;
+    counter-increment:zad;
+    transition:box-shadow 0.3s ease,transform 0.3s ease;
+    box-shadow:var(--shadow-soft);
+  }
+  ol.lista-zadan > li:hover{
+    box-shadow:var(--shadow-lift);
+    transform:translateY(-2px);
+  }
+  ol.lista-zadan > li::before{
+    content:counter(zad,decimal-leading-zero);
+    position:absolute;left:30px;top:24px;
+    font-family:var(--display);font-weight:600;
+    font-variation-settings:"opsz" 144,"SOFT" 30;
+    font-size:3.4rem;line-height:1;
+    color:var(--ink);letter-spacing:-0.04em;
+  }
+  ol.lista-zadan > li::after{
+    content:"ZADANIE";
+    position:absolute;left:30px;top:86px;
+    font-family:var(--mono);font-size:0.6rem;
+    letter-spacing:0.26em;color:var(--ink-3);font-weight:600;
+  }
+  .poziom-latwy ol.lista-zadan > li{border-left-color:var(--moss)}
+  .poziom-latwy ol.lista-zadan > li::before{color:var(--moss)}
+  .poziom-sredni ol.lista-zadan > li{border-left-color:var(--ochre)}
+  .poziom-sredni ol.lista-zadan > li::before{color:var(--ochre)}
+  .poziom-trudny ol.lista-zadan > li{border-left-color:var(--vermillion)}
+  .poziom-trudny ol.lista-zadan > li::before{color:var(--vermillion)}
+
+  /* POZIOM section headers (override inline styles) */
+  h3[id="latwe"],h3[id="srednie"],h3[id="trudne"]{
+    font-family:var(--display) !important;
+    font-weight:600 !important;
+    font-variation-settings:"opsz" 72;
+    font-size:clamp(1.6rem,2.4vw,2rem) !important;
+    margin:80px 0 24px !important;
+    color:var(--ink) !important;
+    letter-spacing:-0.015em;
+    padding:26px 28px !important;
+    background:var(--paper-2) !important;
+    border:1px solid var(--rule) !important;
+    border-left:6px solid !important;
+    border-radius:2px !important;
+    box-shadow:var(--shadow-soft);
+    display:block;
+  }
+  h3[id="latwe"]{border-left-color:var(--moss) !important}
+  h3[id="srednie"]{border-left-color:var(--ochre) !important}
+  h3[id="trudne"]{border-left-color:var(--vermillion) !important}
+  h3[id="latwe"]::before,h3[id="srednie"]::before,h3[id="trudne"]::before{
+    display:block;
+    font-family:var(--mono);font-size:0.7rem;
+    letter-spacing:0.26em;font-weight:600;
+    margin-bottom:8px;
+  }
+  h3[id="latwe"]::before{content:"POZIOM 01 · PODSTAWOWY";color:var(--moss)}
+  h3[id="srednie"]::before{content:"POZIOM 02 · ZAAWANSOWANY";color:var(--ochre)}
+  h3[id="trudne"]::before{content:"POZIOM 03 · MISTRZOWSKI";color:var(--vermillion)}
+
+  /* ============== DETAILS · ROZWIĄZANIE ============== */
+  details.rozwiazanie{
+    margin-top:22px;
+    border:1px solid var(--rule);
+    border-radius:2px;
+    background:var(--paper);
+    transition:border-color 0.25s,box-shadow 0.25s;
+  }
+  details.rozwiazanie[open]{
+    border-color:var(--ink);
+    box-shadow:var(--shadow-soft);
+  }
+  details.rozwiazanie summary{
+    cursor:pointer;
+    padding:14px 20px;
+    font-family:var(--mono);font-size:0.76rem;
+    letter-spacing:0.24em;text-transform:uppercase;
+    color:var(--ink);font-weight:600;
+    list-style:none;
+    display:flex;align-items:center;gap:14px;
+    user-select:none;
+  }
+  details.rozwiazanie summary::-webkit-details-marker{display:none}
+  details.rozwiazanie summary::before{
+    content:"+";
+    display:inline-flex;align-items:center;justify-content:center;
+    width:24px;height:24px;
+    border:1px solid var(--ink);
+    font-family:var(--body);font-size:1.1rem;font-weight:400;line-height:1;
+    transition:all 0.25s;
+    background:var(--paper);
+  }
+  details.rozwiazanie[open] summary::before{
+    content:"×";
+    background:var(--ink);color:var(--paper);
+  }
+  details.rozwiazanie summary::after{
+    content:"";flex:1;height:1px;
+    background:var(--rule);margin-left:6px;
+  }
+  details.rozwiazanie .tresc{
+    padding:10px 28px 26px;
+    border-top:1px dotted var(--rule);
+    margin-top:2px;
+  }
+  details.rozwiazanie h5{
+    margin:24px 0 6px;
+    font-family:var(--mono);font-weight:600;
+    font-size:0.64rem;letter-spacing:0.28em;
+    text-transform:uppercase;
+    color:var(--vermillion);
+    display:flex;align-items:center;gap:10px;
+  }
+  details.rozwiazanie h5::before{
+    content:"";width:18px;height:1px;background:var(--vermillion);
+  }
+  details.rozwiazanie ol.kroki{
+    padding-left:22px;margin:10px 0 12px;
+  }
+  details.rozwiazanie ol.kroki li{margin:10px 0;padding-left:6px}
+  details.rozwiazanie .odpowiedz{
+    margin-top:22px;padding:16px 22px;
+    background:var(--ochre-bg);
+    border:none;border-left:4px solid var(--ochre);
+    font-family:var(--display);font-weight:500;font-style:italic;
+    font-variation-settings:"opsz" 24;
+    color:var(--ink);font-size:1.1rem;
+    border-radius:0;
+  }
+
+  /* ============== WZOREK ============== */
+  .wzorek{
+    display:inline-block;padding:10px 18px;
+    background:var(--paper);
+    border:1px solid var(--ink);
+    margin:6px 4px;
+    font-family:var(--display);
+    font-variation-settings:"opsz" 24;
+    box-shadow:3px 3px 0 var(--ink);
+    border-radius:2px;
+    transition:transform 0.2s,box-shadow 0.2s;
+  }
+  .wzorek:hover{
+    transform:translate(-2px,-2px);
+    box-shadow:5px 5px 0 var(--ink);
+  }
+
+  /* ============== FOOTER ============== */
+  footer{
+    text-align:center;
+    padding:60px 20px 44px;
+    border-top:1px solid var(--rule);
+    margin-top:100px;
+    background:var(--paper-2);
+    color:inherit;font-size:inherit;
+  }
+  footer::before{
+    content:"∞ · ∴ · ∞";
+    display:block;color:var(--vermillion);
+    font-family:var(--display);font-size:1.5rem;
+    margin-bottom:16px;letter-spacing:0.4em;
+  }
+  footer p{
+    font-family:var(--mono);font-size:0.72rem;
+    letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--ink-2);margin:0;
+  }
+
+  /* ============== ANIMATIONS ============== */
+  @keyframes rise{
+    from{opacity:0;transform:translateY(24px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+  .hero-grid > *{animation:rise 0.9s cubic-bezier(0.2,0.8,0.2,1) both}
+  .hero-grid > *:nth-child(1){animation-delay:0.15s}
+  .hero-grid > *:nth-child(2){animation-delay:0.35s}
+
+  /* ============== RESPONSIVE ============== */
+  @media(max-width:900px){
+    header.hero{padding:28px 22px 40px}
+    .hero .tag-l,.hero .tag-r{position:static;display:inline-block}
+    .hero .tag-r{margin-left:16px}
+    .hero-grid{grid-template-columns:1fr;gap:36px;padding-top:28px}
+    .hero-orbit{max-width:260px;order:-1}
+    .hero-footer{flex-direction:column;gap:6px;text-align:center;align-items:center}
+    main{padding:48px 22px}
+    main > h2{margin:72px 0 26px}
+    nav.spis{padding:30px 22px 24px}
+    nav.spis::before{left:18px}
+    ol.lista-zadan > li{padding:26px 22px 24px 88px}
+    ol.lista-zadan > li::before{font-size:2.6rem;left:20px;top:22px}
+    ol.lista-zadan > li::after{left:20px;top:72px;font-size:0.58rem}
+    .karta{padding:22px 24px}
+  }
+  @media(max-width:560px){
+    .hero h1{font-size:2.8rem}
+    .hero .meta{gap:6px 14px;font-size:0.68rem}
+    body{font-size:15.5px}
+    ol.lista-zadan > li{padding:22px 18px 22px 76px}
+    ol.lista-zadan > li::before{font-size:2.2rem;left:16px;top:20px}
+    ol.lista-zadan > li::after{left:16px;top:60px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="tag tag-l">Fizyka · Klasa VII</span>
+  <span class="tag tag-r">Tom 01 · Mechanika</span>
+
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div class="rozdzial-label">Rozdział otwierający</div>
+      <h1>Dynamika<br><em>siły i&nbsp;ruch</em></h1>
+      <p class="podtyt">Kompletny kurs o&nbsp;trzech zasadach Newtona — bezwładności, F&nbsp;=&nbsp;m·a i&nbsp;akcji–reakcji — uzupełniony o swobodne spadanie, opory ruchu, odrzut oraz <strong>45&nbsp;zadań</strong> z pełnymi rozwiązaniami krok po kroku.</p>
+      <div class="meta">
+        <span>03 Zasady</span>
+        <span>45 Zadań</span>
+        <span>Wzory KaTeX</span>
+        <span>g = 10 m/s²</span>
+      </div>
+    </div>
+    <div class="hero-orbit" aria-hidden="true">
+      <svg viewBox="0 0 340 340">
+        <defs>
+          <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#E67B5F"/>
+            <stop offset="70%" stop-color="#C54528"/>
+            <stop offset="100%" stop-color="#9A351E"/>
+          </radialGradient>
+        </defs>
+        <circle cx="170" cy="170" r="158" fill="none" stroke="#1A1C24" stroke-width="1" stroke-dasharray="1 7" opacity="0.35"/>
+        <circle cx="170" cy="170" r="132" fill="none" stroke="#1A1C24" stroke-width="0.5" opacity="0.2"/>
+        <g class="orbit orbit-1">
+          <ellipse cx="170" cy="170" rx="138" ry="44" fill="none" stroke="#1A1C24" stroke-width="1.1" opacity="0.55"/>
+          <circle cx="308" cy="170" r="8" fill="#27585A"/>
+          <circle cx="308" cy="170" r="3" fill="#F4ECDB" opacity="0.5"/>
+        </g>
+        <g class="orbit orbit-2">
+          <ellipse cx="170" cy="170" rx="138" ry="44" fill="none" stroke="#1A1C24" stroke-width="1.1" opacity="0.55"/>
+          <circle cx="308" cy="170" r="8" fill="#BD8A2B"/>
+          <circle cx="308" cy="170" r="3" fill="#F4ECDB" opacity="0.5"/>
+        </g>
+        <g class="orbit orbit-3">
+          <ellipse cx="170" cy="170" rx="138" ry="44" fill="none" stroke="#1A1C24" stroke-width="1.1" opacity="0.55"/>
+          <circle cx="308" cy="170" r="8" fill="#5C6A38"/>
+          <circle cx="308" cy="170" r="3" fill="#F4ECDB" opacity="0.5"/>
+        </g>
+        <circle cx="170" cy="170" r="22" fill="url(#sun)"/>
+        <circle cx="170" cy="170" r="8" fill="#F4ECDB" opacity="0.7"/>
+        <text x="170" y="175" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="12" font-weight="600" fill="#9A351E">F</text>
+        <g opacity="0.7">
+          <line x1="170" y1="22" x2="170" y2="44" stroke="#1A1C24" stroke-width="1.5"/>
+          <polygon points="170,44 166,36 174,36" fill="#1A1C24"/>
+        </g>
+        <text x="170" y="16" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" letter-spacing="2" fill="#1A1C24">↑ siła</text>
+        <text x="322" y="170" text-anchor="start" font-family="JetBrains Mono,monospace" font-size="8" letter-spacing="2" fill="#1A1C24">m</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="hero-footer">
+    <span>Isaac Newton · MDCLXXXVII</span>
+    <span>Philosophiæ Naturalis Principia Mathematica</span>
+    <span>MMXXVI · Edycja VII</span>
+  </div>
+</header>
+
+<main>
+
+<nav class="spis">
+  <strong>Spis treści</strong>
+  <ul>
+    <li><a href="#wstep">Wstęp — o czym mówi dynamika</a></li>
+    <li><a href="#i-zasada">I zasada dynamiki — bezwładność</a></li>
+    <li><a href="#ii-zasada">II zasada dynamiki — F = m · a</a></li>
+    <li><a href="#iii-zasada">III zasada — akcja i reakcja</a></li>
+    <li><a href="#wypadkowa">Siła wypadkowa</a></li>
+    <li><a href="#spadek">Swobodne spadanie ciał</a></li>
+    <li><a href="#opory">Opory ruchu i tarcie</a></li>
+    <li><a href="#odrzut">Zjawisko odrzutu</a></li>
+    <li><a href="#wykresy">Odczytywanie wykresów</a></li>
+    <li><a href="#zadania">45 zadań z rozwiązaniami</a>
+      <ul>
+        <li><a href="#latwe">Poziom 01 · wprowadzający (1–15)</a></li>
+        <li><a href="#srednie">Poziom 02 · zaawansowany (16–30)</a></li>
+        <li><a href="#trudne">Poziom 03 · mistrzowski (31–45)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<!-- ================== WSTĘP ================== -->
+<h2 id="wstep">Wstęp — o czym mówi dynamika</h2>
+
+<div class="karta info">
+  <p><strong>Dynamika</strong> bada związki między <strong>siłami</strong> a <strong>ruchem</strong> ciał. Odpowiada na pytanie: <em>dlaczego ciało porusza się tak, a nie inaczej?</em></p>
+  <p>W kinematyce pytaliśmy „jak szybko?", „gdzie?", „kiedy?". W dynamice pytamy: „dlaczego?" — a odpowiedź zawsze wskazuje jakąś <strong>siłę</strong>.</p>
+</div>
+
+<div class="karta przyklad">
+  <h4>🪀 Prosty obraz</h4>
+  <p>Piłeczka leży na dywanie. Sama nigdzie nie poleci — dopóki jej nie kopniesz. Kopniak to <strong>siła</strong>, a efekt kopniaka — zmiana ruchu — to domena dynamiki. Im mocniej kopniesz, tym większe przyspieszenie (większa zmiana prędkości). Te związki odkrył i opisał Isaac Newton ponad 300 lat temu.</p>
+</div>
+
+<h3>📏 Wielkości fizyczne dynamiki</h3>
+<table>
+  <tr><th>Wielkość</th><th>Symbol</th><th>Jednostka (SI)</th></tr>
+  <tr><td>Siła</td><td>$F$</td><td>niuton — N</td></tr>
+  <tr><td>Masa</td><td>$m$</td><td>kilogram — kg</td></tr>
+  <tr><td>Przyspieszenie</td><td>$a$</td><td>$\mathrm{m/s^2}$</td></tr>
+  <tr><td>Prędkość</td><td>$v$</td><td>m/s</td></tr>
+  <tr><td>Czas</td><td>$t$</td><td>s</td></tr>
+  <tr><td>Przyspieszenie ziemskie</td><td>$g$</td><td>$\approx 10\,\mathrm{m/s^2}$</td></tr>
+</table>
+
+<div class="tip">💡 <strong>1 N</strong> to w przybliżeniu siła, z jaką Ziemia przyciąga ciało o masie 100 g (czyli np. małe jabłko).</div>
+
+<!-- ================== I ZASADA ================== -->
+<h2 id="i-zasada">I zasada dynamiki — zasada bezwładności</h2>
+
+<div class="karta wzor">
+  <p style="font-size:1.1em"><strong>Jeżeli na ciało nie działa żadna siła, albo siły się wzajemnie równoważą, to ciało pozostaje w spoczynku albo porusza się ruchem jednostajnym prostoliniowym.</strong></p>
+  <p style="font-size:1.25em">$$F_{wyp} = 0 \;\Longleftrightarrow\; v = \text{const}$$</p>
+</div>
+
+<div class="rysunek">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" width="760" height="360" role="img" aria-label="I zasada dynamiki - bezwładność pasażera w autobusie">
+  <rect width="760" height="360" fill="#FAFAFA" rx="14"/>
+  <text x="380" y="32" text-anchor="middle" font-family="Nunito,Arial" font-size="20" font-weight="800" fill="#00695C">I zasada dynamiki — bezwładność</text>
+
+  <!-- Panel 1: autobus jedzie ruchem jednostajnym -->
+  <rect x="20" y="55" width="360" height="130" fill="#E8F5E9" rx="10" stroke="#66BB6A" stroke-width="2"/>
+  <text x="200" y="78" text-anchor="middle" font-family="Nunito,Arial" font-size="14" font-weight="700" fill="#2E7D32">Autobus jedzie jednostajnie</text>
+  <!-- droga -->
+  <line x1="40" y1="160" x2="360" y2="160" stroke="#795548" stroke-width="3"/>
+  <!-- autobus -->
+  <rect x="90" y="105" width="180" height="50" fill="#42A5F5" stroke="#1565C0" stroke-width="2" rx="4"/>
+  <rect x="100" y="115" width="30" height="20" fill="#BBDEFB" stroke="#1565C0"/>
+  <rect x="140" y="115" width="30" height="20" fill="#BBDEFB" stroke="#1565C0"/>
+  <rect x="180" y="115" width="30" height="20" fill="#BBDEFB" stroke="#1565C0"/>
+  <rect x="220" y="115" width="40" height="20" fill="#BBDEFB" stroke="#1565C0"/>
+  <circle cx="120" cy="160" r="10" fill="#263238"/>
+  <circle cx="240" cy="160" r="10" fill="#263238"/>
+  <!-- pasażer w środku (stabilnie) -->
+  <circle cx="155" cy="125" r="4" fill="#FFCC80"/>
+  <line x1="155" y1="129" x2="155" y2="145" stroke="#424242" stroke-width="1.5"/>
+  <!-- strzałka prędkości -->
+  <line x1="280" y1="130" x2="345" y2="130" stroke="#2E7D32" stroke-width="3"/>
+  <polygon points="345,130 337,126 337,134" fill="#2E7D32"/>
+  <text x="313" y="123" text-anchor="middle" font-family="Nunito,Arial" font-size="12" font-weight="700" fill="#2E7D32">v = const</text>
+  <text x="200" y="178" text-anchor="middle" font-family="Nunito,Arial" font-size="11" fill="#555">siły się równoważą → ruch się nie zmienia</text>
+
+  <!-- Panel 2: autobus hamuje - pasażer leci do przodu -->
+  <rect x="400" y="55" width="340" height="130" fill="#FFEBEE" rx="10" stroke="#EF5350" stroke-width="2"/>
+  <text x="570" y="78" text-anchor="middle" font-family="Nunito,Arial" font-size="14" font-weight="700" fill="#C62828">Autobus gwałtownie hamuje</text>
+  <line x1="420" y1="160" x2="740" y2="160" stroke="#795548" stroke-width="3"/>
+  <rect x="470" y="105" width="180" height="50" fill="#42A5F5" stroke="#1565C0" stroke-width="2" rx="4"/>
+  <rect x="480" y="115" width="30" height="20" fill="#BBDEFB" stroke="#1565C0"/>
+  <rect x="520" y="115" width="30" height="20" fill="#BBDEFB" stroke="#1565C0"/>
+  <rect x="560" y="115" width="30" height="20" fill="#BBDEFB" stroke="#1565C0"/>
+  <rect x="600" y="115" width="40" height="20" fill="#BBDEFB" stroke="#1565C0"/>
+  <circle cx="500" cy="160" r="10" fill="#263238"/>
+  <circle cx="620" cy="160" r="10" fill="#263238"/>
+  <!-- pasażer pochylony do przodu -->
+  <circle cx="550" cy="120" r="4" fill="#FFCC80"/>
+  <line x1="550" y1="124" x2="565" y2="140" stroke="#C62828" stroke-width="2"/>
+  <!-- strzałka hamowania (autobus) -->
+  <line x1="475" y1="95" x2="435" y2="95" stroke="#1565C0" stroke-width="3"/>
+  <polygon points="435,95 443,91 443,99" fill="#1565C0"/>
+  <text x="455" y="88" text-anchor="middle" font-family="Nunito,Arial" font-size="11" fill="#1565C0">hamuje</text>
+  <!-- strzałka bezwładności pasażera -->
+  <line x1="573" y1="100" x2="618" y2="100" stroke="#C62828" stroke-width="3"/>
+  <polygon points="618,100 610,96 610,104" fill="#C62828"/>
+  <text x="620" y="95" font-family="Nunito,Arial" font-size="11" font-weight="700" fill="#C62828">bezwładność!</text>
+  <text x="570" y="178" text-anchor="middle" font-family="Nunito,Arial" font-size="11" fill="#555">pasażer „leci" do przodu — chce dalej jechać</text>
+
+  <!-- Dolny panel: wniosek -->
+  <rect x="20" y="205" width="720" height="130" fill="#E0F2F1" rx="10" stroke="#26A69A" stroke-width="2"/>
+  <text x="380" y="232" text-anchor="middle" font-family="Nunito,Arial" font-size="15" font-weight="800" fill="#00695C">Bezwładność = „lenistwo" ciała</text>
+  <text x="380" y="258" text-anchor="middle" font-family="Nunito,Arial" font-size="13" fill="#004D40">Ciało nie lubi zmieniać swojego stanu ruchu.</text>
+  <text x="380" y="280" text-anchor="middle" font-family="Nunito,Arial" font-size="13" fill="#004D40">Im większa masa — tym większa bezwładność (TIR trudniej zatrzymać niż rower).</text>
+  <text x="380" y="308" text-anchor="middle" font-family="Nunito,Arial" font-size="14" font-weight="800" fill="#00695C">F_wyp = 0  ⇔  v = const</text>
+</svg>
+</div>
+
+<h3>🔎 Na czym polega bezwładność?</h3>
+<div class="karta">
+  <p><strong>Bezwładność</strong> to cecha każdego ciała — „niechęć" do zmiany stanu ruchu. Jej miarą jest <strong>masa</strong>: im większa masa, tym trudniej ciało:</p>
+  <ul>
+    <li>wprawić w ruch (ciężki wagon trudniej rozpędzić niż wózek dziecięcy),</li>
+    <li>zatrzymać (rozpędzony TIR hamuje dłużej niż samochód osobowy),</li>
+    <li>zawrócić lub zmienić kierunek jazdy.</li>
+  </ul>
+</div>
+
+<div class="karta przyklad">
+  <h4>🎩 Przykłady bezwładności z życia</h4>
+  <ul>
+    <li><strong>Ketchup z butelki:</strong> potrząsasz butelką, a gdy gwałtownie ją zatrzymasz, ketchup wypływa — z bezwładności leci dalej.</li>
+    <li><strong>Pasy bezpieczeństwa:</strong> przy wypadku samochód gwałtownie zwalnia, ale twoje ciało chce jechać dalej — pas je zatrzymuje.</li>
+    <li><strong>Śnieg strzepywany z butów:</strong> uderzasz butem o schodek — but się zatrzymuje, a śnieg z bezwładności leci dalej i odpada.</li>
+    <li><strong>Obrus spod talerzy:</strong> szarpnięcie obrusa jest tak szybkie, że talerze nie zdążą zareagować i zostają na stole.</li>
+  </ul>
+</div>
+
+<!-- ================== II ZASADA ================== -->
+<h2 id="ii-zasada">II zasada dynamiki — wzór F = m · a</h2>
+
+<div class="karta wzor">
+  <p style="font-size:1.1em"><strong>Jeżeli na ciało działa niezrównoważona siła, to ciało porusza się z przyspieszeniem wprost proporcjonalnym do tej siły, a odwrotnie proporcjonalnym do masy ciała.</strong></p>
+  <p style="font-size:1.5em">$$\boxed{\;F = m \cdot a\;}$$</p>
+  <p>Po przekształceniu: $\;a = \dfrac{F}{m}\,,\quad m = \dfrac{F}{a}\;$</p>
+</div>
+
+<div class="rysunek">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" role="img" aria-label="Proporcjonalność F, m, a - ilustracja II zasady dynamiki">
+  <rect width="760" height="430" fill="#FAFAFA" rx="14"/>
+  <text x="380" y="32" text-anchor="middle" font-family="Nunito,Arial" font-size="20" font-weight="800" fill="#C2185B">II zasada: F = m · a</text>
+
+  <!-- Sekcja: ta sama masa, większa siła -> większe a -->
+  <rect x="20" y="55" width="720" height="155" fill="#FCE4EC" rx="10" stroke="#EC407A" stroke-width="2"/>
+  <text x="380" y="80" text-anchor="middle" font-family="Nunito,Arial" font-size="14" font-weight="800" fill="#AD1457">Ta sama masa m — gdy rośnie siła F, rośnie przyspieszenie a</text>
+
+  <!-- wariant 1: mała siła - klocek -->
+  <rect x="70" y="115" width="44" height="34" fill="#FFB74D" stroke="#E65100" stroke-width="2" rx="4"/>
+  <text x="92" y="137" text-anchor="middle" font-family="Nunito,Arial" font-size="12" font-weight="700" fill="white">m</text>
+  <line x1="120" y1="132" x2="175" y2="132" stroke="#C62828" stroke-width="3"/>
+  <polygon points="175,132 167,127 167,137" fill="#C62828"/>
+  <text x="148" y="124" text-anchor="middle" font-family="Nunito,Arial" font-size="11" fill="#C62828">F=10 N</text>
+  <line x1="185" y1="132" x2="225" y2="132" stroke="#2E7D32" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <polygon points="225,132 217,128 217,136" fill="#2E7D32"/>
+  <text x="205" y="124" text-anchor="middle" font-family="Nunito,Arial" font-size="11" fill="#2E7D32">a=2 m/s²</text>
+  <text x="150" y="175" text-anchor="middle" font-family="Nunito,Arial" font-size="11" fill="#555">mała siła → małe przyspieszenie</text>
+
+  <!-- wariant 2: duża siła - ten sam klocek -->
+  <rect x="440" y="115" width="44" height="34" fill="#FFB74D" stroke="#E65100" stroke-width="2" rx="4"/>
+  <text x="462" y="137" text-anchor="middle" font-family="Nunito,Arial" font-size="12" font-weight="700" fill="white">m</text>
+  <line x1="490" y1="132" x2="580" y2="132" stroke="#C62828" stroke-width="4.5"/>
+  <polygon points="580,132 571,126 571,138" fill="#C62828"/>
+  <text x="535" y="120" text-anchor="middle" font-family="Nunito,Arial" font-size="11" font-weight="700" fill="#C62828">F=30 N</text>
+  <line x1="592" y1="132" x2="710" y2="132" stroke="#2E7D32" stroke-width="3.5" stroke-dasharray="5,3"/>
+  <polygon points="710,132 702,128 702,136" fill="#2E7D32"/>
+  <text x="650" y="120" text-anchor="middle" font-family="Nunito,Arial" font-size="11" font-weight="700" fill="#2E7D32">a=6 m/s²!</text>
+  <text x="580" y="175" text-anchor="middle" font-family="Nunito,Arial" font-size="11" fill="#555">3× większa siła → 3× większe przyspieszenie</text>
+
+  <!-- strzałka między panelami: 3x F -->
+  <line x1="310" y1="170" x2="420" y2="170" stroke="#AD1457" stroke-width="2" stroke-dasharray="3,3"/>
+  <text x="365" y="195" text-anchor="middle" font-family="Nunito,Arial" font-size="12" font-weight="700" fill="#AD1457">siła ×3</text>
+
+  <!-- Sekcja: ta sama siła, większa masa -> mniejsze a -->
+  <rect x="20" y="230" width="720" height="155" fill="#E1F5FE" rx="10" stroke="#29B6F6" stroke-width="2"/>
+  <text x="380" y="255" text-anchor="middle" font-family="Nunito,Arial" font-size="14" font-weight="800" fill="#0277BD">Ta sama siła F — gdy rośnie masa m, maleje przyspieszenie a</text>
+
+  <!-- wariant 3: mała masa -->
+  <rect x="75" y="295" width="38" height="28" fill="#4FC3F7" stroke="#0277BD" stroke-width="2" rx="4"/>
+  <text x="94" y="314" text-anchor="middle" font-family="Nunito,Arial" font-size="11" font-weight="700" fill="white">m</text>
+  <line x1="120" y1="309" x2="175" y2="309" stroke="#C62828" stroke-width="3"/>
+  <polygon points="175,309 167,304 167,314" fill="#C62828"/>
+  <text x="148" y="301" text-anchor="middle" font-family="Nunito,Arial" font-size="11" fill="#C62828">F=20 N</text>
+  <line x1="185" y1="309" x2="290" y2="309" stroke="#2E7D32" stroke-width="3.5" stroke-dasharray="5,3"/>
+  <polygon points="290,309 282,305 282,313" fill="#2E7D32"/>
+  <text x="240" y="301" text-anchor="middle" font-family="Nunito,Arial" font-size="11" font-weight="700" fill="#2E7D32">a=10 m/s²</text>
+  <text x="180" y="350" text-anchor="middle" font-family="Nunito,Arial" font-size="11" fill="#555">mała masa (2 kg) → duże a</text>
+
+  <!-- wariant 4: duża masa -->
+  <rect x="440" y="285" width="90" height="48" fill="#0277BD" stroke="#01579B" stroke-width="2" rx="4"/>
+  <text x="485" y="314" text-anchor="middle" font-family="Nunito,Arial" font-size="14" font-weight="800" fill="white">4m</text>
+  <line x1="538" y1="309" x2="590" y2="309" stroke="#C62828" stroke-width="3"/>
+  <polygon points="590,309 582,305 582,314" fill="#C62828"/>
+  <text x="563" y="301" text-anchor="middle" font-family="Nunito,Arial" font-size="11" fill="#C62828">F=20 N</text>
+  <line x1="600" y1="309" x2="630" y2="309" stroke="#2E7D32" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <polygon points="630,309 622,305 622,313" fill="#2E7D32"/>
+  <text x="615" y="301" text-anchor="middle" font-family="Nunito,Arial" font-size="11" fill="#2E7D32">a=2,5</text>
+  <text x="580" y="350" text-anchor="middle" font-family="Nunito,Arial" font-size="11" fill="#555">4× większa masa (8 kg) → 4× mniejsze a</text>
+
+  <line x1="300" y1="355" x2="430" y2="355" stroke="#0277BD" stroke-width="2" stroke-dasharray="3,3"/>
+  <text x="365" y="375" text-anchor="middle" font-family="Nunito,Arial" font-size="12" font-weight="700" fill="#0277BD">masa ×4</text>
+
+  <!-- sigła F = ma -->
+  <text x="380" y="412" text-anchor="middle" font-family="Nunito,Arial" font-size="18" font-weight="800" fill="#C2185B">F = m · a  ⇒  a = F/m</text>
+</svg>
+</div>
+
+<div class="karta przyklad">
+  <h4>🛒 Przykład: wózek w sklepie</h4>
+  <p>Pusty wózek ważący 15 kg rozpędzasz z siłą 30 N — łatwo, bo $a = \dfrac{30}{15} = 2\,\mathrm{m/s^2}$. Po napełnieniu zakupami wózek waży 60 kg. Ta sama siła 30 N daje już tylko $a = \dfrac{30}{60} = 0{,}5\,\mathrm{m/s^2}$ — cztery razy mniej. Dokładnie to opisuje II zasada dynamiki.</p>
+</div>
+
+<div class="tip">💡 <strong>Definicja niutona:</strong> 1 N to taka siła, która ciału o masie 1 kg nadaje przyspieszenie 1 m/s². Czyli $\;1\,\mathrm{N} = 1\,\mathrm{kg} \cdot \mathrm{m/s^2}$.</div>
+
+<h3>⚖️ Ciężar ciała (siła ciężkości)</h3>
+<div class="karta info">
+  <p>Ziemia przyciąga każde ciało siłą, którą nazywamy <strong>ciężarem</strong> lub <strong>siłą ciężkości</strong>:</p>
+  <p style="text-align:center;font-size:1.25em">$$F_g = m \cdot g \quad\text{gdzie}\quad g \approx 10\,\mathrm{m/s^2}$$</p>
+  <p><strong>Uwaga:</strong> masa (w kg) to ilość materii — ta sama na Ziemi i na Księżycu. Ciężar (w N) to siła — na Księżycu byłby około 6 razy mniejszy!</p>
+</div>
+
+<!-- ================== III ZASADA ================== -->
+<h2 id="iii-zasada">III zasada dynamiki — akcja i reakcja</h2>
+
+<div class="karta wzor">
+  <p style="font-size:1.1em"><strong>Jeżeli ciało A działa na ciało B pewną siłą, to ciało B działa na ciało A siłą o takiej samej wartości i kierunku, ale o przeciwnym zwrocie.</strong></p>
+  <p style="font-size:1.2em">$$\vec{F}_{A\to B} = -\vec{F}_{B\to A}$$</p>
+  <p>Siły akcji i reakcji <strong>zawsze działają na dwa różne ciała</strong> — dlatego się nie znoszą!</p>
+</div>
+
+<div class="rysunek">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" role="img" aria-label="Akcja i reakcja - łyżwiarze odpychający się od siebie">
+  <rect width="760" height="420" fill="#FAFAFA" rx="14"/>
+  <text x="380" y="30" text-anchor="middle" font-family="Nunito,Arial" font-size="20" font-weight="800" fill="#1565C0">III zasada — akcja i reakcja</text>
+
+  <!-- Scena 1: Dwoje łyżwiarzy odpycha się -->
+  <rect x="20" y="50" width="720" height="160" fill="#E3F2FD" rx="10" stroke="#42A5F5" stroke-width="2"/>
+  <text x="380" y="74" text-anchor="middle" font-family="Nunito,Arial" font-size="14" font-weight="700" fill="#0D47A1">Przykład: dwoje łyżwiarzy odpycha się od siebie</text>
+  <!-- lód -->
+  <line x1="60" y1="170" x2="700" y2="170" stroke="#90CAF9" stroke-width="3"/>
+  <!-- lewy łyżwiarz -->
+  <circle cx="240" cy="110" r="12" fill="#FFCC80" stroke="#E65100" stroke-width="2"/>
+  <line x1="240" y1="122" x2="240" y2="155" stroke="#333" stroke-width="3"/>
+  <line x1="240" y1="130" x2="265" y2="135" stroke="#333" stroke-width="2.5"/>
+  <line x1="240" y1="155" x2="230" y2="168" stroke="#333" stroke-width="2.5"/>
+  <line x1="240" y1="155" x2="250" y2="168" stroke="#333" stroke-width="2.5"/>
+  <text x="240" y="94" text-anchor="middle" font-family="Nunito,Arial" font-size="11" font-weight="700" fill="#0D47A1">Ania</text>
+  <!-- prawy łyżwiarz -->
+  <circle cx="520" cy="110" r="12" fill="#FFCC80" stroke="#E65100" stroke-width="2"/>
+  <line x1="520" y1="122" x2="520" y2="155" stroke="#333" stroke-width="3"/>
+  <line x1="520" y1="130" x2="495" y2="135" stroke="#333" stroke-width="2.5"/>
+  <line x1="520" y1="155" x2="510" y2="168" stroke="#333" stroke-width="2.5"/>
+  <line x1="520" y1="155" x2="530" y2="168" stroke="#333" stroke-width="2.5"/>
+  <text x="520" y="94" text-anchor="middle" font-family="Nunito,Arial" font-size="11" font-weight="700" fill="#0D47A1">Bartek</text>
+  <!-- ręce złączone -->
+  <line x1="265" y1="135" x2="495" y2="135" stroke="#90A4AE" stroke-width="1" stroke-dasharray="3,3"/>
+  <!-- strzałka Ania→Bartek (w prawo) -->
+  <line x1="295" y1="130" x2="380" y2="130" stroke="#C62828" stroke-width="3"/>
+  <polygon points="380,130 372,126 372,134" fill="#C62828"/>
+  <text x="338" y="122" text-anchor="middle" font-family="Nunito,Arial" font-size="11" font-weight="700" fill="#C62828">akcja: Ania→Bartek</text>
+  <!-- strzałka Bartek→Ania (w lewo) -->
+  <line x1="465" y1="145" x2="385" y2="145" stroke="#2E7D32" stroke-width="3"/>
+  <polygon points="385,145 393,141 393,149" fill="#2E7D32"/>
+  <text x="425" y="160" text-anchor="middle" font-family="Nunito,Arial" font-size="11" font-weight="700" fill="#2E7D32">reakcja: Bartek→Ania</text>
+  <!-- podpis -->
+  <text x="380" y="195" text-anchor="middle" font-family="Nunito,Arial" font-size="12" fill="#0D47A1">Siły są równe, przeciwnie zwrócone — Ania i Bartek odjeżdżają od siebie.</text>
+
+  <!-- Scena 2: stół i książka -->
+  <rect x="20" y="225" width="720" height="175" fill="#E8F5E9" rx="10" stroke="#66BB6A" stroke-width="2"/>
+  <text x="380" y="250" text-anchor="middle" font-family="Nunito,Arial" font-size="14" font-weight="700" fill="#2E7D32">Przykład: książka leży na stole</text>
+
+  <!-- stół -->
+  <rect x="220" y="340" width="320" height="16" fill="#8D6E63" stroke="#5D4037" stroke-width="2"/>
+  <rect x="240" y="356" width="12" height="34" fill="#8D6E63" stroke="#5D4037" stroke-width="2"/>
+  <rect x="508" y="356" width="12" height="34" fill="#8D6E63" stroke="#5D4037" stroke-width="2"/>
+  <!-- książka -->
+  <rect x="330" y="300" width="100" height="40" fill="#FFB74D" stroke="#E65100" stroke-width="2" rx="2"/>
+  <text x="380" y="325" text-anchor="middle" font-family="Nunito,Arial" font-size="13" font-weight="800" fill="white">książka</text>
+
+  <!-- siła nacisku (akcja - książka na stół, w dół) -->
+  <line x1="360" y1="345" x2="360" y2="380" stroke="#C62828" stroke-width="3"/>
+  <polygon points="360,380 355,372 365,372" fill="#C62828"/>
+  <text x="260" y="375" font-family="Nunito,Arial" font-size="12" font-weight="700" fill="#C62828">akcja ↓</text>
+  <text x="210" y="390" font-family="Nunito,Arial" font-size="10" fill="#C62828">(książka naciska stół)</text>
+
+  <!-- siła reakcji (stół podpiera książkę, w górę) -->
+  <line x1="400" y1="345" x2="400" y2="310" stroke="#2E7D32" stroke-width="3"/>
+  <polygon points="400,310 395,318 405,318" fill="#2E7D32"/>
+  <text x="488" y="315" font-family="Nunito,Arial" font-size="12" font-weight="700" fill="#2E7D32">↑ reakcja</text>
+  <text x="468" y="330" font-family="Nunito,Arial" font-size="10" fill="#2E7D32">(stół podpiera książkę)</text>
+
+  <text x="380" y="385" text-anchor="middle" font-family="Nunito,Arial" font-size="12" fill="#1B5E20">Siły są równe — dlatego książka nie zapada się w stół ani nie unosi się w powietrze.</text>
+</svg>
+</div>
+
+<div class="karta przyklad">
+  <h4>🚶 Jak chodzimy?</h4>
+  <p>Kiedy idziesz, <strong>odpychasz stopą podłogę do tyłu</strong> (akcja). Podłoga w odpowiedzi <strong>popycha cię do przodu</strong> (reakcja). Bez tej reakcji nie moglibyśmy iść — dlatego na lodzie, gdzie tarcie jest małe, trudno się poruszać.</p>
+</div>
+
+<h3>⚠️ Częsty błąd</h3>
+<div class="karta uwaga">
+  <p>Siły akcji i reakcji <strong>NIE ZNOSZĄ SIĘ</strong>, mimo że są równe i przeciwne — bo działają na <em>różne ciała</em>. Żeby powiedzieć, że siły się równoważą, muszą działać na <em>to samo ciało</em>.</p>
+  <p>Przykład: książka leży na stole. Siła ciężkości książki (Ziemia↔książka) i siła podpory stołu (stół↔książka) <em>obie działają na książkę</em> — i dopiero one się równoważą. Akcja i reakcja to <strong>inna</strong> para sił!</p>
+</div>
+
+<!-- ================== SIŁA WYPADKOWA ================== -->
+<h2 id="wypadkowa">Siła wypadkowa</h2>
+
+<div class="karta info">
+  <p>Gdy na ciało działa kilka sił jednocześnie, ich wspólny skutek opisuje jedna <strong>siła wypadkowa</strong> $F_{wyp}$. To jedna „siła zastępcza" dająca taki sam efekt, jak wszystkie siły razem.</p>
+</div>
+
+<div class="rysunek">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 330" width="760" height="330" role="img" aria-label="Obliczanie siły wypadkowej dla trzech przypadków">
+  <rect width="760" height="330" fill="#FAFAFA" rx="14"/>
+  <text x="380" y="30" text-anchor="middle" font-family="Nunito,Arial" font-size="19" font-weight="800" fill="#00695C">Siła wypadkowa — trzy przypadki</text>
+
+  <!-- Panel A: siły zgodne -->
+  <rect x="20" y="50" width="230" height="160" fill="#E8F5E9" rx="10" stroke="#66BB6A" stroke-width="2"/>
+  <text x="135" y="72" text-anchor="middle" font-family="Nunito,Arial" font-size="13" font-weight="700" fill="#2E7D32">A. Siły zgodne — dodajemy</text>
+  <rect x="85" y="100" width="44" height="32" fill="#FFB74D" stroke="#E65100" stroke-width="2" rx="4"/>
+  <line x1="135" y1="116" x2="175" y2="116" stroke="#1565C0" stroke-width="3"/>
+  <polygon points="175,116 167,112 167,120" fill="#1565C0"/>
+  <text x="155" y="108" text-anchor="middle" font-family="Nunito,Arial" font-size="10" fill="#1565C0">30 N</text>
+  <line x1="185" y1="116" x2="215" y2="116" stroke="#1565C0" stroke-width="3"/>
+  <polygon points="215,116 207,112 207,120" fill="#1565C0"/>
+  <text x="200" y="108" text-anchor="middle" font-family="Nunito,Arial" font-size="10" fill="#1565C0">20 N</text>
+  <text x="135" y="155" text-anchor="middle" font-family="Nunito,Arial" font-size="14" font-weight="800" fill="#00695C">F_wyp = 50 N →</text>
+  <text x="135" y="180" text-anchor="middle" font-family="Nunito,Arial" font-size="11" fill="#555">30 + 20 = 50</text>
+
+  <!-- Panel B: siły przeciwne -->
+  <rect x="265" y="50" width="230" height="160" fill="#FFF3E0" rx="10" stroke="#FFA726" stroke-width="2"/>
+  <text x="380" y="72" text-anchor="middle" font-family="Nunito,Arial" font-size="13" font-weight="700" fill="#E65100">B. Siły przeciwne — odejmujemy</text>
+  <rect x="355" y="100" width="44" height="32" fill="#FFB74D" stroke="#E65100" stroke-width="2" rx="4"/>
+  <line x1="350" y1="116" x2="300" y2="116" stroke="#1565C0" stroke-width="3"/>
+  <polygon points="300,116 308,112 308,120" fill="#1565C0"/>
+  <text x="322" y="108" text-anchor="middle" font-family="Nunito,Arial" font-size="10" fill="#1565C0">15 N</text>
+  <line x1="405" y1="116" x2="460" y2="116" stroke="#C62828" stroke-width="3.5"/>
+  <polygon points="460,116 452,112 452,120" fill="#C62828"/>
+  <text x="430" y="108" text-anchor="middle" font-family="Nunito,Arial" font-size="10" font-weight="700" fill="#C62828">40 N</text>
+  <text x="380" y="155" text-anchor="middle" font-family="Nunito,Arial" font-size="14" font-weight="800" fill="#00695C">F_wyp = 25 N →</text>
+  <text x="380" y="180" text-anchor="middle" font-family="Nunito,Arial" font-size="11" fill="#555">40 − 15 = 25 (zwrot większej)</text>
+
+  <!-- Panel C: siły równoważą -->
+  <rect x="510" y="50" width="230" height="160" fill="#FFEBEE" rx="10" stroke="#EF5350" stroke-width="2"/>
+  <text x="625" y="72" text-anchor="middle" font-family="Nunito,Arial" font-size="13" font-weight="700" fill="#C62828">C. Siły się równoważą</text>
+  <rect x="600" y="100" width="44" height="32" fill="#FFB74D" stroke="#E65100" stroke-width="2" rx="4"/>
+  <line x1="595" y1="116" x2="545" y2="116" stroke="#1565C0" stroke-width="3"/>
+  <polygon points="545,116 553,112 553,120" fill="#1565C0"/>
+  <text x="570" y="108" text-anchor="middle" font-family="Nunito,Arial" font-size="10" fill="#1565C0">25 N</text>
+  <line x1="650" y1="116" x2="700" y2="116" stroke="#C62828" stroke-width="3"/>
+  <polygon points="700,116 692,112 692,120" fill="#C62828"/>
+  <text x="672" y="108" text-anchor="middle" font-family="Nunito,Arial" font-size="10" fill="#C62828">25 N</text>
+  <text x="625" y="155" text-anchor="middle" font-family="Nunito,Arial" font-size="14" font-weight="800" fill="#00695C">F_wyp = 0 N</text>
+  <text x="625" y="180" text-anchor="middle" font-family="Nunito,Arial" font-size="11" fill="#555">25 − 25 = 0 → I zasada</text>
+
+  <!-- Zasada ogólna -->
+  <rect x="20" y="230" width="720" height="85" fill="#E0F2F1" rx="10" stroke="#26A69A" stroke-width="2"/>
+  <text x="380" y="254" text-anchor="middle" font-family="Nunito,Arial" font-size="14" font-weight="800" fill="#00695C">Zasady:</text>
+  <text x="380" y="275" text-anchor="middle" font-family="Nunito,Arial" font-size="12" fill="#004D40">• Siły zgodne (ten sam kierunek i zwrot) → DODAJEMY</text>
+  <text x="380" y="294" text-anchor="middle" font-family="Nunito,Arial" font-size="12" fill="#004D40">• Siły przeciwne (ten sam kierunek, przeciwne zwroty) → ODEJMUJEMY; zwrot F_wyp = zwrot większej siły</text>
+</svg>
+</div>
+
+<!-- ================== SPADEK SWOBODNY ================== -->
+<h2 id="spadek">Swobodne spadanie ciał</h2>
+
+<div class="karta info">
+  <p><strong>Spadek swobodny</strong> to ruch ciała spadającego wyłącznie pod wpływem siły ciężkości, bez oporów powietrza. To ruch <em>jednostajnie przyspieszony</em> z przyspieszeniem $g \approx 10\,\mathrm{m/s^2}$.</p>
+  <p>W spadku swobodnym:</p>
+  <ul>
+    <li>prędkość rośnie liniowo: $\;v = g \cdot t$</li>
+    <li>przebyta wysokość: $\;h = \dfrac{g \cdot t^2}{2}$</li>
+  </ul>
+</div>
+
+<div class="rysunek">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img" aria-label="Spadek swobodny kuli - prędkości i wysokości w kolejnych sekundach">
+  <rect width="720" height="360" fill="#FAFAFA" rx="14"/>
+  <text x="360" y="30" text-anchor="middle" font-family="Nunito,Arial" font-size="19" font-weight="800" fill="#00695C">Swobodne spadanie (g = 10 m/s²)</text>
+
+  <!-- tło - niebo -->
+  <rect x="30" y="55" width="440" height="270" fill="#E3F2FD" rx="8"/>
+  <!-- ziemia -->
+  <rect x="30" y="325" width="440" height="20" fill="#8D6E63"/>
+  <line x1="30" y1="325" x2="470" y2="325" stroke="#5D4037" stroke-width="2"/>
+
+  <!-- kulki w kolejnych chwilach (t=0, 1, 2, 3 s) -->
+  <!-- t=0 -->
+  <circle cx="90" cy="80" r="11" fill="#EF5350" stroke="#B71C1C" stroke-width="2"/>
+  <text x="90" y="65" text-anchor="middle" font-family="Nunito,Arial" font-size="11" font-weight="700" fill="#263238">t = 0 s</text>
+  <text x="140" y="84" font-family="Nunito,Arial" font-size="11" fill="#C62828">v = 0</text>
+
+  <!-- t=1 -->
+  <circle cx="90" cy="130" r="11" fill="#EF5350" stroke="#B71C1C" stroke-width="2"/>
+  <text x="140" y="128" font-family="Nunito,Arial" font-size="11" fill="#C62828">v = 10 m/s</text>
+  <text x="140" y="143" font-family="Nunito,Arial" font-size="10" fill="#555">h = 5 m</text>
+  <line x1="90" y1="142" x2="90" y2="175" stroke="#C62828" stroke-width="2"/>
+  <polygon points="90,175 86,167 94,167" fill="#C62828"/>
+
+  <!-- t=2 -->
+  <circle cx="90" cy="200" r="11" fill="#EF5350" stroke="#B71C1C" stroke-width="2"/>
+  <text x="140" y="198" font-family="Nunito,Arial" font-size="11" fill="#C62828">v = 20 m/s</text>
+  <text x="140" y="213" font-family="Nunito,Arial" font-size="10" fill="#555">h = 20 m</text>
+  <line x1="90" y1="212" x2="90" y2="255" stroke="#C62828" stroke-width="2"/>
+  <polygon points="90,255 86,247 94,247" fill="#C62828"/>
+
+  <!-- t=3 -->
+  <circle cx="90" cy="285" r="11" fill="#EF5350" stroke="#B71C1C" stroke-width="2"/>
+  <text x="140" y="283" font-family="Nunito,Arial" font-size="11" fill="#C62828">v = 30 m/s</text>
+  <text x="140" y="298" font-family="Nunito,Arial" font-size="10" fill="#555">h = 45 m</text>
+
+  <!-- etykieta czasu pod każdą kulą -->
+  <text x="90" y="110" text-anchor="middle" font-family="Nunito,Arial" font-size="10" fill="#555">1 s</text>
+  <text x="90" y="180" text-anchor="middle" font-family="Nunito,Arial" font-size="10" fill="#555">2 s</text>
+  <text x="90" y="255" text-anchor="middle" font-family="Nunito,Arial" font-size="10" fill="#555">3 s</text>
+  <text x="90" y="330" text-anchor="middle" font-family="Nunito,Arial" font-size="10" fill="#555"> </text>
+
+  <!-- Panel wzorów po prawej -->
+  <rect x="495" y="55" width="200" height="270" fill="#E0F2F1" rx="10" stroke="#26A69A" stroke-width="2"/>
+  <text x="595" y="80" text-anchor="middle" font-family="Nunito,Arial" font-size="14" font-weight="800" fill="#00695C">Wzory spadku swobodnego</text>
+  <text x="595" y="115" text-anchor="middle" font-family="Nunito,Arial" font-size="16" font-weight="700" fill="#004D40">v = g · t</text>
+  <text x="595" y="150" text-anchor="middle" font-family="Nunito,Arial" font-size="16" font-weight="700" fill="#004D40">h = g · t² / 2</text>
+  <line x1="515" y1="170" x2="675" y2="170" stroke="#26A69A" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="595" y="195" text-anchor="middle" font-family="Nunito,Arial" font-size="12" fill="#004D40">Po 1 s: 5 m, 10 m/s</text>
+  <text x="595" y="213" text-anchor="middle" font-family="Nunito,Arial" font-size="12" fill="#004D40">Po 2 s: 20 m, 20 m/s</text>
+  <text x="595" y="231" text-anchor="middle" font-family="Nunito,Arial" font-size="12" fill="#004D40">Po 3 s: 45 m, 30 m/s</text>
+  <text x="595" y="249" text-anchor="middle" font-family="Nunito,Arial" font-size="12" fill="#004D40">Po 4 s: 80 m, 40 m/s</text>
+  <text x="595" y="290" text-anchor="middle" font-family="Nunito,Arial" font-size="10" fill="#666">Prędkość rośnie</text>
+  <text x="595" y="305" text-anchor="middle" font-family="Nunito,Arial" font-size="10" fill="#666">liniowo — co sekundę</text>
+  <text x="595" y="320" text-anchor="middle" font-family="Nunito,Arial" font-size="10" fill="#666">o 10 m/s.</text>
+</svg>
+</div>
+
+<div class="karta uwaga">
+  <h4>🪶 Eksperyment Galileusza</h4>
+  <p>W <strong>próżni</strong> (bez powietrza) wszystkie ciała spadają jednakowo szybko — piórko i kamień uderzą o ziemię w tej samej chwili! Różnica, którą zwykle widzimy, bierze się z <strong>oporu powietrza</strong>, który silniej hamuje lekkie ciała.</p>
+  <p>Astronauta David Scott na Księżycu (1971) upuścił jednocześnie młotek i piórko — oba spadły razem, bo na Księżycu nie ma atmosfery.</p>
+</div>
+
+<!-- ================== OPORY RUCHU ================== -->
+<h2 id="opory">Opory ruchu i tarcie</h2>
+
+<div class="karta info">
+  <p><strong>Opory ruchu</strong> to siły, które przeszkadzają ciału w ruchu — działają zawsze <em>przeciwnie</em> do zwrotu prędkości. Najważniejsze rodzaje:</p>
+  <ul>
+    <li><strong>Tarcie</strong> — między stykającymi się powierzchniami ciał stałych (tarcie posuwiste, toczne, statyczne).</li>
+    <li><strong>Opór powietrza</strong> — działa na ciała poruszające się w powietrzu.</li>
+    <li><strong>Opór ośrodka ciekłego</strong> — np. woda hamująca pływaka.</li>
+  </ul>
+</div>
+
+<h3>🪨 Od czego zależy tarcie?</h3>
+<div class="karta">
+  <ul>
+    <li><strong>Rodzaj stykających się powierzchni</strong> — chropowate trą silniej niż gładkie (asfalt vs lód).</li>
+    <li><strong>Siła docisku</strong> — im mocniej ciało naciska na podłoże, tym większe tarcie (cięższe pudło trudniej pchać).</li>
+  </ul>
+  <p><em>Tarcie (posuwiste) praktycznie nie zależy od pola powierzchni styku ani od prędkości.</em></p>
+</div>
+
+<div class="rysunek">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 260" width="720" height="260" role="img" aria-label="Siła tarcia działa przeciwnie do ruchu">
+  <rect width="720" height="260" fill="#FAFAFA" rx="14"/>
+  <text x="360" y="30" text-anchor="middle" font-family="Nunito,Arial" font-size="18" font-weight="800" fill="#5D4037">Siła tarcia działa zawsze przeciwnie do ruchu</text>
+  <!-- chropowata podłoga -->
+  <line x1="80" y1="170" x2="640" y2="170" stroke="#5D4037" stroke-width="3"/>
+  <g stroke="#8D6E63" stroke-width="1.5">
+    <line x1="90" y1="170" x2="94" y2="176"/>
+    <line x1="110" y1="170" x2="114" y2="176"/>
+    <line x1="130" y1="170" x2="134" y2="176"/>
+    <line x1="150" y1="170" x2="154" y2="176"/>
+    <line x1="170" y1="170" x2="174" y2="176"/>
+    <line x1="190" y1="170" x2="194" y2="176"/>
+    <line x1="210" y1="170" x2="214" y2="176"/>
+    <line x1="230" y1="170" x2="234" y2="176"/>
+    <line x1="250" y1="170" x2="254" y2="176"/>
+    <line x1="270" y1="170" x2="274" y2="176"/>
+    <line x1="290" y1="170" x2="294" y2="176"/>
+    <line x1="310" y1="170" x2="314" y2="176"/>
+    <line x1="330" y1="170" x2="334" y2="176"/>
+    <line x1="350" y1="170" x2="354" y2="176"/>
+    <line x1="370" y1="170" x2="374" y2="176"/>
+    <line x1="390" y1="170" x2="394" y2="176"/>
+    <line x1="410" y1="170" x2="414" y2="176"/>
+    <line x1="430" y1="170" x2="434" y2="176"/>
+    <line x1="450" y1="170" x2="454" y2="176"/>
+    <line x1="470" y1="170" x2="474" y2="176"/>
+    <line x1="490" y1="170" x2="494" y2="176"/>
+    <line x1="510" y1="170" x2="514" y2="176"/>
+    <line x1="530" y1="170" x2="534" y2="176"/>
+    <line x1="550" y1="170" x2="554" y2="176"/>
+    <line x1="570" y1="170" x2="574" y2="176"/>
+    <line x1="590" y1="170" x2="594" y2="176"/>
+    <line x1="610" y1="170" x2="614" y2="176"/>
+    <line x1="630" y1="170" x2="634" y2="176"/>
+  </g>
+  <!-- pudło -->
+  <rect x="280" y="110" width="120" height="60" fill="#FFA726" stroke="#E65100" stroke-width="2" rx="3"/>
+  <text x="340" y="146" text-anchor="middle" font-family="Nunito,Arial" font-size="14" font-weight="800" fill="white">pudło</text>
+  <!-- strzałka ciągnięcia F (w prawo) -->
+  <line x1="405" y1="140" x2="510" y2="140" stroke="#1565C0" stroke-width="3.5"/>
+  <polygon points="510,140 500,134 500,146" fill="#1565C0"/>
+  <text x="460" y="130" text-anchor="middle" font-family="Nunito,Arial" font-size="13" font-weight="700" fill="#1565C0">F — siła ciągnąca</text>
+  <!-- strzałka tarcia (w lewo) -->
+  <line x1="275" y1="140" x2="195" y2="140" stroke="#C62828" stroke-width="3.5"/>
+  <polygon points="195,140 205,134 205,146" fill="#C62828"/>
+  <text x="235" y="130" text-anchor="middle" font-family="Nunito,Arial" font-size="13" font-weight="700" fill="#C62828">F_t — tarcie</text>
+  <!-- strzałka prędkości (nad pudłem) -->
+  <line x1="345" y1="95" x2="420" y2="95" stroke="#2E7D32" stroke-width="2.5" stroke-dasharray="4,3"/>
+  <polygon points="420,95 412,91 412,99" fill="#2E7D32"/>
+  <text x="380" y="87" text-anchor="middle" font-family="Nunito,Arial" font-size="11" font-weight="700" fill="#2E7D32">v — prędkość</text>
+
+  <!-- opis pod rysunkiem -->
+  <text x="360" y="210" text-anchor="middle" font-family="Nunito,Arial" font-size="12" fill="#333">Siła tarcia ma zawsze zwrot przeciwny do prędkości — dlatego spowalnia ruch.</text>
+  <text x="360" y="232" text-anchor="middle" font-family="Nunito,Arial" font-size="12" fill="#333">Siła wypadkowa: F_wyp = F − F_t   →   a = F_wyp / m</text>
+</svg>
+</div>
+
+<div class="karta przyklad">
+  <h4>🤝 Tarcie — pożyteczne czy szkodliwe?</h4>
+  <p><strong>Pożyteczne ✅</strong></p>
+  <ul>
+    <li>Chodzenie — gdyby nie tarcie, stopy ślizgałyby się po podłożu.</li>
+    <li>Hamowanie samochodu — klocki hamulcowe działają dzięki tarciu.</li>
+    <li>Pisanie — ołówek zostawia ślad na papierze, bo grafit się o niego ściera.</li>
+    <li>Chwyt ręki — utrzymujesz szklankę, bo palce tarciem dociskają jej boki.</li>
+  </ul>
+  <p><strong>Szkodliwe ❌</strong></p>
+  <ul>
+    <li>Zużywanie opon, butów, elementów silnika.</li>
+    <li>Nagrzewanie się części maszyn — dlatego używamy smaru i oleju.</li>
+    <li>Straty energii — opór powietrza zwiększa zużycie paliwa w samochodzie.</li>
+  </ul>
+</div>
+
+<!-- ================== ODRZUT ================== -->
+<h2 id="odrzut">Zjawisko odrzutu</h2>
+
+<div class="karta info">
+  <p><strong>Odrzut</strong> to skutek III zasady dynamiki. Gdy ciało gwałtownie wyrzuca z siebie jakąś masę w jedną stronę, <em>samo</em> zostaje popchnięte w stronę przeciwną.</p>
+</div>
+
+<div class="rysunek">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 260" width="720" height="260" role="img" aria-label="Odrzut balonu z uchodzącym powietrzem">
+  <rect width="720" height="260" fill="#FAFAFA" rx="14"/>
+  <text x="360" y="30" text-anchor="middle" font-family="Nunito,Arial" font-size="18" font-weight="800" fill="#E65100">Odrzut — balonik z uchodzącym powietrzem</text>
+
+  <!-- balonik -->
+  <ellipse cx="440" cy="135" rx="80" ry="52" fill="#E91E63" stroke="#AD1457" stroke-width="2"/>
+  <polygon points="360,135 330,125 330,145" fill="#E91E63" stroke="#AD1457" stroke-width="2"/>
+  <text x="440" y="140" text-anchor="middle" font-family="Nunito,Arial" font-size="14" font-weight="800" fill="white">balon</text>
+
+  <!-- strumień powietrza - małe strzałki w lewo -->
+  <g stroke="#29B6F6" stroke-width="2">
+    <line x1="325" y1="125" x2="280" y2="120"/>
+    <line x1="325" y1="135" x2="265" y2="135"/>
+    <line x1="325" y1="145" x2="280" y2="150"/>
+    <line x1="280" y1="120" x2="288" y2="116"/>
+    <line x1="280" y1="120" x2="288" y2="124"/>
+    <line x1="265" y1="135" x2="273" y2="131"/>
+    <line x1="265" y1="135" x2="273" y2="139"/>
+    <line x1="280" y1="150" x2="288" y2="146"/>
+    <line x1="280" y1="150" x2="288" y2="154"/>
+  </g>
+  <text x="230" y="110" text-anchor="middle" font-family="Nunito,Arial" font-size="12" font-weight="700" fill="#0277BD">powietrze ←</text>
+  <text x="230" y="126" text-anchor="middle" font-family="Nunito,Arial" font-size="11" fill="#0277BD">(akcja)</text>
+
+  <!-- strzałka odrzutu balonu (w prawo) -->
+  <line x1="530" y1="135" x2="620" y2="135" stroke="#2E7D32" stroke-width="4"/>
+  <polygon points="620,135 610,129 610,141" fill="#2E7D32"/>
+  <text x="620" y="125" text-anchor="end" font-family="Nunito,Arial" font-size="13" font-weight="700" fill="#2E7D32">balon → (reakcja)</text>
+
+  <!-- wyjaśnienie -->
+  <rect x="20" y="205" width="680" height="40" fill="#FFF3E0" rx="8" stroke="#FFA726" stroke-width="1.5"/>
+  <text x="360" y="230" text-anchor="middle" font-family="Nunito,Arial" font-size="13" fill="#E65100">Balon wypycha powietrze w lewo — powietrze wypycha balon w prawo. Masa × prędkość po obu stronach są równe.</text>
+</svg>
+</div>
+
+<div class="karta przyklad">
+  <h4>🌊 Gdzie jeszcze widać odrzut?</h4>
+  <ul>
+    <li><strong>Rakieta kosmiczna</strong> — wyrzuca gazy w dół, sama leci w górę.</li>
+    <li><strong>Samolot odrzutowy</strong> — silniki wyrzucają spaliny do tyłu.</li>
+    <li><strong>Wystrzał z broni</strong> — karabin „kopie" w ramię strzelca.</li>
+    <li><strong>Wąż strażacki</strong> — woda wypływa do przodu, końcówkę odrzuca do tyłu.</li>
+    <li><strong>Kałamarnica / ośmiornica</strong> — napędza się, wyrzucając wodę w przeciwnym kierunku.</li>
+  </ul>
+</div>
+
+<div class="karta wazne">
+  <h4>📐 Ilościowo (zasada zachowania pędu)</h4>
+  <p>Jeśli z ciała o masie $M$ zostaje wyrzucona masa $m$ z prędkością $v$, to ciało odskakuje z prędkością $V$ tak, że:</p>
+  <p style="text-align:center;font-size:1.15em">$$M \cdot V = m \cdot v$$</p>
+  <p>Im większa masa ciała ($M$), tym mniejsza jego prędkość odrzutu ($V$).</p>
+</div>
+
+<!-- ================== WYKRESY ================== -->
+<h2 id="wykresy">Odczytywanie danych z wykresów</h2>
+
+<div class="karta">
+  <p>W dynamice najczęściej analizujemy wykres <strong>prędkości w funkcji czasu</strong> — $v(t)$. Pozwala on odczytać, czy ciało przyspiesza, hamuje, czy jedzie ruchem jednostajnym.</p>
+</div>
+
+<div class="rysunek">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" width="720" height="380" role="img" aria-label="Wykres prędkości od czasu - trzy fazy ruchu">
+  <rect width="720" height="380" fill="#FAFAFA" rx="14"/>
+  <text x="360" y="30" text-anchor="middle" font-family="Nunito,Arial" font-size="18" font-weight="800" fill="#00695C">Wykres v(t) — trzy fazy ruchu</text>
+
+  <!-- osie -->
+  <line x1="80" y1="320" x2="670" y2="320" stroke="#263238" stroke-width="2"/>
+  <line x1="80" y1="320" x2="80" y2="70" stroke="#263238" stroke-width="2"/>
+  <polygon points="670,320 658,315 658,325" fill="#263238"/>
+  <polygon points="80,70 75,82 85,82" fill="#263238"/>
+  <text x="685" y="325" font-family="Nunito,Arial" font-size="13" font-weight="700" fill="#263238">t [s]</text>
+  <text x="70" y="65" text-anchor="end" font-family="Nunito,Arial" font-size="13" font-weight="700" fill="#263238">v [m/s]</text>
+
+  <!-- siatka pozioma -->
+  <line x1="80" y1="260" x2="670" y2="260" stroke="#CFD8DC" stroke-dasharray="3,3"/>
+  <line x1="80" y1="200" x2="670" y2="200" stroke="#CFD8DC" stroke-dasharray="3,3"/>
+  <line x1="80" y1="140" x2="670" y2="140" stroke="#CFD8DC" stroke-dasharray="3,3"/>
+  <line x1="80" y1="80" x2="670" y2="80" stroke="#CFD8DC" stroke-dasharray="3,3"/>
+  <text x="73" y="265" text-anchor="end" font-family="Nunito,Arial" font-size="11" fill="#555">5</text>
+  <text x="73" y="205" text-anchor="end" font-family="Nunito,Arial" font-size="11" fill="#555">10</text>
+  <text x="73" y="145" text-anchor="end" font-family="Nunito,Arial" font-size="11" fill="#555">15</text>
+  <text x="73" y="85" text-anchor="end" font-family="Nunito,Arial" font-size="11" fill="#555">20</text>
+  <text x="73" y="325" text-anchor="end" font-family="Nunito,Arial" font-size="11" fill="#555">0</text>
+
+  <!-- siatka pionowa -->
+  <line x1="160" y1="320" x2="160" y2="70" stroke="#CFD8DC" stroke-dasharray="3,3"/>
+  <line x1="240" y1="320" x2="240" y2="70" stroke="#CFD8DC" stroke-dasharray="3,3"/>
+  <line x1="320" y1="320" x2="320" y2="70" stroke="#CFD8DC" stroke-dasharray="3,3"/>
+  <line x1="400" y1="320" x2="400" y2="70" stroke="#CFD8DC" stroke-dasharray="3,3"/>
+  <line x1="480" y1="320" x2="480" y2="70" stroke="#CFD8DC" stroke-dasharray="3,3"/>
+  <line x1="560" y1="320" x2="560" y2="70" stroke="#CFD8DC" stroke-dasharray="3,3"/>
+  <text x="160" y="338" text-anchor="middle" font-family="Nunito,Arial" font-size="11" fill="#555">2</text>
+  <text x="240" y="338" text-anchor="middle" font-family="Nunito,Arial" font-size="11" fill="#555">4</text>
+  <text x="320" y="338" text-anchor="middle" font-family="Nunito,Arial" font-size="11" fill="#555">6</text>
+  <text x="400" y="338" text-anchor="middle" font-family="Nunito,Arial" font-size="11" fill="#555">8</text>
+  <text x="480" y="338" text-anchor="middle" font-family="Nunito,Arial" font-size="11" fill="#555">10</text>
+  <text x="560" y="338" text-anchor="middle" font-family="Nunito,Arial" font-size="11" fill="#555">12</text>
+
+  <!-- krzywa: 0→4s przyspiesza do 15 m/s, 4→8s stała, 8→12s hamuje do 0 -->
+  <polyline points="80,320 240,140 400,140 560,320" fill="none" stroke="#C2185B" stroke-width="3.5"/>
+
+  <!-- punkty węzłowe -->
+  <circle cx="80" cy="320" r="4" fill="#C2185B"/>
+  <circle cx="240" cy="140" r="4" fill="#C2185B"/>
+  <circle cx="400" cy="140" r="4" fill="#C2185B"/>
+  <circle cx="560" cy="320" r="4" fill="#C2185B"/>
+
+  <!-- fazy -->
+  <text x="160" y="230" text-anchor="middle" font-family="Nunito,Arial" font-size="12" font-weight="800" fill="#C62828">Faza 1</text>
+  <text x="160" y="248" text-anchor="middle" font-family="Nunito,Arial" font-size="11" fill="#C62828">przyspieszenie</text>
+  <text x="320" y="125" text-anchor="middle" font-family="Nunito,Arial" font-size="12" font-weight="800" fill="#1565C0">Faza 2: v = const</text>
+  <text x="480" y="230" text-anchor="middle" font-family="Nunito,Arial" font-size="12" font-weight="800" fill="#2E7D32">Faza 3</text>
+  <text x="480" y="248" text-anchor="middle" font-family="Nunito,Arial" font-size="11" fill="#2E7D32">hamowanie</text>
+</svg>
+</div>
+
+<div class="karta">
+  <h4>🔍 Jak czytać wykres v(t)?</h4>
+  <ul>
+    <li><strong>Linia rosnąca</strong> — ciało przyspiesza, siła wypadkowa zgodna z ruchem.</li>
+    <li><strong>Linia pozioma</strong> — ruch jednostajny, $F_{wyp} = 0$ (I zasada dynamiki).</li>
+    <li><strong>Linia malejąca</strong> — ciało hamuje, siła wypadkowa przeciwna do ruchu.</li>
+    <li><strong>Nachylenie</strong> (stromość) = przyspieszenie: $a = \dfrac{\Delta v}{\Delta t}$.</li>
+    <li><strong>Pole pod wykresem</strong> = przebyta droga.</li>
+  </ul>
+</div>
+
+<!-- ================== ZADANIA ================== -->
+<h2 id="zadania">45 zadań sprawdzających</h2>
+
+<div class="karta info">
+  <p>Poniżej 45 zadań o narastającym poziomie trudności. Każde rozwiązanie jest ukryte — <strong>rozwiązuj samodzielnie</strong>, a dopiero potem rozwiń, żeby sprawdzić krok po kroku.</p>
+  <p>W zadaniach przyjmujemy $g = 10\,\mathrm{m/s^2}$, pomijamy opór powietrza (o ile treść nie mówi inaczej).</p>
+</div>
+
+<!-- =============== POZIOM ŁATWY =============== -->
+<h3 id="latwe">Zadania 01–15 · wprowadzające</h3>
+
+<div class="zadania poziom-latwy">
+<ol class="lista-zadan">
+
+<li>
+  <p><strong>Na ciało o masie 4 kg działa siła 12 N.</strong> Oblicz przyspieszenie ciała.</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$m = 4\,\mathrm{kg}$, $F = 12\,\mathrm{N}$</p>
+      <h5>Szukane</h5>
+      <p>$a = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Z II zasady dynamiki: $F = m \cdot a$.</li>
+        <li>Wyznaczamy $a$: $a = \dfrac{F}{m}$.</li>
+        <li>Podstawiamy: $a = \dfrac{12\,\mathrm{N}}{4\,\mathrm{kg}} = 3\,\mathrm{m/s^2}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: Przyspieszenie ciała wynosi $a = 3\,\mathrm{m/s^2}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Jaka siła nada ciału o masie 8 kg przyspieszenie 2 m/s²?</strong></p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$m = 8\,\mathrm{kg}$, $a = 2\,\mathrm{m/s^2}$</p>
+      <h5>Szukane</h5>
+      <p>$F = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>II zasada: $F = m \cdot a$.</li>
+        <li>$F = 8 \cdot 2 = 16\,\mathrm{N}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: $F = 16\,\mathrm{N}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Siła 45 N nadaje ciału przyspieszenie 9 m/s².</strong> Oblicz masę ciała.</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$F = 45\,\mathrm{N}$, $a = 9\,\mathrm{m/s^2}$</p>
+      <h5>Szukane</h5>
+      <p>$m = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Z $F = m \cdot a$: $m = \dfrac{F}{a}$.</li>
+        <li>$m = \dfrac{45}{9} = 5\,\mathrm{kg}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: $m = 5\,\mathrm{kg}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Oblicz ciężar piłki o masie 0,6 kg.</strong> ($g = 10\,\mathrm{m/s^2}$)</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$m = 0{,}6\,\mathrm{kg}$, $g = 10\,\mathrm{m/s^2}$</p>
+      <h5>Szukane</h5>
+      <p>$F_g = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>$F_g = m \cdot g$.</li>
+        <li>$F_g = 0{,}6 \cdot 10 = 6\,\mathrm{N}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: Ciężar piłki to $F_g = 6\,\mathrm{N}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Podaj treść I zasady dynamiki własnymi słowami</strong> i podaj jeden przykład ze swojego życia.</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>Pytanie teoretyczne.</p>
+      <h5>Szukane</h5>
+      <p>Treść zasady + przykład.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Jeśli na ciało nie działa żadna siła albo siły się równoważą, to ciało pozostaje w spoczynku albo porusza się ruchem jednostajnym prostoliniowym.</li>
+        <li>To zasada bezwładności — ciało „nie lubi" zmieniać swojego stanu ruchu.</li>
+        <li>Przykład: w autobusie, który gwałtownie hamuje, pasażerowie lecą do przodu — chcą jechać dalej (ich ciała są bezwładne).</li>
+      </ol>
+      <div class="odpowiedz">Odp.: I zasada mówi, że przy $F_{wyp} = 0$ ciało się nie zmienia — spoczynek lub ruch jednostajny. Przykład: pasażerowie w hamującym autobusie.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Na sanki działają dwie siły zgodne:</strong> 18 N i 12 N. Oblicz siłę wypadkową.</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$F_1 = 18\,\mathrm{N}$, $F_2 = 12\,\mathrm{N}$ (ten sam zwrot).</p>
+      <h5>Szukane</h5>
+      <p>$F_{wyp} = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Siły zgodne — dodajemy.</li>
+        <li>$F_{wyp} = 18 + 12 = 30\,\mathrm{N}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: $F_{wyp} = 30\,\mathrm{N}$, zwrot jak obu sił.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Na pudełko działa w prawo siła 35 N, a w lewo 20 N.</strong> Oblicz siłę wypadkową.</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$F_1 = 35\,\mathrm{N}$ (w prawo), $F_2 = 20\,\mathrm{N}$ (w lewo).</p>
+      <h5>Szukane</h5>
+      <p>$F_{wyp} = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Siły przeciwne — odejmujemy mniejszą od większej.</li>
+        <li>$F_{wyp} = 35 - 20 = 15\,\mathrm{N}$.</li>
+        <li>Zwrot F_wyp taki jak większej siły — w prawo.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: $F_{wyp} = 15\,\mathrm{N}$ w prawo.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Kamień spada swobodnie. Oblicz jego prędkość po 4 sekundach spadku.</strong></p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$t = 4\,\mathrm{s}$, $g = 10\,\mathrm{m/s^2}$.</p>
+      <h5>Szukane</h5>
+      <p>$v = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>W spadku swobodnym: $v = g \cdot t$.</li>
+        <li>$v = 10 \cdot 4 = 40\,\mathrm{m/s}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: $v = 40\,\mathrm{m/s}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Wymień trzy sytuacje z życia, w których doświadczasz bezwładności.</strong></p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>Pytanie teoretyczne.</p>
+      <h5>Szukane</h5>
+      <p>Trzy przykłady bezwładności.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>W hamującym autobusie — pasażerowie przechylają się do przodu.</li>
+        <li>W ruszającym autobusie — pasażerowie „lecą" do tyłu.</li>
+        <li>Gdy szybko szarpniesz obrus, naczynia zostają na stole.</li>
+        <li>(Inne: pasy bezpieczeństwa w aucie, ketchup wylatujący po zatrzymaniu potrząsania, śnieg odpadający z butów po uderzeniu o schodek.)</li>
+      </ol>
+      <div class="odpowiedz">Odp.: Np. hamowanie autobusu, ruszanie pojazdu, szarpanie obrusa spod talerzy.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Podaj dwa przykłady, w których tarcie jest pożyteczne, i dwa, w których jest szkodliwe.</strong></p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>Pytanie teoretyczne.</p>
+      <h5>Szukane</h5>
+      <p>Po dwa przykłady.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Pożyteczne: chodzenie (buty nie ślizgają się po chodniku); hamowanie samochodu (klocki hamulcowe trą o tarcze).</li>
+        <li>Szkodliwe: zużywanie się opon i butów; nagrzewanie się części silnika (dlatego używamy oleju jako smaru).</li>
+      </ol>
+      <div class="odpowiedz">Odp.: Pożyteczne — chodzenie, hamowanie. Szkodliwe — zużycie opon, nagrzewanie silników.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Masa dziewczynki wynosi 35 kg. Oblicz jej ciężar na Ziemi.</strong></p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$m = 35\,\mathrm{kg}$, $g = 10\,\mathrm{m/s^2}$.</p>
+      <h5>Szukane</h5>
+      <p>$F_g = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>$F_g = m \cdot g$.</li>
+        <li>$F_g = 35 \cdot 10 = 350\,\mathrm{N}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: Ciężar dziewczynki wynosi $F_g = 350\,\mathrm{N}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Samochód jedzie ze stałą prędkością po prostym, poziomym odcinku drogi.</strong> Co można powiedzieć o działających na niego siłach?</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>Ruch jednostajny prostoliniowy.</p>
+      <h5>Szukane</h5>
+      <p>Wniosek o siłach.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Z I zasady dynamiki: jeśli $v = \text{const}$, to $F_{wyp} = 0$.</li>
+        <li>Siła napędowa silnika jest równa co do wartości oporom ruchu (tarcie + opór powietrza), ale ma przeciwny zwrot.</li>
+        <li>Wszystkie siły się wzajemnie równoważą.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: Siła wypadkowa wynosi zero — siły się równoważą.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Wyjaśnij, na czym polega zjawisko odrzutu, i podaj jeden przykład.</strong></p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>Pytanie teoretyczne.</p>
+      <h5>Szukane</h5>
+      <p>Definicja + przykład.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Odrzut to zjawisko, w którym ciało wyrzucając z siebie część masy (gazy, wodę, pocisk) w jedną stronę, samo zostaje popchnięte w stronę przeciwną.</li>
+        <li>Wynika z III zasady dynamiki Newtona (akcja = reakcja).</li>
+        <li>Przykład: rakieta wyrzuca gazy w dół, sama leci w górę; balonik wypuszczający powietrze odlatuje w przeciwnym kierunku.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: Odrzut to skutek III zasady dynamiki; przykład — rakieta kosmiczna.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Masa książki wynosi 800 g.</strong> Oblicz jej ciężar.</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$m = 800\,\mathrm{g} = 0{,}8\,\mathrm{kg}$, $g = 10\,\mathrm{m/s^2}$.</p>
+      <h5>Szukane</h5>
+      <p>$F_g = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Zamiana jednostek: $800\,\mathrm{g} = 0{,}8\,\mathrm{kg}$.</li>
+        <li>$F_g = m \cdot g = 0{,}8 \cdot 10 = 8\,\mathrm{N}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: $F_g = 8\,\mathrm{N}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Z wykresu $v(t)$ odczytano: w chwili $t = 0$ prędkość wynosi 0, a w chwili $t = 5\,\mathrm{s}$ prędkość 20 m/s.</strong> Jaki to ruch i jakie ma przyspieszenie?</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$t_1 = 0$, $v_1 = 0$; $t_2 = 5\,\mathrm{s}$, $v_2 = 20\,\mathrm{m/s}$.</p>
+      <h5>Szukane</h5>
+      <p>Rodzaj ruchu i $a = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Prędkość rośnie równomiernie — to ruch jednostajnie przyspieszony.</li>
+        <li>$a = \dfrac{\Delta v}{\Delta t} = \dfrac{v_2 - v_1}{t_2 - t_1} = \dfrac{20 - 0}{5 - 0} = 4\,\mathrm{m/s^2}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: Ruch jednostajnie przyspieszony, $a = 4\,\mathrm{m/s^2}$.</div>
+    </div>
+  </details>
+</li>
+
+</ol>
+</div>
+
+<!-- =============== POZIOM ŚREDNI =============== -->
+<h3 id="srednie">Zadania 16–30 · pogłębiające</h3>
+
+<div class="zadania poziom-sredni">
+<ol class="lista-zadan" start="16">
+
+<li>
+  <p><strong>Samochód o masie 1500 kg rusza z miejsca i po 8 s osiąga prędkość 16 m/s.</strong> Oblicz siłę wypadkową działającą na samochód.</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$m = 1500\,\mathrm{kg}$, $v_0 = 0$, $v = 16\,\mathrm{m/s}$, $t = 8\,\mathrm{s}$.</p>
+      <h5>Szukane</h5>
+      <p>$F_{wyp} = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Przyspieszenie: $a = \dfrac{v - v_0}{t} = \dfrac{16}{8} = 2\,\mathrm{m/s^2}$.</li>
+        <li>II zasada: $F_{wyp} = m \cdot a = 1500 \cdot 2 = 3000\,\mathrm{N}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: $F_{wyp} = 3000\,\mathrm{N} = 3\,\mathrm{kN}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Na piłkę o masie 250 g działa siła 5 N.</strong> Oblicz przyspieszenie piłki.</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$m = 250\,\mathrm{g} = 0{,}25\,\mathrm{kg}$, $F = 5\,\mathrm{N}$.</p>
+      <h5>Szukane</h5>
+      <p>$a = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Zamiana jednostek: $250\,\mathrm{g} = 0{,}25\,\mathrm{kg}$.</li>
+        <li>$a = \dfrac{F}{m} = \dfrac{5}{0{,}25} = 20\,\mathrm{m/s^2}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: $a = 20\,\mathrm{m/s^2}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Kamień spada swobodnie przez 5 s.</strong> Oblicz (a) jego prędkość w chwili upadku, (b) przebytą wysokość.</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$t = 5\,\mathrm{s}$, $g = 10\,\mathrm{m/s^2}$.</p>
+      <h5>Szukane</h5>
+      <p>$v = ?$, $h = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>$v = g \cdot t = 10 \cdot 5 = 50\,\mathrm{m/s}$.</li>
+        <li>$h = \dfrac{g \cdot t^2}{2} = \dfrac{10 \cdot 25}{2} = 125\,\mathrm{m}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: $v = 50\,\mathrm{m/s}$, $h = 125\,\mathrm{m}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Na klocek o masie 6 kg działa pozioma siła ciągnąca 50 N, a siła tarcia wynosi 20 N.</strong> Oblicz przyspieszenie klocka.</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$F = 50\,\mathrm{N}$, $F_t = 20\,\mathrm{N}$, $m = 6\,\mathrm{kg}$.</p>
+      <h5>Szukane</h5>
+      <p>$a = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Siły pozione są przeciwne. Siła wypadkowa: $F_{wyp} = F - F_t = 50 - 20 = 30\,\mathrm{N}$.</li>
+        <li>II zasada: $a = \dfrac{F_{wyp}}{m} = \dfrac{30}{6} = 5\,\mathrm{m/s^2}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: $a = 5\,\mathrm{m/s^2}$, zwrot zgodny z siłą ciągnącą.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Na ciało o masie 12 kg działają dwie siły w tej samej linii: 100 N i 40 N o przeciwnych zwrotach.</strong> Oblicz przyspieszenie ciała.</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$F_1 = 100\,\mathrm{N}$, $F_2 = 40\,\mathrm{N}$ (przeciwne), $m = 12\,\mathrm{kg}$.</p>
+      <h5>Szukane</h5>
+      <p>$a = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>$F_{wyp} = F_1 - F_2 = 100 - 40 = 60\,\mathrm{N}$.</li>
+        <li>$a = \dfrac{F_{wyp}}{m} = \dfrac{60}{12} = 5\,\mathrm{m/s^2}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: $a = 5\,\mathrm{m/s^2}$ w stronę większej siły.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Rowerzysta o masie 55 kg jedzie rowerem o masie 20 kg z przyspieszeniem 0,4 m/s².</strong> Oblicz siłę wypadkową działającą na układ.</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$m_1 = 55\,\mathrm{kg}$, $m_2 = 20\,\mathrm{kg}$, $a = 0{,}4\,\mathrm{m/s^2}$.</p>
+      <h5>Szukane</h5>
+      <p>$F_{wyp} = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Całkowita masa: $m = m_1 + m_2 = 55 + 20 = 75\,\mathrm{kg}$.</li>
+        <li>$F_{wyp} = m \cdot a = 75 \cdot 0{,}4 = 30\,\mathrm{N}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: $F_{wyp} = 30\,\mathrm{N}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Ciało o masie 3 kg porusza się z prędkością 12 m/s i zatrzymuje się w ciągu 6 s.</strong> Oblicz siłę hamującą.</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$m = 3\,\mathrm{kg}$, $v_0 = 12\,\mathrm{m/s}$, $v = 0$, $t = 6\,\mathrm{s}$.</p>
+      <h5>Szukane</h5>
+      <p>$F = ?$ (siła hamująca).</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Opóźnienie: $|a| = \dfrac{v_0 - v}{t} = \dfrac{12}{6} = 2\,\mathrm{m/s^2}$.</li>
+        <li>Siła hamująca: $F = m \cdot |a| = 3 \cdot 2 = 6\,\mathrm{N}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: Siła hamująca to $F = 6\,\mathrm{N}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Ciało spadające swobodnie osiągnęło prędkość 50 m/s.</strong> Z jakiej wysokości spadało?</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$v = 50\,\mathrm{m/s}$, $g = 10\,\mathrm{m/s^2}$.</p>
+      <h5>Szukane</h5>
+      <p>$h = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Z $v = g \cdot t$: $t = \dfrac{v}{g} = \dfrac{50}{10} = 5\,\mathrm{s}$.</li>
+        <li>$h = \dfrac{g \cdot t^2}{2} = \dfrac{10 \cdot 25}{2} = 125\,\mathrm{m}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: Ciało spadało z wysokości $h = 125\,\mathrm{m}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Siła 18 N nadaje pewnemu ciału przyspieszenie 6 m/s². Jakie przyspieszenie nada temu samemu ciału siła 27 N?</strong></p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$F_1 = 18\,\mathrm{N}$, $a_1 = 6\,\mathrm{m/s^2}$, $F_2 = 27\,\mathrm{N}$.</p>
+      <h5>Szukane</h5>
+      <p>$a_2 = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Wyznaczamy masę: $m = \dfrac{F_1}{a_1} = \dfrac{18}{6} = 3\,\mathrm{kg}$.</li>
+        <li>Liczymy $a_2 = \dfrac{F_2}{m} = \dfrac{27}{3} = 9\,\mathrm{m/s^2}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: $a_2 = 9\,\mathrm{m/s^2}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Chłopiec ciągnie sanki z kolegą po śniegu siłą 60 N.</strong> Masa sanek z kolegą wynosi 30 kg, a siła tarcia — 15 N. Oblicz przyspieszenie sanek.</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$F = 60\,\mathrm{N}$, $m = 30\,\mathrm{kg}$, $F_t = 15\,\mathrm{N}$.</p>
+      <h5>Szukane</h5>
+      <p>$a = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>$F_{wyp} = F - F_t = 60 - 15 = 45\,\mathrm{N}$.</li>
+        <li>$a = \dfrac{F_{wyp}}{m} = \dfrac{45}{30} = 1{,}5\,\mathrm{m/s^2}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: Sanki przyspieszają z $a = 1{,}5\,\mathrm{m/s^2}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Ciężar ciała wynosi 250 N.</strong> Oblicz jego masę.</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$F_g = 250\,\mathrm{N}$, $g = 10\,\mathrm{m/s^2}$.</p>
+      <h5>Szukane</h5>
+      <p>$m = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Z $F_g = m \cdot g$ wyznaczamy $m = \dfrac{F_g}{g}$.</li>
+        <li>$m = \dfrac{250}{10} = 25\,\mathrm{kg}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: $m = 25\,\mathrm{kg}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Z wykresu $v(t)$ odczytano: przy $t_1 = 3\,\mathrm{s}$ prędkość wynosi 4 m/s, a przy $t_2 = 8\,\mathrm{s}$ — 14 m/s.</strong> Oblicz przyspieszenie. Jaka siła działa na ciało o masie 5 kg?</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$t_1 = 3\,\mathrm{s}$, $v_1 = 4\,\mathrm{m/s}$; $t_2 = 8\,\mathrm{s}$, $v_2 = 14\,\mathrm{m/s}$; $m = 5\,\mathrm{kg}$.</p>
+      <h5>Szukane</h5>
+      <p>$a = ?$, $F = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>$\Delta v = 14 - 4 = 10\,\mathrm{m/s}$.</li>
+        <li>$\Delta t = 8 - 3 = 5\,\mathrm{s}$.</li>
+        <li>$a = \dfrac{\Delta v}{\Delta t} = \dfrac{10}{5} = 2\,\mathrm{m/s^2}$.</li>
+        <li>$F = m \cdot a = 5 \cdot 2 = 10\,\mathrm{N}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: $a = 2\,\mathrm{m/s^2}$, $F = 10\,\mathrm{N}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Chłopiec na łódeczce o łącznej masie 90 kg (z chłopcem) wyrzuca plecak o masie 6 kg z prędkością 4 m/s do tyłu.</strong> Jaką prędkość uzyska łódka z chłopcem?</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$M = 90\,\mathrm{kg}$ (łódka + chłopiec, po wyrzuceniu plecaka zakładamy tę samą masę), $m = 6\,\mathrm{kg}$, $v = 4\,\mathrm{m/s}$.</p>
+      <h5>Szukane</h5>
+      <p>$V = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Zasada odrzutu (zachowania pędu): $M \cdot V = m \cdot v$.</li>
+        <li>$V = \dfrac{m \cdot v}{M} = \dfrac{6 \cdot 4}{90} = \dfrac{24}{90} \approx 0{,}27\,\mathrm{m/s}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: Łódka popłynie w przeciwnym kierunku z prędkością ok. $V \approx 0{,}27\,\mathrm{m/s}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Wykres $v(t)$ ciała składa się z trzech odcinków:</strong> (I) od $t=0$ do $3\,\mathrm{s}$ — prosta od 0 do 9 m/s; (II) od 3 do 6 s — pozioma na 9 m/s; (III) od 6 do 10 s — maleje do 0. W której fazie siła wypadkowa wynosi zero?</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>Trzy fazy wg opisu wykresu.</p>
+      <h5>Szukane</h5>
+      <p>Faza, w której $F_{wyp} = 0$.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Faza I: prędkość rośnie → ciało przyspiesza → $F_{wyp} \ne 0$.</li>
+        <li>Faza II: prędkość stała → z I zasady dynamiki $F_{wyp} = 0$.</li>
+        <li>Faza III: prędkość maleje → ciało hamuje → $F_{wyp} \ne 0$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: W fazie II (ruch jednostajny) siła wypadkowa jest równa zero.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Winda zjeżdża w dół z przyspieszeniem 2 m/s².</strong> Osoba o masie 60 kg stoi na wadze. Ile pokazuje waga (w N)?</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$m = 60\,\mathrm{kg}$, $a = 2\,\mathrm{m/s^2}$ (w dół), $g = 10\,\mathrm{m/s^2}$.</p>
+      <h5>Szukane</h5>
+      <p>$F_N = ?$ (pozorny ciężar — siła nacisku na wagę).</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Na osobę działają: w dół ciężar $F_g = m \cdot g = 600\,\mathrm{N}$, w górę siła reakcji wagi $F_N$.</li>
+        <li>II zasada (przyjmujemy kierunek w dół jako dodatni): $F_g - F_N = m \cdot a$.</li>
+        <li>$F_N = m(g - a) = 60 \cdot (10 - 2) = 60 \cdot 8 = 480\,\mathrm{N}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: Waga pokazuje $480\,\mathrm{N}$ — osoba „waży" mniej niż zwykle.</div>
+    </div>
+  </details>
+</li>
+
+</ol>
+</div>
+
+<!-- =============== POZIOM TRUDNY =============== -->
+<h3 id="trudne">Zadania 31–45 · mistrzowskie</h3>
+
+<div class="zadania poziom-trudny">
+<ol class="lista-zadan" start="31">
+
+<li>
+  <p><strong>Samochód o masie 1000 kg jadący z prędkością 18 m/s zahamował na odcinku 27 m.</strong> Oblicz siłę hamowania (zakładamy hamowanie jednostajne).</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$m = 1000\,\mathrm{kg}$, $v_0 = 18\,\mathrm{m/s}$, $v = 0$, $s = 27\,\mathrm{m}$.</p>
+      <h5>Szukane</h5>
+      <p>$F = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Z $v^2 = v_0^2 - 2as$ przy $v=0$: $a = \dfrac{v_0^2}{2s}$.</li>
+        <li>$a = \dfrac{18^2}{2 \cdot 27} = \dfrac{324}{54} = 6\,\mathrm{m/s^2}$.</li>
+        <li>$F = m \cdot a = 1000 \cdot 6 = 6000\,\mathrm{N}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: Siła hamowania wynosi $F = 6000\,\mathrm{N} = 6\,\mathrm{kN}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Na klocek o masie 5 kg leżący na stole działa pozioma siła 22 N.</strong> Pod jej wpływem klocek porusza się ruchem jednostajnym. Oblicz siłę tarcia.</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$m = 5\,\mathrm{kg}$, $F = 22\,\mathrm{N}$, ruch jednostajny.</p>
+      <h5>Szukane</h5>
+      <p>$F_t = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Ruch jednostajny → z I zasady dynamiki $F_{wyp} = 0$.</li>
+        <li>Siły poziome: $F - F_t = 0 \Rightarrow F_t = F$.</li>
+        <li>$F_t = 22\,\mathrm{N}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: Siła tarcia wynosi $F_t = 22\,\mathrm{N}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Ciało spadające swobodnie przebyło w ostatniej sekundzie spadku 35 m.</strong> Ile sekund trwał cały spadek?</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$\Delta s_{ost} = 35\,\mathrm{m}$, $g = 10\,\mathrm{m/s^2}$.</p>
+      <h5>Szukane</h5>
+      <p>$T = ?$ (całkowity czas spadania).</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Wysokość po $T$ sekundach: $h(T) = \dfrac{g T^2}{2}$.</li>
+        <li>Wysokość po $T-1$ sekundach: $h(T-1) = \dfrac{g (T-1)^2}{2}$.</li>
+        <li>Różnica — droga w ostatniej sekundzie: $\Delta s = h(T) - h(T-1) = \dfrac{g}{2}\bigl[T^2 - (T-1)^2\bigr] = \dfrac{g}{2}(2T-1)$.</li>
+        <li>Podstawiamy: $35 = \dfrac{10}{2}(2T-1) = 5(2T-1) \Rightarrow 2T - 1 = 7 \Rightarrow T = 4\,\mathrm{s}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: Spadek trwał $T = 4\,\mathrm{s}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Pudło o masie 10 kg ciągnięte jest po poziomej podłodze siłą 60 N, a siła tarcia wynosi 20 N.</strong> Oblicz: (a) przyspieszenie pudła, (b) drogę przebytą po 4 s ruchu od spoczynku.</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$m = 10\,\mathrm{kg}$, $F = 60\,\mathrm{N}$, $F_t = 20\,\mathrm{N}$, $t = 4\,\mathrm{s}$, $v_0 = 0$.</p>
+      <h5>Szukane</h5>
+      <p>$a = ?$, $s = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>$F_{wyp} = F - F_t = 60 - 20 = 40\,\mathrm{N}$.</li>
+        <li>$a = \dfrac{F_{wyp}}{m} = \dfrac{40}{10} = 4\,\mathrm{m/s^2}$.</li>
+        <li>Droga w ruchu jednostajnie przyspieszonym: $s = \dfrac{a \cdot t^2}{2} = \dfrac{4 \cdot 16}{2} = 32\,\mathrm{m}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: $a = 4\,\mathrm{m/s^2}$, $s = 32\,\mathrm{m}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Dwa ciała o masach 2 kg i 6 kg, połączone linką, są ciągnięte po gładkim stole (bez tarcia) siłą 32 N przyłożoną do ciała 6 kg.</strong> Oblicz przyspieszenie układu i siłę naciągu linki.</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$m_1 = 2\,\mathrm{kg}$ (z przodu), $m_2 = 6\,\mathrm{kg}$ (z tyłu, tam siła), $F = 32\,\mathrm{N}$, brak tarcia.</p>
+      <h5>Szukane</h5>
+      <p>$a = ?$, siła naciągu linki $T = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Układ traktujemy jako jedno ciało: $m = m_1 + m_2 = 8\,\mathrm{kg}$.</li>
+        <li>$a = \dfrac{F}{m} = \dfrac{32}{8} = 4\,\mathrm{m/s^2}$.</li>
+        <li>Linka ciągnie tylko ciało $m_1$: jedyna siła pozioma na $m_1$ to $T$. Stąd $T = m_1 \cdot a = 2 \cdot 4 = 8\,\mathrm{N}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: $a = 4\,\mathrm{m/s^2}$, $T = 8\,\mathrm{N}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Kamień wyrzucono pionowo w górę z prędkością 25 m/s.</strong> Oblicz maksymalną wysokość i czas, po którym kamień wróci do miejsca rzutu. (Pomiń opór powietrza.)</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$v_0 = 25\,\mathrm{m/s}$, $g = 10\,\mathrm{m/s^2}$.</p>
+      <h5>Szukane</h5>
+      <p>$h_{max} = ?$, całkowity czas $T = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Czas wznoszenia (do $v = 0$ na szczycie): $t_w = \dfrac{v_0}{g} = \dfrac{25}{10} = 2{,}5\,\mathrm{s}$.</li>
+        <li>Maksymalna wysokość: $h_{max} = \dfrac{g \cdot t_w^2}{2} = \dfrac{10 \cdot 6{,}25}{2} = 31{,}25\,\mathrm{m}$.</li>
+        <li>Czas powrotu (spadek tak długi jak wznoszenie): $T = 2 \cdot t_w = 5\,\mathrm{s}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: $h_{max} = 31{,}25\,\mathrm{m}$, $T = 5\,\mathrm{s}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Armata o masie 1200 kg wystrzeliła pocisk o masie 6 kg z prędkością 300 m/s.</strong> Z jaką prędkością cofnęła się armata?</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$M = 1200\,\mathrm{kg}$, $m = 6\,\mathrm{kg}$, $v = 300\,\mathrm{m/s}$.</p>
+      <h5>Szukane</h5>
+      <p>$V = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Zasada odrzutu: $M \cdot V = m \cdot v$.</li>
+        <li>$V = \dfrac{m \cdot v}{M} = \dfrac{6 \cdot 300}{1200} = \dfrac{1800}{1200} = 1{,}5\,\mathrm{m/s}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: Armata cofnie się z prędkością $V = 1{,}5\,\mathrm{m/s}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Samochód o masie 800 kg rozpędza się od 0 do 54 km/h w 6 s.</strong> Oblicz siłę napędową silnika, jeśli opory ruchu wynoszą 400 N.</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$m = 800\,\mathrm{kg}$, $v_0 = 0$, $v = 54\,\mathrm{km/h}$, $t = 6\,\mathrm{s}$, $F_{op} = 400\,\mathrm{N}$.</p>
+      <h5>Szukane</h5>
+      <p>$F_s = ?$ (siła napędowa).</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Zamiana jednostek: $v = 54\,\mathrm{km/h} = \dfrac{54000}{3600} = 15\,\mathrm{m/s}$.</li>
+        <li>$a = \dfrac{v}{t} = \dfrac{15}{6} = 2{,}5\,\mathrm{m/s^2}$.</li>
+        <li>Siła wypadkowa: $F_{wyp} = m \cdot a = 800 \cdot 2{,}5 = 2000\,\mathrm{N}$.</li>
+        <li>Siła napędowa musi pokonać opory i dać $F_{wyp}$: $F_s = F_{wyp} + F_{op} = 2000 + 400 = 2400\,\mathrm{N}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: Siła napędowa wynosi $F_s = 2400\,\mathrm{N}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Winda o masie 400 kg rusza w górę z przyspieszeniem 1,5 m/s².</strong> Z jaką siłą lina ciągnie windę?</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$m = 400\,\mathrm{kg}$, $a = 1{,}5\,\mathrm{m/s^2}$ (w górę), $g = 10\,\mathrm{m/s^2}$.</p>
+      <h5>Szukane</h5>
+      <p>$T = ?$ (siła naciągu liny).</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Na windę działają: w górę $T$ (lina), w dół $F_g = m \cdot g$.</li>
+        <li>II zasada (kierunek w górę dodatni): $T - m \cdot g = m \cdot a$.</li>
+        <li>$T = m \cdot (g + a) = 400 \cdot (10 + 1{,}5) = 400 \cdot 11{,}5 = 4600\,\mathrm{N}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: Lina ciągnie windę z siłą $T = 4600\,\mathrm{N}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Ciało o masie 4 kg rusza z miejsca i po 5 s osiąga prędkość 15 m/s.</strong> Siła tarcia wynosi 8 N. Oblicz siłę ciągnącą.</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$m = 4\,\mathrm{kg}$, $v_0 = 0$, $v = 15\,\mathrm{m/s}$, $t = 5\,\mathrm{s}$, $F_t = 8\,\mathrm{N}$.</p>
+      <h5>Szukane</h5>
+      <p>$F = ?$ (siła ciągnąca).</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>$a = \dfrac{v - v_0}{t} = \dfrac{15}{5} = 3\,\mathrm{m/s^2}$.</li>
+        <li>Siła wypadkowa: $F_{wyp} = m \cdot a = 4 \cdot 3 = 12\,\mathrm{N}$.</li>
+        <li>Siła ciągnąca pokonuje tarcie i daje $F_{wyp}$: $F = F_{wyp} + F_t = 12 + 8 = 20\,\mathrm{N}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: Siła ciągnąca wynosi $F = 20\,\mathrm{N}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Z dachu budynku o wysokości 45 m spada swobodnie doniczka.</strong> Oblicz: (a) czas spadania, (b) prędkość w chwili uderzenia o ziemię.</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$h = 45\,\mathrm{m}$, $g = 10\,\mathrm{m/s^2}$.</p>
+      <h5>Szukane</h5>
+      <p>$t = ?$, $v = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Z $h = \dfrac{g t^2}{2}$: $t^2 = \dfrac{2h}{g} = \dfrac{2 \cdot 45}{10} = 9 \Rightarrow t = 3\,\mathrm{s}$.</li>
+        <li>$v = g \cdot t = 10 \cdot 3 = 30\,\mathrm{m/s}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: $t = 3\,\mathrm{s}$, $v = 30\,\mathrm{m/s}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Na ciało o masie 5 kg działają jednocześnie dwie siły prostopadłe do siebie:</strong> 6 N i 8 N. Oblicz przyspieszenie ciała. (Wskazówka: użyj twierdzenia Pitagorasa do obliczenia siły wypadkowej.)</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$F_1 = 6\,\mathrm{N}$, $F_2 = 8\,\mathrm{N}$ (prostopadłe), $m = 5\,\mathrm{kg}$.</p>
+      <h5>Szukane</h5>
+      <p>$a = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Dla sił prostopadłych: $F_{wyp} = \sqrt{F_1^2 + F_2^2}$.</li>
+        <li>$F_{wyp} = \sqrt{6^2 + 8^2} = \sqrt{36 + 64} = \sqrt{100} = 10\,\mathrm{N}$.</li>
+        <li>$a = \dfrac{F_{wyp}}{m} = \dfrac{10}{5} = 2\,\mathrm{m/s^2}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: $a = 2\,\mathrm{m/s^2}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Samochód o masie 1500 kg jedzie z prędkością 20 m/s.</strong> Hamuje z siłą 5000 N. Po jakim czasie się zatrzyma i jaką drogę przejedzie w czasie hamowania?</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$m = 1500\,\mathrm{kg}$, $v_0 = 20\,\mathrm{m/s}$, $F = 5000\,\mathrm{N}$, $v = 0$.</p>
+      <h5>Szukane</h5>
+      <p>$t = ?$, $s = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Opóźnienie: $a = \dfrac{F}{m} = \dfrac{5000}{1500} \approx 3{,}33\,\mathrm{m/s^2}$.</li>
+        <li>Czas hamowania: $t = \dfrac{v_0}{a} = \dfrac{20}{3{,}33} \approx 6\,\mathrm{s}$.</li>
+        <li>Droga: $s = \dfrac{v_0^2}{2a} = \dfrac{400}{2 \cdot 3{,}33} \approx 60\,\mathrm{m}$.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: Samochód zatrzyma się po ok. $t \approx 6\,\mathrm{s}$, przejeżdżając $s \approx 60\,\mathrm{m}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>W windzie ruszającej w górę z przyspieszeniem 2 m/s² stoi walizka o masie 15 kg.</strong> Z jaką siłą walizka naciska na podłogę windy?</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$m = 15\,\mathrm{kg}$, $a = 2\,\mathrm{m/s^2}$ (w górę), $g = 10\,\mathrm{m/s^2}$.</p>
+      <h5>Szukane</h5>
+      <p>$F_N = ?$ (siła nacisku walizki na podłogę).</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Na walizkę działają: w dół $F_g = m \cdot g$, w górę siła reakcji podłogi $F_N$.</li>
+        <li>II zasada: $F_N - F_g = m \cdot a$.</li>
+        <li>$F_N = m(g + a) = 15 \cdot (10 + 2) = 15 \cdot 12 = 180\,\mathrm{N}$.</li>
+        <li>Z III zasady dynamiki walizka naciska na podłogę taką samą siłą.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: Walizka naciska na podłogę windy z siłą $180\,\mathrm{N}$.</div>
+    </div>
+  </details>
+</li>
+
+<li>
+  <p><strong>Ciało o masie 0,4 kg rzucono pionowo w górę z prędkością 20 m/s.</strong> Oblicz maksymalną wysokość wzlotu i czas po którym spadnie z powrotem na wysokość rzutu. (Pomiń opór powietrza.)</p>
+  <details class="rozwiazanie">
+    <summary>Pokaż rozwiązanie</summary>
+    <div class="tresc">
+      <h5>Dane</h5>
+      <p>$m = 0{,}4\,\mathrm{kg}$, $v_0 = 20\,\mathrm{m/s}$, $g = 10\,\mathrm{m/s^2}$.</p>
+      <h5>Szukane</h5>
+      <p>$h_{max} = ?$, $T = ?$</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol class="kroki">
+        <li>Czas wznoszenia (do $v = 0$): $t_w = \dfrac{v_0}{g} = \dfrac{20}{10} = 2\,\mathrm{s}$.</li>
+        <li>Maksymalna wysokość: $h_{max} = \dfrac{g \cdot t_w^2}{2} = \dfrac{10 \cdot 4}{2} = 20\,\mathrm{m}$ (równoważnie $\dfrac{v_0^2}{2g}$).</li>
+        <li>Całkowity czas lotu: $T = 2 \cdot t_w = 4\,\mathrm{s}$.</li>
+        <li>Zauważ: masa nie wpływa na wynik — bez oporu powietrza wszystkie ciała zachowują się tak samo.</li>
+      </ol>
+      <div class="odpowiedz">Odp.: $h_{max} = 20\,\mathrm{m}$, $T = 4\,\mathrm{s}$.</div>
+    </div>
+  </details>
+</li>
+
+</ol>
+</div>
+
+<!-- =============== PODSUMOWANIE =============== -->
+<h2 id="podsumowanie">Podsumowanie — co zapamiętać</h2>
+
+<div class="karta wzor">
+  <h4>🔑 Najważniejsze wzory</h4>
+  <p>
+    <span class="wzorek">$F = m \cdot a$</span>
+    <span class="wzorek">$a = \dfrac{F}{m}$</span>
+    <span class="wzorek">$m = \dfrac{F}{a}$</span>
+  </p>
+  <p>
+    <span class="wzorek">$F_g = m \cdot g$</span>
+    <span class="wzorek">$v = g \cdot t$</span>
+    <span class="wzorek">$h = \dfrac{g \cdot t^2}{2}$</span>
+  </p>
+  <p>
+    <span class="wzorek">$F_{wyp} = F_1 \pm F_2$</span>
+    <span class="wzorek">$M \cdot V = m \cdot v$</span>
+    <span class="wzorek">$a = \dfrac{\Delta v}{\Delta t}$</span>
+  </p>
+</div>
+
+<div class="karta info">
+  <h4>📌 Trzy zasady Newtona w skrócie</h4>
+  <ol>
+    <li><strong>I zasada (bezwładność):</strong> $F_{wyp} = 0 \;\Rightarrow\;$ spoczynek lub ruch jednostajny.</li>
+    <li><strong>II zasada (dynamiki):</strong> $F = m \cdot a$ — siła wypadkowa daje przyspieszenie.</li>
+    <li><strong>III zasada (akcja-reakcja):</strong> siły występują parami, równe i przeciwne, na dwóch różnych ciałach.</li>
+  </ol>
+</div>
+
+<div class="karta przyklad">
+  <h4>💪 Powodzenia!</h4>
+  <p>Rozwiąż wszystkie 45 zadań samodzielnie — to najlepszy sposób na solidne opanowanie dynamiki. Jeśli gdzieś się zatniesz, wróć do teorii i przykładów w odpowiedniej sekcji. Dasz radę 🚀</p>
+</div>
+
+</main>
+
+<footer>
+  <p>Korepetycje z fizyki · Dynamika · Klasa VII</p>
+  <p style="margin-top:10px;font-family:var(--display);font-style:italic;letter-spacing:0;text-transform:none;font-size:0.95rem;color:var(--ink-3);">„Natura cieszy się z prostoty." — Isaac Newton</p>
+</footer>
+
+</body>
+</html>

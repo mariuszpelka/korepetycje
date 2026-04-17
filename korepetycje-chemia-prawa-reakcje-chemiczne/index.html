@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Korepetycje z chemii — Prawa, reakcje i równania chemiczne</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+
+<style>
+  :root{
+    --ink:#0f1724;
+    --ink-soft:#3b475a;
+    --paper:#fbf7f0;
+    --paper-2:#f5efe4;
+    --accent:#c84e3f;       /* ceglasta czerwień */
+    --accent-2:#2e6a7a;     /* teal */
+    --accent-3:#d4a017;     /* amber */
+    --accent-4:#4a6b3a;     /* zieleń chemika */
+    --violet:#6a4c93;
+    --line:#1a2333;
+    --card:#ffffff;
+    --shadow: 0 1px 0 rgba(15,23,36,.06), 0 12px 40px -18px rgba(15,23,36,.25);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(1100px 500px at 85% -5%, #ffe9c7 0%, transparent 60%),
+      radial-gradient(800px 500px at -10% 40%, #d8ecf1 0%, transparent 55%),
+      var(--paper);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:32px 28px 80px}
+
+  /* HEADER */
+  header.hero{
+    display:grid;
+    grid-template-columns:1.2fr .9fr;
+    gap:40px;
+    align-items:center;
+    border:1.5px solid var(--line);
+    border-radius:24px;
+    padding:36px 40px;
+    background:
+      linear-gradient(135deg, rgba(200,78,63,.06), rgba(46,106,122,.05)),
+      var(--card);
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::before{
+    content:"";
+    position:absolute;inset:10px;
+    border:1px dashed rgba(15,23,36,.15);
+    border-radius:18px;
+    pointer-events:none;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;
+  }
+  .eyebrow .dot{width:8px;height:8px;background:var(--accent);border-radius:50%;display:inline-block}
+  h1{
+    font-family:'Fraunces',serif;font-weight:800;font-size:56px;line-height:1.05;margin:14px 0 10px;
+    letter-spacing:-.02em;
+  }
+  h1 em{font-style:italic;color:var(--accent);font-weight:600}
+  .lead{font-size:18px;color:var(--ink-soft);max-width:52ch}
+  .meta-row{
+    display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;
+  }
+  .chip{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:7px 14px;border-radius:999px;border:1px solid var(--line);
+    font-size:13px;font-weight:500;background:#fff;
+  }
+  .chip.a{background:#fff4ef;border-color:#e6b7ad}
+  .chip.b{background:#e8f2f4;border-color:#a8c8cd}
+  .chip.c{background:#fbf1d5;border-color:#d9bf77}
+  .chip.d{background:#eef3e9;border-color:#b6c9a8}
+
+  /* Hero SVG frame */
+  .hero-art{
+    background:
+      radial-gradient(circle at 30% 30%, #fff, #fbf0d9);
+    border:1.5px solid var(--line);
+    border-radius:20px;
+    padding:16px;
+    aspect-ratio: 4/3;
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  /* SECTIONS */
+  section.chapter{
+    margin-top:56px;
+  }
+  .chapter-head{
+    display:flex;align-items:baseline;gap:16px;margin-bottom:18px;
+    border-bottom:1.5px solid var(--line);padding-bottom:12px;
+  }
+  .chapter-num{
+    font-family:'JetBrains Mono',monospace;font-weight:600;font-size:14px;
+    background:var(--ink);color:var(--paper);
+    padding:6px 10px;border-radius:8px;
+    letter-spacing:.06em;
+  }
+  .chapter-head h2{
+    font-family:'Fraunces',serif;font-size:36px;font-weight:700;margin:0;letter-spacing:-.01em;
+  }
+
+  .grid-2{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:start}
+  .grid-1{display:grid;grid-template-columns:1fr;gap:22px}
+  p{margin:10px 0}
+
+  /* CARDS */
+  .card{
+    background:var(--card);border:1.5px solid var(--line);border-radius:16px;
+    padding:24px 26px;box-shadow:var(--shadow);
+  }
+  .card h3{font-family:'Fraunces',serif;font-weight:700;font-size:22px;margin:0 0 10px}
+  .card .tag{
+    display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--accent-2);
+    padding:4px 10px;border:1px solid var(--accent-2);border-radius:6px;margin-bottom:10px;
+  }
+  .card.accent-a{border-left:6px solid var(--accent)}
+  .card.accent-b{border-left:6px solid var(--accent-2)}
+  .card.accent-c{border-left:6px solid var(--accent-3)}
+  .card.accent-d{border-left:6px solid var(--accent-4)}
+  .card.accent-v{border-left:6px solid var(--violet)}
+
+  .callout{
+    border:1.5px dashed var(--accent);
+    background:linear-gradient(180deg, #fff5f1 0%, #fff 100%);
+    border-radius:14px;padding:16px 20px;margin:14px 0;
+  }
+  .callout strong{color:var(--accent)}
+  .bulb{
+    display:inline-flex;align-items:center;gap:8px;
+    font-weight:600;color:var(--accent);
+  }
+
+  .formula-box{
+    background:#fffaf2;border:1px solid #d9bf77;border-radius:12px;
+    padding:14px 18px;margin:12px 0;text-align:center;font-size:18px;
+  }
+
+  /* Reaction type cards grid */
+  .types-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:22px;
+  }
+  @media(max-width:860px){
+    .types-grid{grid-template-columns:1fr}
+    .grid-2{grid-template-columns:1fr}
+    header.hero{grid-template-columns:1fr;padding:24px}
+    h1{font-size:40px}
+  }
+
+  .type-card{
+    background:var(--card);border:1.5px solid var(--line);border-radius:16px;
+    padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px;
+  }
+  .type-card .svg-wrap{
+    background:#fbf7f0;border:1px solid #e5dcc8;border-radius:10px;padding:12px;
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  /* EXAMPLE table */
+  table.ex{
+    width:100%;border-collapse:collapse;margin:10px 0;font-size:15px;
+    background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  }
+  table.ex th, table.ex td{padding:10px 12px;border-bottom:1px solid #eee;text-align:left}
+  table.ex th{background:#f2ecdc;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+
+  /* STEPS */
+  .steps{list-style:none;padding:0;margin:10px 0;counter-reset:step}
+  .steps li{
+    position:relative;padding:10px 12px 10px 42px;margin-bottom:8px;
+    border-left:2px solid var(--accent-2);background:#f7fbfc;border-radius:8px;
+    counter-increment:step;
+  }
+  .steps li::before{
+    content:counter(step);
+    position:absolute;left:10px;top:10px;
+    width:24px;height:24px;border-radius:50%;
+    background:var(--accent-2);color:#fff;display:flex;align-items:center;justify-content:center;
+    font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;
+  }
+
+  /* TASKS */
+  .tasks-header{
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;
+    background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:18px 22px;margin-bottom:20px;
+  }
+  .tasks-header .counts{display:flex;gap:10px;flex-wrap:wrap}
+  .level-badge{
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    padding:5px 10px;border-radius:999px;border:1px solid;
+  }
+  .lvl-easy{color:#4a6b3a;border-color:#a7ba92;background:#eef4e7}
+  .lvl-mid{color:#b07a00;border-color:#d9bf77;background:#fbf1d5}
+  .lvl-hard{color:#9d2e20;border-color:#e6b0a6;background:#fbe7e2}
+
+  ol.tasks{list-style:none;counter-reset:task;padding:0;margin:0}
+  ol.tasks li.task{
+    counter-increment:task;
+    background:#fff;border:1.5px solid var(--line);border-radius:14px;
+    padding:18px 22px 16px;margin-bottom:14px;
+    box-shadow:var(--shadow);
+  }
+  ol.tasks li.task .task-head{
+    display:flex;align-items:flex-start;gap:14px;
+  }
+  ol.tasks li.task .num{
+    font-family:'JetBrains Mono',monospace;font-weight:700;
+    min-width:42px;height:42px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--ink);color:var(--paper);font-size:14px;flex-shrink:0;
+  }
+  ol.tasks li.task .num::before{content:counter(task)}
+  ol.tasks li.task .q{font-size:16px;font-weight:500;flex:1}
+  ol.tasks li.task .level{margin-left:8px}
+
+  details.sol{
+    margin-top:12px;border-top:1px dashed #d7cdb9;padding-top:10px;
+  }
+  details.sol > summary{
+    cursor:pointer;list-style:none;
+    display:inline-flex;align-items:center;gap:8px;
+    font-weight:600;color:var(--accent-2);font-size:14px;
+    padding:6px 12px;border:1px solid var(--accent-2);border-radius:8px;
+    background:#f7fbfc;user-select:none;
+  }
+  details.sol > summary::-webkit-details-marker{display:none}
+  details.sol > summary::after{
+    content:"▾";transition:transform .2s;margin-left:4px;
+  }
+  details.sol[open] > summary::after{transform:rotate(180deg)}
+  .sol-body{padding:14px 6px 4px}
+  .sol-section{margin:10px 0}
+  .sol-section h4{
+    margin:0 0 6px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--accent);
+  }
+  .sol-section.dane h4{color:var(--accent-2)}
+  .sol-section.szuk h4{color:var(--violet)}
+  .sol-section.rozw h4{color:var(--accent-4)}
+  .sol-section.odp h4{color:var(--accent)}
+  .sol-section.odp .answer{
+    background:#fff4ef;border:1.5px solid #e6b7ad;border-radius:10px;padding:10px 14px;font-weight:600;
+  }
+
+  /* TOC */
+  nav.toc{
+    background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:20px 24px;
+    box-shadow:var(--shadow);
+  }
+  nav.toc h3{font-family:'Fraunces',serif;font-size:20px;margin:0 0 10px}
+  nav.toc ol{margin:0;padding-left:20px}
+  nav.toc a{color:var(--ink);text-decoration:none;border-bottom:1px dashed transparent}
+  nav.toc a:hover{border-bottom-color:var(--accent)}
+
+  footer{
+    margin-top:60px;padding-top:20px;border-top:1px solid #dcd4c3;color:var(--ink-soft);
+    font-size:13px;text-align:center;font-family:'JetBrains Mono',monospace;letter-spacing:.06em;
+  }
+
+  /* Atom/molecule emoji avoidance — use small SVGs inline */
+  .inline-atom{vertical-align:middle;margin-right:6px}
+
+  code.chem{
+    font-family:'JetBrains Mono',monospace;background:#f2ecdc;padding:2px 8px;border-radius:6px;font-size:14px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div>
+      <span class="eyebrow"><span class="dot"></span> Korepetycje · Klasa 7 · Chemia</span>
+      <h1>Prawa, reakcje i <em>równania</em> chemiczne</h1>
+      <p class="lead">Cztery filary chemii, które pozwalają zrozumieć, jak z atomów powstają związki, jak zapisać reakcję i dlaczego nic nie ginie bez śladu.</p>
+      <div class="meta-row">
+        <span class="chip a">① Prawo stałości składu</span>
+        <span class="chip b">② Rodzaje reakcji</span>
+        <span class="chip c">③ Zapisywanie równań</span>
+        <span class="chip d">④ Prawo zachowania masy</span>
+      </div>
+    </div>
+    <div class="hero-art">
+      <!-- Hero SVG: szkło laboratoryjne z cząsteczkami -->
+      <svg viewBox="0 0 300 230" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-label="Laboratorium chemiczne z cząsteczkami">
+        <defs>
+          <linearGradient id="liq" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" stop-color="#4db3c7"/>
+            <stop offset="1" stop-color="#2e6a7a"/>
+          </linearGradient>
+          <radialGradient id="bub" cx=".3" cy=".3" r=".7">
+            <stop offset="0" stop-color="#fff" stop-opacity=".9"/>
+            <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <!-- kolba -->
+        <path d="M125 40 L125 90 L80 180 Q75 200 100 200 L200 200 Q225 200 220 180 L175 90 L175 40 Z"
+              fill="#fff" stroke="#0f1724" stroke-width="2"/>
+        <path d="M105 145 L195 145 L215 185 Q217 195 205 195 L95 195 Q83 195 85 185 Z"
+              fill="url(#liq)" opacity=".85"/>
+        <!-- bąbelki -->
+        <circle cx="120" cy="170" r="5" fill="url(#bub)"/>
+        <circle cx="150" cy="160" r="4" fill="url(#bub)"/>
+        <circle cx="175" cy="178" r="6" fill="url(#bub)"/>
+        <!-- korek -->
+        <rect x="120" y="30" width="60" height="14" fill="#d4a017" stroke="#0f1724" stroke-width="2" rx="3"/>
+        <!-- cząsteczki wokół -->
+        <g stroke="#0f1724" stroke-width="1.5">
+          <circle cx="40" cy="50" r="10" fill="#c84e3f"/>
+          <circle cx="62" cy="50" r="7" fill="#f5efe4"/>
+          <line x1="40" y1="50" x2="62" y2="50"/>
+          <circle cx="260" cy="70" r="8" fill="#4a6b3a"/>
+          <circle cx="278" cy="60" r="6" fill="#f5efe4"/>
+          <line x1="260" y1="70" x2="278" y2="60"/>
+          <circle cx="278" cy="80" r="6" fill="#f5efe4"/>
+          <line x1="260" y1="70" x2="278" y2="80"/>
+          <circle cx="35" cy="190" r="6" fill="#6a4c93"/>
+          <circle cx="250" cy="200" r="9" fill="#2e6a7a"/>
+        </g>
+      </svg>
+    </div>
+  </header>
+
+  <!-- TOC -->
+  <section class="chapter">
+    <nav class="toc">
+      <h3>Plan lekcji</h3>
+      <ol>
+        <li><a href="#rozdzial-1">Prawo stałości składu związku chemicznego</a></li>
+        <li><a href="#rozdzial-2">Rodzaje reakcji chemicznych</a></li>
+        <li><a href="#rozdzial-3">Zapisywanie i odczytywanie przebiegu reakcji</a></li>
+        <li><a href="#rozdzial-4">Prawo zachowania masy</a></li>
+        <li><a href="#zadania">45 zadań sprawdzających z rozwiązaniami</a></li>
+      </ol>
+    </nav>
+  </section>
+
+  <!-- ROZDZIAŁ 1 -->
+  <section class="chapter" id="rozdzial-1">
+    <div class="chapter-head">
+      <span class="chapter-num">§ 01</span>
+      <h2>Prawo stałości składu związku chemicznego</h2>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <div class="card accent-a">
+          <span class="tag">Prawo Prousta</span>
+          <h3>Każdy związek ma stały, niezmienny skład</h3>
+          <p>To prawo mówi, że <strong>stosunek mas pierwiastków</strong> w danym związku chemicznym <strong>jest zawsze taki sam</strong>, niezależnie od tego, skąd ten związek pochodzi ani jak został otrzymany.</p>
+
+          <div class="formula-box">
+            Woda zawsze: $m_\text{H} : m_\text{O} = 1 : 8$
+          </div>
+
+          <p>To znaczy, że jeśli weźmiesz wodę z kranu, z deszczu albo zrobisz ją sama w laboratorium z wodoru i tlenu — <strong>zawsze</strong> będzie miała tę samą proporcję mas.</p>
+        </div>
+
+        <div class="callout">
+          <span class="bulb">💡 Intuicja z kuchni</span>
+          <p>Wyobraź sobie przepis na naleśniki: zawsze dajesz <em>2 jajka na 1 szklankę mąki</em>. Jeśli zmienisz proporcje — to już nie będą naleśniki, tylko coś innego. Tak samo w chemii: jeśli stosunek się zmieni, dostaniesz <em>inny</em> związek chemiczny.</p>
+        </div>
+
+        <h3 style="margin-top:22px;font-family:'Fraunces',serif">Przykład obliczeniowy</h3>
+        <p>Wiedząc, że w wodzie $m_\text{H} : m_\text{O} = 1 : 8$, obliczmy ile tlenu jest w 45 g wody:</p>
+        <ol class="steps">
+          <li>Jedna „porcja" wody = 1 g wodoru + 8 g tlenu = <strong>9 g</strong>.</li>
+          <li>W 45 g wody mieści się $45 : 9 = 5$ takich porcji.</li>
+          <li>Masa tlenu: $5 \cdot 8 = 40$ g. Masa wodoru: $5 \cdot 1 = 5$ g.</li>
+        </ol>
+      </div>
+
+      <div>
+        <div class="card accent-a">
+          <span class="tag">Wizualizacja</span>
+          <h3>Proporcje masowe w wodzie</h3>
+          <!-- SVG: pasek proporcji 1:8 -->
+          <svg viewBox="0 0 320 180" width="100%" xmlns="http://www.w3.org/2000/svg" aria-label="Stosunek masowy wodoru do tlenu w wodzie 1:8">
+            <g font-family="Inter,sans-serif" font-size="12">
+              <text x="10" y="20" font-weight="600">Woda H₂O — stosunek mas</text>
+              <!-- 9 kratek: 1 H + 8 O -->
+              <g>
+                <rect x="10" y="35" width="30" height="30" fill="#c84e3f" stroke="#0f1724" stroke-width="1.5"/>
+                <text x="25" y="54" fill="#fff" text-anchor="middle" font-weight="700">H</text>
+                <rect x="50" y="35" width="30" height="30" fill="#2e6a7a" stroke="#0f1724" stroke-width="1.5"/>
+                <rect x="80" y="35" width="30" height="30" fill="#2e6a7a" stroke="#0f1724" stroke-width="1.5"/>
+                <rect x="110" y="35" width="30" height="30" fill="#2e6a7a" stroke="#0f1724" stroke-width="1.5"/>
+                <rect x="140" y="35" width="30" height="30" fill="#2e6a7a" stroke="#0f1724" stroke-width="1.5"/>
+                <rect x="170" y="35" width="30" height="30" fill="#2e6a7a" stroke="#0f1724" stroke-width="1.5"/>
+                <rect x="200" y="35" width="30" height="30" fill="#2e6a7a" stroke="#0f1724" stroke-width="1.5"/>
+                <rect x="230" y="35" width="30" height="30" fill="#2e6a7a" stroke="#0f1724" stroke-width="1.5"/>
+                <rect x="260" y="35" width="30" height="30" fill="#2e6a7a" stroke="#0f1724" stroke-width="1.5"/>
+                <text x="175" y="54" fill="#fff" text-anchor="middle" font-weight="700">8 × O</text>
+              </g>
+              <text x="25" y="85" text-anchor="middle">1 g</text>
+              <text x="175" y="85" text-anchor="middle">8 g</text>
+
+              <!-- Przykład 18g -->
+              <text x="10" y="115" font-weight="600">18 g wody → ile pierwiastków?</text>
+              <g>
+                <rect x="10" y="125" width="20" height="20" fill="#c84e3f" stroke="#0f1724"/>
+                <rect x="30" y="125" width="20" height="20" fill="#c84e3f" stroke="#0f1724"/>
+                <rect x="60" y="125" width="20" height="20" fill="#2e6a7a" stroke="#0f1724"/>
+                <rect x="80" y="125" width="20" height="20" fill="#2e6a7a" stroke="#0f1724"/>
+                <rect x="100" y="125" width="20" height="20" fill="#2e6a7a" stroke="#0f1724"/>
+                <rect x="120" y="125" width="20" height="20" fill="#2e6a7a" stroke="#0f1724"/>
+                <rect x="140" y="125" width="20" height="20" fill="#2e6a7a" stroke="#0f1724"/>
+                <rect x="160" y="125" width="20" height="20" fill="#2e6a7a" stroke="#0f1724"/>
+                <rect x="180" y="125" width="20" height="20" fill="#2e6a7a" stroke="#0f1724"/>
+                <rect x="200" y="125" width="20" height="20" fill="#2e6a7a" stroke="#0f1724"/>
+                <rect x="220" y="125" width="20" height="20" fill="#2e6a7a" stroke="#0f1724"/>
+              </g>
+              <text x="30" y="162" text-anchor="middle">2 g H</text>
+              <text x="145" y="162" text-anchor="middle">16 g O</text>
+              <text x="260" y="140" font-weight="700">= 18 g</text>
+            </g>
+          </svg>
+
+          <table class="ex" style="margin-top:14px">
+            <thead><tr><th>Związek</th><th>Pierwiastki</th><th>Stosunek mas</th></tr></thead>
+            <tbody>
+              <tr><td>$\text{H}_2\text{O}$</td><td>H : O</td><td>1 : 8</td></tr>
+              <tr><td>$\text{CO}_2$</td><td>C : O</td><td>3 : 8</td></tr>
+              <tr><td>$\text{CO}$</td><td>C : O</td><td>3 : 4</td></tr>
+              <tr><td>$\text{CuO}$</td><td>Cu : O</td><td>4 : 1</td></tr>
+              <tr><td>$\text{CaO}$</td><td>Ca : O</td><td>5 : 2</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROZDZIAŁ 2 -->
+  <section class="chapter" id="rozdzial-2">
+    <div class="chapter-head">
+      <span class="chapter-num">§ 02</span>
+      <h2>Rodzaje reakcji chemicznych</h2>
+    </div>
+
+    <p class="lead">W chemii reakcje dzielimy ze względu na to, <strong>co dzieje się z substratami</strong> — czy się łączą, rozpadają, czy wymieniają się częściami.</p>
+
+    <div class="types-grid" style="margin-top:18px">
+      <!-- SYNTEZA -->
+      <div class="type-card">
+        <span class="tag">Reakcja syntezy (łączenia)</span>
+        <h3 style="font-family:'Fraunces',serif;margin:0">A + B → AB</h3>
+        <p>Dwie (lub więcej) substancje łączą się w <strong>jedną</strong> nową substancję.</p>
+        <div class="svg-wrap">
+          <svg viewBox="0 0 320 120" width="100%" xmlns="http://www.w3.org/2000/svg" aria-label="Schemat reakcji syntezy">
+            <g stroke="#0f1724" stroke-width="1.5" font-family="Inter,sans-serif" font-size="14" font-weight="700">
+              <circle cx="40" cy="60" r="18" fill="#c84e3f"/>
+              <text x="40" y="65" text-anchor="middle" fill="#fff">A</text>
+              <text x="90" y="65" text-anchor="middle" font-size="24" stroke="none">+</text>
+              <circle cx="130" cy="60" r="18" fill="#2e6a7a"/>
+              <text x="130" y="65" text-anchor="middle" fill="#fff">B</text>
+              <line x1="160" y1="60" x2="210" y2="60" marker-end="url(#arr1)"/>
+              <defs><marker id="arr1" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0f1724"/></marker></defs>
+              <circle cx="245" cy="60" r="18" fill="#c84e3f"/>
+              <circle cx="275" cy="60" r="18" fill="#2e6a7a"/>
+              <text x="260" y="100" text-anchor="middle" stroke="none" font-weight="500">AB</text>
+            </g>
+          </svg>
+        </div>
+        <p><strong>Przykład:</strong> $2\text{H}_2 + \text{O}_2 \rightarrow 2\text{H}_2\text{O}$ — wodór łączy się z tlenem i powstaje woda.</p>
+      </div>
+
+      <!-- ANALIZA -->
+      <div class="type-card">
+        <span class="tag">Reakcja analizy (rozkładu)</span>
+        <h3 style="font-family:'Fraunces',serif;margin:0">AB → A + B</h3>
+        <p>Z jednej substancji powstają <strong>dwie lub więcej</strong> prostszych substancji.</p>
+        <div class="svg-wrap">
+          <svg viewBox="0 0 320 120" width="100%" xmlns="http://www.w3.org/2000/svg" aria-label="Schemat reakcji analizy">
+            <g stroke="#0f1724" stroke-width="1.5" font-family="Inter,sans-serif" font-size="14" font-weight="700">
+              <circle cx="50" cy="60" r="18" fill="#c84e3f"/>
+              <circle cx="82" cy="60" r="18" fill="#2e6a7a"/>
+              <text x="65" y="100" text-anchor="middle" stroke="none">AB</text>
+              <line x1="115" y1="60" x2="170" y2="60" marker-end="url(#arr2)"/>
+              <defs><marker id="arr2" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0f1724"/></marker></defs>
+              <circle cx="210" cy="60" r="18" fill="#c84e3f"/>
+              <text x="210" y="65" text-anchor="middle" fill="#fff">A</text>
+              <text x="245" y="65" text-anchor="middle" font-size="22" stroke="none">+</text>
+              <circle cx="280" cy="60" r="18" fill="#2e6a7a"/>
+              <text x="280" y="65" text-anchor="middle" fill="#fff">B</text>
+            </g>
+          </svg>
+        </div>
+        <p><strong>Przykład:</strong> $2\text{H}_2\text{O} \rightarrow 2\text{H}_2 + \text{O}_2$ — pod wpływem prądu woda rozkłada się na wodór i tlen (elektroliza).</p>
+      </div>
+
+      <!-- WYMIANA POJEDYNCZA -->
+      <div class="type-card">
+        <span class="tag">Wymiana pojedyncza</span>
+        <h3 style="font-family:'Fraunces',serif;margin:0">A + BC → AC + B</h3>
+        <p>Pierwiastek <strong>wypiera</strong> inny pierwiastek ze związku i zajmuje jego miejsce.</p>
+        <div class="svg-wrap">
+          <svg viewBox="0 0 340 120" width="100%" xmlns="http://www.w3.org/2000/svg" aria-label="Schemat wymiany pojedynczej">
+            <g stroke="#0f1724" stroke-width="1.5" font-family="Inter,sans-serif" font-size="14" font-weight="700">
+              <circle cx="30" cy="60" r="16" fill="#d4a017"/>
+              <text x="30" y="65" text-anchor="middle" fill="#fff">A</text>
+              <text x="60" y="65" text-anchor="middle" font-size="22" stroke="none">+</text>
+              <circle cx="95" cy="60" r="16" fill="#c84e3f"/>
+              <circle cx="125" cy="60" r="16" fill="#2e6a7a"/>
+              <text x="110" y="100" text-anchor="middle" stroke="none">BC</text>
+              <line x1="155" y1="60" x2="195" y2="60" marker-end="url(#arr3)"/>
+              <defs><marker id="arr3" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0f1724"/></marker></defs>
+              <circle cx="225" cy="60" r="16" fill="#d4a017"/>
+              <circle cx="255" cy="60" r="16" fill="#2e6a7a"/>
+              <text x="240" y="100" text-anchor="middle" stroke="none">AC</text>
+              <text x="280" y="65" text-anchor="middle" font-size="22" stroke="none">+</text>
+              <circle cx="310" cy="60" r="16" fill="#c84e3f"/>
+              <text x="310" y="65" text-anchor="middle" fill="#fff">B</text>
+            </g>
+          </svg>
+        </div>
+        <p><strong>Przykład:</strong> $\text{Zn} + 2\text{HCl} \rightarrow \text{ZnCl}_2 + \text{H}_2$ — cynk wypiera wodór z kwasu.</p>
+      </div>
+
+      <!-- WYMIANA PODWÓJNA -->
+      <div class="type-card">
+        <span class="tag">Wymiana podwójna</span>
+        <h3 style="font-family:'Fraunces',serif;margin:0">AB + CD → AD + CB</h3>
+        <p>Dwa związki <strong>wymieniają się partnerami</strong> — jak na parkiecie tanecznym.</p>
+        <div class="svg-wrap">
+          <svg viewBox="0 0 340 120" width="100%" xmlns="http://www.w3.org/2000/svg" aria-label="Schemat wymiany podwójnej">
+            <g stroke="#0f1724" stroke-width="1.5" font-family="Inter,sans-serif" font-size="14" font-weight="700">
+              <circle cx="25" cy="60" r="15" fill="#c84e3f"/>
+              <circle cx="55" cy="60" r="15" fill="#2e6a7a"/>
+              <text x="40" y="100" text-anchor="middle" stroke="none">AB</text>
+              <text x="85" y="65" text-anchor="middle" font-size="22" stroke="none">+</text>
+              <circle cx="115" cy="60" r="15" fill="#d4a017"/>
+              <circle cx="145" cy="60" r="15" fill="#4a6b3a"/>
+              <text x="130" y="100" text-anchor="middle" stroke="none">CD</text>
+              <line x1="170" y1="60" x2="205" y2="60" marker-end="url(#arr4)"/>
+              <defs><marker id="arr4" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0f1724"/></marker></defs>
+              <circle cx="225" cy="60" r="15" fill="#c84e3f"/>
+              <circle cx="255" cy="60" r="15" fill="#4a6b3a"/>
+              <text x="240" y="100" text-anchor="middle" stroke="none">AD</text>
+              <text x="283" y="65" text-anchor="middle" font-size="22" stroke="none">+</text>
+              <circle cx="310" cy="60" r="15" fill="#d4a017"/>
+              <circle cx="325" cy="60" r="15" fill="#2e6a7a"/>
+            </g>
+          </svg>
+        </div>
+        <p><strong>Przykład:</strong> $\text{AgNO}_3 + \text{NaCl} \rightarrow \text{AgCl} + \text{NaNO}_3$</p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:22px">
+      <span class="bulb">💡 Jak rozpoznać rodzaj reakcji?</span>
+      <p>Policz, ile substancji jest po lewej i po prawej stronie strzałki:</p>
+      <ul>
+        <li><strong>2 → 1</strong>: synteza</li>
+        <li><strong>1 → 2</strong>: analiza</li>
+        <li><strong>pierwiastek + związek → związek + pierwiastek</strong>: wymiana pojedyncza</li>
+        <li><strong>2 związki → 2 związki</strong> (wymieniają się częściami): wymiana podwójna</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ROZDZIAŁ 3 -->
+  <section class="chapter" id="rozdzial-3">
+    <div class="chapter-head">
+      <span class="chapter-num">§ 03</span>
+      <h2>Zapisywanie i odczytywanie przebiegu reakcji</h2>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <div class="card accent-b">
+          <span class="tag">Anatomia równania</span>
+          <h3>Co składa się na równanie reakcji?</h3>
+          <!-- SVG: zaanotowane równanie -->
+          <svg viewBox="0 0 520 200" width="100%" xmlns="http://www.w3.org/2000/svg" aria-label="Elementy równania reakcji chemicznej">
+            <g font-family="Inter,sans-serif">
+              <!-- substraty -->
+              <text x="30" y="100" font-family="JetBrains Mono,monospace" font-size="28" font-weight="700">2H₂</text>
+              <text x="90" y="100" font-size="26">+</text>
+              <text x="115" y="100" font-family="JetBrains Mono,monospace" font-size="28" font-weight="700">O₂</text>
+              <text x="170" y="100" font-size="26" fill="#c84e3f">→</text>
+              <text x="205" y="100" font-family="JetBrains Mono,monospace" font-size="28" font-weight="700">2H₂O</text>
+
+              <!-- wsk. współczynnika -->
+              <path d="M35 75 Q 30 55 48 45" fill="none" stroke="#2e6a7a" stroke-width="1.5"/>
+              <text x="52" y="42" fill="#2e6a7a" font-size="12" font-weight="600">współczynnik</text>
+              <text x="52" y="56" fill="#2e6a7a" font-size="12">(ile cząsteczek)</text>
+
+              <!-- wsk. indeks -->
+              <path d="M65 98 Q 75 130 90 140" fill="none" stroke="#d4a017" stroke-width="1.5"/>
+              <text x="95" y="140" fill="#d4a017" font-size="12" font-weight="600">indeks</text>
+              <text x="95" y="154" fill="#d4a017" font-size="12">(ile atomów w cząsteczce)</text>
+
+              <!-- strzałka -->
+              <path d="M175 78 Q 175 55 195 45" fill="none" stroke="#c84e3f" stroke-width="1.5"/>
+              <text x="200" y="42" fill="#c84e3f" font-size="12" font-weight="600">strzałka</text>
+              <text x="200" y="56" fill="#c84e3f" font-size="12">(substraty → produkty)</text>
+
+              <!-- substraty/produkty etykiety -->
+              <text x="75" y="180" text-anchor="middle" fill="#2e6a7a" font-size="13" font-weight="700">SUBSTRATY</text>
+              <text x="240" y="180" text-anchor="middle" fill="#4a6b3a" font-size="13" font-weight="700">PRODUKTY</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div>
+        <div class="card accent-c">
+          <span class="tag">Uzgadnianie równań</span>
+          <h3>Zasada: ile atomów po lewej, tyle po prawej</h3>
+          <p>Atomy w reakcji nie znikają ani nie pojawiają się z niczego. <strong>Muszą się bilansować</strong>. Do tego używamy <em>współczynników</em> stawianych przed wzorami.</p>
+          <ol class="steps">
+            <li>Wypisz liczbę atomów każdego pierwiastka po obu stronach.</li>
+            <li>Dobierz współczynniki tak, aby liczby się zgadzały.</li>
+            <li>Nigdy nie zmieniaj indeksów we wzorach! Tylko współczynniki.</li>
+            <li>Sprawdź jeszcze raz: atom po atomie.</li>
+          </ol>
+
+          <div class="formula-box">
+            $\text{H}_2 + \text{Cl}_2 \rightarrow \text{HCl}$ &nbsp;→&nbsp; $\text{H}_2 + \text{Cl}_2 \rightarrow 2\text{HCl}$
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card accent-c" style="margin-top:22px">
+      <span class="tag">Odczytywanie równania</span>
+      <h3>Jak „przeczytać" reakcję słowami?</h3>
+      <p>Weźmy równanie: $2\text{H}_2 + \text{O}_2 \rightarrow 2\text{H}_2\text{O}$</p>
+      <ol class="steps">
+        <li><strong>Jakościowo (opisowo):</strong> wodór łączy się z tlenem, dając wodę.</li>
+        <li><strong>Cząsteczkowo:</strong> dwie cząsteczki wodoru reagują z jedną cząsteczką tlenu, tworząc dwie cząsteczki wody.</li>
+        <li><strong>Atomowo:</strong> po lewej 4 atomy H i 2 atomy O; po prawej 4 atomy H i 2 atomy O. Zgadza się!</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ROZDZIAŁ 4 -->
+  <section class="chapter" id="rozdzial-4">
+    <div class="chapter-head">
+      <span class="chapter-num">§ 04</span>
+      <h2>Prawo zachowania masy</h2>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <div class="card accent-d">
+          <span class="tag">Prawo Lavoisiera</span>
+          <h3>„Nic nie ginie, nic się nie rodzi z niczego"</h3>
+          <p>W reakcji chemicznej <strong>łączna masa substratów równa się łącznej masie produktów</strong>. Atomy nigdzie nie znikają — jedynie przegrupowują się, tworząc nowe cząsteczki.</p>
+
+          <div class="formula-box">
+            $m_\text{substratów} = m_\text{produktów}$
+          </div>
+
+          <div class="callout">
+            <span class="bulb">💡 Intuicja z klocków LEGO</span>
+            <p>Jeśli masz klocki LEGO i budujesz z nich statek, a potem rozkładasz go, by zbudować samolot — <em>liczba klocków się nie zmieni</em>. Atomy zachowują się tak samo.</p>
+          </div>
+
+          <h3 style="font-family:'Fraunces',serif;margin-top:18px">Przykład</h3>
+          <p>Jeśli spaliliśmy 4 g wodoru z 32 g tlenu:</p>
+          <div class="formula-box">
+            $m_\text{wodoru} + m_\text{tlenu} = m_\text{wody}$<br>
+            $4\,\text{g} + 32\,\text{g} = 36\,\text{g wody}$
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card accent-d">
+          <span class="tag">Wizualizacja — waga</span>
+          <h3>Waga laboratoryjna zawsze w równowadze</h3>
+          <svg viewBox="0 0 360 260" width="100%" xmlns="http://www.w3.org/2000/svg" aria-label="Waga pokazująca prawo zachowania masy">
+            <g stroke="#0f1724" stroke-width="2" font-family="Inter,sans-serif">
+              <!-- podstawa -->
+              <rect x="150" y="210" width="60" height="16" fill="#d4a017"/>
+              <line x1="180" y1="50" x2="180" y2="210"/>
+              <!-- ramię -->
+              <line x1="50" y1="90" x2="310" y2="90"/>
+              <line x1="180" y1="90" x2="180" y2="50"/>
+              <!-- talerze -->
+              <path d="M20 90 L80 90 L70 115 L30 115 Z" fill="#f2ecdc"/>
+              <path d="M280 90 L340 90 L330 115 L290 115 Z" fill="#f2ecdc"/>
+              <!-- lewa strona - substraty -->
+              <circle cx="40" cy="80" r="10" fill="#c84e3f"/>
+              <circle cx="58" cy="80" r="10" fill="#c84e3f"/>
+              <text x="49" y="135" text-anchor="middle" font-size="12" font-weight="600" stroke="none">2 H₂</text>
+              <circle cx="49" cy="55" r="12" fill="#2e6a7a"/>
+              <text x="49" y="155" text-anchor="middle" font-size="12" font-weight="600" stroke="none">+ O₂</text>
+              <text x="49" y="180" text-anchor="middle" font-size="14" fill="#c84e3f" font-weight="700" stroke="none">36 g</text>
+
+              <!-- prawa strona - produkty -->
+              <g>
+                <circle cx="295" cy="78" r="8" fill="#c84e3f"/>
+                <circle cx="310" cy="78" r="8" fill="#c84e3f"/>
+                <circle cx="302" cy="62" r="10" fill="#2e6a7a"/>
+              </g>
+              <g>
+                <circle cx="320" cy="78" r="8" fill="#c84e3f"/>
+                <circle cx="335" cy="78" r="8" fill="#c84e3f"/>
+                <circle cx="327" cy="62" r="10" fill="#2e6a7a"/>
+              </g>
+              <text x="310" y="135" text-anchor="middle" font-size="12" font-weight="600" stroke="none">2 H₂O</text>
+              <text x="310" y="180" text-anchor="middle" font-size="14" fill="#4a6b3a" font-weight="700" stroke="none">36 g</text>
+
+              <!-- znak równości -->
+              <text x="180" y="200" text-anchor="middle" font-size="32" font-weight="800" stroke="none">=</text>
+              <!-- podpis -->
+              <text x="180" y="250" text-anchor="middle" font-size="13" fill="#3b475a" stroke="none" font-style="italic">substraty = produkty</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZADANIA -->
+  <section class="chapter" id="zadania">
+    <div class="chapter-head">
+      <span class="chapter-num">§ 05</span>
+      <h2>45 zadań sprawdzających</h2>
+    </div>
+
+    <div class="tasks-header">
+      <div>
+        <strong style="font-family:'Fraunces',serif;font-size:18px">Kliknij „Pokaż rozwiązanie"</strong>, aby zobaczyć krok po kroku: <em>dane → szukane → rozwiązanie → odpowiedź</em>.
+      </div>
+      <div class="counts">
+        <span class="level-badge lvl-easy">1 – 15 · łatwe</span>
+        <span class="level-badge lvl-mid">16 – 30 · średnie</span>
+        <span class="level-badge lvl-hard">31 – 45 · trudne</span>
+      </div>
+    </div>
+
+    <ol class="tasks">
+
+      <!-- ========== EASY 1-15 ========== -->
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Własnymi słowami wyjaśnij, co mówi prawo stałości składu związku chemicznego.<span class="level"><span class="level-badge lvl-easy">łatwe</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Pytanie o definicję prawa.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Sformułowanie prawa stałości składu.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Prawo mówi o <strong>stosunku mas pierwiastków</strong> w związku chemicznym.</li>
+                <li>Ten stosunek jest <strong>zawsze taki sam</strong>, niezależnie od pochodzenia związku.</li>
+                <li>Np. woda zawsze ma stosunek H:O = 1:8.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">Stosunek mas pierwiastków tworzących dany związek chemiczny jest stały i charakterystyczny dla tego związku.</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">W wodzie stosunek masowy wodoru do tlenu wynosi 1:8. Ile gramów tlenu jest w 18 g wody?<span class="level"><span class="level-badge lvl-easy">łatwe</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>$m_\text{wody}=18\,\text{g}$, stosunek $m_\text{H}:m_\text{O}=1:8$</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>$m_\text{O}=?$</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Suma porcji: $1+8=9$ części.</li>
+                <li>Jedna część: $18 : 9 = 2\,\text{g}$.</li>
+                <li>Tlen stanowi 8 części: $8 \cdot 2 = 16\,\text{g}$.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">W 18 g wody jest 16 g tlenu (i 2 g wodoru).</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Oblicz stosunek masowy pierwiastków w cząsteczce CO₂ (masy atomowe: C = 12 u, O = 16 u).<span class="level"><span class="level-badge lvl-easy">łatwe</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>C = 12 u, O = 16 u, wzór $\text{CO}_2$</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Stosunek $m_\text{C}:m_\text{O}$</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>W $\text{CO}_2$ jest 1 atom węgla i 2 atomy tlenu.</li>
+                <li>Masa węgla: $1 \cdot 12 = 12$ u.</li>
+                <li>Masa tlenu: $2 \cdot 16 = 32$ u.</li>
+                <li>Stosunek: $12 : 32 = 3 : 8$.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">$m_\text{C}:m_\text{O} = 3:8$</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Podaj rodzaj reakcji: $2\text{H}_2 + \text{O}_2 \rightarrow 2\text{H}_2\text{O}$<span class="level"><span class="level-badge lvl-easy">łatwe</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Równanie z dwóch substratów i jednego produktu.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Nazwa rodzaju reakcji.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Po lewej: 2 substancje (H₂ i O₂).</li>
+                <li>Po prawej: 1 substancja (H₂O).</li>
+                <li>Wzorzec „2 → 1" to reakcja syntezy (łączenia).</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">Reakcja syntezy (łączenia).</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Podaj rodzaj reakcji: $2\text{H}_2\text{O} \rightarrow 2\text{H}_2 + \text{O}_2$<span class="level"><span class="level-badge lvl-easy">łatwe</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Jeden substrat, dwa produkty.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Rodzaj reakcji.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Po lewej: 1 substancja.</li>
+                <li>Po prawej: 2 substancje prostsze (H₂ i O₂).</li>
+                <li>Wzorzec „1 → 2" to reakcja analizy (rozkładu).</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">Reakcja analizy (rozkładu).</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Sformułuj prawo zachowania masy.<span class="level"><span class="level-badge lvl-easy">łatwe</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Pytanie o definicję.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Treść prawa Lavoisiera.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Masa nie powstaje ani nie znika w reakcji chemicznej.</li>
+                <li>Suma mas substratów = suma mas produktów.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">Łączna masa substratów biorących udział w reakcji równa się łącznej masie produktów. $m_\text{substr.} = m_\text{prod.}$</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Masa substratów w pewnej reakcji wynosi 25 g. Ile wynosi masa produktów?<span class="level"><span class="level-badge lvl-easy">łatwe</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>$m_\text{substr.} = 25\,\text{g}$</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>$m_\text{prod.} = ?$</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Z prawa zachowania masy: $m_\text{prod.} = m_\text{substr.}$.</li>
+                <li>Wstawiamy: $m_\text{prod.} = 25\,\text{g}$.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">Masa produktów to 25 g.</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Co to jest substrat reakcji?<span class="level"><span class="level-badge lvl-easy">łatwe</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Pytanie teoretyczne.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Definicja substratu.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>W równaniu reakcji zapisujemy: substraty → produkty.</li>
+                <li>Substraty to substancje, które wchodzą w reakcję.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">Substrat to substancja, która bierze udział w reakcji chemicznej (zapisywana po lewej stronie strzałki).</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Co to jest produkt reakcji?<span class="level"><span class="level-badge lvl-easy">łatwe</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Pytanie teoretyczne.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Definicja produktu.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Po prawej stronie strzałki w równaniu zapisujemy nowe substancje.</li>
+                <li>Te substancje to produkty.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">Produkt to nowa substancja powstała w wyniku reakcji chemicznej (zapisywana po prawej stronie strzałki).</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Podaj rodzaj reakcji: $\text{Zn} + 2\text{HCl} \rightarrow \text{ZnCl}_2 + \text{H}_2$<span class="level"><span class="level-badge lvl-easy">łatwe</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Pierwiastek + związek → nowy związek + pierwiastek.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Rodzaj reakcji.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Cynk (Zn) jako pierwiastek „zajmuje miejsce" wodoru w cząsteczce HCl.</li>
+                <li>Wodór zostaje wyparty i ulatnia się jako H₂.</li>
+                <li>Wzorzec A + BC → AC + B to wymiana pojedyncza.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">Reakcja wymiany pojedynczej.</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Podaj rodzaj reakcji: $\text{AgNO}_3 + \text{NaCl} \rightarrow \text{AgCl} + \text{NaNO}_3$<span class="level"><span class="level-badge lvl-easy">łatwe</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Dwa związki → dwa związki, z wymianą części.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Rodzaj reakcji.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>AgNO₃ i NaCl „wymieniają się partnerami": Ag łączy się z Cl, a Na z NO₃.</li>
+                <li>Wzorzec AB + CD → AD + CB to wymiana podwójna.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">Reakcja wymiany podwójnej.</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Ile atomów wodoru jest po lewej stronie równania $2\text{H}_2 + \text{O}_2 \rightarrow 2\text{H}_2\text{O}$?<span class="level"><span class="level-badge lvl-easy">łatwe</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Lewa strona: $2\text{H}_2$.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Liczba atomów H po lewej.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Indeks 2 mówi, że w cząsteczce H₂ są 2 atomy.</li>
+                <li>Współczynnik 2 mówi, że takich cząsteczek są 2.</li>
+                <li>Łącznie: $2 \cdot 2 = 4$ atomy H.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">4 atomy wodoru.</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Ile atomów tlenu jest po prawej stronie równania $2\text{H}_2 + \text{O}_2 \rightarrow 2\text{H}_2\text{O}$?<span class="level"><span class="level-badge lvl-easy">łatwe</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Prawa strona: $2\text{H}_2\text{O}$.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Liczba atomów O po prawej.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>W cząsteczce H₂O jest 1 atom O.</li>
+                <li>Cząsteczek są 2, więc łącznie: $2 \cdot 1 = 2$ atomy O.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">2 atomy tlenu.</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Odczytaj równanie: $\text{S} + \text{O}_2 \rightarrow \text{SO}_2$ — opisowo i cząsteczkowo.<span class="level"><span class="level-badge lvl-easy">łatwe</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Równanie spalania siarki.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Odczyt słowny.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Opisowo: siarka reaguje z tlenem, dając tlenek siarki(IV).</li>
+                <li>Cząsteczkowo: jeden atom siarki reaguje z jedną cząsteczką tlenu, tworząc jedną cząsteczkę SO₂.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">Siarka łączy się z tlenem, tworząc tlenek siarki(IV). Jeden atom siarki + jedna cząsteczka tlenu → jedna cząsteczka tlenku siarki(IV).</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Czy równanie $\text{H}_2 + \text{O}_2 \rightarrow \text{H}_2\text{O}$ jest uzgodnione? Uzasadnij.<span class="level"><span class="level-badge lvl-easy">łatwe</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Równanie bez współczynników.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Czy bilans atomów się zgadza.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Po lewej: 2 atomy H, 2 atomy O.</li>
+                <li>Po prawej: 2 atomy H, 1 atom O.</li>
+                <li>Atomów tlenu nie jest tyle samo po obu stronach!</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">Nie jest uzgodnione — po lewej są 2 atomy O, a po prawej tylko 1. Poprawne: $2\text{H}_2 + \text{O}_2 \rightarrow 2\text{H}_2\text{O}$.</div></div>
+          </div>
+        </details>
+      </li>
+
+      <!-- ========== MEDIUM 16-30 ========== -->
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">W tlenku miedzi(II) stosunek masowy Cu:O wynosi 4:1. Ile gramów miedzi jest w 25 g CuO?<span class="level"><span class="level-badge lvl-mid">średnie</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>$m_\text{CuO} = 25\,\text{g}$, stosunek Cu:O = 4:1.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>$m_\text{Cu} = ?$</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Suma części: $4 + 1 = 5$.</li>
+                <li>Jedna część: $25 : 5 = 5\,\text{g}$.</li>
+                <li>Miedź to 4 części: $4 \cdot 5 = 20\,\text{g}$.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">W 25 g CuO jest 20 g miedzi (i 5 g tlenu).</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Uzgodnij równanie: $\text{H}_2 + \text{Cl}_2 \rightarrow \text{HCl}$<span class="level"><span class="level-badge lvl-mid">średnie</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Równanie nieuzgodnione.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Współczynniki bilansujące.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Po lewej: 2 H i 2 Cl.</li>
+                <li>Po prawej: 1 H i 1 Cl — za mało.</li>
+                <li>Postawmy współczynnik 2 przed HCl: $\text{H}_2 + \text{Cl}_2 \rightarrow 2\text{HCl}$.</li>
+                <li>Sprawdzamy: lewa 2H 2Cl — prawa 2H 2Cl. Zgadza się!</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">$\text{H}_2 + \text{Cl}_2 \rightarrow 2\text{HCl}$</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Uzgodnij równanie: $\text{Na} + \text{O}_2 \rightarrow \text{Na}_2\text{O}$<span class="level"><span class="level-badge lvl-mid">średnie</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Synteza tlenku sodu.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Poprawne współczynniki.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Po lewej 2 atomy O (w O₂), po prawej 1 O (w Na₂O) — trzeba wyrównać tlen.</li>
+                <li>Postaw 2 przed Na₂O: $\text{Na} + \text{O}_2 \rightarrow 2\text{Na}_2\text{O}$ — teraz po prawej 4 Na.</li>
+                <li>Postaw 4 przed Na: $4\text{Na} + \text{O}_2 \rightarrow 2\text{Na}_2\text{O}$.</li>
+                <li>Sprawdź: L: 4 Na, 2 O. P: 4 Na, 2 O. Zgadza się!</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">$4\text{Na} + \text{O}_2 \rightarrow 2\text{Na}_2\text{O}$</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Uzgodnij równanie: $\text{Fe} + \text{O}_2 \rightarrow \text{Fe}_2\text{O}_3$<span class="level"><span class="level-badge lvl-mid">średnie</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Synteza tlenku żelaza(III).</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Współczynniki bilansujące.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Po prawej 3 atomy O (w Fe₂O₃), po lewej 2 — różnica. NWW(2,3) = 6.</li>
+                <li>Postaw 3 przed O₂ (wtedy 6 O) i 2 przed Fe₂O₃ (wtedy 6 O po prawej): $\text{Fe} + 3\text{O}_2 \rightarrow 2\text{Fe}_2\text{O}_3$.</li>
+                <li>Po prawej 4 Fe; postaw 4 przed Fe: $4\text{Fe} + 3\text{O}_2 \rightarrow 2\text{Fe}_2\text{O}_3$.</li>
+                <li>Sprawdź: L: 4 Fe, 6 O. P: 4 Fe, 6 O. Zgadza się!</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">$4\text{Fe} + 3\text{O}_2 \rightarrow 2\text{Fe}_2\text{O}_3$</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Z 25 g węglanu wapnia (CaCO₃) w wyniku prażenia powstało 14 g tlenku wapnia (CaO) i dwutlenek węgla (CO₂). Ile CO₂ powstało?<span class="level"><span class="level-badge lvl-mid">średnie</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>$m_{\text{CaCO}_3}=25\,\text{g}$, $m_{\text{CaO}}=14\,\text{g}$</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>$m_{\text{CO}_2}=?$</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Z prawa zachowania masy: $m_\text{substr.} = m_\text{prod.}$</li>
+                <li>$m_{\text{CaCO}_3} = m_{\text{CaO}} + m_{\text{CO}_2}$.</li>
+                <li>$25 = 14 + m_{\text{CO}_2}$, więc $m_{\text{CO}_2} = 25 - 14 = 11\,\text{g}$.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">Powstało 11 g dwutlenku węgla.</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">W pewnym związku AB stosunek masowy A:B = 3:2. Ile gramów A jest w 100 g tego związku?<span class="level"><span class="level-badge lvl-mid">średnie</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>$m_\text{AB}=100\,\text{g}$, stosunek A:B = 3:2.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>$m_\text{A}=?$</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Suma części: $3+2=5$.</li>
+                <li>Jedna część: $100 : 5 = 20\,\text{g}$.</li>
+                <li>Składnik A to 3 części: $3 \cdot 20 = 60\,\text{g}$.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">W 100 g związku jest 60 g A (i 40 g B).</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Oblicz masę cząsteczkową wody H₂O (H = 1 u, O = 16 u).<span class="level"><span class="level-badge lvl-mid">średnie</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>H = 1 u, O = 16 u.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>$m_{\text{H}_2\text{O}}=?$</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>W cząsteczce H₂O są 2 atomy H i 1 atom O.</li>
+                <li>$m = 2 \cdot 1 + 1 \cdot 16 = 2 + 16 = 18\,\text{u}$.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">Masa cząsteczkowa H₂O wynosi 18 u.</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Oblicz masę cząsteczkową CO₂ (C = 12 u, O = 16 u).<span class="level"><span class="level-badge lvl-mid">średnie</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>C = 12 u, O = 16 u.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>$m_{\text{CO}_2}=?$</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>W cząsteczce CO₂ jest 1 atom C i 2 atomy O.</li>
+                <li>$m = 1 \cdot 12 + 2 \cdot 16 = 12 + 32 = 44\,\text{u}$.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">Masa cząsteczkowa CO₂ wynosi 44 u.</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Uzgodnij równanie: $\text{Al} + \text{O}_2 \rightarrow \text{Al}_2\text{O}_3$<span class="level"><span class="level-badge lvl-mid">średnie</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Synteza tlenku glinu.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Poprawne współczynniki.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Po prawej 3 O (w Al₂O₃), po lewej 2 (w O₂). NWW(2,3)=6.</li>
+                <li>Stawiamy 3 przed O₂ i 2 przed Al₂O₃: $\text{Al} + 3\text{O}_2 \rightarrow 2\text{Al}_2\text{O}_3$.</li>
+                <li>Po prawej 4 Al — stawiamy 4 przed Al: $4\text{Al} + 3\text{O}_2 \rightarrow 2\text{Al}_2\text{O}_3$.</li>
+                <li>Sprawdź: L: 4 Al, 6 O. P: 4 Al, 6 O. ✓</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">$4\text{Al} + 3\text{O}_2 \rightarrow 2\text{Al}_2\text{O}_3$</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Uzgodnij równanie: $\text{N}_2 + \text{H}_2 \rightarrow \text{NH}_3$<span class="level"><span class="level-badge lvl-mid">średnie</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Synteza amoniaku.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Współczynniki.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Po lewej 2 atomy N, więc po prawej też 2 N → stawiamy 2 przed NH₃: $\text{N}_2 + \text{H}_2 \rightarrow 2\text{NH}_3$.</li>
+                <li>Po prawej jest 6 atomów H, po lewej 2 — stawiamy 3 przed H₂.</li>
+                <li>$\text{N}_2 + 3\text{H}_2 \rightarrow 2\text{NH}_3$.</li>
+                <li>Sprawdź: L: 2 N, 6 H. P: 2 N, 6 H. ✓</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">$\text{N}_2 + 3\text{H}_2 \rightarrow 2\text{NH}_3$</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Uzgodnij równanie: $\text{P} + \text{O}_2 \rightarrow \text{P}_2\text{O}_5$<span class="level"><span class="level-badge lvl-mid">średnie</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Synteza tlenku fosforu(V).</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Współczynniki.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>NWW liczby atomów O po obu stronach: NWW(2, 5) = 10.</li>
+                <li>Stawiamy 5 przed O₂ (10 O) i 2 przed P₂O₅ (10 O).</li>
+                <li>Po prawej 4 P — stawiamy 4 przed P.</li>
+                <li>$4\text{P} + 5\text{O}_2 \rightarrow 2\text{P}_2\text{O}_5$. Sprawdź: L: 4 P, 10 O. P: 4 P, 10 O. ✓</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">$4\text{P} + 5\text{O}_2 \rightarrow 2\text{P}_2\text{O}_5$</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Wyjaśnij, czym jest reakcja wymiany pojedynczej i podaj własny przykład.<span class="level"><span class="level-badge lvl-mid">średnie</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Pytanie teoretyczne.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Definicja + przykład.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Schemat: A + BC → AC + B.</li>
+                <li>Pierwiastek A „wypiera" pierwiastek B ze związku BC.</li>
+                <li>Przykład: $\text{Mg} + 2\text{HCl} \rightarrow \text{MgCl}_2 + \text{H}_2$.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">Reakcja wymiany pojedynczej to reakcja, w której pierwiastek wypiera inny pierwiastek ze związku, zajmując jego miejsce. Przykład: Mg + 2HCl → MgCl₂ + H₂.</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Uzgodnij równanie: $\text{Mg} + \text{HCl} \rightarrow \text{MgCl}_2 + \text{H}_2$<span class="level"><span class="level-badge lvl-mid">średnie</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Reakcja magnezu z kwasem solnym.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Współczynniki.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Po prawej 2 Cl (w MgCl₂) — postaw 2 przed HCl: $\text{Mg} + 2\text{HCl} \rightarrow \text{MgCl}_2 + \text{H}_2$.</li>
+                <li>Sprawdź: L: 1 Mg, 2 H, 2 Cl. P: 1 Mg, 2 H, 2 Cl. ✓</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">$\text{Mg} + 2\text{HCl} \rightarrow \text{MgCl}_2 + \text{H}_2$</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Ile atomów wszystkich pierwiastków jest w cząsteczce H₂SO₄?<span class="level"><span class="level-badge lvl-mid">średnie</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Wzór $\text{H}_2\text{SO}_4$.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Łączna liczba atomów.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Wodór: indeks 2 → 2 atomy H.</li>
+                <li>Siarka: bez indeksu → 1 atom S.</li>
+                <li>Tlen: indeks 4 → 4 atomy O.</li>
+                <li>Razem: $2 + 1 + 4 = 7$ atomów.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">7 atomów (2 H + 1 S + 4 O).</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Odczytaj stechiometrycznie równanie: $\text{CaCO}_3 \rightarrow \text{CaO} + \text{CO}_2$<span class="level"><span class="level-badge lvl-mid">średnie</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Rozkład węglanu wapnia.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Odczyt słowny.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Identyfikujemy rodzaj reakcji: 1 substrat → 2 produkty = analiza.</li>
+                <li>Cząsteczkowo: 1 cząsteczka CaCO₃ → 1 cząsteczka CaO + 1 cząsteczka CO₂.</li>
+                <li>Atomowo: L: 1 Ca, 1 C, 3 O. P: 1 Ca, 1 C, 1+2=3 O. ✓</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">Z jednej cząsteczki węglanu wapnia powstają: jedna cząsteczka tlenku wapnia i jedna cząsteczka dwutlenku węgla. Jest to reakcja analizy (rozkładu).</div></div>
+          </div>
+        </details>
+      </li>
+
+      <!-- ========== HARD 31-45 ========== -->
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">W 54 g wody znajduje się 6 g wodoru. Ile jest tlenu i czy zgadza się to ze stosunkiem 1:8?<span class="level"><span class="level-badge lvl-hard">trudne</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>$m_\text{wody}=54\,\text{g}$, $m_\text{H}=6\,\text{g}$, stosunek teoretyczny 1:8.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>$m_\text{O}=?$ oraz weryfikacja stosunku.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Z bilansu mas: $m_\text{O} = 54 - 6 = 48\,\text{g}$.</li>
+                <li>Stosunek: $6 : 48$.</li>
+                <li>Dzielimy obie liczby przez 6: $6:48 = 1:8$. ✓</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">Masa tlenu to 48 g. Stosunek $m_\text{H}:m_\text{O}=1:8$ — zgadza się z prawem stałości składu.</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Ile gramów miedzi potrzeba, aby otrzymać 40 g tlenku miedzi(II), wiedząc że Cu:O = 4:1?<span class="level"><span class="level-badge lvl-hard">trudne</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>$m_\text{CuO}=40\,\text{g}$, stosunek Cu:O = 4:1.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>$m_\text{Cu}=?$ oraz $m_\text{O}=?$</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Łączna liczba części: $4 + 1 = 5$.</li>
+                <li>Jedna część: $40 : 5 = 8\,\text{g}$.</li>
+                <li>Miedź = 4 części: $4 \cdot 8 = 32\,\text{g}$.</li>
+                <li>Tlen = 1 część: $8\,\text{g}$.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">Potrzeba 32 g miedzi (i 8 g tlenu).</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">W wyniku spalenia 12 g węgla w 32 g tlenu powstał CO₂. Ile go powstało i jaki jest stosunek masowy C:O w CO₂?<span class="level"><span class="level-badge lvl-hard">trudne</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>$m_\text{C}=12\,\text{g}$, $m_\text{O}=32\,\text{g}$.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>$m_{\text{CO}_2}=?$, stosunek C:O.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Prawo zachowania masy: $m_{\text{CO}_2} = m_\text{C} + m_\text{O} = 12 + 32 = 44\,\text{g}$.</li>
+                <li>Stosunek mas: $12 : 32$.</li>
+                <li>Dzielimy przez 4: $12 : 32 = 3 : 8$.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">Powstało 44 g CO₂. Stosunek $m_\text{C}:m_\text{O} = 3:8$.</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">W reakcji 5,4 g glinu z 4,8 g tlenu powstał Al₂O₃ (cały glin i cały tlen przereagowały). Ile go powstało?<span class="level"><span class="level-badge lvl-hard">trudne</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>$m_\text{Al}=5{,}4\,\text{g}$, $m_{\text{O}_2}=4{,}8\,\text{g}$.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>$m_{\text{Al}_2\text{O}_3}=?$</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Z prawa zachowania masy: masa produktów = masa substratów.</li>
+                <li>$m_{\text{Al}_2\text{O}_3} = 5{,}4 + 4{,}8 = 10{,}2\,\text{g}$.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">Powstało 10,2 g tlenku glinu.</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Uzgodnij równanie spalania etanu: $\text{C}_2\text{H}_6 + \text{O}_2 \rightarrow \text{CO}_2 + \text{H}_2\text{O}$<span class="level"><span class="level-badge lvl-hard">trudne</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Równanie nieuzgodnione.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Współczynniki.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Bilansujemy C: po lewej 2 C, więc 2 przed CO₂: $\text{C}_2\text{H}_6 + \text{O}_2 \rightarrow 2\text{CO}_2 + \text{H}_2\text{O}$.</li>
+                <li>Bilansujemy H: po lewej 6 H, więc 3 przed H₂O: $\text{C}_2\text{H}_6 + \text{O}_2 \rightarrow 2\text{CO}_2 + 3\text{H}_2\text{O}$.</li>
+                <li>Liczymy O po prawej: $2\cdot 2 + 3 = 7$. Po lewej ma być 7 O, czyli $\frac{7}{2}$ przed O₂.</li>
+                <li>Aby uniknąć ułamka, mnożymy całe równanie przez 2: $2\text{C}_2\text{H}_6 + 7\text{O}_2 \rightarrow 4\text{CO}_2 + 6\text{H}_2\text{O}$.</li>
+                <li>Sprawdź: L: 4 C, 12 H, 14 O. P: 4 C, 12 H, $4\cdot 2+6=14$ O. ✓</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">$2\text{C}_2\text{H}_6 + 7\text{O}_2 \rightarrow 4\text{CO}_2 + 6\text{H}_2\text{O}$</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Uzgodnij równanie spalania metanu: $\text{CH}_4 + \text{O}_2 \rightarrow \text{CO}_2 + \text{H}_2\text{O}$<span class="level"><span class="level-badge lvl-hard">trudne</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Równanie spalania metanu.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Współczynniki.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>C po obu stronach: 1 = 1. OK.</li>
+                <li>H po lewej 4, po prawej 2 — stawiamy 2 przed H₂O: $\text{CH}_4 + \text{O}_2 \rightarrow \text{CO}_2 + 2\text{H}_2\text{O}$.</li>
+                <li>O po prawej: $2+2=4$. Po lewej musi być 4 → stawiamy 2 przed O₂.</li>
+                <li>$\text{CH}_4 + 2\text{O}_2 \rightarrow \text{CO}_2 + 2\text{H}_2\text{O}$. Sprawdź: L: 1C 4H 4O. P: 1C 4H 4O. ✓</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">$\text{CH}_4 + 2\text{O}_2 \rightarrow \text{CO}_2 + 2\text{H}_2\text{O}$</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Ile gramów żelaza znajduje się w 160 g tlenku żelaza(III) Fe₂O₃? (Fe = 56 u, O = 16 u)<span class="level"><span class="level-badge lvl-hard">trudne</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>$m_{\text{Fe}_2\text{O}_3}=160\,\text{g}$, Fe = 56 u, O = 16 u.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>$m_\text{Fe}=?$</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Masa cząsteczkowa Fe₂O₃: $2\cdot 56 + 3\cdot 16 = 112 + 48 = 160\,\text{u}$.</li>
+                <li>Masa żelaza w cząsteczce: 112 u, tlenu: 48 u.</li>
+                <li>Stosunek masowy Fe : O = $112 : 48 = 7 : 3$.</li>
+                <li>W 160 g rozkładamy proporcjonalnie (bo $160\,\text{g}$ odpowiada masie cząsteczkowej $160\,\text{u}$): Fe = 112 g, O = 48 g.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">W 160 g Fe₂O₃ jest 112 g żelaza (i 48 g tlenu).</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Spaliliśmy 6 g węgla i otrzymaliśmy 22 g CO₂. Ile tlenu zostało zużyte?<span class="level"><span class="level-badge lvl-hard">trudne</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>$m_\text{C}=6\,\text{g}$, $m_{\text{CO}_2}=22\,\text{g}$.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>$m_{\text{O}_2}=?$</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Z prawa zachowania masy: $m_\text{C} + m_{\text{O}_2} = m_{\text{CO}_2}$.</li>
+                <li>$6 + m_{\text{O}_2} = 22$.</li>
+                <li>$m_{\text{O}_2} = 22 - 6 = 16\,\text{g}$.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">Zużyto 16 g tlenu.</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Z 8 g wodoru i 64 g tlenu otrzymano wodę (cały wodór i cały tlen przereagowały). Ile powstało wody i czy proporcja się zgadza?<span class="level"><span class="level-badge lvl-hard">trudne</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>$m_\text{H}=8\,\text{g}$, $m_\text{O}=64\,\text{g}$, stosunek w wodzie 1:8.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>$m_\text{wody}=?$ oraz sprawdzenie proporcji.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Sprawdzamy proporcję: $8 : 64 = 1 : 8$. ✓ — wszystko się połączy w wodę.</li>
+                <li>Z prawa zachowania masy: $m_\text{wody} = 8 + 64 = 72\,\text{g}$.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">Powstało 72 g wody. Proporcja 1:8 jest zachowana.</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Napisz równanie spalania siarki w tlenie do SO₂ i odczytaj je stechiometrycznie.<span class="level"><span class="level-badge lvl-hard">trudne</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Siarka spala się w tlenie, produkt: SO₂.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Uzgodnione równanie i jego odczyt.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Substraty: S i O₂. Produkt: SO₂.</li>
+                <li>Bilansujemy: 1 S po lewej, 1 S po prawej. 2 O po lewej, 2 O po prawej. Już uzgodnione.</li>
+                <li>Zapis: $\text{S} + \text{O}_2 \rightarrow \text{SO}_2$.</li>
+                <li>Odczyt: 1 atom siarki reaguje z 1 cząsteczką tlenu, dając 1 cząsteczkę tlenku siarki(IV). To reakcja syntezy.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">$\text{S} + \text{O}_2 \rightarrow \text{SO}_2$. Jeden atom siarki łączy się z jedną cząsteczką tlenu, tworząc jedną cząsteczkę tlenku siarki(IV) — reakcja syntezy.</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Uzgodnij równanie: $\text{KClO}_3 \rightarrow \text{KCl} + \text{O}_2$<span class="level"><span class="level-badge lvl-hard">trudne</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Rozkład chloranu(V) potasu.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Współczynniki.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Po lewej 3 atomy O (w KClO₃), po prawej 2 (w O₂). NWW(3,2)=6.</li>
+                <li>Stawiamy 2 przed KClO₃ (6 O) i 3 przed O₂ (6 O): $2\text{KClO}_3 \rightarrow \text{KCl} + 3\text{O}_2$.</li>
+                <li>Teraz po lewej 2 K i 2 Cl — stawiamy 2 przed KCl.</li>
+                <li>$2\text{KClO}_3 \rightarrow 2\text{KCl} + 3\text{O}_2$. Sprawdź: L: 2 K, 2 Cl, 6 O. P: 2 K, 2 Cl, 6 O. ✓</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">$2\text{KClO}_3 \rightarrow 2\text{KCl} + 3\text{O}_2$</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Ile razy cząsteczka H₂SO₄ jest cięższa od cząsteczki H₂O? (H=1, O=16, S=32)<span class="level"><span class="level-badge lvl-hard">trudne</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>H=1 u, O=16 u, S=32 u.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>$\frac{m_{\text{H}_2\text{SO}_4}}{m_{\text{H}_2\text{O}}} = ?$</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>$m_{\text{H}_2\text{SO}_4} = 2\cdot 1 + 32 + 4\cdot 16 = 2 + 32 + 64 = 98\,\text{u}$.</li>
+                <li>$m_{\text{H}_2\text{O}} = 2\cdot 1 + 16 = 18\,\text{u}$.</li>
+                <li>Iloraz: $\frac{98}{18} \approx 5{,}44$.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">Cząsteczka kwasu siarkowego(VI) jest około 5,44 razy cięższa od cząsteczki wody.</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">W reakcji $4\text{Fe} + 3\text{O}_2 \rightarrow 2\text{Fe}_2\text{O}_3$ z 56 g żelaza powstanie tlenek. Ile go powstanie? (Fe=56 u, O=16 u)<span class="level"><span class="level-badge lvl-hard">trudne</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>$m_\text{Fe}=56\,\text{g}$; z równania: 4 Fe → 2 Fe₂O₃.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>$m_{\text{Fe}_2\text{O}_3}=?$</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Masa 4 atomów Fe: $4\cdot 56 = 224\,\text{u}$.</li>
+                <li>Masa 2 cząsteczek Fe₂O₃: $2 \cdot (2\cdot 56 + 3\cdot 16) = 2 \cdot 160 = 320\,\text{u}$.</li>
+                <li>Proporcja: $224\,\text{g Fe}$ daje $320\,\text{g Fe}_2\text{O}_3$.</li>
+                <li>Z $56\,\text{g}$ Fe: $\frac{56}{224} \cdot 320 = \frac{1}{4} \cdot 320 = 80\,\text{g}$.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">Powstanie 80 g tlenku żelaza(III).</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Czym różni się mieszanina od związku chemicznego w kontekście prawa stałości składu?<span class="level"><span class="level-badge lvl-hard">trudne</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>Porównanie mieszaniny i związku chemicznego.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>Kluczowe różnice.</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>W związku chemicznym stosunek mas pierwiastków jest <strong>stały</strong> (prawo Prousta). Np. woda ZAWSZE ma H:O = 1:8.</li>
+                <li>W mieszaninie proporcje są <strong>dowolne</strong>. Np. sól z wodą możesz zrobić słoną, bardziej lub mniej.</li>
+                <li>Składniki mieszaniny zachowują swoje właściwości — soli nadal czuć smak, a wody — mokrość.</li>
+                <li>W związku nowe właściwości: woda nie ma nic wspólnego z wodorem (gaz) ani z tlenem (gaz).</li>
+                <li>Mieszaninę można rozdzielić metodami fizycznymi, związek — tylko chemicznie.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">W związku chemicznym stosunek mas pierwiastków jest zawsze stały (prawo stałości składu Prousta), a w mieszaninie — dowolny. Związek ma nowe właściwości, mieszanina zachowuje cechy składników.</div></div>
+          </div>
+        </details>
+      </li>
+
+      <li class="task">
+        <div class="task-head">
+          <div class="num"></div>
+          <div class="q">Spalono (prażono) 100 g węglanu wapnia CaCO₃. Otrzymano 56 g tlenku wapnia CaO i gaz. Ile gazu powstało?<span class="level"><span class="level-badge lvl-hard">trudne</span></span></div>
+        </div>
+        <details class="sol"><summary>Pokaż rozwiązanie</summary>
+          <div class="sol-body">
+            <div class="sol-section dane"><h4>Dane</h4><div>$m_{\text{CaCO}_3}=100\,\text{g}$, $m_{\text{CaO}}=56\,\text{g}$.</div></div>
+            <div class="sol-section szuk"><h4>Szukane</h4><div>$m_{\text{CO}_2}=?$</div></div>
+            <div class="sol-section rozw"><h4>Rozwiązanie krok po kroku</h4>
+              <ol class="steps">
+                <li>Reakcja: $\text{CaCO}_3 \rightarrow \text{CaO} + \text{CO}_2$.</li>
+                <li>Z prawa zachowania masy: $m_{\text{CaCO}_3} = m_{\text{CaO}} + m_{\text{CO}_2}$.</li>
+                <li>$100 = 56 + m_{\text{CO}_2}$.</li>
+                <li>$m_{\text{CO}_2} = 100 - 56 = 44\,\text{g}$.</li>
+              </ol>
+            </div>
+            <div class="sol-section odp"><h4>Odpowiedź</h4><div class="answer">Powstało 44 g dwutlenku węgla.</div></div>
+          </div>
+        </details>
+      </li>
+
+    </ol>
+  </section>
+
+  <footer>
+    Korepetycje · Chemia · klasa 7 · 2026
+  </footer>
+</div>
+</body>
+</html>
