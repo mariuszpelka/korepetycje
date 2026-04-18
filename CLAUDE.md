@@ -50,7 +50,9 @@ Strona startowa `/index.html` grupuje karty w sekcje per przedmiot — każda se
 - Branch główny: `main`; zawsze pracuj na osobnym branchu feature
 - Commit messages po polsku, opisują „dlaczego" bardziej niż „co"
 - PR title i body po polsku; struktura: `## Summary` (1–3 bullet) + `## Test plan` (checklista)
-- Nie commitować katalogu `.claude/` (lokalne ustawienia)
+- `.claude/` — zasada selektywna:
+  - **commituj** `.claude/skills/` (projektowe skille dzielone przez repo, np. `korepetycje-html`, `korepetycje-humanistyczne-html`)
+  - **NIE commituj** `.claude/settings.local.json` (osobiste uprawnienia użytkownika — konwencja `.local.*`). Plik jest już w `.gitignore`
 
 ## 7. Weryfikacja zmian UI
 
