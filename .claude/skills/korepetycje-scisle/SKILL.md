@@ -1,6 +1,6 @@
   ---
-  name: korepetycje
-  description: Generuje materiał korepetycji z podanego przedmiotu dla ucznia szkoły podstawowej w formacie strony html
+  name: korepetycje-scisle
+  description: Generuje materiał korepetycji z przedmiotów ścisłych (matematyka, fizyka, chemia, biologia) dla ucznia szkoły podstawowej w formacie strony html
   disable-model-invocation: true
   argument-hint: [przedmiot] [temat]
   ---
