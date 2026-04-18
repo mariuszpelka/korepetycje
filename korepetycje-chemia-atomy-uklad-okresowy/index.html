@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chemia · Atomy i układ okresowy — praca klasowa, klasa 7</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\\\(',right:'\\\\)',display:false},{left:'\\\\[',right:'\\\\]',display:true}]});"></script>
+
+<style>
+:root{
+  --bg:#07120f;
+  --bg2:#0c1d19;
+  --ink:#e9fbf4;
+  --muted:#9fc5b7;
+  --card:#10251f;
+  --card2:#15342b;
+  --line:rgba(255,255,255,.08);
+  --chem:#06d6a0;
+  --chem-soft:#43e8b6;
+  --gold:#ffd166;
+  --rose:#ef476f;
+  --blue:#4cc9f0;
+  --violet:#b388ff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:
+  radial-gradient(1200px 800px at 10% -10%, #0d3b30 0%, transparent 60%),
+  radial-gradient(1000px 700px at 95% 0%, #124034 0%, transparent 55%),
+  radial-gradient(900px 700px at 50% 100%, #1a3b2f 0%, transparent 60%),
+  linear-gradient(180deg,#07120f 0%,#05100d 100%);
+  color:var(--ink);font-family:"Manrope","Segoe UI",system-ui,sans-serif;line-height:1.6;min-height:100vh}
+.container{max-width:1140px;margin:0 auto;padding:40px 22px 80px}
+
+/* HERO */
+header.hero{
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#06d6a0 0%,#04a386 45%,#116b58 100%);
+  border-radius:28px;padding:54px 38px;margin-bottom:38px;color:#06201a;
+  box-shadow:0 26px 70px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.25);
+}
+header.hero::before{
+  content:"";position:absolute;right:-110px;top:-110px;width:340px;height:340px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.35),transparent 70%);
+}
+header.hero::after{
+  content:"";position:absolute;left:-90px;bottom:-90px;width:220px;height:220px;border-radius:50%;
+  background:radial-gradient(circle,rgba(6,32,26,.30),transparent 70%);
+}
+.kicker{display:inline-block;background:#06201a;color:#ffd166;padding:7px 16px;border-radius:999px;font-size:.8rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+h1{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(2rem,4vw,3.2rem);margin:.35em 0 .25em;line-height:1.08;letter-spacing:-.01em;position:relative;z-index:1}
+.sub{font-size:1.12rem;position:relative;z-index:1;max-width:720px;color:#0b2a23;font-weight:500}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;position:relative;z-index:1}
+.hero-meta .tag{background:#06201a;color:#43e8b6;padding:5px 12px;border-radius:999px;font-size:.78rem;font-weight:700;letter-spacing:.05em}
+
+/* NAV */
+.toc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 22px;margin-bottom:28px}
+.toc .toc-title{color:var(--chem-soft);font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:.78rem;margin-bottom:10px}
+.toc ol{margin:0;padding-left:20px;color:var(--muted);columns:2;column-gap:30px}
+.toc li{margin:3px 0}
+.toc a{color:var(--ink);text-decoration:none;border-bottom:1px dashed transparent;transition:border-color .2s}
+.toc a:hover{border-bottom-color:var(--chem-soft)}
+
+/* SECTIONS */
+section.theory{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:30px 32px;margin-bottom:28px;position:relative;overflow:hidden}
+section.theory::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--chem),var(--gold))}
+section.theory h2{font-family:"Fraunces",serif;font-weight:800;color:var(--chem-soft);font-size:clamp(1.4rem,2.5vw,1.85rem);margin:0 0 6px;letter-spacing:-.01em}
+section.theory .lead{color:var(--muted);margin-top:0;margin-bottom:20px;font-size:1rem}
+section.theory h3{color:var(--gold);margin:22px 0 10px;font-size:1.1rem;font-weight:700;letter-spacing:.01em}
+section.theory p{margin:8px 0 12px}
+section.theory ul,section.theory ol{padding-left:22px}
+section.theory li{margin:6px 0}
+section.theory strong{color:var(--chem-soft)}
+section.theory em{color:var(--gold);font-style:normal;font-weight:600}
+
+.sec-num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--chem),#04a386);color:#06201a;font-weight:900;font-family:"Fraunces",serif;margin-right:10px;box-shadow:0 6px 18px rgba(6,214,160,.25)}
+
+/* info/example/warn boxes */
+.box{border-radius:14px;padding:14px 18px;margin:14px 0;border:1px solid var(--line)}
+.box .tag{display:inline-block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800;padding:2px 8px;border-radius:999px;margin-right:8px;vertical-align:2px}
+.box.info{background:rgba(76,201,240,.08);border-color:rgba(76,201,240,.30)}
+.box.info .tag{background:rgba(76,201,240,.20);color:#9ee3ff}
+.box.example{background:rgba(6,214,160,.07);border-color:rgba(6,214,160,.28)}
+.box.example .tag{background:rgba(6,214,160,.20);color:#9bf3d5}
+.box.warn{background:rgba(255,209,102,.07);border-color:rgba(255,209,102,.35)}
+.box.warn .tag{background:rgba(255,209,102,.22);color:#ffe08a}
+.box.tip{background:rgba(179,136,255,.07);border-color:rgba(179,136,255,.30)}
+.box.tip .tag{background:rgba(179,136,255,.22);color:#d5befd}
+
+/* formula line */
+.fml{background:rgba(255,255,255,.035);border:1px dashed var(--line);border-radius:12px;padding:12px 16px;margin:12px 0;font-family:"JetBrains Mono",monospace}
+
+/* key/value list */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:14px 0}
+.grid .cell{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.grid .cell b{display:block;color:var(--chem-soft);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.grid .cell span{color:var(--ink);font-weight:600}
+
+/* table for periodic table snippet */
+.pt-wrap{overflow-x:auto;margin:18px 0}
+.pt{border-collapse:separate;border-spacing:4px;margin:0 auto;font-size:.82rem}
+.pt td{width:54px;height:58px;text-align:center;vertical-align:middle;border-radius:8px;padding:4px;color:#fff;font-weight:600;border:1px solid rgba(255,255,255,.12)}
+.pt td.empty{background:transparent;border:none}
+.pt td .z{display:block;font-size:.62rem;opacity:.8;font-weight:500}
+.pt td .sym{display:block;font-weight:800;font-size:1rem}
+.pt td .mass{display:block;font-size:.6rem;opacity:.85}
+.pt td.metal{background:linear-gradient(135deg,#2f7d62,#225a47)}
+.pt td.nonmetal{background:linear-gradient(135deg,#8b3a5c,#5a2340)}
+.pt td.noble{background:linear-gradient(135deg,#6b4a9e,#3d2866)}
+.pt td.metaloid{background:linear-gradient(135deg,#a67a34,#6c4a18)}
+.pt td.halogen{background:linear-gradient(135deg,#c55c4a,#7a3428)}
+.pt caption{caption-side:bottom;color:var(--muted);font-size:.82rem;padding-top:10px}
+.pt-legend{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:8px}
+.pt-legend span{font-size:.72rem;padding:3px 10px;border-radius:999px;color:#fff}
+
+/* SVG styling wrapper */
+.svg-wrap{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:16px;padding:18px;margin:18px 0;text-align:center}
+.svg-wrap svg{max-width:100%;height:auto}
+.svg-caption{color:var(--muted);font-size:.88rem;margin-top:8px;font-style:italic}
+
+/* EXERCISES */
+section.exercises{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:30px 32px;margin-bottom:28px}
+section.exercises h2{font-family:"Fraunces",serif;color:var(--gold);font-size:clamp(1.5rem,2.6vw,2rem);margin:0 0 6px}
+section.exercises .lead{color:var(--muted);margin:0 0 20px}
+
+.level-filter{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 22px}
+.level-filter button{background:var(--card2);color:var(--ink);border:1px solid var(--line);padding:8px 14px;border-radius:999px;font-family:inherit;font-size:.88rem;font-weight:600;cursor:pointer;transition:transform .15s,background .15s,border-color .15s}
+.level-filter button:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.3)}
+.level-filter button.active{background:linear-gradient(135deg,var(--chem),#04a386);color:#06201a;border-color:transparent}
+
+ol.qlist{list-style:none;padding:0;margin:0;counter-reset:q}
+ol.qlist > li{counter-increment:q;margin:0 0 12px}
+
+details.q{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:0;overflow:hidden;transition:border-color .2s}
+details.q[open]{border-color:rgba(6,214,160,.35);box-shadow:0 12px 30px rgba(0,0,0,.35)}
+details.q summary{list-style:none;cursor:pointer;padding:14px 18px;display:flex;align-items:flex-start;gap:12px;user-select:none}
+details.q summary::-webkit-details-marker{display:none}
+details.q summary::after{content:"+";margin-left:auto;font-weight:800;color:var(--chem-soft);font-size:1.3rem;line-height:1;flex-shrink:0;transition:transform .2s}
+details.q[open] summary::after{content:"−";transform:rotate(0)}
+.qnum{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:28px;padding:0 8px;border-radius:8px;background:rgba(255,255,255,.06);color:var(--muted);font-weight:700;font-size:.85rem;flex-shrink:0}
+details.q[open] .qnum{background:linear-gradient(135deg,var(--chem),#04a386);color:#06201a}
+.level{display:inline-block;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;padding:3px 8px;border-radius:999px;flex-shrink:0;margin-top:3px}
+.level.easy{background:rgba(76,201,240,.18);color:#9ee3ff}
+.level.mid{background:rgba(255,209,102,.2);color:#ffe08a}
+.level.hard{background:rgba(239,71,111,.2);color:#ffb2c4}
+.qt{color:var(--ink);font-weight:500}
+
+.answer{padding:4px 18px 18px 18px;border-top:1px dashed var(--line);margin-top:2px}
+.answer .a-block{margin:10px 0}
+.answer .a-label{display:inline-block;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;padding:3px 10px;border-radius:999px;margin-bottom:6px}
+.a-label.dane{background:rgba(76,201,240,.18);color:#9ee3ff}
+.a-label.szukane{background:rgba(179,136,255,.18);color:#d5befd}
+.a-label.roz{background:rgba(255,209,102,.18);color:#ffe08a}
+.a-label.odp{background:rgba(6,214,160,.22);color:#9bf3d5}
+.answer .calc{background:rgba(255,255,255,.04);border-left:3px solid var(--chem);border-radius:8px;padding:8px 12px;margin:6px 0;font-family:"JetBrains Mono",monospace;font-size:.92rem}
+.answer ul{margin:6px 0;padding-left:20px}
+.answer li{margin:4px 0}
+
+/* back link */
+.back{display:inline-flex;align-items:center;gap:6px;color:var(--chem-soft);text-decoration:none;font-weight:600;margin-bottom:18px;padding:8px 14px;background:rgba(6,214,160,.08);border:1px solid rgba(6,214,160,.25);border-radius:999px;font-size:.9rem;transition:all .2s}
+.back:hover{background:rgba(6,214,160,.16);transform:translateX(-3px)}
+.back::before{content:"←"}
+
+footer{text-align:center;color:var(--muted);margin-top:40px;font-size:.88rem;opacity:.8}
+
+@media(max-width:640px){
+  .container{padding:28px 14px 60px}
+  header.hero{padding:34px 22px}
+  section.theory,section.exercises{padding:22px 18px}
+  .toc ol{columns:1}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<a class="back" href="../index.html">wróć do listy kart</a>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <span class="kicker">Chemia · Klasa 7 · Praca klasowa</span>
+  <h1>Atomy i układ okresowy — zestaw powtórzeniowy</h1>
+  <p class="sub">Kompletny zestaw do pracy klasowej: budowa atomu, układ okresowy pierwiastków, masa atomowa i cząsteczkowa oraz związek budowy atomu z jego miejscem w układzie. Teoria, przykłady i <b>45 zadań</b> z rozwijanym kluczem odpowiedzi.</p>
+  <div class="hero-meta">
+    <span class="tag">⚛︎ 5 sekcji teorii</span>
+    <span class="tag">🧪 45 zadań</span>
+    <span class="tag">📐 wzory w KaTeX</span>
+    <span class="tag">🎯 3 poziomy trudności</span>
+  </div>
+</header>
+
+<!-- ===================== TOC ===================== -->
+<nav class="toc">
+  <div class="toc-title">Zakres materiału</div>
+  <ol>
+    <li><a href="#s1">Atomy i cząsteczki</a></li>
+    <li><a href="#s2">Układ okresowy pierwiastków</a></li>
+    <li><a href="#s3">Masa atomowa i cząsteczkowa</a></li>
+    <li><a href="#s4">Budowa atomu: p⁺, n⁰, e⁻</a></li>
+    <li><a href="#s5">Budowa atomu a położenie w układzie</a></li>
+    <li><a href="#zad">Zadania (45)</a></li>
+  </ol>
+</nav>
+
+<!-- ===================== SECTION 1 ===================== -->
+<section class="theory" id="s1">
+  <h2><span class="sec-num">1</span>Atomy i cząsteczki</h2>
+  <p class="lead">Materia, którą widzisz dookoła — woda, powietrze, stół, twoja ręka — jest zbudowana z maleńkich klocków. Najmniejszym klockiem pierwiastka jest <strong>atom</strong>. Z atomów powstają <strong>cząsteczki</strong>.</p>
+
+  <h3>Co to jest atom?</h3>
+  <p><strong>Atom</strong> to najmniejsza cząstka pierwiastka chemicznego zachowująca jego właściwości. Każdy atom ma swoją nazwę (np. wodór, tlen, żelazo) i <em>symbol chemiczny</em> — jedno- lub dwuliterowy skrót: H, O, Fe.</p>
+
+  <div class="box info"><span class="tag">zapamiętaj</span>Symbol chemiczny pisze się zawsze dużą literą, a jeśli jest dwuliterowy — druga litera jest mała. Dlatego <b>Co</b> to kobalt (pierwiastek), a <b>CO</b> to tlenek węgla (związek z dwóch atomów).</div>
+
+  <h3>Co to jest cząsteczka?</h3>
+  <p><strong>Cząsteczka</strong> to zespół dwóch lub więcej atomów połączonych wiązaniami chemicznymi. Cząsteczki dzielimy na:</p>
+  <ul>
+    <li><em>Cząsteczki pierwiastków</em> — atomy tego samego rodzaju: $O_2$, $N_2$, $H_2$, $Cl_2$.</li>
+    <li><em>Cząsteczki związków chemicznych</em> — atomy różnych pierwiastków: $H_2O$ (woda), $CO_2$ (dwutlenek węgla), $NaCl$ (sól kuchenna).</li>
+  </ul>
+
+  <div class="svg-wrap" aria-label="Porównanie atomu, cząsteczki pierwiastka i cząsteczki związku">
+    <svg viewBox="0 0 680 220" role="img" aria-hidden="false">
+      <defs>
+        <radialGradient id="atomG1" cx="50%" cy="50%" r="55%">
+          <stop offset="0%" stop-color="#9bf3d5"/>
+          <stop offset="100%" stop-color="#06d6a0"/>
+        </radialGradient>
+        <radialGradient id="atomG2" cx="50%" cy="50%" r="55%">
+          <stop offset="0%" stop-color="#ffe08a"/>
+          <stop offset="100%" stop-color="#ffd166"/>
+        </radialGradient>
+        <radialGradient id="atomG3" cx="50%" cy="50%" r="55%">
+          <stop offset="0%" stop-color="#9ee3ff"/>
+          <stop offset="100%" stop-color="#4cc9f0"/>
+        </radialGradient>
+        <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <polygon points="0 0, 10 5, 0 10" fill="#43e8b6"/>
+        </marker>
+      </defs>
+      <!-- atom -->
+      <g transform="translate(100,110)">
+        <circle r="40" fill="url(#atomG1)" stroke="#9bf3d5" stroke-width="2"/>
+        <text y="6" text-anchor="middle" fill="#06201a" font-weight="900" font-size="22" font-family="Fraunces">H</text>
+      </g>
+      <text x="100" y="185" text-anchor="middle" fill="#e9fbf4" font-size="15" font-weight="700">atom</text>
+      <text x="100" y="202" text-anchor="middle" fill="#9fc5b7" font-size="12">pojedynczy H</text>
+
+      <!-- arrow 1 -->
+      <line x1="160" y1="110" x2="220" y2="110" stroke="#43e8b6" stroke-width="2" marker-end="url(#arr)"/>
+
+      <!-- molecule of element -->
+      <g transform="translate(300,110)">
+        <circle cx="-38" r="28" fill="url(#atomG3)" stroke="#9ee3ff" stroke-width="2"/>
+        <circle cx="38" r="28" fill="url(#atomG3)" stroke="#9ee3ff" stroke-width="2"/>
+        <line x1="-10" y1="0" x2="10" y2="0" stroke="#0c1d19" stroke-width="5"/>
+        <text x="-38" y="6" text-anchor="middle" fill="#07120f" font-weight="900" font-size="18" font-family="Fraunces">O</text>
+        <text x="38" y="6" text-anchor="middle" fill="#07120f" font-weight="900" font-size="18" font-family="Fraunces">O</text>
+      </g>
+      <text x="300" y="185" text-anchor="middle" fill="#e9fbf4" font-size="15" font-weight="700">cząsteczka pierwiastka</text>
+      <text x="300" y="202" text-anchor="middle" fill="#9fc5b7" font-size="12">O₂ — tlen</text>
+
+      <!-- arrow 2 -->
+      <line x1="380" y1="110" x2="440" y2="110" stroke="#43e8b6" stroke-width="2" marker-end="url(#arr)"/>
+
+      <!-- molecule of compound H2O -->
+      <g transform="translate(550,110)">
+        <circle cx="0" cy="-6" r="30" fill="url(#atomG2)" stroke="#ffe08a" stroke-width="2"/>
+        <circle cx="-38" cy="30" r="22" fill="url(#atomG1)" stroke="#9bf3d5" stroke-width="2"/>
+        <circle cx="38" cy="30" r="22" fill="url(#atomG1)" stroke="#9bf3d5" stroke-width="2"/>
+        <line x1="-20" y1="12" x2="-30" y2="22" stroke="#0c1d19" stroke-width="5"/>
+        <line x1="20" y1="12" x2="30" y2="22" stroke="#0c1d19" stroke-width="5"/>
+        <text x="0" y="0" text-anchor="middle" fill="#07120f" font-weight="900" font-size="20" font-family="Fraunces">O</text>
+        <text x="-38" y="35" text-anchor="middle" fill="#07120f" font-weight="900" font-size="15" font-family="Fraunces">H</text>
+        <text x="38" y="35" text-anchor="middle" fill="#07120f" font-weight="900" font-size="15" font-family="Fraunces">H</text>
+      </g>
+      <text x="550" y="185" text-anchor="middle" fill="#e9fbf4" font-size="15" font-weight="700">cząsteczka związku</text>
+      <text x="550" y="202" text-anchor="middle" fill="#9fc5b7" font-size="12">H₂O — woda</text>
+    </svg>
+    <div class="svg-caption">Od pojedynczego atomu, przez cząsteczkę pierwiastka, do cząsteczki związku chemicznego.</div>
+  </div>
+
+  <h3>Pierwiastek a związek chemiczny</h3>
+  <div class="grid">
+    <div class="cell"><b>Pierwiastek</b><span>substancja zbudowana z atomów tylko jednego rodzaju (np. żelazo Fe, tlen O₂, złoto Au)</span></div>
+    <div class="cell"><b>Związek chemiczny</b><span>substancja zbudowana z atomów co najmniej dwóch różnych pierwiastków (np. H₂O, CO₂, NaCl)</span></div>
+  </div>
+
+  <h3>Indeks i współczynnik — uwaga na zapis</h3>
+  <p>Zapis $3H_2O$ czyta się: <em>trzy cząsteczki wody</em>. Rozbierzmy go:</p>
+  <ul>
+    <li><strong>3</strong> — <em>współczynnik stechiometryczny</em> — mówi, ile jest cząsteczek.</li>
+    <li><strong>H</strong> i <strong>O</strong> — symbole chemiczne atomów.</li>
+    <li><strong>₂</strong> — <em>indeks dolny</em> — mówi, ile atomów wodoru jest w <u>jednej</u> cząsteczce.</li>
+  </ul>
+  <div class="box example"><span class="tag">przykład</span>W zapisie $3H_2O$ mamy razem: $3 \cdot 2 = 6$ atomów wodoru oraz $3 \cdot 1 = 3$ atomy tlenu. W sumie $9$ atomów.</div>
+
+</section>
+
+<!-- ===================== SECTION 2 ===================== -->
+<section class="theory" id="s2">
+  <h2><span class="sec-num">2</span>Układ okresowy pierwiastków</h2>
+  <p class="lead">Układ okresowy to uporządkowana tabela wszystkich znanych pierwiastków. Pierwiastki są w niej poukładane według <strong>rosnącej liczby atomowej</strong> (rosnącej liczby protonów w jądrze).</p>
+
+  <h3>Okresy i grupy</h3>
+  <ul>
+    <li><strong>Okres</strong> — <em>poziomy wiersz</em> tabeli. Jest ich 7. Numer okresu mówi, ile powłok elektronowych ma atom tego pierwiastka.</li>
+    <li><strong>Grupa</strong> — <em>pionowa kolumna</em> tabeli. Numeracja współczesna od 1 do 18. Pierwiastki z tej samej grupy mają podobne właściwości chemiczne, bo mają tyle samo elektronów na ostatniej powłoce (<em>elektronów walencyjnych</em>).</li>
+  </ul>
+
+  <h3>Co znajdziesz w „pudełku" pierwiastka?</h3>
+  <div class="svg-wrap">
+    <svg viewBox="0 0 640 280" role="img">
+      <!-- pudełko -->
+      <rect x="200" y="55" width="240" height="170" rx="18" fill="#0d2e25" stroke="#06d6a0" stroke-width="2"/>
+      <text x="222" y="90" fill="#ffd166" font-size="20" font-weight="800">11</text>
+      <text x="320" y="150" text-anchor="middle" fill="#e9fbf4" font-size="54" font-weight="900" font-family="Fraunces">Na</text>
+      <text x="320" y="185" text-anchor="middle" fill="#9bf3d5" font-size="14">sód</text>
+      <text x="320" y="212" text-anchor="middle" fill="#9fc5b7" font-size="17" font-weight="700">23,0</text>
+
+      <!-- etykieta: liczba atomowa Z (lewy-górny narożnik) -->
+      <line x1="217" y1="85" x2="165" y2="40" stroke="#ffd166" stroke-width="1.5"/>
+      <text x="160" y="34" text-anchor="end" fill="#ffd166" font-size="13" font-weight="700">liczba atomowa Z</text>
+
+      <!-- etykieta: symbol pierwiastka (prawa strona, na wysokości Na) -->
+      <line x1="355" y1="130" x2="475" y2="85" stroke="#e9fbf4" stroke-width="1.5"/>
+      <text x="482" y="80" fill="#e9fbf4" font-size="13" font-weight="700">symbol pierwiastka</text>
+
+      <!-- etykieta: nazwa polska (prawa strona) -->
+      <line x1="350" y1="182" x2="475" y2="162" stroke="#9bf3d5" stroke-width="1.5"/>
+      <text x="482" y="166" fill="#9bf3d5" font-size="13" font-weight="700">nazwa polska</text>
+
+      <!-- etykieta: masa atomowa (prawy-dolny narożnik) -->
+      <line x1="355" y1="213" x2="475" y2="235" stroke="#9fc5b7" stroke-width="1.5"/>
+      <text x="482" y="239" fill="#9fc5b7" font-size="13" font-weight="700">masa atomowa [u]</text>
+    </svg>
+    <div class="svg-caption">Typowe „pudełko" pierwiastka w układzie okresowym na przykładzie sodu.</div>
+  </div>
+
+  <h3>Fragment układu okresowego — pierwsze 20 pierwiastków</h3>
+  <div class="pt-wrap">
+    <table class="pt">
+      <tr>
+        <td class="nonmetal"><span class="z">1</span><span class="sym">H</span><span class="mass">1,0</span></td>
+        <td class="empty" colspan="16"></td>
+        <td class="noble"><span class="z">2</span><span class="sym">He</span><span class="mass">4,0</span></td>
+      </tr>
+      <tr>
+        <td class="metal"><span class="z">3</span><span class="sym">Li</span><span class="mass">7,0</span></td>
+        <td class="metal"><span class="z">4</span><span class="sym">Be</span><span class="mass">9,0</span></td>
+        <td class="empty" colspan="10"></td>
+        <td class="metaloid"><span class="z">5</span><span class="sym">B</span><span class="mass">11</span></td>
+        <td class="nonmetal"><span class="z">6</span><span class="sym">C</span><span class="mass">12</span></td>
+        <td class="nonmetal"><span class="z">7</span><span class="sym">N</span><span class="mass">14</span></td>
+        <td class="nonmetal"><span class="z">8</span><span class="sym">O</span><span class="mass">16</span></td>
+        <td class="halogen"><span class="z">9</span><span class="sym">F</span><span class="mass">19</span></td>
+        <td class="noble"><span class="z">10</span><span class="sym">Ne</span><span class="mass">20</span></td>
+      </tr>
+      <tr>
+        <td class="metal"><span class="z">11</span><span class="sym">Na</span><span class="mass">23</span></td>
+        <td class="metal"><span class="z">12</span><span class="sym">Mg</span><span class="mass">24</span></td>
+        <td class="empty" colspan="10"></td>
+        <td class="metal"><span class="z">13</span><span class="sym">Al</span><span class="mass">27</span></td>
+        <td class="metaloid"><span class="z">14</span><span class="sym">Si</span><span class="mass">28</span></td>
+        <td class="nonmetal"><span class="z">15</span><span class="sym">P</span><span class="mass">31</span></td>
+        <td class="nonmetal"><span class="z">16</span><span class="sym">S</span><span class="mass">32</span></td>
+        <td class="halogen"><span class="z">17</span><span class="sym">Cl</span><span class="mass">35,5</span></td>
+        <td class="noble"><span class="z">18</span><span class="sym">Ar</span><span class="mass">40</span></td>
+      </tr>
+      <tr>
+        <td class="metal"><span class="z">19</span><span class="sym">K</span><span class="mass">39</span></td>
+        <td class="metal"><span class="z">20</span><span class="sym">Ca</span><span class="mass">40</span></td>
+        <td class="empty" colspan="16"></td>
+      </tr>
+    </table>
+    <div class="pt-legend">
+      <span class="metal" style="background:linear-gradient(135deg,#2f7d62,#225a47)">metal</span>
+      <span class="nonmetal" style="background:linear-gradient(135deg,#8b3a5c,#5a2340)">niemetal</span>
+      <span class="halogen" style="background:linear-gradient(135deg,#c55c4a,#7a3428)">fluorowiec</span>
+      <span class="noble" style="background:linear-gradient(135deg,#6b4a9e,#3d2866)">gaz szlachetny</span>
+      <span class="metaloid" style="background:linear-gradient(135deg,#a67a34,#6c4a18)">półmetal</span>
+    </div>
+  </div>
+
+  <div class="box info"><span class="tag">metale vs niemetale</span>Metale są po <b>lewej</b> i pośrodku, niemetale po <b>prawej</b> stronie układu. Metale zwykle są błyszczące, przewodzą prąd i są kowalne (dają się wyginać). Niemetale zwykle są matowe, słabo przewodzą prąd i są kruche.</div>
+
+  <h3>Ciekawe grupy</h3>
+  <div class="grid">
+    <div class="cell"><b>Grupa 1 — litowce</b><span>metale alkaliczne: Li, Na, K, Rb, Cs — bardzo reaktywne, mają 1 elektron walencyjny</span></div>
+    <div class="cell"><b>Grupa 2 — berylowce</b><span>Be, Mg, Ca, Sr, Ba — 2 elektrony walencyjne</span></div>
+    <div class="cell"><b>Grupa 17 — fluorowce</b><span>F, Cl, Br, I — reaktywne niemetale, 7 elektronów walencyjnych</span></div>
+    <div class="cell"><b>Grupa 18 — helowce</b><span>He, Ne, Ar, Kr, Xe — gazy szlachetne, prawie nie reagują, mają pełną ostatnią powłokę</span></div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 3 ===================== -->
+<section class="theory" id="s3">
+  <h2><span class="sec-num">3</span>Masa atomowa i masa cząsteczkowa</h2>
+  <p class="lead">Atomy są zbyt małe, żeby podawać ich masę w gramach. Dlatego chemicy używają <strong>atomowej jednostki masy</strong>, oznaczanej literą <em>u</em>.</p>
+
+  <div class="fml">$1\,\text{u} \approx \dfrac{1}{12}\ \text{masy atomu węgla}\ ^{12}C$</div>
+
+  <h3>Masa atomowa pierwiastka</h3>
+  <p><strong>Masa atomowa</strong> to masa jednego atomu wyrażona w jednostkach <em>u</em>. Odczytujesz ją z układu okresowego — to zwykle najniższa liczba w „pudełku" pierwiastka.</p>
+
+  <div class="grid">
+    <div class="cell"><b>H</b><span>1 u</span></div>
+    <div class="cell"><b>C</b><span>12 u</span></div>
+    <div class="cell"><b>N</b><span>14 u</span></div>
+    <div class="cell"><b>O</b><span>16 u</span></div>
+    <div class="cell"><b>Na</b><span>23 u</span></div>
+    <div class="cell"><b>Mg</b><span>24 u</span></div>
+    <div class="cell"><b>Al</b><span>27 u</span></div>
+    <div class="cell"><b>S</b><span>32 u</span></div>
+    <div class="cell"><b>Cl</b><span>35,5 u</span></div>
+    <div class="cell"><b>K</b><span>39 u</span></div>
+    <div class="cell"><b>Ca</b><span>40 u</span></div>
+    <div class="cell"><b>Fe</b><span>56 u</span></div>
+  </div>
+
+  <h3>Masa cząsteczkowa</h3>
+  <p><strong>Masa cząsteczkowa</strong> to suma mas atomowych wszystkich atomów wchodzących w skład cząsteczki. Oznaczamy ją literą $m_c$.</p>
+
+  <div class="fml">$m_c(\text{cząsteczki}) = \sum (\text{liczba atomów pierwiastka}) \cdot (\text{masa atomowa pierwiastka})$</div>
+
+  <div class="box example"><span class="tag">przykład 1 — woda</span>
+    <p style="margin:8px 0 0">Cząsteczka wody $H_2O$ zawiera 2 atomy wodoru i 1 atom tlenu.</p>
+    <div class="fml" style="margin-top:8px">$m_c(H_2O) = 2 \cdot 1\,\text{u} + 1 \cdot 16\,\text{u} = 2 + 16 = 18\,\text{u}$</div>
+  </div>
+
+  <div class="box example"><span class="tag">przykład 2 — dwutlenek węgla</span>
+    <p style="margin:8px 0 0">$CO_2$: 1 atom węgla + 2 atomy tlenu.</p>
+    <div class="fml" style="margin-top:8px">$m_c(CO_2) = 1 \cdot 12 + 2 \cdot 16 = 12 + 32 = 44\,\text{u}$</div>
+  </div>
+
+  <div class="box example"><span class="tag">przykład 3 — siarczan(VI) glinu</span>
+    <p style="margin:8px 0 0">$Al_2(SO_4)_3$: 2 atomy Al, 3 atomy S (bo nawias razy 3), $3 \cdot 4 = 12$ atomów O.</p>
+    <div class="fml" style="margin-top:8px">$m_c = 2 \cdot 27 + 3 \cdot 32 + 12 \cdot 16 = 54 + 96 + 192 = 342\,\text{u}$</div>
+  </div>
+
+  <div class="box warn"><span class="tag">uwaga</span>W nawiasach indeks dolny mnoży wszystkie atomy wewnątrz nawiasu. Np. w $Mg(OH)_2$ mamy 1 Mg, 2 atomy O oraz 2 atomy H.</div>
+</section>
+
+<!-- ===================== SECTION 4 ===================== -->
+<section class="theory" id="s4">
+  <h2><span class="sec-num">4</span>Budowa atomu: protony, neutrony, elektrony</h2>
+  <p class="lead">Atom nie jest niepodzielny, mimo że jego nazwa pochodzi od greckiego „átomos" (niepodzielny). Ma swoją strukturę wewnętrzną.</p>
+
+  <h3>Cząstki elementarne atomu</h3>
+  <div class="grid">
+    <div class="cell"><b>Proton (p⁺)</b><span>w jądrze, ładunek <em>+1</em>, masa ≈ 1 u</span></div>
+    <div class="cell"><b>Neutron (n⁰)</b><span>w jądrze, ładunek <em>0</em>, masa ≈ 1 u</span></div>
+    <div class="cell"><b>Elektron (e⁻)</b><span>wokół jądra, ładunek <em>−1</em>, masa znikomo mała (≈ 1/1836 u)</span></div>
+  </div>
+
+  <div class="box info"><span class="tag">kluczowa zasada</span>W atomie <strong>obojętnym</strong> elektrycznie liczba protonów jest równa liczbie elektronów — ładunki się równoważą.</div>
+
+  <h3>Liczba atomowa Z i liczba masowa A</h3>
+  <ul>
+    <li><strong>Liczba atomowa $Z$</strong> — liczba protonów w jądrze. Jest unikalna dla każdego pierwiastka i określa jego tożsamość.</li>
+    <li><strong>Liczba masowa $A$</strong> — suma protonów i neutronów (tzw. nukleonów) w jądrze.</li>
+  </ul>
+
+  <div class="fml">$A = Z + N \quad\Rightarrow\quad N = A - Z$</div>
+
+  <h3>Zapis symboliczny atomu</h3>
+  <div class="fml" style="font-size:1.1rem">$^{A}_{Z}X$  — np. $^{23}_{11}Na$, $^{16}_{8}O$, $^{35}_{17}Cl$</div>
+
+  <h3>Model atomu</h3>
+  <div class="svg-wrap">
+    <svg viewBox="0 0 460 300" role="img">
+      <defs>
+        <radialGradient id="nuc" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffe08a"/>
+          <stop offset="100%" stop-color="#ef476f"/>
+        </radialGradient>
+      </defs>
+      <!-- shells -->
+      <circle cx="230" cy="150" r="60" fill="none" stroke="#43e8b6" stroke-opacity=".5" stroke-width="1.5"/>
+      <circle cx="230" cy="150" r="110" fill="none" stroke="#43e8b6" stroke-opacity=".35" stroke-width="1.5"/>
+      <!-- nucleus -->
+      <circle cx="230" cy="150" r="32" fill="url(#nuc)" stroke="#ffd166" stroke-width="2"/>
+      <text x="230" y="148" text-anchor="middle" fill="#06201a" font-size="11" font-weight="800">p⁺ p⁺ p⁺</text>
+      <text x="230" y="162" text-anchor="middle" fill="#06201a" font-size="11" font-weight="800">n⁰ n⁰ n⁰</text>
+      <!-- electrons shell 1 -->
+      <circle cx="170" cy="150" r="7" fill="#4cc9f0"/>
+      <circle cx="290" cy="150" r="7" fill="#4cc9f0"/>
+      <!-- electrons shell 2 -->
+      <circle cx="230" cy="40" r="7" fill="#4cc9f0"/>
+      <circle cx="230" cy="260" r="7" fill="#4cc9f0"/>
+      <circle cx="340" cy="150" r="7" fill="#4cc9f0"/>
+      <circle cx="120" cy="150" r="7" fill="#4cc9f0"/>
+      <!-- labels -->
+      <text x="230" y="20" text-anchor="middle" fill="#9ee3ff" font-size="13" font-weight="700">elektrony (e⁻) na powłokach</text>
+      <line x1="230" y1="116" x2="230" y2="95" stroke="#ffd166" stroke-width="1.5"/>
+      <text x="230" y="90" text-anchor="middle" fill="#ffd166" font-size="13" font-weight="700">jądro (protony + neutrony)</text>
+      <text x="170" y="175" text-anchor="middle" fill="#9fc5b7" font-size="11">powłoka K</text>
+      <text x="120" y="130" text-anchor="middle" fill="#9fc5b7" font-size="11">powłoka L</text>
+    </svg>
+    <div class="svg-caption">Schemat atomu: jądro (protony + neutrony) otoczone elektronami na powłokach K, L, M…</div>
+  </div>
+
+  <div class="box example"><span class="tag">przykład</span>Atom sodu $^{23}_{11}Na$ ma:
+    <ul style="margin:6px 0 0">
+      <li>$Z = 11$ → <strong>11 protonów</strong></li>
+      <li>atom obojętny → <strong>11 elektronów</strong></li>
+      <li>$N = A - Z = 23 - 11 = $ <strong>12 neutronów</strong></li>
+    </ul>
+  </div>
+
+  <h3>Izotopy</h3>
+  <p>Atomy tego samego pierwiastka mogą mieć różną liczbę neutronów — to <strong>izotopy</strong>. Mają to samo $Z$, ale różne $A$.</p>
+  <div class="box info"><span class="tag">przykład — izotopy wodoru</span>
+    <ul style="margin:6px 0 0">
+      <li>prot $^{1}_{1}H$ — 1 proton, 0 neutronów</li>
+      <li>deuter $^{2}_{1}H$ — 1 proton, 1 neutron</li>
+      <li>tryt $^{3}_{1}H$ — 1 proton, 2 neutrony</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== SECTION 5 ===================== -->
+<section class="theory" id="s5">
+  <h2><span class="sec-num">5</span>Budowa atomu a położenie w układzie okresowym</h2>
+  <p class="lead">To jest „magia" układu okresowego: sam jego kształt opowiada o budowie atomu każdego pierwiastka.</p>
+
+  <h3>Dwie najważniejsze reguły</h3>
+  <div class="grid">
+    <div class="cell"><b>Numer okresu</b><span>= liczba powłok elektronowych w atomie</span></div>
+    <div class="cell"><b>Numer grupy (1, 2, 13–18)</b><span>= liczba elektronów walencyjnych (na ostatniej powłoce)</span></div>
+  </div>
+
+  <div class="box warn"><span class="tag">zasada</span>Dla grup 1 i 2 — liczba elektronów walencyjnych jest równa numerowi grupy. Dla grup 13–18 — liczba elektronów walencyjnych = numer grupy minus 10.</div>
+
+  <h3>Ile elektronów mieści się na każdej powłoce?</h3>
+  <div class="fml">$\text{powłoka K (1.):}\ \max\ 2\,e^- \quad\text{powłoka L (2.):}\ \max\ 8\,e^- \quad\text{powłoka M (3.):}\ \max\ 8\,e^-\ \text{(dla 20 pierwszych pierwiastków)}$</div>
+
+  <p>Powłoki zapełniają się po kolei: najpierw K, potem L, potem M.</p>
+
+  <h3>Konfiguracja elektronowa — jak ją zapisać</h3>
+  <div class="box example"><span class="tag">przykład — sód (Na, Z = 11)</span>
+    <ul style="margin:6px 0 0">
+      <li>Na powłokę K trafiają 2 elektrony</li>
+      <li>Na powłokę L kolejne 8 (razem 10)</li>
+      <li>Zostaje 1 elektron — trafia na powłokę M</li>
+      <li>Konfiguracja: <strong>2, 8, 1</strong></li>
+    </ul>
+    <p style="margin:8px 0 0">Sód jest w <em>3. okresie</em> (3 powłoki) i w <em>grupie 1</em> (1 elektron walencyjny). Zgadza się!</p>
+  </div>
+
+  <div class="svg-wrap">
+    <svg viewBox="0 0 520 240" role="img">
+      <defs>
+        <radialGradient id="nuc2" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffe08a"/>
+          <stop offset="100%" stop-color="#ef476f"/>
+        </radialGradient>
+      </defs>
+      <!-- shells -->
+      <circle cx="260" cy="120" r="30" fill="none" stroke="#43e8b6" stroke-width="1.5"/>
+      <circle cx="260" cy="120" r="65" fill="none" stroke="#43e8b6" stroke-opacity=".7" stroke-width="1.5"/>
+      <circle cx="260" cy="120" r="100" fill="none" stroke="#43e8b6" stroke-opacity=".4" stroke-width="1.5"/>
+      <!-- nucleus -->
+      <circle cx="260" cy="120" r="18" fill="url(#nuc2)" stroke="#ffd166" stroke-width="2"/>
+      <text x="260" y="125" text-anchor="middle" fill="#06201a" font-size="10" font-weight="800">Na</text>
+      <!-- K shell: 2e -->
+      <circle cx="230" cy="120" r="5" fill="#4cc9f0"/>
+      <circle cx="290" cy="120" r="5" fill="#4cc9f0"/>
+      <!-- L shell: 8e -->
+      <circle cx="260" cy="55" r="5" fill="#4cc9f0"/>
+      <circle cx="260" cy="185" r="5" fill="#4cc9f0"/>
+      <circle cx="195" cy="120" r="5" fill="#4cc9f0"/>
+      <circle cx="325" cy="120" r="5" fill="#4cc9f0"/>
+      <circle cx="215" cy="75" r="5" fill="#4cc9f0"/>
+      <circle cx="305" cy="75" r="5" fill="#4cc9f0"/>
+      <circle cx="215" cy="165" r="5" fill="#4cc9f0"/>
+      <circle cx="305" cy="165" r="5" fill="#4cc9f0"/>
+      <!-- M shell: 1e (walencyjny) -->
+      <circle cx="360" cy="120" r="6" fill="#ffd166" stroke="#ef476f" stroke-width="2"/>
+      <!-- labels -->
+      <text x="260" y="15" text-anchor="middle" fill="#9ee3ff" font-size="13" font-weight="700">Na (Z=11): 2, 8, 1</text>
+      <text x="260" y="230" text-anchor="middle" fill="#ffd166" font-size="12">żółty = elektron walencyjny (ostatnia powłoka)</text>
+      <text x="90" y="120" fill="#9fc5b7" font-size="11">K: 2 e⁻</text>
+      <text x="90" y="135" fill="#9fc5b7" font-size="11">L: 8 e⁻</text>
+      <text x="90" y="150" fill="#9fc5b7" font-size="11">M: 1 e⁻</text>
+    </svg>
+    <div class="svg-caption">Schemat atomu sodu — konfiguracja 2, 8, 1. Jeden elektron walencyjny decyduje o reaktywności sodu.</div>
+  </div>
+
+  <h3>Dlaczego pierwiastki tej samej grupy są podobne?</h3>
+  <p>Bo mają <strong>tyle samo elektronów walencyjnych</strong> — a to właśnie te elektrony uczestniczą w reakcjach chemicznych. Dlatego lit, sód i potas (wszystkie grupa 1) gwałtownie reagują z wodą — każdy ma 1 elektron do „oddania".</p>
+
+  <div class="box tip"><span class="tag">trik do pracy klasowej</span>Masz pierwiastek o konfiguracji <b>2, 8, 7</b>? Policz powłoki: 3 → <b>okres 3</b>. Liczba elektronów walencyjnych: 7 → <b>grupa 17</b> (fluorowiec). Razem: 2+8+7 = 17 → Z=17 → <b>chlor</b>. Zagadka rozwiązana.</div>
+</section>
+
+<!-- ===================== EXERCISES ===================== -->
+<section class="exercises" id="zad">
+  <h2>Zadania — 45 pytań z rozwiązaniami</h2>
+  <p class="lead">15 zadań łatwych, 15 średnich i 15 trudnych. Kliknij w zadanie, żeby rozwinąć pełne rozwiązanie krok po kroku.</p>
+
+  <div class="level-filter" role="group" aria-label="Filtrowanie zadań">
+    <button type="button" data-f="all" class="active">wszystkie (45)</button>
+    <button type="button" data-f="easy">łatwe (15)</button>
+    <button type="button" data-f="mid">średnie (15)</button>
+    <button type="button" data-f="hard">trudne (15)</button>
+  </div>
+
+  <ol class="qlist">
+
+  <!-- ========== ŁATWE 1–15 ========== -->
+
+  <li><details class="q" data-l="easy"><summary><span class="qnum">1</span><span class="level easy">łatwe</span><span class="qt">Wyjaśnij, czym jest atom, a czym cząsteczka. Podaj po jednym przykładzie.</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>Pytanie o definicje i przykłady.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Definicja atomu, definicja cząsteczki, przykłady.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <ul>
+          <li>Atom — najmniejsza cząstka pierwiastka chemicznego zachowująca jego właściwości.</li>
+          <li>Cząsteczka — zespół dwóch lub więcej atomów połączonych wiązaniem chemicznym.</li>
+        </ul>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>Atom: np. pojedynczy atom żelaza Fe. Cząsteczka: np. cząsteczka wody $H_2O$, zbudowana z 2 atomów H i 1 atomu O.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="easy"><summary><span class="qnum">2</span><span class="level easy">łatwe</span><span class="qt">Ile atomów ma cząsteczka tlenu $O_2$?</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>Cząsteczka $O_2$.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Liczba atomów.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span><div>Indeks dolny „2" oznacza, że w jednej cząsteczce są <b>2 atomy</b> tlenu.</div></div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>Cząsteczka $O_2$ ma 2 atomy tlenu.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="easy"><summary><span class="qnum">3</span><span class="level easy">łatwe</span><span class="qt">Podaj symbole chemiczne: wodoru, tlenu, węgla, sodu, chloru.</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>Nazwy pięciu pierwiastków.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Symbole chemiczne.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span><div>Odczytujemy z układu okresowego.</div></div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>wodór — <b>H</b>, tlen — <b>O</b>, węgiel — <b>C</b>, sód — <b>Na</b>, chlor — <b>Cl</b>.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="easy"><summary><span class="qnum">4</span><span class="level easy">łatwe</span><span class="qt">Co oznacza cyfra „2" w zapisie $H_2O$?</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>Zapis $H_2O$.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Znaczenie cyfry 2.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span><div>„2" to indeks dolny stojący przy symbolu H — mówi, że w jednej cząsteczce są 2 atomy wodoru.</div></div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>Cyfra 2 to indeks dolny; oznacza liczbę atomów wodoru (2) w jednej cząsteczce wody.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="easy"><summary><span class="qnum">5</span><span class="level easy">łatwe</span><span class="qt">Ile protonów ma atom węgla (Z = 6)?</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>$Z = 6$.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Liczba protonów.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span><div>Liczba atomowa $Z$ z definicji jest równa liczbie protonów.</div></div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>Atom węgla ma 6 protonów.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="easy"><summary><span class="qnum">6</span><span class="level easy">łatwe</span><span class="qt">Jaka jest masa atomowa sodu (Na)?</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>Pierwiastek: sód, symbol Na.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Masa atomowa w <em>u</em>.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span><div>Odczytujemy z układu okresowego — dla sodu masa wynosi około 23 u.</div></div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>$m(Na) = 23\,\text{u}$.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="easy"><summary><span class="qnum">7</span><span class="level easy">łatwe</span><span class="qt">Ile elektronów ma obojętny atom o liczbie atomowej $Z = 8$?</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>$Z = 8$, atom obojętny.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Liczba elektronów.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span><div>W atomie obojętnym: liczba elektronów = liczba protonów = $Z$.</div></div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>Atom ma 8 elektronów (to atom tlenu).</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="easy"><summary><span class="qnum">8</span><span class="level easy">łatwe</span><span class="qt">Oblicz masę cząsteczkową wody $H_2O$.</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>Wzór: $H_2O$; $m(H) = 1\,\text{u}$, $m(O) = 16\,\text{u}$.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>$m_c(H_2O)$.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <div class="calc">$m_c(H_2O) = 2 \cdot 1 + 1 \cdot 16 = 2 + 16 = 18\,\text{u}$</div>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>$m_c(H_2O) = 18\,\text{u}$.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="easy"><summary><span class="qnum">9</span><span class="level easy">łatwe</span><span class="qt">Dla atomu azotu $^{14}_{7}N$ podaj liczbę atomową i liczbę masową.</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>Zapis $^{14}_{7}N$.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>$Z$ oraz $A$.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span><div>W zapisie $^{A}_{Z}X$: $Z$ na dole, $A$ na górze.</div></div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>$Z = 7$, $A = 14$.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="easy"><summary><span class="qnum">10</span><span class="level easy">łatwe</span><span class="qt">Ile neutronów ma atom o $Z = 6$ i $A = 12$?</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>$Z = 6$, $A = 12$.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Liczba neutronów $N$.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <div class="calc">$N = A - Z = 12 - 6 = 6$</div>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>Atom ma 6 neutronów (to atom węgla $^{12}C$).</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="easy"><summary><span class="qnum">11</span><span class="level easy">łatwe</span><span class="qt">W której grupie i w którym okresie znajduje się tlen?</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>Pierwiastek: tlen (O), $Z = 8$.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Grupa i okres.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span><div>Konfiguracja O: 2, 6. Dwie powłoki → okres 2. Sześć elektronów walencyjnych → grupa 16 (2 + 14 = 16, bo grupy 13–18 mają walencyjnych = numer grupy − 10).</div></div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>Tlen: grupa 16, okres 2.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="easy"><summary><span class="qnum">12</span><span class="level easy">łatwe</span><span class="qt">Ile powłok elektronowych ma atom litu ($Z = 3$)?</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>$Z = 3$ (lit Li).</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Liczba powłok.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span><div>Konfiguracja: K może pomieścić 2 elektrony, zostaje 1 → trafia na L. Konfiguracja 2, 1.</div></div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>Atom litu ma 2 powłoki elektronowe (K i L). Lit leży w 2. okresie.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="easy"><summary><span class="qnum">13</span><span class="level easy">łatwe</span><span class="qt">Ile elektronów walencyjnych ma atom wapnia (grupa 2)?</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>Wapń Ca, grupa 2.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Liczba elektronów walencyjnych.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span><div>Dla grup 1 i 2: liczba elektronów walencyjnych = numer grupy.</div></div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>Wapń ma 2 elektrony walencyjne.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="easy"><summary><span class="qnum">14</span><span class="level easy">łatwe</span><span class="qt">Jakie pierwiastki i ile atomów wchodzi w skład cząsteczki $CO_2$?</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>Wzór $CO_2$.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Skład cząsteczki.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span><div>C bez indeksu → 1 atom węgla; O z indeksem 2 → 2 atomy tlenu.</div></div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>Cząsteczka $CO_2$ ma 1 atom węgla i 2 atomy tlenu — razem 3 atomy.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="easy"><summary><span class="qnum">15</span><span class="level easy">łatwe</span><span class="qt">Oblicz masę cząsteczkową azotu $N_2$.</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>Wzór: $N_2$; $m(N) = 14\,\text{u}$.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>$m_c(N_2)$.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <div class="calc">$m_c(N_2) = 2 \cdot 14 = 28\,\text{u}$</div>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>$m_c(N_2) = 28\,\text{u}$.</div></div>
+    </div>
+  </details></li>
+
+  <!-- ========== ŚREDNIE 16–30 ========== -->
+
+  <li><details class="q" data-l="mid"><summary><span class="qnum">16</span><span class="level mid">średnie</span><span class="qt">Ile neutronów ma atom chloru $^{35}_{17}Cl$?</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>$Z = 17$, $A = 35$.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>$N$.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <div class="calc">$N = A - Z = 35 - 17 = 18$</div>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>Atom chloru $^{35}Cl$ ma 18 neutronów.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="mid"><summary><span class="qnum">17</span><span class="level mid">średnie</span><span class="qt">Oblicz masę cząsteczkową $SO_2$.</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>$m(S) = 32$, $m(O) = 16$.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>$m_c(SO_2)$.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <div class="calc">$m_c = 1\cdot 32 + 2\cdot 16 = 32 + 32 = 64\,\text{u}$</div>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>$m_c(SO_2) = 64\,\text{u}$.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="mid"><summary><span class="qnum">18</span><span class="level mid">średnie</span><span class="qt">Zapisz konfigurację elektronową atomu magnezu ($Z = 12$).</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>$Z = 12$ → 12 elektronów.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Konfiguracja elektronowa.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <ul>
+          <li>K: max 2 → zapełniamy (2), zostaje 10</li>
+          <li>L: max 8 → zapełniamy (8), zostaje 2</li>
+          <li>M: 2 elektrony</li>
+        </ul>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>Mg: <b>2, 8, 2</b>. Magnez jest w 3. okresie (3 powłoki) i grupie 2 (2 elektrony walencyjne).</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="mid"><summary><span class="qnum">19</span><span class="level mid">średnie</span><span class="qt">Ile atomów zawiera łącznie zapis $3H_2SO_4$?</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>$3H_2SO_4$: współczynnik 3, indeksy 2, 1, 4.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Łączna liczba atomów.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <ul>
+          <li>W jednej cząsteczce $H_2SO_4$: 2 H + 1 S + 4 O = 7 atomów</li>
+          <li>3 cząsteczki: $3 \cdot 7 = 21$ atomów</li>
+          <li>Z podziałem: 6 H + 3 S + 12 O</li>
+        </ul>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>Łącznie 21 atomów (6 H + 3 S + 12 O).</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="mid"><summary><span class="qnum">20</span><span class="level mid">średnie</span><span class="qt">Oblicz masę cząsteczkową węglanu wapnia $CaCO_3$.</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>$m(Ca) = 40$, $m(C) = 12$, $m(O) = 16$.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>$m_c(CaCO_3)$.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <div class="calc">$m_c = 40 + 12 + 3\cdot 16 = 40 + 12 + 48 = 100\,\text{u}$</div>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>$m_c(CaCO_3) = 100\,\text{u}$.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="mid"><summary><span class="qnum">21</span><span class="level mid">średnie</span><span class="qt">Atom ma 13 protonów i 14 neutronów. Podaj $Z$, $A$ oraz nazwę pierwiastka.</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>Liczba protonów = 13, liczba neutronów = 14.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>$Z$, $A$, nazwa pierwiastka.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <ul>
+          <li>$Z$ = liczba protonów = 13</li>
+          <li>$A = Z + N = 13 + 14 = 27$</li>
+          <li>Pierwiastek o $Z = 13$ to glin (Al)</li>
+        </ul>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>$Z = 13$, $A = 27$, pierwiastek: glin ($^{27}_{13}Al$).</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="mid"><summary><span class="qnum">22</span><span class="level mid">średnie</span><span class="qt">Pierwiastek ma konfigurację elektronową 2, 8, 1. Podaj jego nazwę, grupę i okres.</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>Konfiguracja: 2, 8, 1.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Nazwa, grupa, okres.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <ul>
+          <li>Liczba elektronów razem: $2+8+1 = 11$ → $Z = 11$ → <b>sód (Na)</b></li>
+          <li>3 powłoki → <b>okres 3</b></li>
+          <li>1 elektron walencyjny → <b>grupa 1</b></li>
+        </ul>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>Sód (Na), grupa 1, okres 3.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="mid"><summary><span class="qnum">23</span><span class="level mid">średnie</span><span class="qt">Wyjaśnij różnicę między atomem a cząsteczką. Podaj po jednym przykładzie atomu, cząsteczki pierwiastka i cząsteczki związku chemicznego.</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>Pytanie opisowe.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Różnica i 3 przykłady.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <ul>
+          <li>Atom to pojedyncza cząstka pierwiastka. Cząsteczka to połączenie co najmniej dwóch atomów.</li>
+          <li>Cząsteczka pierwiastka zawiera atomy jednego rodzaju; cząsteczka związku — atomy co najmniej dwóch różnych pierwiastków.</li>
+        </ul>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>Przykłady: atom — He; cząsteczka pierwiastka — $O_2$; cząsteczka związku — $H_2O$.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="mid"><summary><span class="qnum">24</span><span class="level mid">średnie</span><span class="qt">Oblicz masę cząsteczkową siarczanu(VI) glinu $Al_2(SO_4)_3$.</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>$m(Al) = 27$, $m(S) = 32$, $m(O) = 16$.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>$m_c$.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <ul>
+          <li>Skład: 2 Al, 3 S (bo nawias razy 3), $3\cdot 4 = 12$ O</li>
+        </ul>
+        <div class="calc">$m_c = 2\cdot 27 + 3\cdot 32 + 12\cdot 16 = 54 + 96 + 192 = 342\,\text{u}$</div>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>$m_c\big(Al_2(SO_4)_3\big) = 342\,\text{u}$.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="mid"><summary><span class="qnum">25</span><span class="level mid">średnie</span><span class="qt">Atom żelaza ma $Z = 26$ i $A = 56$. Podaj liczbę protonów, neutronów i elektronów w atomie obojętnym.</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>$Z = 26$, $A = 56$, atom obojętny.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Liczba p⁺, n⁰, e⁻.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <ul>
+          <li>protony: $Z = 26$</li>
+          <li>elektrony (atom obojętny): 26</li>
+          <li>neutrony: $N = A - Z = 56 - 26 = 30$</li>
+        </ul>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>26 protonów, 30 neutronów, 26 elektronów.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="mid"><summary><span class="qnum">26</span><span class="level mid">średnie</span><span class="qt">Pierwiastek znajduje się w 2. okresie i ma 6 elektronów walencyjnych. Jaki to pierwiastek i jaka jest jego konfiguracja elektronowa?</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>okres 2, 6 elektronów walencyjnych.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Pierwiastek i konfiguracja.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <ul>
+          <li>2 okres → 2 powłoki (K, L)</li>
+          <li>6 walencyjnych → na L jest 6 elektronów, więc całkowita konfiguracja: 2, 6</li>
+          <li>Razem $2 + 6 = 8$ elektronów → $Z = 8$ → <b>tlen (O)</b></li>
+        </ul>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>To tlen (O), konfiguracja 2, 6.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="mid"><summary><span class="qnum">27</span><span class="level mid">średnie</span><span class="qt">Oblicz łączną masę 2 cząsteczek $CO_2$ (wyrażoną w <em>u</em>).</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>2 cząsteczki $CO_2$; $m(C) = 12$, $m(O) = 16$.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Łączna masa.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <div class="calc">$m_c(CO_2) = 12 + 2 \cdot 16 = 44\,\text{u}$</div>
+        <div class="calc">$m_\text{całk.} = 2 \cdot 44 = 88\,\text{u}$</div>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>88 u.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="mid"><summary><span class="qnum">28</span><span class="level mid">średnie</span><span class="qt">Zapisz konfigurację elektronową atomu chloru ($Z = 17$).</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>$Z = 17$ → 17 elektronów.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Konfiguracja i położenie w układzie.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <ul>
+          <li>K: 2 (zostaje 15)</li>
+          <li>L: 8 (zostaje 7)</li>
+          <li>M: 7</li>
+        </ul>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>Cl: 2, 8, 7. Okres 3, grupa 17 (fluorowiec), 7 elektronów walencyjnych.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="mid"><summary><span class="qnum">29</span><span class="level mid">średnie</span><span class="qt">Oblicz masę cząsteczkową glukozy $C_6H_{12}O_6$.</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>$m(C) = 12$, $m(H) = 1$, $m(O) = 16$.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>$m_c$.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <div class="calc">$m_c = 6\cdot 12 + 12\cdot 1 + 6\cdot 16 = 72 + 12 + 96 = 180\,\text{u}$</div>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>$m_c(C_6H_{12}O_6) = 180\,\text{u}$.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="mid"><summary><span class="qnum">30</span><span class="level mid">średnie</span><span class="qt">Dlaczego atom jest obojętny elektrycznie?</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>Pytanie o własność atomu.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Uzasadnienie.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <ul>
+          <li>Protony mają ładunek $+1$, elektrony $-1$, neutrony są obojętne.</li>
+          <li>W atomie obojętnym liczba protonów równa jest liczbie elektronów, więc dodatnie ładunki znoszą się z ujemnymi.</li>
+        </ul>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>Bo liczba protonów (+) = liczba elektronów (−), więc sumaryczny ładunek atomu wynosi 0.</div></div>
+    </div>
+  </details></li>
+
+  <!-- ========== TRUDNE 31–45 ========== -->
+
+  <li><details class="q" data-l="hard"><summary><span class="qnum">31</span><span class="level hard">trudne</span><span class="qt">Atom pierwiastka X ma 3 powłoki elektronowe i 7 elektronów walencyjnych. Podaj nazwę pierwiastka, $Z$, grupę, okres oraz $A$ najpospolitszego izotopu.</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>3 powłoki, 7 elektronów walencyjnych.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>nazwa, $Z$, grupa, okres, $A$.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <ul>
+          <li>3 powłoki → okres 3.</li>
+          <li>Rozkład: K=2, L=8, M=7 → łącznie 17 elektronów → $Z = 17$.</li>
+          <li>$Z=17$ → chlor (Cl).</li>
+          <li>7 walencyjnych → grupa 17.</li>
+          <li>Najczęstszy izotop: $^{35}_{17}Cl$ → $A = 35$.</li>
+        </ul>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>Chlor (Cl), $Z=17$, grupa 17, okres 3, $A = 35$ dla najpospolitszego izotopu.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="hard"><summary><span class="qnum">32</span><span class="level hard">trudne</span><span class="qt">Oblicz masę cząsteczkową tlenku żelaza(III) $Fe_2O_3$.</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>$m(Fe) = 56$, $m(O) = 16$.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>$m_c$.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <div class="calc">$m_c = 2\cdot 56 + 3\cdot 16 = 112 + 48 = 160\,\text{u}$</div>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>$m_c(Fe_2O_3) = 160\,\text{u}$.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="hard"><summary><span class="qnum">33</span><span class="level hard">trudne</span><span class="qt">Jaki pierwiastek ma konfigurację elektronową 2, 8, 8, 1? Podaj nazwę, $Z$ i $A$ najczęstszego izotopu.</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>Konfiguracja: 2, 8, 8, 1.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Nazwa, $Z$, $A$.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <ul>
+          <li>$Z = 2+8+8+1 = 19$ → potas (K)</li>
+          <li>4 powłoki → okres 4; 1 elektron walencyjny → grupa 1 (litowce).</li>
+          <li>Najczęstszy izotop: $^{39}_{19}K$ → $A = 39$.</li>
+        </ul>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>Potas (K), $Z = 19$, $A = 39$.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="hard"><summary><span class="qnum">34</span><span class="level hard">trudne</span><span class="qt">Ile atomów w sumie zawiera jedna cząsteczka $Al_2(SO_4)_3$? Podaj rozbicie na pierwiastki.</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>Wzór: $Al_2(SO_4)_3$.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Łączna liczba atomów i rozbicie.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <ul>
+          <li>Al: indeks 2 → 2 atomy</li>
+          <li>S: indeks 1 w nawiasie, nawias razy 3 → 3 atomy</li>
+          <li>O: indeks 4 w nawiasie, nawias razy 3 → $3\cdot 4 = 12$ atomów</li>
+          <li>Razem: $2 + 3 + 12 = 17$</li>
+        </ul>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>17 atomów: 2 Al + 3 S + 12 O.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="hard"><summary><span class="qnum">35</span><span class="level hard">trudne</span><span class="qt">Atom ma $A = 40$ i 20 neutronów. Podaj $Z$, nazwę pierwiastka oraz jego grupę i okres.</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>$A = 40$, $N = 20$.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>$Z$, nazwa, grupa, okres.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <ul>
+          <li>$Z = A - N = 40 - 20 = 20$ → <b>wapń (Ca)</b></li>
+          <li>Konfiguracja Ca: 2, 8, 8, 2 → 4 powłoki → okres 4</li>
+          <li>2 elektrony walencyjne → grupa 2 (berylowce)</li>
+        </ul>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>$Z = 20$, wapń (Ca), grupa 2, okres 4.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="hard"><summary><span class="qnum">36</span><span class="level hard">trudne</span><span class="qt">Oblicz masę cząsteczkową wodorotlenku magnezu $Mg(OH)_2$.</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>$m(Mg) = 24$, $m(O) = 16$, $m(H) = 1$.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>$m_c$.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <ul>
+          <li>Skład: 1 Mg, 2 O (nawias razy 2), 2 H (nawias razy 2)</li>
+        </ul>
+        <div class="calc">$m_c = 24 + 2\cdot 16 + 2\cdot 1 = 24 + 32 + 2 = 58\,\text{u}$</div>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>$m_c\big(Mg(OH)_2\big) = 58\,\text{u}$.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="hard"><summary><span class="qnum">37</span><span class="level hard">trudne</span><span class="qt">Porównaj atomy sodu ($Z = 11$) i chloru ($Z = 17$): podaj konfiguracje elektronowe, liczby elektronów walencyjnych, grupy, okresy i wyjaśnij, dlaczego obydwa są reaktywne.</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>Na: $Z = 11$; Cl: $Z = 17$.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Porównanie budowy i wyjaśnienie reaktywności.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <ul>
+          <li><b>Na</b>: konfiguracja 2, 8, 1 — 3 powłoki, 1 elektron walencyjny → grupa 1, okres 3. Metal.</li>
+          <li><b>Cl</b>: konfiguracja 2, 8, 7 — 3 powłoki, 7 elektronów walencyjnych → grupa 17, okres 3. Niemetal.</li>
+          <li>Na „chętnie" oddaje swój 1 elektron walencyjny (by zostawić sobie pełną powłokę L).</li>
+          <li>Cl „chętnie" przyjmuje 1 elektron (by dopełnić powłokę M do 8).</li>
+        </ul>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>Oba są w 3. okresie, ale Na w grupie 1 (1 e⁻ walencyjny — oddaje), a Cl w grupie 17 (7 e⁻ walencyjnych — przyjmuje 1). Dlatego chętnie reagują ze sobą, tworząc sól kuchenną NaCl.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="hard"><summary><span class="qnum">38</span><span class="level hard">trudne</span><span class="qt">Atom pewnego pierwiastka ma 4 powłoki elektronowe i 2 elektrony walencyjne. Podaj jego $Z$ i nazwę.</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>4 powłoki, 2 elektrony walencyjne.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>$Z$, nazwa.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <ul>
+          <li>4 powłoki → okres 4.</li>
+          <li>2 walencyjne → grupa 2.</li>
+          <li>Konfiguracja: K=2, L=8, M=8, N=2 → $Z = 2+8+8+2 = 20$.</li>
+          <li>$Z = 20$ → wapń (Ca).</li>
+        </ul>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>Wapń (Ca), $Z = 20$.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="hard"><summary><span class="qnum">39</span><span class="level hard">trudne</span><span class="qt">Oblicz masę cząsteczkową manganianu(VII) potasu $KMnO_4$.</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>$m(K) = 39$, $m(Mn) = 55$, $m(O) = 16$.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>$m_c$.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <div class="calc">$m_c = 39 + 55 + 4\cdot 16 = 39 + 55 + 64 = 158\,\text{u}$</div>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>$m_c(KMnO_4) = 158\,\text{u}$.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="hard"><summary><span class="qnum">40</span><span class="level hard">trudne</span><span class="qt">Wodór występuje w trzech izotopach: $^{1}_{1}H$, $^{2}_{1}H$, $^{3}_{1}H$. Podaj dla każdego liczbę protonów, neutronów i elektronów (atom obojętny).</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>Trzy izotopy wodoru.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>$p^+$, $n^0$, $e^-$.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <ul>
+          <li>Wszystkie mają $Z = 1$ → 1 proton i 1 elektron.</li>
+          <li>$^{1}H$: $N = 1-1 = 0$ neutronów (prot).</li>
+          <li>$^{2}H$: $N = 2-1 = 1$ neutron (deuter).</li>
+          <li>$^{3}H$: $N = 3-1 = 2$ neutrony (tryt).</li>
+        </ul>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span>
+        <ul>
+          <li>$^{1}H$: 1 p⁺, 0 n⁰, 1 e⁻</li>
+          <li>$^{2}H$: 1 p⁺, 1 n⁰, 1 e⁻</li>
+          <li>$^{3}H$: 1 p⁺, 2 n⁰, 1 e⁻</li>
+        </ul>
+      </div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="hard"><summary><span class="qnum">41</span><span class="level hard">trudne</span><span class="qt">Oblicz masę cząsteczkową fosforanu(V) wapnia $Ca_3(PO_4)_2$.</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>$m(Ca) = 40$, $m(P) = 31$, $m(O) = 16$.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>$m_c$.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <ul>
+          <li>Skład: 3 Ca; w nawiasie $PO_4$, mnożonym przez 2 → 2 P i $2\cdot 4 = 8$ O.</li>
+        </ul>
+        <div class="calc">$m_c = 3\cdot 40 + 2\cdot 31 + 8\cdot 16 = 120 + 62 + 128 = 310\,\text{u}$</div>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>$m_c\big(Ca_3(PO_4)_2\big) = 310\,\text{u}$.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="hard"><summary><span class="qnum">42</span><span class="level hard">trudne</span><span class="qt">Wyjaśnij, dlaczego pierwiastki należące do tej samej grupy głównej układu okresowego mają podobne właściwości chemiczne. Poprzyj przykładem grupy litowców.</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>Pytanie teoretyczne + przykład z grupy 1.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Uzasadnienie + przykład.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <ul>
+          <li>O właściwościach chemicznych decyduje liczba elektronów walencyjnych (na ostatniej powłoce).</li>
+          <li>Pierwiastki tej samej grupy głównej mają tę samą liczbę elektronów walencyjnych.</li>
+          <li>Litowce (grupa 1): Li (2,1), Na (2,8,1), K (2,8,8,1) — wszystkie mają 1 elektron walencyjny.</li>
+          <li>Wszystkie łatwo go oddają — dlatego każdy litowiec gwałtownie reaguje z wodą, dając wodorotlenek i wodór.</li>
+        </ul>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>Bo mają tę samą liczbę elektronów walencyjnych, a to one decydują o reaktywności. W grupie litowców — 1 elektron walencyjny, więc wszystkie te metale gwałtownie reagują z wodą w ten sam typowy sposób.</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="hard"><summary><span class="qnum">43</span><span class="level hard">trudne</span><span class="qt">Ile atomów wodoru znajduje się w 5 cząsteczkach amoniaku $NH_3$? Ile jest razem atomów wszystkich pierwiastków?</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>5 cząsteczek $NH_3$.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Liczba atomów H; łączna liczba atomów.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <ul>
+          <li>W jednej cząsteczce $NH_3$: 1 N + 3 H = 4 atomy.</li>
+          <li>Atomy H: $5 \cdot 3 = 15$.</li>
+          <li>Atomy N: $5 \cdot 1 = 5$.</li>
+          <li>Razem atomów: $15 + 5 = 20$.</li>
+        </ul>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>Atomów wodoru: 15. Łącznie atomów: 20 (15 H + 5 N).</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="hard"><summary><span class="qnum">44</span><span class="level hard">trudne</span><span class="qt">Oblicz zawartość procentową masową wodoru w cząsteczce wody $H_2O$.</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>$m(H) = 1$, $m(O) = 16$; wzór $H_2O$.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>$\%H$ (zawartość masowa).</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <ul>
+          <li>Masa cząsteczkowa: $m_c(H_2O) = 2\cdot 1 + 16 = 18\,\text{u}$.</li>
+          <li>Masa wodoru w cząsteczce: $2\cdot 1 = 2\,\text{u}$.</li>
+        </ul>
+        <div class="calc">$\%H = \dfrac{2}{18}\cdot 100\% \approx 11{,}11\%$</div>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>Wodór stanowi około 11,1% masy cząsteczki wody. (Pozostałe 88,9% to tlen.)</div></div>
+    </div>
+  </details></li>
+
+  <li><details class="q" data-l="hard"><summary><span class="qnum">45</span><span class="level hard">trudne</span><span class="qt">Wyjaśnij, jakie informacje o budowie atomu niesie numer okresu, a jakie numer grupy. Zilustruj to na pierwiastku o konfiguracji 2, 8, 5.</span></summary>
+    <div class="answer">
+      <div class="a-block"><span class="a-label dane">Dane</span><div>Konfiguracja przykładu: 2, 8, 5.</div></div>
+      <div class="a-block"><span class="a-label szukane">Szukane</span><div>Co mówi okres, co grupa; zastosowanie do przykładu.</div></div>
+      <div class="a-block"><span class="a-label roz">Rozwiązanie</span>
+        <ul>
+          <li><b>Numer okresu</b> = liczba powłok elektronowych w atomie.</li>
+          <li><b>Numer grupy głównej</b> = liczba elektronów walencyjnych (dla grup 1–2 bezpośrednio, dla grup 13–18 numer grupy − 10).</li>
+          <li>Przykład 2, 8, 5: 3 powłoki → okres 3; 5 elektronów walencyjnych → grupa 15.</li>
+          <li>$Z = 2+8+5 = 15$ → <b>fosfor (P)</b>.</li>
+        </ul>
+      </div>
+      <div class="a-block"><span class="a-label odp">Odpowiedź</span><div>Numer okresu mówi o liczbie powłok, numer grupy — o liczbie elektronów walencyjnych. Pierwiastek 2, 8, 5 to fosfor (P, $Z=15$): okres 3, grupa 15.</div></div>
+    </div>
+  </details></li>
+
+  </ol>
+</section>
+
+<footer>
+  <p>Karta powtórzeniowa • Chemia • Klasa 7 • Atomy i układ okresowy</p>
+</footer>
+
+</div>
+
+<script>
+// Filtrowanie zadań po poziomie trudności
+(function(){
+  const btns = document.querySelectorAll('.level-filter button');
+  const items = document.querySelectorAll('ol.qlist > li');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.f;
+      items.forEach(li => {
+        const d = li.querySelector('details.q');
+        if(!d) return;
+        if(f === 'all' || d.dataset.l === f) li.style.display = '';
+        else li.style.display = 'none';
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

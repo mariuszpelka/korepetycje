@@ -14,8 +14,11 @@ Zbiór kart powtórzeniowych dla uczniów klasy 7 szkoły podstawowej, po polsku
 
 Obecne karty:
 - `korepetycje-chemia-prawa-reakcje-chemiczne/` (~1700 linii)
+- `korepetycje-chemia-atomy-uklad-okresowy/` (~1230 linii)
 - `korepetycje-fizyka-dynamika-sily-ruch/` (~2300 linii)
 - `korepetycje-historia-swiat-po-wojnie/` (~780 linii, + `images/`)
+
+Strona startowa `/index.html` grupuje karty w sekcje per przedmiot — każda sekcja to `<section class="subject-group">` z nagłówkiem `.subject-head.<chem|phys|hist>` i licznikiem `.count`, a wewnątrz własna siatka `.courses` z kafelkami `<a class="course …">`.
 
 ## 3. Stack
 
@@ -38,8 +41,9 @@ Obecne karty:
 
 1. Utwórz katalog `korepetycje-<przedmiot>-<temat>/` z plikiem `index.html`
 2. Wzoruj się na istniejącej karcie z tego samego przedmiotu (tożsamy motyw kolorystyczny i struktura sekcji)
-3. Dodaj wpis do listy w głównym `/index.html` jako kolejny `<a class="course …">` z linkiem `<katalog>/index.html` (bezpośredni link do pliku, nie do katalogu)
-4. Treść wyłącznie po polsku; klasa docelowa podana w nagłówku `.kicker`
+3. Dodaj kafelek do głównego `/index.html` **wewnątrz odpowiedniej sekcji** `<section class="subject-group">` (Chemia / Fizyka / Historia) — nie tworzyć nowej sekcji dla istniejącego przedmiotu, nie wrzucać kafelka poza sekcje. Kafelek to `<a class="course <chem|phys|hist>">` z linkiem `<katalog>/index.html` (bezpośredni link do pliku, nie do katalogu). Pamiętaj o aktualizacji licznika `.count` w `.subject-head` (np. „3 karty")
+4. Nowy przedmiot (inny niż chemia/fizyka/historia) — dodaj nową `<section class="subject-group">` z własnym headerem i zdefiniuj zmienną koloru (`--<subject>`) oraz modyfikatory `.course.<subject>` / `.subject-head.<subject>` w `<style>`
+5. Treść wyłącznie po polsku; klasa docelowa podana w nagłówku `.kicker`
 
 ## 6. Git / PR workflow
 
@@ -51,5 +55,16 @@ Obecne karty:
 ## 7. Weryfikacja zmian UI
 
 - Otwórz zmodyfikowany `index.html` w przeglądarce — to jedyny sposób weryfikacji (brak testów)
-- Sprawdź: rozwijanie zadań, działanie linków z głównej strony, poprawność renderowania KaTeX
+- Sprawdź: rozwijanie zadań, działanie linków z głównej strony, poprawność renderowania KaTeX, **pełna widoczność każdego SVG** (etykiety, linie prowadzące, strzałki — nic nie może być przycięte na krawędziach)
 - Brak type-checkera i linterów — poprawność oceniamy wzrokowo
+
+## 8. SVG — wizualizacje
+
+Przeglądarka przycina wszystko, co wystaje poza `viewBox`. Przy projektowaniu SVG pilnuj:
+
+- **viewBox musi obejmować WSZYSTKIE elementy wraz z etykietami** — nie tylko figurę centralną. Policz zasięg każdego `<text>` (szerokość ≈ liczba znaków × rozmiar czcionki × 0,6), uwzględniając `text-anchor` (`start` rozszerza w prawo od `x`, `end` — w lewo, `middle` — w obie strony). Linie prowadzące od figury do etykiet też liczą się do obszaru
+- **Zostaw ~30–40 px marginesu** między skrajnym elementem a krawędzią viewBox; nie przyklejaj etykiet do x=0 ani do x=max
+- **`<defs>` zawsze na górze SVG**, przed jakąkolwiek referencją przez `url(#id)` (gradienty, markery, filtry). Forward-reference do `<marker>` bywa ignorowany w Safari i starszych Firefoksach — strzałki znikają
+- **Jedne `<defs>` na SVG**, nie dwa rozjechane bloki — łatwiej ogarnąć i uniknąć duplikatów `id`
+- **Wiązania chemiczne i linie łączące muszą leżeć w luce między kołami atomów, nie przechodzić przez symbole pierwiastków.** Jeżeli używasz koła z literą w środku (cx, r) jako atomu, to koniec linii wiązania = cx ± r (krawędź koła), nigdy = cx (środek). Najprostsza reguła: rozsuń atomy tak, aby ich koła się nie nakładały, i rysuj wiązanie wyłącznie w przerwie między krawędziami. Analogicznie dla każdej innej linii krzyżującej figurę z etykietą tekstową — linia ma omijać glif, a nie iść przez niego
+- Po każdej zmianie SVG otwórz stronę w przeglądarce i sprawdź, czy nic nie jest obcięte na krawędziach (częsty objaw: etykiety po lewej stronie figury z `text-anchor="end"` — ich lewa krawędź znika poza viewBox) oraz czy żadna linia nie przecina tekstu wewnątrz figury
