@@ -55,5 +55,15 @@ Strona startowa `/index.html` grupuje karty w sekcje per przedmiot — każda se
 ## 7. Weryfikacja zmian UI
 
 - Otwórz zmodyfikowany `index.html` w przeglądarce — to jedyny sposób weryfikacji (brak testów)
-- Sprawdź: rozwijanie zadań, działanie linków z głównej strony, poprawność renderowania KaTeX
+- Sprawdź: rozwijanie zadań, działanie linków z głównej strony, poprawność renderowania KaTeX, **pełna widoczność każdego SVG** (etykiety, linie prowadzące, strzałki — nic nie może być przycięte na krawędziach)
 - Brak type-checkera i linterów — poprawność oceniamy wzrokowo
+
+## 8. SVG — wizualizacje
+
+Przeglądarka przycina wszystko, co wystaje poza `viewBox`. Przy projektowaniu SVG pilnuj:
+
+- **viewBox musi obejmować WSZYSTKIE elementy wraz z etykietami** — nie tylko figurę centralną. Policz zasięg każdego `<text>` (szerokość ≈ liczba znaków × rozmiar czcionki × 0,6), uwzględniając `text-anchor` (`start` rozszerza w prawo od `x`, `end` — w lewo, `middle` — w obie strony). Linie prowadzące od figury do etykiet też liczą się do obszaru
+- **Zostaw ~30–40 px marginesu** między skrajnym elementem a krawędzią viewBox; nie przyklejaj etykiet do x=0 ani do x=max
+- **`<defs>` zawsze na górze SVG**, przed jakąkolwiek referencją przez `url(#id)` (gradienty, markery, filtry). Forward-reference do `<marker>` bywa ignorowany w Safari i starszych Firefoksach — strzałki znikają
+- **Jedne `<defs>` na SVG**, nie dwa rozjechane bloki — łatwiej ogarnąć i uniknąć duplikatów `id`
+- Po każdej zmianie SVG otwórz stronę w przeglądarce i sprawdź, czy nic nie jest obcięte na krawędziach (częsty objaw: etykiety po lewej stronie figury z `text-anchor="end"` — ich lewa krawędź znika poza viewBox)
