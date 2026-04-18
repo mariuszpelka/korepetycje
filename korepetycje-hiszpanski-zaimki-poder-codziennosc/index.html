@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hiszpański — zaimki dzierżawcze, czasowniki nieregularne, poder, codzienność · Klasa 7</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff6ec;
+  --bg2:#fbe9d4;
+  --paper:#fffaf2;
+  --paper2:#fff2e2;
+  --ink:#2a1a10;
+  --muted:#71594a;
+  --line:#e6d3bd;
+  --line2:#d8bfa3;
+  --red:#c1272d;
+  --red2:#8f1a1f;
+  --gold:#e9a31b;
+  --gold2:#c87f05;
+  --sea:#1c6b86;
+  --sea2:#0f4e66;
+  --olive:#7a8a3a;
+  --coral:#e46a52;
+  --cream:#fff2de;
+  --shadow:0 14px 32px rgba(143,26,31,.12);
+  --shadow2:0 6px 18px rgba(143,26,31,.1);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:
+  radial-gradient(1200px 700px at 10% -15%, #fde3c7 0%, transparent 60%),
+  radial-gradient(900px 600px at 100% 20%, #fbd7c5 0%, transparent 55%),
+  linear-gradient(180deg,#fff6ec 0%, #fbe9d4 100%);
+  color:var(--ink);font-family:"Inter","Manrope",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.65;min-height:100vh;
+}
+.container{max-width:1080px;margin:0 auto;padding:36px 22px 90px}
+
+a.home{
+  display:inline-flex;align-items:center;gap:8px;
+  color:var(--red);text-decoration:none;font-weight:600;font-size:.92rem;
+  padding:8px 14px;border-radius:999px;background:var(--paper);
+  border:1px solid var(--line);box-shadow:var(--shadow2);
+  margin-bottom:22px;transition:all .2s ease;
+}
+a.home:hover{background:var(--red);color:#fff;border-color:var(--red);transform:translateX(-2px)}
+
+/* HERO */
+header.hero{
+  position:relative;overflow:hidden;border-radius:28px;padding:48px 36px 44px;
+  background:
+    linear-gradient(135deg, rgba(193,39,45,.92) 0%, rgba(228,106,82,.9) 45%, rgba(233,163,27,.92) 100%);
+  color:#fff6ec;box-shadow:var(--shadow);margin-bottom:34px;
+}
+header.hero::before{
+  content:"";position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,246,236,.35),transparent 70%);pointer-events:none;
+}
+header.hero::after{
+  content:"";position:absolute;left:-60px;bottom:-60px;width:220px;height:220px;border-radius:50%;
+  background:radial-gradient(circle,rgba(28,107,134,.25),transparent 70%);pointer-events:none;
+}
+.kicker{
+  display:inline-block;background:#2a1a10;color:#ffd9a0;padding:7px 16px;border-radius:999px;
+  font-size:.82rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  font-family:"Manrope",sans-serif;
+}
+header.hero h1{
+  font-family:"Fraunces","Georgia",serif;font-weight:700;
+  font-size:clamp(1.9rem,3.6vw,2.9rem);margin:.45em 0 .3em;line-height:1.15;
+  position:relative;z-index:1;
+}
+header.hero .sub{
+  font-size:1.05rem;max-width:680px;opacity:.96;position:relative;z-index:1;
+}
+.flag-strip{
+  display:flex;gap:6px;margin-top:18px;position:relative;z-index:1;
+}
+.flag-strip span{width:40px;height:6px;border-radius:3px;background:#fff;opacity:.9}
+.flag-strip span:nth-child(1){background:#c1272d}
+.flag-strip span:nth-child(2){background:#f4a825}
+.flag-strip span:nth-child(3){background:#c1272d}
+
+/* NAV / TOC */
+nav.toc{
+  display:flex;flex-wrap:wrap;gap:10px;padding:18px;margin-bottom:30px;
+  background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow2);
+}
+nav.toc a{
+  text-decoration:none;color:var(--ink);font-weight:600;font-size:.88rem;
+  padding:8px 14px;border-radius:999px;background:var(--cream);border:1px solid var(--line);
+  transition:all .2s ease;
+}
+nav.toc a:hover{background:var(--red);color:#fff;border-color:var(--red);transform:translateY(-1px)}
+
+/* SEKCJE */
+section.block{
+  background:var(--paper);border:1px solid var(--line);border-radius:22px;
+  padding:30px 30px 28px;margin-bottom:28px;box-shadow:var(--shadow2);
+  position:relative;
+}
+section.block::before{
+  content:"";position:absolute;top:0;left:30px;right:30px;height:4px;border-radius:0 0 4px 4px;
+  background:linear-gradient(90deg,var(--red),var(--gold),var(--sea));opacity:.9;
+}
+section.block h2{
+  font-family:"Fraunces",serif;font-weight:700;font-size:1.7rem;margin:.2em 0 .1em;color:var(--red2);
+  display:flex;align-items:center;gap:12px;
+}
+section.block h2 .num{
+  display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;
+  background:linear-gradient(135deg,var(--red) 0%, var(--gold) 100%);color:#fff;font-size:1rem;
+  font-family:"Manrope",sans-serif;font-weight:700;box-shadow:0 4px 10px rgba(193,39,45,.35);
+}
+section.block h3{
+  font-family:"Fraunces",serif;font-weight:600;font-size:1.2rem;margin:1.4em 0 .5em;
+  color:var(--sea2);
+}
+section.block h4{margin:1em 0 .3em;color:var(--red2);font-size:1rem;font-weight:700}
+section.block p, section.block li{color:var(--ink);font-size:1rem}
+section.block p b, section.block li b{color:var(--red2)}
+.es{color:var(--red2);font-weight:700;font-family:"Fraunces",serif;font-style:italic}
+.pl-note{color:var(--muted);font-size:.92em}
+
+/* BOXY: info / warn / example / tip */
+.info, .warn, .ex, .tip{
+  border-radius:14px;padding:14px 18px;margin:14px 0;border:1px solid var(--line);
+  background:var(--cream);
+}
+.info{background:#eaf3f7;border-color:#bcd8e2;color:#0f4e66}
+.info b{color:var(--sea2)}
+.warn{background:#fde6d6;border-color:#f2bd94;color:#7a3612}
+.warn b{color:#a94714}
+.ex{background:#fff2e2;border-color:var(--line2);color:#4a2d1a}
+.ex b{color:var(--red2)}
+.tip{background:#f1f2dd;border-color:#d9dcb0;color:#4d5a12}
+.tip b{color:#4d5a12}
+
+/* TABELE ODMIAN */
+.conj{
+  width:100%;border-collapse:separate;border-spacing:0;margin:14px 0;
+  font-family:"Manrope",sans-serif;font-size:.95rem;
+  background:var(--paper2);border-radius:12px;overflow:hidden;border:1px solid var(--line);
+}
+.conj th, .conj td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line)}
+.conj thead th{background:linear-gradient(90deg,var(--red),var(--coral));color:#fff;font-weight:700;letter-spacing:.04em;font-size:.82rem;text-transform:uppercase}
+.conj tbody tr:last-child td{border-bottom:none}
+.conj tbody tr:nth-child(even){background:#fff7ec}
+.conj td.pron{font-weight:700;color:var(--sea2);width:34%}
+.conj td.form{font-family:"Fraunces",serif;font-style:italic;color:var(--red2);font-weight:600}
+.conj td.pl{color:var(--muted);font-size:.88em}
+
+/* TABELA ZAIMKÓW */
+.poss{
+  width:100%;border-collapse:separate;border-spacing:0;margin:14px 0;
+  background:var(--paper2);border-radius:12px;overflow:hidden;border:1px solid var(--line);
+  font-size:.94rem;
+}
+.poss th, .poss td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+.poss th:last-child, .poss td:last-child{border-right:none}
+.poss thead th{background:linear-gradient(90deg,var(--sea),var(--sea2));color:#fff;font-weight:700;letter-spacing:.03em;font-size:.8rem;text-transform:uppercase}
+.poss tbody tr:last-child td{border-bottom:none}
+.poss tbody tr:nth-child(even){background:#fff7ec}
+.poss td.pron{font-weight:700;color:var(--sea2)}
+.poss td .es{font-style:italic}
+
+/* SŁOWNICZEK */
+.vocab{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin:14px 0;
+}
+.vocab .item{
+  background:var(--paper2);border:1px solid var(--line);border-radius:10px;padding:10px 14px;
+  display:flex;justify-content:space-between;gap:10px;align-items:baseline;
+}
+.vocab .item .es{font-size:1rem}
+.vocab .item .pl{color:var(--muted);font-size:.9em}
+
+/* LISTA CZASOWNIKÓW */
+.verblist{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:14px 0;
+}
+.verblist .v{
+  background:var(--paper2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;
+}
+.verblist .v h4{margin:0 0 6px;color:var(--red2)}
+.verblist .v .inf{font-family:"Fraunces",serif;font-style:italic;font-size:1.05rem;color:var(--red2)}
+.verblist .v .pl{color:var(--muted);font-size:.85em;margin-bottom:4px}
+.verblist .v .forms{font-family:"Manrope",sans-serif;font-size:.88rem;color:var(--ink)}
+.verblist .v .forms span{font-family:"Fraunces",serif;font-style:italic;font-weight:600;color:var(--sea2)}
+
+/* SVG wrapper */
+.fig{
+  background:var(--paper2);border:1px solid var(--line);border-radius:14px;padding:16px;margin:18px 0;
+}
+.fig .cap{font-size:.85rem;color:var(--muted);margin-top:6px;text-align:center;font-style:italic}
+.fig svg{max-width:100%;height:auto;display:block;margin:0 auto}
+
+/* ZADANIA */
+.exercises{margin-top:26px}
+.exercises h3.ex-hdr{
+  display:flex;align-items:center;gap:10px;font-family:"Fraunces",serif;font-weight:700;
+  color:var(--red2);margin-top:36px;margin-bottom:12px;
+}
+.exercises h3.ex-hdr .lvl{
+  display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:999px;
+  font-family:"Manrope",sans-serif;font-size:.76rem;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.lvl.easy{background:#e3f0d7;color:#486b14;border:1px solid #b9d08b}
+.lvl.mid{background:#fef3cd;color:#7a5412;border:1px solid #ead58b}
+.lvl.hard{background:#f7d9d7;color:#7a1a20;border:1px solid #e6a09c}
+
+details.q{
+  background:var(--paper);border:1px solid var(--line);border-radius:14px;
+  padding:0;margin:10px 0;box-shadow:var(--shadow2);overflow:hidden;
+  transition:border-color .2s ease;
+}
+details.q[open]{border-color:var(--red)}
+details.q > summary{
+  padding:14px 18px;cursor:pointer;font-weight:600;list-style:none;
+  display:flex;align-items:flex-start;gap:12px;color:var(--ink);
+}
+details.q > summary::-webkit-details-marker{display:none}
+details.q > summary::before{
+  content:"▸";color:var(--red);font-size:1.1rem;transition:transform .2s ease;flex-shrink:0;margin-top:1px;
+}
+details.q[open] > summary::before{transform:rotate(90deg)}
+details.q .num{
+  display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:26px;padding:0 8px;
+  border-radius:8px;background:var(--cream);border:1px solid var(--line);font-family:"Manrope",sans-serif;
+  font-weight:700;color:var(--red2);font-size:.85rem;flex-shrink:0;
+}
+details.q .question{flex:1}
+details.q .level{
+  display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;font-size:.7rem;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+}
+details.q .level.easy{background:#e3f0d7;color:#486b14}
+details.q .level.mid{background:#fef3cd;color:#7a5412}
+details.q .level.hard{background:#f7d9d7;color:#7a1a20}
+
+details.q .answer{
+  background:var(--paper2);border-top:1px solid var(--line);padding:16px 20px 18px;
+}
+details.q .answer h5{
+  margin:.6em 0 .3em;font-size:.82rem;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--red2);font-family:"Manrope",sans-serif;font-weight:700;
+}
+details.q .answer h5:first-child{margin-top:0}
+details.q .answer p{margin:.2em 0}
+details.q .answer ul, details.q .answer ol{margin:.3em 0;padding-left:20px}
+details.q .answer .final{
+  margin-top:10px;padding:10px 14px;background:linear-gradient(135deg,#fff3d6,#ffe3b8);
+  border:1px solid var(--gold2);border-radius:10px;color:#4a2d0a;font-weight:600;
+}
+details.q .answer .final b{color:var(--red2)}
+
+/* PODSUMOWANIE */
+.summary-card{
+  background:linear-gradient(135deg, rgba(28,107,134,.08) 0%, rgba(233,163,27,.12) 100%);
+  border:1px solid var(--line2);border-radius:18px;padding:22px 26px;margin-top:30px;
+}
+.summary-card h3{margin-top:0;color:var(--sea2);font-family:"Fraunces",serif}
+.summary-card ul{margin:10px 0 0;padding-left:22px}
+.summary-card li{margin:.3em 0}
+
+footer{
+  text-align:center;color:var(--muted);margin-top:40px;font-size:.88rem;padding-top:22px;
+  border-top:1px solid var(--line);
+}
+
+@media (max-width:620px){
+  .container{padding:22px 14px 60px}
+  header.hero{padding:32px 22px 30px}
+  section.block{padding:22px 18px}
+  section.block::before{left:18px;right:18px}
+  .conj, .poss{font-size:.85rem}
+  .conj th, .conj td, .poss th, .poss td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<a class="home" href="../index.html">← Strona główna</a>
+
+<header class="hero">
+  <span class="kicker">Klasa 7 · Hiszpański · Español</span>
+  <h1>Zaimki dzierżawcze, czasowniki nieregularne, <em>poder</em> i codzienność</h1>
+  <p class="sub">Karta powtórzeniowa z czterech obszarów gramatyki i słownictwa: zaimki dzierżawcze (<em>mi, tu, su…</em>), nieregularne odmiany w czasie teraźniejszym, używanie <em>poder</em> do wyrażania pozwolenia i zakazów oraz słownictwo o porach dnia i codziennych czynnościach. Z teorią, przykładami i 45 zadaniami.</p>
+  <div class="flag-strip"><span></span><span></span><span></span></div>
+</header>
+
+<nav class="toc">
+  <a href="#s1">1. Zaimki dzierżawcze</a>
+  <a href="#s2">2. Czasowniki nieregularne</a>
+  <a href="#s3">3. Czasownik <em>poder</em></a>
+  <a href="#s4">4. Pory dnia i codzienność</a>
+  <a href="#ex">🎯 45 zadań</a>
+</nav>
+
+<!-- ===================== SEKCJA 1 ===================== -->
+<section class="block" id="s1">
+  <h2><span class="num">1</span> Zaimki dzierżawcze · <span class="es">Pronombres posesivos</span></h2>
+  <p>Zaimki dzierżawcze odpowiadają na pytanie <b>„czyj?"</b> (mój, twój, nasz…). W hiszpańskim mają <b>dwie formy</b>:</p>
+  <ul>
+    <li><b>krótką</b> (<span class="es">forma átona</span>) — <b>stoi przed rzeczownikiem</b>: <span class="es">mi libro</span> — moja książka</li>
+    <li><b>długą</b> (<span class="es">forma tónica</span>) — stoi <b>po rzeczowniku</b> albo <b>po czasowniku <em>ser</em></b>: <span class="es">el libro mío</span>, <span class="es">el libro es mío</span> — ta książka jest moja</li>
+  </ul>
+
+  <h3>Forma krótka — przed rzeczownikiem</h3>
+
+  <table class="poss">
+    <thead>
+      <tr>
+        <th>Osoba</th>
+        <th>Liczba pojedyncza</th>
+        <th>Liczba mnoga</th>
+        <th>Polski</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="pron">yo</td><td><span class="es">mi</span></td><td><span class="es">mis</span></td><td>mój / moja / moi / moje</td></tr>
+      <tr><td class="pron">tú</td><td><span class="es">tu</span></td><td><span class="es">tus</span></td><td>twój / twoja / twoi / twoje</td></tr>
+      <tr><td class="pron">él / ella / usted</td><td><span class="es">su</span></td><td><span class="es">sus</span></td><td>jego / jej / Pana / Pani</td></tr>
+      <tr><td class="pron">nosotros/-as</td><td><span class="es">nuestro / nuestra</span></td><td><span class="es">nuestros / nuestras</span></td><td>nasz / nasza / nasi / nasze</td></tr>
+      <tr><td class="pron">vosotros/-as</td><td><span class="es">vuestro / vuestra</span></td><td><span class="es">vuestros / vuestras</span></td><td>wasz / wasza / wasi / wasze</td></tr>
+      <tr><td class="pron">ellos / ellas / ustedes</td><td><span class="es">su</span></td><td><span class="es">sus</span></td><td>ich / Państwa</td></tr>
+    </tbody>
+  </table>
+
+  <div class="info">
+    <b>Ważne:</b> zaimki dzierżawcze uzgadniają się <b>z rzeczownikiem</b>, który posiadamy — nie z osobą posiadacza!
+    <br><span class="es">mi libro</span> (l. poj.) vs. <span class="es">mis libros</span> (l. mn.).
+    <br>Tylko <em>nuestro/a</em> i <em>vuestro/a</em> zmieniają też <b>rodzaj</b> (męski/żeński): <span class="es">nuestro coche</span> / <span class="es">nuestra casa</span>.
+  </div>
+
+  <div class="ex">
+    <b>Przykłady:</b>
+    <ul>
+      <li><span class="es">Mi padre es profesor.</span> — <span class="pl-note">Mój tata jest nauczycielem.</span></li>
+      <li><span class="es">¿Dónde están tus zapatos?</span> — <span class="pl-note">Gdzie są twoje buty?</span></li>
+      <li><span class="es">Nuestra casa está cerca del colegio.</span> — <span class="pl-note">Nasz dom jest blisko szkoły.</span></li>
+      <li><span class="es">Sus amigos viven en Madrid.</span> — <span class="pl-note">Jego / jej / ich przyjaciele mieszkają w Madrycie.</span></li>
+    </ul>
+  </div>
+
+  <h3>Forma długa — po rzeczowniku lub po <em>ser</em></h3>
+
+  <table class="poss">
+    <thead>
+      <tr>
+        <th>Osoba</th>
+        <th>Rodzaj męski</th>
+        <th>Rodzaj żeński</th>
+        <th>Polski</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="pron">yo</td><td><span class="es">mío / míos</span></td><td><span class="es">mía / mías</span></td><td>mój</td></tr>
+      <tr><td class="pron">tú</td><td><span class="es">tuyo / tuyos</span></td><td><span class="es">tuya / tuyas</span></td><td>twój</td></tr>
+      <tr><td class="pron">él / ella / usted</td><td><span class="es">suyo / suyos</span></td><td><span class="es">suya / suyas</span></td><td>jego / jej</td></tr>
+      <tr><td class="pron">nosotros/-as</td><td><span class="es">nuestro/-s</span></td><td><span class="es">nuestra/-s</span></td><td>nasz</td></tr>
+      <tr><td class="pron">vosotros/-as</td><td><span class="es">vuestro/-s</span></td><td><span class="es">vuestra/-s</span></td><td>wasz</td></tr>
+      <tr><td class="pron">ellos / ellas / ustedes</td><td><span class="es">suyo / suyos</span></td><td><span class="es">suya / suyas</span></td><td>ich</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ex">
+    <b>Przykłady użycia długiej formy:</b>
+    <ul>
+      <li><span class="es">El bolígrafo es mío.</span> — <span class="pl-note">Ten długopis jest mój.</span></li>
+      <li><span class="es">Un amigo tuyo me llamó.</span> — <span class="pl-note">Dzwonił do mnie twój kolega.</span></li>
+      <li><span class="es">¿Es vuestra esta mochila?</span> — <span class="pl-note">Czy ten plecak jest wasz?</span></li>
+    </ul>
+  </div>
+
+  <div class="warn">
+    <b>Pułapka z <span class="es">su / sus</span>:</b> ta sama forma oznacza „jego", „jej", „Pana/Pani" i „ich" — wynika z kontekstu. Gdy nie wiadomo, czyje, mówimy np. <span class="es">el libro de Ana</span> (książka Ani) zamiast <span class="es">su libro</span>.
+  </div>
+
+  <div class="fig">
+    <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Porównanie form krótkiej i długiej zaimków dzierżawczych">
+      <defs>
+        <linearGradient id="g1a" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stop-color="#c1272d"/>
+          <stop offset="100%" stop-color="#e9a31b"/>
+        </linearGradient>
+        <linearGradient id="g1b" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stop-color="#1c6b86"/>
+          <stop offset="100%" stop-color="#0f4e66"/>
+        </linearGradient>
+        <marker id="arr1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#c1272d"/>
+        </marker>
+        <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#1c6b86"/>
+        </marker>
+      </defs>
+      <!-- title -->
+      <text x="380" y="32" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="20" font-weight="700" fill="#2a1a10">Dwie formy zaimka „mój"</text>
+
+      <!-- Forma krótka -->
+      <rect x="50" y="70" width="320" height="180" rx="16" fill="#fff2e2" stroke="#d8bfa3"/>
+      <rect x="50" y="70" width="320" height="36" rx="16" fill="url(#g1a)"/>
+      <text x="210" y="94" text-anchor="middle" font-family="Manrope, sans-serif" font-size="14" font-weight="700" fill="#fff" letter-spacing="1">FORMA KRÓTKA · PRZED RZECZOWNIKIEM</text>
+      <text x="210" y="148" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="28" font-weight="700" fill="#c1272d">mi libro</text>
+      <text x="210" y="178" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#71594a">= moja książka</text>
+      <text x="210" y="220" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#2a1a10">zaimek → rzeczownik</text>
+
+      <!-- Forma długa -->
+      <rect x="390" y="70" width="320" height="180" rx="16" fill="#eaf3f7" stroke="#bcd8e2"/>
+      <rect x="390" y="70" width="320" height="36" rx="16" fill="url(#g1b)"/>
+      <text x="550" y="94" text-anchor="middle" font-family="Manrope, sans-serif" font-size="14" font-weight="700" fill="#fff" letter-spacing="1">FORMA DŁUGA · PO RZECZOWNIKU</text>
+      <text x="550" y="148" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="28" font-weight="700" fill="#1c6b86">el libro mío</text>
+      <text x="550" y="178" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#71594a">= ta książka (jest) moja</text>
+      <text x="550" y="220" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#2a1a10">rzeczownik → zaimek</text>
+
+      <!-- Strzałki -->
+      <path d="M 130 280 L 290 280" stroke="#c1272d" stroke-width="2" marker-end="url(#arr1)"/>
+      <path d="M 550 280 L 410 280" stroke="#1c6b86" stroke-width="2" marker-end="url(#arr2)"/>
+    </svg>
+    <div class="cap">Dwa sposoby wyrażenia tej samej myśli — „moja książka" / „ta książka jest moja".</div>
+  </div>
+</section>
+
+<!-- ===================== SEKCJA 2 ===================== -->
+<section class="block" id="s2">
+  <h2><span class="num">2</span> Czasowniki nieregularne · <span class="es">Verbos irregulares</span></h2>
+  <p>W hiszpańskim większość czasowników w czasie teraźniejszym odmienia się <b>regularnie</b> (trzy grupy: <em>-ar</em>, <em>-er</em>, <em>-ir</em>). Ale wiele najważniejszych czasowników ma odmianę <b>nieregularną</b> — zmieniają się:</p>
+  <ul>
+    <li>tylko w <b>pierwszej osobie</b> (np. <span class="es">hacer → hago</span>, <span class="es">salir → salgo</span>),</li>
+    <li>z <b>wymianą samogłoski</b> w temacie: <b>e → ie</b>, <b>o → ue</b>, <b>e → i</b> (we wszystkich osobach oprócz „my" i „wy"),</li>
+    <li>czasem — w <b>każdej osobie</b> (np. <span class="es">ser</span>, <span class="es">ir</span>).</li>
+  </ul>
+
+  <h3>Dwa najważniejsze: <em>ser</em> i <em>estar</em> („być")</h3>
+  <p>Oba znaczą <b>„być"</b>, ale używa się ich w różnych sytuacjach.</p>
+
+  <table class="conj">
+    <thead>
+      <tr><th>Osoba</th><th><em>ser</em> — być (cechy stałe)</th><th><em>estar</em> — być (stan, miejsce)</th><th>Polski</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="pron">yo</td><td class="form">soy</td><td class="form">estoy</td><td class="pl">jestem</td></tr>
+      <tr><td class="pron">tú</td><td class="form">eres</td><td class="form">estás</td><td class="pl">jesteś</td></tr>
+      <tr><td class="pron">él / ella / usted</td><td class="form">es</td><td class="form">está</td><td class="pl">jest</td></tr>
+      <tr><td class="pron">nosotros/-as</td><td class="form">somos</td><td class="form">estamos</td><td class="pl">jesteśmy</td></tr>
+      <tr><td class="pron">vosotros/-as</td><td class="form">sois</td><td class="form">estáis</td><td class="pl">jesteście</td></tr>
+      <tr><td class="pron">ellos / ellas / ustedes</td><td class="form">son</td><td class="form">están</td><td class="pl">są</td></tr>
+    </tbody>
+  </table>
+
+  <div class="info">
+    <b>Kiedy <em>ser</em>, a kiedy <em>estar</em>?</b>
+    <ul>
+      <li><b>SER</b> — to, co stałe: tożsamość, zawód, narodowość, charakter, godzina, pochodzenie.<br>
+        <span class="es">Soy Ana. Soy polaca. Es profesor.</span> — <span class="pl-note">Jestem Ana. Jestem Polką. On jest nauczycielem.</span></li>
+      <li><b>ESTAR</b> — to, co zmienne: stan, nastrój, położenie w przestrzeni, samopoczucie.<br>
+        <span class="es">Estoy cansada. Estamos en casa. Madrid está en España.</span> — <span class="pl-note">Jestem zmęczona. Jesteśmy w domu. Madryt leży w Hiszpanii.</span></li>
+    </ul>
+  </div>
+
+  <h3>Najważniejsze czasowniki nieregularne — 1. osoba l. poj.</h3>
+  <p>Wiele czasowników jest nieregularnych <b>tylko w formie „yo"</b>. Pozostałe osoby odmieniają się regularnie (według zasad grupy <em>-er</em> lub <em>-ir</em>).</p>
+
+  <div class="verblist">
+    <div class="v">
+      <span class="inf">tener</span> <span class="pl">— mieć</span>
+      <div class="forms"><span>tengo</span>, tienes, tiene, tenemos, tenéis, tienen</div>
+    </div>
+    <div class="v">
+      <span class="inf">hacer</span> <span class="pl">— robić</span>
+      <div class="forms"><span>hago</span>, haces, hace, hacemos, hacéis, hacen</div>
+    </div>
+    <div class="v">
+      <span class="inf">salir</span> <span class="pl">— wychodzić</span>
+      <div class="forms"><span>salgo</span>, sales, sale, salimos, salís, salen</div>
+    </div>
+    <div class="v">
+      <span class="inf">poner</span> <span class="pl">— kłaść, stawiać</span>
+      <div class="forms"><span>pongo</span>, pones, pone, ponemos, ponéis, ponen</div>
+    </div>
+    <div class="v">
+      <span class="inf">saber</span> <span class="pl">— wiedzieć, umieć</span>
+      <div class="forms"><span>sé</span>, sabes, sabe, sabemos, sabéis, saben</div>
+    </div>
+    <div class="v">
+      <span class="inf">ver</span> <span class="pl">— widzieć</span>
+      <div class="forms"><span>veo</span>, ves, ve, vemos, veis, ven</div>
+    </div>
+    <div class="v">
+      <span class="inf">dar</span> <span class="pl">— dawać</span>
+      <div class="forms"><span>doy</span>, das, da, damos, dais, dan</div>
+    </div>
+    <div class="v">
+      <span class="inf">conocer</span> <span class="pl">— znać</span>
+      <div class="forms"><span>conozco</span>, conoces, conoce, conocemos, conocéis, conocen</div>
+    </div>
+  </div>
+
+  <h3>Czasowniki z wymianą w temacie</h3>
+  <p>W formach <b>yo, tú, él, ellos</b> (4 osoby) zmienia się samogłoska. W formach <b>nosotros, vosotros</b> zostaje oryginał — jak w bezokoliczniku.</p>
+
+  <h4>Wymiana <b>e → ie</b></h4>
+  <table class="conj">
+    <thead><tr><th>Osoba</th><th><em>querer</em> — chcieć, kochać</th><th><em>pensar</em> — myśleć</th><th><em>venir</em>* — przychodzić</th></tr></thead>
+    <tbody>
+      <tr><td class="pron">yo</td><td class="form">quiero</td><td class="form">pienso</td><td class="form">vengo</td></tr>
+      <tr><td class="pron">tú</td><td class="form">quieres</td><td class="form">piensas</td><td class="form">vienes</td></tr>
+      <tr><td class="pron">él / ella / Ud.</td><td class="form">quiere</td><td class="form">piensa</td><td class="form">viene</td></tr>
+      <tr><td class="pron">nosotros</td><td class="form">queremos</td><td class="form">pensamos</td><td class="form">venimos</td></tr>
+      <tr><td class="pron">vosotros</td><td class="form">queréis</td><td class="form">pensáis</td><td class="form">venís</td></tr>
+      <tr><td class="pron">ellos / Uds.</td><td class="form">quieren</td><td class="form">piensan</td><td class="form">vienen</td></tr>
+    </tbody>
+  </table>
+  <p class="pl-note">* <em>venir</em> łączy obie nieregularności: „yo vengo" (g!) oraz e → ie w pozostałych osobach (tú vienes).</p>
+
+  <h4>Wymiana <b>o → ue</b></h4>
+  <table class="conj">
+    <thead><tr><th>Osoba</th><th><em>poder</em> — móc</th><th><em>dormir</em> — spać</th><th><em>volver</em> — wracać</th></tr></thead>
+    <tbody>
+      <tr><td class="pron">yo</td><td class="form">puedo</td><td class="form">duermo</td><td class="form">vuelvo</td></tr>
+      <tr><td class="pron">tú</td><td class="form">puedes</td><td class="form">duermes</td><td class="form">vuelves</td></tr>
+      <tr><td class="pron">él / ella / Ud.</td><td class="form">puede</td><td class="form">duerme</td><td class="form">vuelve</td></tr>
+      <tr><td class="pron">nosotros</td><td class="form">podemos</td><td class="form">dormimos</td><td class="form">volvemos</td></tr>
+      <tr><td class="pron">vosotros</td><td class="form">podéis</td><td class="form">dormís</td><td class="form">volvéis</td></tr>
+      <tr><td class="pron">ellos / Uds.</td><td class="form">pueden</td><td class="form">duermen</td><td class="form">vuelven</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Wymiana <b>e → i</b></h4>
+  <table class="conj">
+    <thead><tr><th>Osoba</th><th><em>pedir</em> — prosić</th><th><em>decir</em>* — mówić</th></tr></thead>
+    <tbody>
+      <tr><td class="pron">yo</td><td class="form">pido</td><td class="form">digo</td></tr>
+      <tr><td class="pron">tú</td><td class="form">pides</td><td class="form">dices</td></tr>
+      <tr><td class="pron">él / ella / Ud.</td><td class="form">pide</td><td class="form">dice</td></tr>
+      <tr><td class="pron">nosotros</td><td class="form">pedimos</td><td class="form">decimos</td></tr>
+      <tr><td class="pron">vosotros</td><td class="form">pedís</td><td class="form">decís</td></tr>
+      <tr><td class="pron">ellos / Uds.</td><td class="form">piden</td><td class="form">dicen</td></tr>
+    </tbody>
+  </table>
+  <p class="pl-note">* <em>decir</em> — również podwójnie nieregularny: „yo digo" (g!) + e → i.</p>
+
+  <h3>Dwa całkowicie nieregularne: <em>ir</em> i <em>haber</em></h3>
+  <table class="conj">
+    <thead><tr><th>Osoba</th><th><em>ir</em> — iść, jechać</th><th><em>haber</em>* — mieć (pomocniczy)</th><th>Polski</th></tr></thead>
+    <tbody>
+      <tr><td class="pron">yo</td><td class="form">voy</td><td class="form">he</td><td class="pl">idę / mam (coś zrobione)</td></tr>
+      <tr><td class="pron">tú</td><td class="form">vas</td><td class="form">has</td><td class="pl">idziesz</td></tr>
+      <tr><td class="pron">él / ella / Ud.</td><td class="form">va</td><td class="form">ha / hay</td><td class="pl">idzie</td></tr>
+      <tr><td class="pron">nosotros</td><td class="form">vamos</td><td class="form">hemos</td><td class="pl">idziemy</td></tr>
+      <tr><td class="pron">vosotros</td><td class="form">vais</td><td class="form">habéis</td><td class="pl">idziecie</td></tr>
+      <tr><td class="pron">ellos / Uds.</td><td class="form">van</td><td class="form">han</td><td class="pl">idą</td></tr>
+    </tbody>
+  </table>
+  <p class="pl-note">* <em>hay</em> = „jest / są" (istnieje): <span class="es">Hay un libro en la mesa.</span> — <span class="pl-note">Jest książka na stole.</span></p>
+
+  <div class="tip">
+    <b>Wskazówka:</b> przy czasownikach z wymianą samogłoski zapamiętaj <b>regułę buta</b> — odmiany, w których zachodzi wymiana (yo, tú, él, ellos), tworzą kształt „buta" w tabeli, a <em>nosotros</em> i <em>vosotros</em> zostają „na górze". Dzięki temu łatwiej pamiętać, że to właśnie te dwie formy zachowują się jak bezokolicznik.
+  </div>
+
+  <div class="fig">
+    <svg viewBox="0 0 720 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Reguła buta — czasowniki z wymianą samogłoski">
+      <defs>
+        <linearGradient id="boot" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stop-color="#fde3c7"/>
+          <stop offset="100%" stop-color="#f2bd94"/>
+        </linearGradient>
+        <marker id="ar3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#c1272d"/>
+        </marker>
+        <marker id="ar4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f4e66"/>
+        </marker>
+      </defs>
+      <text x="360" y="32" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="19" font-weight="700" fill="#2a1a10">Reguła „buta" — <tspan font-style="italic" fill="#c1272d">poder</tspan> (o → ue)</text>
+
+      <!-- Kształt buta - łączy wszystkie komórki z wymianą -->
+      <path d="M 120 70 L 340 70 L 340 160 L 260 160 L 260 260 L 120 260 Z"
+            fill="url(#boot)" stroke="#c1272d" stroke-width="2.5" opacity=".55"/>
+
+      <!-- Pionowe linie siatki -->
+      <line x1="260" y1="70" x2="260" y2="260" stroke="#d8bfa3" stroke-width="1" stroke-dasharray="4 4"/>
+      <line x1="120" y1="160" x2="340" y2="160" stroke="#d8bfa3" stroke-width="1" stroke-dasharray="4 4"/>
+
+      <!-- Etykiety osób -->
+      <text x="140" y="95" font-family="Manrope, sans-serif" font-size="13" font-weight="700" fill="#71594a">yo</text>
+      <text x="140" y="115" font-family="Fraunces, serif" font-style="italic" font-size="18" fill="#c1272d" font-weight="700">puedo</text>
+
+      <text x="280" y="95" font-family="Manrope, sans-serif" font-size="13" font-weight="700" fill="#71594a">nosotros</text>
+      <text x="280" y="115" font-family="Fraunces, serif" font-style="italic" font-size="18" fill="#0f4e66" font-weight="700">podemos</text>
+
+      <text x="140" y="145" font-family="Manrope, sans-serif" font-size="13" font-weight="700" fill="#71594a">tú</text>
+      <text x="140" y="155" font-family="Fraunces, serif" font-style="italic" font-size="18" fill="#c1272d" font-weight="700">puedes</text>
+
+      <text x="280" y="145" font-family="Manrope, sans-serif" font-size="13" font-weight="700" fill="#71594a">vosotros</text>
+      <text x="280" y="155" font-family="Fraunces, serif" font-style="italic" font-size="18" fill="#0f4e66" font-weight="700">podéis</text>
+
+      <text x="140" y="195" font-family="Manrope, sans-serif" font-size="13" font-weight="700" fill="#71594a">él / ella</text>
+      <text x="140" y="215" font-family="Fraunces, serif" font-style="italic" font-size="18" fill="#c1272d" font-weight="700">puede</text>
+
+      <text x="140" y="245" font-family="Manrope, sans-serif" font-size="13" font-weight="700" fill="#71594a">ellos</text>
+      <text x="140" y="260" font-family="Fraunces, serif" font-style="italic" font-size="18" fill="#c1272d" font-weight="700">pueden</text>
+
+      <!-- Opis z prawej strony -->
+      <text x="430" y="90" font-family="Manrope, sans-serif" font-size="13" font-weight="700" fill="#c1272d" letter-spacing=".05em">W „BUCIE" (4 osoby):</text>
+      <text x="430" y="112" font-family="Inter, sans-serif" font-size="13" fill="#2a1a10">zachodzi wymiana</text>
+      <text x="430" y="130" font-family="Fraunces, serif" font-style="italic" font-size="16" fill="#c1272d" font-weight="700">o → ue</text>
+      <text x="430" y="148" font-family="Inter, sans-serif" font-size="12" fill="#71594a" font-style="italic">(pod + er → p<tspan font-weight="700">ue</tspan>d + o)</text>
+
+      <text x="430" y="200" font-family="Manrope, sans-serif" font-size="13" font-weight="700" fill="#0f4e66" letter-spacing=".05em">POZA „BUTEM":</text>
+      <text x="430" y="222" font-family="Inter, sans-serif" font-size="13" fill="#2a1a10"><em>nosotros</em> i <em>vosotros</em></text>
+      <text x="430" y="240" font-family="Inter, sans-serif" font-size="13" fill="#2a1a10">zachowują temat</text>
+      <text x="430" y="258" font-family="Fraunces, serif" font-style="italic" font-size="16" fill="#0f4e66" font-weight="700">(podemos, podéis)</text>
+
+      <!-- Strzałki -->
+      <path d="M 355 115 L 420 108" stroke="#c1272d" stroke-width="2" marker-end="url(#ar3)"/>
+      <path d="M 355 215 L 420 225" stroke="#0f4e66" stroke-width="2" marker-end="url(#ar4)"/>
+    </svg>
+    <div class="cap">Czerwona „szpica" buta obejmuje 4 formy, w których zachodzi wymiana samogłoski (o→ue).</div>
+  </div>
+
+</section>
+
+<!-- ===================== SEKCJA 3 ===================== -->
+<section class="block" id="s3">
+  <h2><span class="num">3</span> <em>Poder</em> + bezokolicznik — co wolno, a czego nie</h2>
+  <p>Czasownik <span class="es">poder</span> oznacza po polsku <b>„móc"</b> lub <b>„umieć (fizycznie)"</b>. W hiszpańskim używamy go bardzo często do mówienia o tym, co <b>wolno</b>, a czego <b>nie wolno</b>, oraz o prośbach i pozwoleniach.</p>
+
+  <div class="info">
+    <b>Konstrukcja:</b> <span class="es">poder</span> + <b>bezokolicznik</b> (czasownik w formie -ar / -er / -ir).
+    <br>Odmieniamy tylko <em>poder</em>, a drugi czasownik zostaje w formie bezokolicznika.
+  </div>
+
+  <table class="conj">
+    <thead><tr><th>Osoba</th><th>Forma <em>poder</em></th><th>Przykład</th><th>Polski</th></tr></thead>
+    <tbody>
+      <tr><td class="pron">yo</td><td class="form">puedo</td><td><span class="es">puedo leer</span></td><td class="pl">mogę czytać</td></tr>
+      <tr><td class="pron">tú</td><td class="form">puedes</td><td><span class="es">puedes salir</span></td><td class="pl">możesz wyjść</td></tr>
+      <tr><td class="pron">él / ella</td><td class="form">puede</td><td><span class="es">puede dormir</span></td><td class="pl">może spać</td></tr>
+      <tr><td class="pron">nosotros</td><td class="form">podemos</td><td><span class="es">podemos jugar</span></td><td class="pl">możemy się bawić</td></tr>
+      <tr><td class="pron">vosotros</td><td class="form">podéis</td><td><span class="es">podéis hablar</span></td><td class="pl">możecie rozmawiać</td></tr>
+      <tr><td class="pron">ellos</td><td class="form">pueden</td><td><span class="es">pueden entrar</span></td><td class="pl">mogą wejść</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Trzy zastosowania <em>poder</em></h3>
+
+  <h4>1. Możliwość / zdolność fizyczna</h4>
+  <div class="ex">
+    <ul>
+      <li><span class="es">Puedo correr 5 kilómetros.</span> — <span class="pl-note">Mogę przebiec 5 km.</span></li>
+      <li><span class="es">Mi hermana pequeña no puede leer todavía.</span> — <span class="pl-note">Moja mała siostra jeszcze nie umie czytać.</span></li>
+    </ul>
+  </div>
+
+  <h4>2. Pozwolenie — prośba i zgoda</h4>
+  <p>Używamy pytania <span class="es">¿Puedo…?</span> („czy mogę…?") lub <span class="es">¿Puedes…?</span> („czy możesz…?" — kogoś poprosić).</p>
+  <div class="ex">
+    <ul>
+      <li><span class="es">¿Puedo ir al baño?</span> — <span class="pl-note">Czy mogę wyjść do toalety?</span></li>
+      <li><span class="es">¿Puedes ayudarme?</span> — <span class="pl-note">Czy możesz mi pomóc?</span></li>
+      <li><span class="es">Sí, claro, puedes entrar.</span> — <span class="pl-note">Tak, oczywiście, możesz wejść.</span></li>
+    </ul>
+  </div>
+
+  <h4>3. Zakaz — <em>no poder</em></h4>
+  <p>Dodajemy <span class="es">no</span> przed <em>poder</em>. Używamy tej formy, gdy coś jest zabronione lub niemożliwe.</p>
+  <div class="ex">
+    <ul>
+      <li><span class="es">No puedes usar el móvil en clase.</span> — <span class="pl-note">Nie wolno ci używać telefonu w klasie.</span></li>
+      <li><span class="es">No podemos comer en la biblioteca.</span> — <span class="pl-note">Nie możemy jeść w bibliotece.</span></li>
+      <li><span class="es">No puedo venir, estoy enfermo.</span> — <span class="pl-note">Nie mogę przyjść, jestem chory.</span></li>
+    </ul>
+  </div>
+
+  <div class="warn">
+    <b>Uwaga:</b> <b>po <em>poder</em> nie stawiamy <em>„a"</em></b> przed kolejnym czasownikiem. Mówimy <span class="es">puedo ir</span> (a nie „puedo a ir"). „A" dodajemy po <em>ir</em>: <span class="es">voy a ir</span>, <span class="es">vamos a comer</span>.
+  </div>
+
+  <div class="tip">
+    <b>Zasady w szkole — tablica z <em>no puedes</em>:</b>
+    <ul>
+      <li><span class="es">No puedes hablar con los amigos durante el examen.</span></li>
+      <li><span class="es">No puedes comer en clase.</span></li>
+      <li><span class="es">No puedes correr por los pasillos.</span></li>
+      <li><span class="es">No puedes usar los auriculares.</span></li>
+      <li><span class="es">Puedes preguntar al profesor si tienes dudas.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== SEKCJA 4 ===================== -->
+<section class="block" id="s4">
+  <h2><span class="num">4</span> Pory dnia i codzienne czynności · <span class="es">Partes del día y rutina</span></h2>
+
+  <h3>Pory dnia</h3>
+
+  <div class="vocab">
+    <div class="item"><span class="es">la mañana</span><span class="pl">ranek / przed południem</span></div>
+    <div class="item"><span class="es">el mediodía</span><span class="pl">południe (godz. 12–14)</span></div>
+    <div class="item"><span class="es">la tarde</span><span class="pl">popołudnie</span></div>
+    <div class="item"><span class="es">la noche</span><span class="pl">wieczór, noc</span></div>
+    <div class="item"><span class="es">la madrugada</span><span class="pl">świt (późna noc)</span></div>
+  </div>
+
+  <div class="info">
+    <b>Uwaga na przyimek <em>por</em>:</b> gdy chcemy powiedzieć, <b>kiedy</b> coś robimy, używamy konstrukcji <span class="es">por + la + pora dnia</span>:
+    <ul>
+      <li><span class="es">por la mañana</span> — rano</li>
+      <li><span class="es">por la tarde</span> — po południu</li>
+      <li><span class="es">por la noche</span> — wieczorem / nocą</li>
+    </ul>
+    Kiedy podajemy <b>konkretną godzinę</b>, używamy <span class="es">de la</span>: <span class="es">a las 8 de la mañana</span> — o 8 rano.
+  </div>
+
+  <div class="fig">
+    <svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pory dnia po hiszpańsku — od rana do nocy">
+      <defs>
+        <linearGradient id="sky" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stop-color="#f9d6a0"/>
+          <stop offset="25%" stop-color="#ffe3b8"/>
+          <stop offset="55%" stop-color="#ffc997"/>
+          <stop offset="80%" stop-color="#7b5c8e"/>
+          <stop offset="100%" stop-color="#28224d"/>
+        </linearGradient>
+        <radialGradient id="sun" cx=".5" cy=".5" r=".5">
+          <stop offset="0%" stop-color="#fff2a8"/>
+          <stop offset="100%" stop-color="#f4a825"/>
+        </radialGradient>
+        <radialGradient id="moon" cx=".5" cy=".5" r=".5">
+          <stop offset="0%" stop-color="#f6f0d6"/>
+          <stop offset="100%" stop-color="#c9c0a3"/>
+        </radialGradient>
+      </defs>
+
+      <!-- Tytuł -->
+      <text x="380" y="30" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="18" font-weight="700" fill="#2a1a10">Od rana do nocy · <tspan font-style="italic" fill="#c1272d">partes del día</tspan></text>
+
+      <!-- Łuk nieba -->
+      <path d="M 60 220 Q 380 50 700 220" fill="url(#sky)" opacity=".9"/>
+      <path d="M 60 220 Q 380 50 700 220" fill="none" stroke="#8f1a1f" stroke-width="1.5" opacity=".35"/>
+
+      <!-- Linia ziemi -->
+      <line x1="60" y1="220" x2="700" y2="220" stroke="#8f1a1f" stroke-width="2" opacity=".5"/>
+
+      <!-- Słońce/księżyc na łuku -->
+      <circle cx="155" cy="180" r="18" fill="url(#sun)" stroke="#c87f05" stroke-width="1.5"/>
+      <circle cx="380" cy="100" r="22" fill="url(#sun)" stroke="#c87f05" stroke-width="1.5"/>
+      <circle cx="535" cy="150" r="18" fill="url(#sun)" stroke="#c87f05" stroke-width="1.5"/>
+      <circle cx="640" cy="210" r="15" fill="url(#moon)" stroke="#6b6454" stroke-width="1.2"/>
+
+      <!-- Kreski markujące pozycje -->
+      <line x1="155" y1="220" x2="155" y2="238" stroke="#8f1a1f" stroke-width="2"/>
+      <line x1="380" y1="220" x2="380" y2="238" stroke="#8f1a1f" stroke-width="2"/>
+      <line x1="535" y1="220" x2="535" y2="238" stroke="#8f1a1f" stroke-width="2"/>
+      <line x1="640" y1="220" x2="640" y2="238" stroke="#8f1a1f" stroke-width="2"/>
+
+      <!-- Etykiety czasowe -->
+      <text x="155" y="255" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" fill="#71594a" font-weight="600">7:00 – 12:00</text>
+      <text x="380" y="255" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" fill="#71594a" font-weight="600">12:00 – 14:00</text>
+      <text x="535" y="255" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" fill="#71594a" font-weight="600">14:00 – 20:00</text>
+      <text x="640" y="255" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" fill="#71594a" font-weight="600">20:00 – 6:00</text>
+
+      <!-- Nazwy hiszpańskie -->
+      <text x="155" y="278" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="16" font-weight="700" fill="#c1272d">la mañana</text>
+      <text x="380" y="278" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="16" font-weight="700" fill="#c1272d">el mediodía</text>
+      <text x="535" y="278" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="16" font-weight="700" fill="#c1272d">la tarde</text>
+      <text x="640" y="278" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="16" font-weight="700" fill="#c1272d">la noche</text>
+
+      <!-- Polskie tłumaczenia -->
+      <text x="155" y="298" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#71594a">rano</text>
+      <text x="380" y="298" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#71594a">południe</text>
+      <text x="535" y="298" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#71594a">popołudnie</text>
+      <text x="640" y="298" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#71594a">wieczór / noc</text>
+    </svg>
+    <div class="cap">Słońce wędruje po niebie — tak „wędrują" nazwy pór dnia.</div>
+  </div>
+
+  <h3>Codzienne czynności · <em>la rutina diaria</em></h3>
+  <p>Wiele z tych czasowników to <b>czasowniki zwrotne</b> — kończą się na <em>-se</em> i wymagają zaimka (<em>me, te, se, nos, os, se</em>).</p>
+
+  <table class="conj">
+    <thead><tr><th>Hiszpański</th><th>Polski</th><th>Typ</th></tr></thead>
+    <tbody>
+      <tr><td class="form">despertarse</td><td class="pl">budzić się</td><td><span class="pl-note">zwrotny, e→ie</span></td></tr>
+      <tr><td class="form">levantarse</td><td class="pl">wstawać (z łóżka)</td><td><span class="pl-note">zwrotny</span></td></tr>
+      <tr><td class="form">ducharse</td><td class="pl">brać prysznic</td><td><span class="pl-note">zwrotny</span></td></tr>
+      <tr><td class="form">lavarse los dientes</td><td class="pl">myć zęby</td><td><span class="pl-note">zwrotny</span></td></tr>
+      <tr><td class="form">vestirse</td><td class="pl">ubierać się</td><td><span class="pl-note">zwrotny, e→i</span></td></tr>
+      <tr><td class="form">desayunar</td><td class="pl">jeść śniadanie</td><td><span class="pl-note">regularny -ar</span></td></tr>
+      <tr><td class="form">ir al colegio</td><td class="pl">iść do szkoły</td><td><span class="pl-note"><em>ir</em> nieregularny</span></td></tr>
+      <tr><td class="form">estudiar</td><td class="pl">uczyć się</td><td><span class="pl-note">regularny -ar</span></td></tr>
+      <tr><td class="form">comer / almorzar</td><td class="pl">jeść obiad</td><td><span class="pl-note">almorzar: o→ue</span></td></tr>
+      <tr><td class="form">hacer los deberes</td><td class="pl">odrabiać lekcje</td><td><span class="pl-note">hacer: yo hago</span></td></tr>
+      <tr><td class="form">jugar</td><td class="pl">bawić się, grać</td><td><span class="pl-note">u→ue (yo juego)</span></td></tr>
+      <tr><td class="form">ver la tele</td><td class="pl">oglądać telewizję</td><td><span class="pl-note">ver: yo veo</span></td></tr>
+      <tr><td class="form">cenar</td><td class="pl">jeść kolację</td><td><span class="pl-note">regularny -ar</span></td></tr>
+      <tr><td class="form">leer</td><td class="pl">czytać</td><td><span class="pl-note">regularny -er</span></td></tr>
+      <tr><td class="form">acostarse</td><td class="pl">kłaść się spać</td><td><span class="pl-note">zwrotny, o→ue</span></td></tr>
+      <tr><td class="form">dormir</td><td class="pl">spać</td><td><span class="pl-note">o→ue</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Czasowniki zwrotne — jak ich używać</h3>
+  <p>Przykład: <span class="es">ducharse</span> (brać prysznic). Zaimek zwrotny zmienia się z osobą.</p>
+
+  <table class="conj">
+    <thead><tr><th>Osoba</th><th>Zaimek</th><th><em>ducharse</em></th><th>Polski</th></tr></thead>
+    <tbody>
+      <tr><td class="pron">yo</td><td class="form">me</td><td class="form">me ducho</td><td class="pl">biorę prysznic</td></tr>
+      <tr><td class="pron">tú</td><td class="form">te</td><td class="form">te duchas</td><td class="pl">bierzesz prysznic</td></tr>
+      <tr><td class="pron">él / ella</td><td class="form">se</td><td class="form">se ducha</td><td class="pl">bierze prysznic</td></tr>
+      <tr><td class="pron">nosotros</td><td class="form">nos</td><td class="form">nos duchamos</td><td class="pl">bierzemy prysznic</td></tr>
+      <tr><td class="pron">vosotros</td><td class="form">os</td><td class="form">os ducháis</td><td class="pl">bierzecie prysznic</td></tr>
+      <tr><td class="pron">ellos</td><td class="form">se</td><td class="form">se duchan</td><td class="pl">biorą prysznic</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ex">
+    <b>Cały dzień po hiszpańsku:</b>
+    <p><span class="es">Me despierto a las siete de la mañana. Me levanto, me ducho y desayuno. A las ocho voy al colegio. Por la tarde, hago los deberes y juego con mis amigos. Por la noche, ceno con mi familia, veo la tele un rato y me acuesto a las diez.</span></p>
+    <p class="pl-note">Budzę się o siódmej rano. Wstaję, biorę prysznic i jem śniadanie. O ósmej idę do szkoły. Po południu odrabiam lekcje i bawię się z przyjaciółmi. Wieczorem jem kolację z rodziną, chwilę oglądam telewizję i kładę się spać o dziesiątej.</p>
+  </div>
+
+  <h3>Przydatne godziny</h3>
+  <div class="vocab">
+    <div class="item"><span class="es">¿Qué hora es?</span><span class="pl">Która godzina?</span></div>
+    <div class="item"><span class="es">Es la una.</span><span class="pl">Jest pierwsza.</span></div>
+    <div class="item"><span class="es">Son las dos.</span><span class="pl">Jest druga.</span></div>
+    <div class="item"><span class="es">y media</span><span class="pl">wpół (…: 30)</span></div>
+    <div class="item"><span class="es">y cuarto</span><span class="pl">kwadrans po</span></div>
+    <div class="item"><span class="es">menos cuarto</span><span class="pl">za kwadrans</span></div>
+  </div>
+</section>
+
+<!-- ===================== ZADANIA ===================== -->
+<section class="block exercises" id="ex">
+  <h2><span class="num">✓</span> Zadania sprawdzające — 45 ćwiczeń</h2>
+  <p>Kliknij w trójkącik, aby rozwinąć rozwiązanie. Każde rozwiązanie ma <b>4 sekcje</b>: dane, szukane, rozwiązanie krok po kroku, odpowiedź.</p>
+
+  <!-- ======= POZIOM ŁATWY ======= -->
+  <h3 class="ex-hdr">Poziom łatwy <span class="lvl easy">1–15 · Podstawy</span></h3>
+
+  <details class="q">
+    <summary><span class="num">1</span><span class="question">Wstaw zaimek dzierżawczy „mój": ___ libro (książka, l. poj., r. męski). <span class="level easy">łatwe</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Rzeczownik: <span class="es">libro</span> — książka, rodzaj męski, liczba pojedyncza. Osoba: <em>yo</em> (ja).</p>
+      <h5>Szukane</h5>
+      <p>Forma krótka zaimka dzierżawczego „mój".</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>Zaimek stoi <b>przed</b> rzeczownikiem → używamy <b>formy krótkiej</b>.</li>
+        <li>Dla osoby <em>yo</em> w liczbie pojedynczej mamy <span class="es">mi</span>.</li>
+        <li>Forma krótka nie rozróżnia rodzaju w liczbie pojedynczej — <span class="es">mi</span> pasuje i do męskiego, i do żeńskiego.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">mi libro</span> = moja książka.</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">2</span><span class="question">Wstaw zaimek „twoje" (l. mn.): ___ hermanas (siostry). <span class="level easy">łatwe</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Rzeczownik: <span class="es">hermanas</span> — siostry (rodzaj żeński, liczba mnoga). Osoba: <em>tú</em> (ty).</p>
+      <h5>Szukane</h5>
+      <p>Forma krótka zaimka „twoje" (l. mn.).</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>Osoba <em>tú</em> → <span class="es">tu</span> (l. poj.) lub <span class="es">tus</span> (l. mn.).</li>
+        <li>Rzeczownik jest w liczbie mnogiej, więc wybieramy <span class="es">tus</span>.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">tus hermanas</span> = twoje siostry.</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">3</span><span class="question">Uzupełnij: Nosotros somos estudiantes. ___ profesor es simpático. <span class="level easy">łatwe</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Podmiot: <em>nosotros</em> (my). Rzeczownik: <span class="es">profesor</span> (rodzaj męski, liczba pojedyncza).</p>
+      <h5>Szukane</h5>
+      <p>Forma zaimka „nasz".</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>Dla <em>nosotros</em> zaimek zmienia <b>rodzaj i liczbę</b> rzeczownika: <span class="es">nuestro / nuestra / nuestros / nuestras</span>.</li>
+        <li><span class="es">profesor</span> — rodzaj męski, l. poj. → <span class="es">nuestro</span>.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">Nuestro profesor es simpático.</span> — Nasz nauczyciel jest sympatyczny.</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">4</span><span class="question">Wstaw formę czasownika <em>ser</em>: Yo ___ polaca. <span class="level easy">łatwe</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Podmiot: <em>yo</em>. Czasownik: <span class="es">ser</span> (być — cecha stała: narodowość).</p>
+      <h5>Szukane</h5>
+      <p>Forma <em>ser</em> dla osoby „yo".</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>Narodowość to cecha stała → używamy <em>ser</em>.</li>
+        <li>Odmiana <em>ser</em>: soy, eres, es, somos, sois, son.</li>
+        <li>Dla „yo" → <span class="es">soy</span>.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">Yo soy polaca.</span> — Jestem Polką.</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">5</span><span class="question">Wstaw formę czasownika <em>tener</em>: Yo ___ un perro. <span class="level easy">łatwe</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Podmiot: <em>yo</em>. Czasownik: <span class="es">tener</span> — mieć.</p>
+      <h5>Szukane</h5>
+      <p>Forma <em>tener</em> dla osoby „yo".</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li><em>tener</em> jest podwójnie nieregularny: „yo" kończy się na <b>-go</b>, a w pozostałych osobach zachodzi wymiana e → ie.</li>
+        <li>Dla „yo" → <span class="es">tengo</span>.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">Yo tengo un perro.</span> — Mam psa.</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">6</span><span class="question">Przetłumacz: Mogę czytać. → Yo ___ leer. <span class="level easy">łatwe</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Konstrukcja: „mogę + czasownik" → <em>poder</em> + bezokolicznik.</p>
+      <h5>Szukane</h5>
+      <p>Forma <em>poder</em> dla osoby „yo".</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li><em>poder</em> ma wymianę o → ue w „bucie".</li>
+        <li>Dla „yo" → <span class="es">puedo</span>.</li>
+        <li>Po <em>poder</em> stawiamy bezokolicznik: <span class="es">leer</span>.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">Yo puedo leer.</span></div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">7</span><span class="question">Co oznacza po polsku <em>ducharse</em>? <span class="level easy">łatwe</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Hiszpański czasownik: <span class="es">ducharse</span> (kończy się na <em>-se</em> → zwrotny).</p>
+      <h5>Szukane</h5>
+      <p>Polskie tłumaczenie.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>Rdzeń <em>ducha-</em> pochodzi od <span class="es">ducha</span> = prysznic.</li>
+        <li>Końcówka <em>-se</em> oznacza czynność skierowaną „na siebie".</li>
+        <li>Razem: „brać prysznic" (dla siebie, sobie).</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <em>ducharse</em> = brać prysznic (myć się pod prysznicem).</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">8</span><span class="question">Wpisz hiszpańskie tłumaczenie: „rano" (po ___, kiedy?). <span class="level easy">łatwe</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Polskie wyrażenie: „rano" w znaczeniu „kiedy?" (pora dnia).</p>
+      <h5>Szukane</h5>
+      <p>Hiszpański odpowiednik.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>Pora dnia to <span class="es">la mañana</span>.</li>
+        <li>„Kiedy?" → konstrukcja <span class="es">por + la + pora dnia</span>.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">por la mañana</span>.</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">9</span><span class="question">Uzupełnij: „wieczorem" = por la ___. <span class="level easy">łatwe</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Konstrukcja: <span class="es">por la ___</span>.</p>
+      <h5>Szukane</h5>
+      <p>Nazwa pory dnia oznaczająca „wieczór / noc".</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>„Wieczór / noc" → <span class="es">la noche</span>.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">por la noche</span>.</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">10</span><span class="question">Odmień <em>hacer</em> w 1. osobie (yo). <span class="level easy">łatwe</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Bezokolicznik: <span class="es">hacer</span> — robić.</p>
+      <h5>Szukane</h5>
+      <p>Forma „yo".</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li><em>hacer</em> jest nieregularny w 1. osobie.</li>
+        <li>Zamiast regularnej formy „haco" mamy <span class="es">hago</span> (z wstawionym „g").</li>
+        <li>Pozostałe osoby odmieniają się regularnie (haces, hace, hacemos, hacéis, hacen).</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">yo hago</span> = robię.</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">11</span><span class="question">Odmień <em>ir</em> w 1. osobie (yo). <span class="level easy">łatwe</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Bezokolicznik: <span class="es">ir</span> — iść, jechać.</p>
+      <h5>Szukane</h5>
+      <p>Forma „yo".</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li><em>ir</em> jest całkowicie nieregularny.</li>
+        <li>Odmiana: voy, vas, va, vamos, vais, van.</li>
+        <li>Dla „yo" → <span class="es">voy</span>.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">yo voy</span> = idę.</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">12</span><span class="question">Wstaw „nasz": ___ profesor (nasz nauczyciel). <span class="level easy">łatwe</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Rzeczownik <span class="es">profesor</span> — r. męski, l. poj. Osoba: <em>nosotros</em>.</p>
+      <h5>Szukane</h5>
+      <p>Forma „nasz" pasująca do rzeczownika.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>Zaimek „nasz" zmienia rodzaj: <span class="es">nuestro</span> (m.) / <span class="es">nuestra</span> (ż.).</li>
+        <li>Rzeczownik jest męski, l. poj. → <span class="es">nuestro</span>.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">nuestro profesor</span>.</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">13</span><span class="question">Wstaw formę <em>poder</em> dla „tú": Tú ___ entrar. <span class="level easy">łatwe</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Czasownik: <em>poder</em>. Osoba: <em>tú</em>.</p>
+      <h5>Szukane</h5>
+      <p>Forma <em>poder</em> dla „tú".</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>„Tú" należy do „buta" → zachodzi wymiana o → ue.</li>
+        <li>Końcówka regularna <em>-es</em> (grupa <em>-er</em>) → <span class="es">puedes</span>.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">Tú puedes entrar.</span> — Możesz wejść.</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">14</span><span class="question">Co oznacza <em>desayunar</em>? <span class="level easy">łatwe</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Hiszpański czasownik: <span class="es">desayunar</span>.</p>
+      <h5>Szukane</h5>
+      <p>Znaczenie po polsku.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>Rzeczownik <span class="es">el desayuno</span> = śniadanie.</li>
+        <li>Czasownik <span class="es">desayunar</span> = jeść śniadanie.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <em>desayunar</em> = jeść śniadanie.</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">15</span><span class="question">Co oznacza <em>no puedo</em>? <span class="level easy">łatwe</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Zwrot: <span class="es">no puedo</span>.</p>
+      <h5>Szukane</h5>
+      <p>Tłumaczenie na polski.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li><span class="es">no</span> = „nie" (przeczenie stoi przed czasownikiem).</li>
+        <li><span class="es">puedo</span> = „mogę" (1. os. od <em>poder</em>).</li>
+        <li>Razem: „nie mogę" lub „nie wolno mi".</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <em>no puedo</em> = nie mogę / nie wolno mi.</div>
+    </div>
+  </details>
+
+  <!-- ======= POZIOM ŚREDNI ======= -->
+  <h3 class="ex-hdr">Poziom średni <span class="lvl mid">16–30 · Odmiany i zdania</span></h3>
+
+  <details class="q">
+    <summary><span class="num">16</span><span class="question">Odmień <em>tener</em> we wszystkich sześciu osobach czasu teraźniejszego. <span class="level mid">średnie</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Bezokolicznik: <span class="es">tener</span> — mieć.</p>
+      <h5>Szukane</h5>
+      <p>Pełna odmiana czasu teraźniejszego.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>Osoba „yo" jest nieregularna: <span class="es">tengo</span> (wstawione „g").</li>
+        <li>W pozostałych osobach z „buta" zachodzi wymiana e → ie: tú <b>tie</b>nes, él <b>tie</b>ne, ellos <b>tie</b>nen.</li>
+        <li>W <em>nosotros</em> i <em>vosotros</em> zostaje „e": tenemos, tenéis.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> yo <span class="es">tengo</span>, tú <span class="es">tienes</span>, él/ella/Ud. <span class="es">tiene</span>, nosotros <span class="es">tenemos</span>, vosotros <span class="es">tenéis</span>, ellos/Uds. <span class="es">tienen</span>.</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">17</span><span class="question">Odmień <em>poder</em> we wszystkich sześciu osobach. <span class="level mid">średnie</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Bezokolicznik: <span class="es">poder</span> — móc.</p>
+      <h5>Szukane</h5>
+      <p>Pełna odmiana.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>W „bucie" (yo, tú, él, ellos) zachodzi wymiana o → ue.</li>
+        <li>Końcówki grupy <em>-er</em>: -o, -es, -e, -emos, -éis, -en.</li>
+        <li>W <em>nosotros</em> i <em>vosotros</em> zostaje „o": podemos, podéis.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> yo <span class="es">puedo</span>, tú <span class="es">puedes</span>, él/ella <span class="es">puede</span>, nosotros <span class="es">podemos</span>, vosotros <span class="es">podéis</span>, ellos <span class="es">pueden</span>.</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">18</span><span class="question">Napisz trzy zdania z <em>poder</em> + bezokolicznikiem: twierdzące, przeczące i pytanie. <span class="level mid">średnie</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Konstrukcja: <em>poder</em> + bezokolicznik.</p>
+      <h5>Szukane</h5>
+      <p>Trzy zdania: (+), (–), (?).</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li><b>Twierdzące:</b> odmieniamy <em>poder</em> + bezokolicznik. „Mogę pływać" → <span class="es">Puedo nadar.</span></li>
+        <li><b>Przeczące:</b> dodajemy <em>no</em> przed formą <em>poder</em>. „Nie mogę grać" → <span class="es">No puedo jugar.</span></li>
+        <li><b>Pytanie:</b> odwracamy szyk lub używamy wyłącznie intonacji. „Czy możesz mi pomóc?" → <span class="es">¿Puedes ayudarme?</span></li>
+      </ol>
+      <div class="final"><b>Odpowiedź (przykładowa):</b><br>
+        (+) <span class="es">Puedo nadar muy bien.</span> — Umiem dobrze pływać.<br>
+        (–) <span class="es">No puedo jugar ahora.</span> — Nie mogę teraz grać.<br>
+        (?) <span class="es">¿Puedes ayudarme con los deberes?</span> — Czy możesz mi pomóc z lekcjami?
+      </div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">19</span><span class="question">Przetłumacz na hiszpański: „Po południu uczymy się hiszpańskiego." <span class="level mid">średnie</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Zdanie polskie: podmiot „my", czynność „uczymy się", dopełnienie „hiszpańskiego", okolicznik czasu „po południu".</p>
+      <h5>Szukane</h5>
+      <p>Zdanie po hiszpańsku.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>„Po południu" → <span class="es">por la tarde</span>.</li>
+        <li>„Uczymy się" → <em>estudiar</em>, 1. os. l. mn. → <span class="es">estudiamos</span> (regularny -ar).</li>
+        <li>„Hiszpańskiego" (jako przedmiotu szkolnego) → <span class="es">español</span>.</li>
+        <li>Składamy zdanie — okolicznik czasu może stać na początku lub końcu.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">Por la tarde estudiamos español.</span> (lub: <span class="es">Estudiamos español por la tarde.</span>)</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">20</span><span class="question">Przetłumacz: „Mój brat ma 10 lat." <span class="level mid">średnie</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Polski: „mój brat" — podmiot, „ma 10 lat" — orzeczenie + liczebnik.</p>
+      <h5>Szukane</h5>
+      <p>Tłumaczenie z użyciem zaimka dzierżawczego i nieregularnego <em>tener</em>.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>„Mój brat" → <span class="es">mi hermano</span>.</li>
+        <li>W hiszpańskim wiek mówimy przez <em>tener</em>: „ma 10 lat" → <span class="es">tiene 10 años</span>.</li>
+        <li>Dla „brat" (3. os. l. poj.) forma to <span class="es">tiene</span> (e → ie).</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">Mi hermano tiene 10 años.</span></div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">21</span><span class="question">Wstaw <em>su / sus</em>: ___ libros (jej książki) i ___ casa (jego dom). <span class="level mid">średnie</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Dwa rzeczowniki: <span class="es">libros</span> (l. mn.), <span class="es">casa</span> (l. poj.).</p>
+      <h5>Szukane</h5>
+      <p>Poprawna forma <em>su</em> / <em>sus</em> w każdym przypadku.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>Forma krótka „jego / jej" to <span class="es">su</span> (l. poj.) lub <span class="es">sus</span> (l. mn.).</li>
+        <li>Forma uzgadnia się <b>z rzeczownikiem</b>, nie z osobą posiadacza.</li>
+        <li><span class="es">libros</span> — l. mn. → <span class="es">sus</span>.</li>
+        <li><span class="es">casa</span> — l. poj. → <span class="es">su</span>.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">sus libros</span>, <span class="es">su casa</span>.</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">22</span><span class="question">Wybierz: <em>ser</em> czy <em>estar</em>? Yo ___ de Polonia. <span class="level mid">średnie</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Zdanie: „Jestem z Polski" — mówimy o pochodzeniu.</p>
+      <h5>Szukane</h5>
+      <p>Wybór czasownika oraz poprawna forma dla „yo".</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>Pochodzenie to cecha stała (nie zmienia się) → <em>ser</em>.</li>
+        <li>Forma „yo" od <em>ser</em> → <span class="es">soy</span>.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">Yo soy de Polonia.</span> — Jestem z Polski.</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">23</span><span class="question">Wybierz: <em>ser</em> czy <em>estar</em>? Mi madre ___ en casa. <span class="level mid">średnie</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>„Moja mama jest w domu" — informacja o <b>miejscu</b>.</p>
+      <h5>Szukane</h5>
+      <p>Poprawny czasownik + forma dla 3. os. l. poj.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>Położenie / miejsce → <em>estar</em>.</li>
+        <li>3. osoba l. poj. od <em>estar</em> → <span class="es">está</span>.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">Mi madre está en casa.</span></div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">24</span><span class="question">Przetłumacz: „Rano jem śniadanie i idę do szkoły." <span class="level mid">średnie</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Dwa czasowniki w 1. os. l. poj.: „jem śniadanie" (regularny) i „idę" (nieregularny).</p>
+      <h5>Szukane</h5>
+      <p>Zdanie po hiszpańsku.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>„Rano" → <span class="es">por la mañana</span>.</li>
+        <li>„Jem śniadanie" → <span class="es">desayuno</span> (regularny -ar).</li>
+        <li>„Idę do szkoły" → <span class="es">voy al colegio</span> (ir + al = a + el, bo „colegio" jest rodzaju męskiego).</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">Por la mañana desayuno y voy al colegio.</span></div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">25</span><span class="question">Przetłumacz: „Nie mogę iść do kina." <span class="level mid">średnie</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Przeczenie z <em>poder</em> + <em>ir</em> + miejsce „do kina".</p>
+      <h5>Szukane</h5>
+      <p>Pełne zdanie po hiszpańsku.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>„Nie mogę" → <span class="es">no puedo</span>.</li>
+        <li>Po <em>poder</em> → bezokolicznik, bez „a": <span class="es">ir</span>.</li>
+        <li>„Do kina" → <span class="es">al cine</span> (a + el = al, bo <span class="es">cine</span> jest męski).</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">No puedo ir al cine.</span></div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">26</span><span class="question">Ułóż pytanie: „Czy możesz mi pomóc?" (używając <em>ayudar</em>). <span class="level mid">średnie</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Czasownik: <span class="es">poder</span> (ty) + bezokolicznik <span class="es">ayudar</span>.</p>
+      <h5>Szukane</h5>
+      <p>Zdanie pytające.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>„Możesz" dla „tú" → <span class="es">puedes</span>.</li>
+        <li>„Pomóc" → <span class="es">ayudar</span>.</li>
+        <li>„Mi" jako zaimek w celowniku dołączamy do bezokolicznika: <span class="es">ayudarme</span> (lub osobno przed: <span class="es">me puedes ayudar</span>).</li>
+        <li>Pytanie w hiszpańskim ma dwa znaki zapytania: <span class="es">¿ … ?</span>.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">¿Puedes ayudarme?</span> lub <span class="es">¿Me puedes ayudar?</span></div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">27</span><span class="question">Odmień <em>ir</em> we wszystkich sześciu osobach. <span class="level mid">średnie</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Bezokolicznik: <span class="es">ir</span> — całkowicie nieregularny.</p>
+      <h5>Szukane</h5>
+      <p>Pełna odmiana.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>Brak regularnego tematu — trzeba zapamiętać: temat „v-".</li>
+        <li>Końcówki -oy, -as, -a, -amos, -ais, -an (nietypowe — jak <em>dar</em>).</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> yo <span class="es">voy</span>, tú <span class="es">vas</span>, él/ella <span class="es">va</span>, nosotros <span class="es">vamos</span>, vosotros <span class="es">vais</span>, ellos <span class="es">van</span>.</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">28</span><span class="question">Wybierz poprawną formę: <em>mi</em> czy <em>mis</em> libros? <span class="level mid">średnie</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Rzeczownik: <span class="es">libros</span> (liczba mnoga).</p>
+      <h5>Szukane</h5>
+      <p>Poprawna forma „mój / moje".</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>Zaimek dopasowujemy do liczby rzeczownika.</li>
+        <li>L. mn. → <span class="es">mis</span>.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">mis libros</span> = moje książki.</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">29</span><span class="question">Długa forma zaimka: „Ta książka jest moja." → El libro es ___. <span class="level mid">średnie</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p><span class="es">libro</span> — r. męski, l. poj. Struktura: <em>ser</em> + zaimek dzierżawczy.</p>
+      <h5>Szukane</h5>
+      <p>Forma długa „mój".</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>Po <em>ser</em> używamy <b>formy długiej</b>.</li>
+        <li>Dla „mój" (m., l. poj.) → <span class="es">mío</span>.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">El libro es mío.</span></div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">30</span><span class="question">Przetłumacz: „Wieczorem oglądam telewizję i kładę się spać." <span class="level mid">średnie</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Dwie czynności: „oglądam telewizję" i „kładę się spać" — druga jest zwrotna (<em>acostarse</em>, o→ue).</p>
+      <h5>Szukane</h5>
+      <p>Tłumaczenie.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>„Wieczorem" → <span class="es">por la noche</span>.</li>
+        <li>„Oglądam telewizję" → <span class="es">veo la tele</span> (<em>ver</em>, yo veo).</li>
+        <li>„Kładę się spać" → <span class="es">me acuesto</span> (<em>acostarse</em>, o → ue, + zaimek „me").</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">Por la noche veo la tele y me acuesto.</span></div>
+    </div>
+  </details>
+
+  <!-- ======= POZIOM TRUDNY ======= -->
+  <h3 class="ex-hdr">Poziom trudny <span class="lvl hard">31–45 · Tłumaczenia i dialogi</span></h3>
+
+  <details class="q">
+    <summary><span class="num">31</span><span class="question">Uzupełnij tekst odpowiednimi formami czasowników z nawiasów: „Yo ___ (despertarse) a las 7, ___ (ducharse) y ___ (desayunar). Después ___ (ir) al colegio. Allí ___ (estudiar) muchas asignaturas." <span class="level hard">trudne</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Pięć czasowników w 1. os. l. poj., dwa zwrotne (<em>despertarse</em>, <em>ducharse</em>), jeden nieregularny (<em>ir</em>).</p>
+      <h5>Szukane</h5>
+      <p>Poprawne formy dla „yo".</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li><em>despertarse</em> — zwrotny, e → ie: zaimek „me" + <span class="es">despierto</span>.</li>
+        <li><em>ducharse</em> — zwrotny regularny: <span class="es">me ducho</span>.</li>
+        <li><em>desayunar</em> — regularny -ar: <span class="es">desayuno</span>.</li>
+        <li><em>ir</em> — nieregularny: <span class="es">voy</span>.</li>
+        <li><em>estudiar</em> — regularny -ar: <span class="es">estudio</span>.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">Yo <b>me despierto</b> a las 7, <b>me ducho</b> y <b>desayuno</b>. Después <b>voy</b> al colegio. Allí <b>estudio</b> muchas asignaturas.</span></div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">32</span><span class="question">Napisz krótki dialog (4 wypowiedzi): uczennica pyta nauczyciela, czy może wyjść, nauczyciel pozwala, a potem zakazuje biegania. <span class="level hard">trudne</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Dialog zawierający: pytanie z <em>poder</em>, pozwolenie, zakaz z <em>no poder</em>.</p>
+      <h5>Szukane</h5>
+      <p>4 wypowiedzi (2 uczennicy, 2 nauczyciela).</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>Prośba: <span class="es">¿Puedo…?</span> + bezokolicznik.</li>
+        <li>Zgoda: <span class="es">Sí, puedes…</span>.</li>
+        <li>Zakaz: <span class="es">No puedes…</span>.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź (przykład):</b><br>
+        — <span class="es">Profesor, ¿puedo ir al baño?</span><br>
+        — <span class="es">Sí, claro, puedes salir.</span><br>
+        — <span class="es">¡Gracias!</span><br>
+        — <span class="es">Pero no puedes correr por el pasillo.</span>
+        <br><span class="pl-note">Proszę Pana, czy mogę iść do toalety? — Tak, jasne, możesz wyjść. — Dziękuję! — Ale nie wolno ci biegać po korytarzu.</span>
+      </div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">33</span><span class="question">Przetłumacz: „Moja siostra wstaje o 7 rano. Najpierw bierze prysznic, potem je śniadanie. Idzie do szkoły o 8." <span class="level hard">trudne</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Trzy zdania, 3. os. l. poj., z czasownikami: <em>levantarse</em>, <em>ducharse</em>, <em>desayunar</em>, <em>ir</em>.</p>
+      <h5>Szukane</h5>
+      <p>Tłumaczenie.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>„Moja siostra" → <span class="es">mi hermana</span>.</li>
+        <li>„Wstaje o 7 rano" → <span class="es">se levanta a las siete de la mañana</span> (zwrotny: zaimek „se").</li>
+        <li>„Najpierw bierze prysznic" → <span class="es">primero se ducha</span>.</li>
+        <li>„Potem je śniadanie" → <span class="es">después desayuna</span>.</li>
+        <li>„Idzie do szkoły o 8" → <span class="es">va al colegio a las ocho</span>.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">Mi hermana se levanta a las siete de la mañana. Primero se ducha, después desayuna. Va al colegio a las ocho.</span></div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">34</span><span class="question">Napisz plan dnia w 6 zdaniach używając co najmniej 6 różnych czasowników nieregularnych. <span class="level hard">trudne</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Wymaganie: 6 zdań, ≥6 różnych czasowników nieregularnych (z tabeli z sekcji 2 i 4).</p>
+      <h5>Szukane</h5>
+      <p>Spójny tekst planu dnia.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>Wybieram czasowniki: <em>despertarse</em>, <em>tener</em>, <em>ir</em>, <em>hacer</em>, <em>jugar</em>, <em>volver</em>, <em>acostarse</em>.</li>
+        <li>Odmieniam każdy w 1. os. l. poj.</li>
+        <li>Dodaję okoliczniki czasu, by zdania tworzyły chronologiczny ciąg.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź (przykładowa):</b><br>
+      <span class="es">1. Me despierto a las siete y tengo mucha hambre.</span><br>
+      <span class="es">2. Voy al colegio a las ocho.</span><br>
+      <span class="es">3. En el colegio hago muchas cosas: leo, escribo y hablo con mis amigos.</span><br>
+      <span class="es">4. Por la tarde juego al fútbol en el parque.</span><br>
+      <span class="es">5. Vuelvo a casa a las seis y ceno con mi familia.</span><br>
+      <span class="es">6. Por la noche me acuesto a las diez.</span>
+      <br><span class="pl-note">Użyte czasowniki nieregularne: despertarse (e→ie), tener (g + e→ie), ir, hacer (yo hago), jugar (u→ue), volver (o→ue), acostarse (zwrotny, o→ue). 7 czasowników — wymaganie spełnione.</span>
+      </div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">35</span><span class="question">Znajdź błędy i popraw: (a) „Yo tener un perro." (b) „Nosotros ser estudiantes." (c) „¿Tú puedes a ir al cine?" <span class="level hard">trudne</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Trzy zdania z błędami gramatycznymi.</p>
+      <h5>Szukane</h5>
+      <p>Poprawione wersje i wyjaśnienie.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li><b>(a)</b> Po podmiocie <em>yo</em> musi stać <b>forma odmieniona</b>, nie bezokolicznik. „yo" od <em>tener</em> → <span class="es">tengo</span>.</li>
+        <li><b>(b)</b> Ten sam błąd — bezokolicznik zamiast formy. „Nosotros" od <em>ser</em> → <span class="es">somos</span>.</li>
+        <li><b>(c)</b> Po <em>poder</em> <b>nie stawiamy „a"</b> przed kolejnym czasownikiem. Zostaje sam bezokolicznik <em>ir</em>.</li>
+      </ol>
+      <div class="final"><b>Odpowiedzi:</b><br>
+        (a) <span class="es">Yo tengo un perro.</span><br>
+        (b) <span class="es">Nosotros somos estudiantes.</span><br>
+        (c) <span class="es">¿Tú puedes ir al cine?</span>
+      </div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">36</span><span class="question">Przetłumacz: „Nie możemy grać w piłkę w klasie, bo nauczyciel nie pozwala." <span class="level hard">trudne</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Dwa zdania złożone spójnikiem <em>porque</em>. Struktura: <em>no poder</em> + bezokolicznik + „bo" + wyjaśnienie.</p>
+      <h5>Szukane</h5>
+      <p>Zdanie po hiszpańsku.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>„Nie możemy" → <span class="es">no podemos</span> (<em>nosotros</em>, o→ue nie zachodzi, bo <em>nosotros</em> jest poza „butem").</li>
+        <li>„Grać w piłkę" → <span class="es">jugar al fútbol</span>.</li>
+        <li>„W klasie" → <span class="es">en clase</span>.</li>
+        <li>„Bo" → <span class="es">porque</span>.</li>
+        <li>„Nauczyciel nie pozwala" → <span class="es">el profesor no lo permite</span> (lub <span class="es">no deja</span>).</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">No podemos jugar al fútbol en clase porque el profesor no lo permite.</span></div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">37</span><span class="question">Uzupełnij luki w dialogu: <br>— <em>Hola, Ana. ¿Qué ___ (hacer, tú) por la tarde?</em> <br>— <em>Normalmente ___ (hacer, yo) los deberes y después ___ (ver, yo) la tele.</em> <br>— <em>¿___ (poder, nosotros) estudiar juntas mañana?</em> <br>— <em>Sí, claro. ___ (venir, tú) a ___ (mi / mis) casa a las cinco.</em> <span class="level hard">trudne</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>6 luk: formy nieregularnych czasowników (<em>hacer, ver, poder, venir</em>) + zaimek dzierżawczy.</p>
+      <h5>Szukane</h5>
+      <p>Uzupełnione formy.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li><em>hacer</em>, tú → <span class="es">haces</span>.</li>
+        <li><em>hacer</em>, yo → <span class="es">hago</span> (nieregularne yo).</li>
+        <li><em>ver</em>, yo → <span class="es">veo</span> (nieregularne yo).</li>
+        <li><em>poder</em>, nosotros → <span class="es">podemos</span> (nosotros poza „butem").</li>
+        <li><em>venir</em>, tú → <span class="es">vienes</span> (e → ie).</li>
+        <li>„moja" + <span class="es">casa</span> (ż., l. poj.) → forma krótka <span class="es">mi</span>.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b><br>
+        — <span class="es">Hola, Ana. ¿Qué <b>haces</b> por la tarde?</span><br>
+        — <span class="es">Normalmente <b>hago</b> los deberes y después <b>veo</b> la tele.</span><br>
+        — <span class="es">¿<b>Podemos</b> estudiar juntas mañana?</span><br>
+        — <span class="es">Sí, claro. <b>Vienes</b> a <b>mi</b> casa a las cinco.</span>
+      </div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">38</span><span class="question">Odmień w 1. i 2. osobie liczby pojedynczej (yo, tú): <em>querer, hacer, salir, venir</em>. <span class="level hard">trudne</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>4 nieregularne czasowniki. Dla każdego formy „yo" i „tú".</p>
+      <h5>Szukane</h5>
+      <p>8 form.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li><em>querer</em> — e → ie: yo <span class="es">quiero</span>, tú <span class="es">quieres</span>.</li>
+        <li><em>hacer</em> — nieregularne „yo", tú regularne: yo <span class="es">hago</span>, tú <span class="es">haces</span>.</li>
+        <li><em>salir</em> — nieregularne „yo" (+g), tú regularne: yo <span class="es">salgo</span>, tú <span class="es">sales</span>.</li>
+        <li><em>venir</em> — „yo" z „g", tú z e→ie: yo <span class="es">vengo</span>, tú <span class="es">vienes</span>.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b><br>
+        <em>querer</em>: quiero, quieres<br>
+        <em>hacer</em>: hago, haces<br>
+        <em>salir</em>: salgo, sales<br>
+        <em>venir</em>: vengo, vienes
+      </div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">39</span><span class="question">Napisz 5 zasad szkolnych używając <em>no puedes</em> lub <em>no podéis</em>. <span class="level hard">trudne</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Kontekst: zakazy w szkole — grupa uczniów (vosotros) lub pojedynczy uczeń (tú).</p>
+      <h5>Szukane</h5>
+      <p>5 zdań z <em>no puedes / no podéis</em> + bezokolicznik.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>Dla 2. osoby l. poj. (tú): <span class="es">no puedes</span>.</li>
+        <li>Dla 2. osoby l. mn. (vosotros): <span class="es">no podéis</span> (o, nie ue — poza „butem").</li>
+        <li>Po formie odmienionej stawiamy <b>bezokolicznik</b>.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź (przykład):</b><br>
+        1. <span class="es">No podéis comer en clase.</span> — Nie wolno wam jeść w klasie.<br>
+        2. <span class="es">No puedes usar el móvil durante el examen.</span> — Nie wolno ci używać telefonu na egzaminie.<br>
+        3. <span class="es">No podéis correr por los pasillos.</span> — Nie wolno wam biegać po korytarzach.<br>
+        4. <span class="es">No puedes hablar con tus amigos en el examen.</span> — Nie wolno ci rozmawiać z kolegami na egzaminie.<br>
+        5. <span class="es">No podéis salir del aula sin permiso.</span> — Nie wolno wam wychodzić z sali bez pozwolenia.
+      </div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">40</span><span class="question">Przetłumacz całe zdanie: „Nasi przyjaciele nie mogą przyjść dziś wieczorem, ale jutro rano mogą nas odwiedzić." <span class="level hard">trudne</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Zdanie złożone, 2 czasowniki <em>poder</em> (przeczenie + twierdzenie), dwa okoliczniki czasu, zaimek dzierżawczy, zaimek osobowy „nas".</p>
+      <h5>Szukane</h5>
+      <p>Pełne tłumaczenie.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>„Nasi przyjaciele" → <span class="es">nuestros amigos</span> (m., l. mn.).</li>
+        <li>„Nie mogą" (ellos) → <span class="es">no pueden</span>.</li>
+        <li>„Przyjść" → <span class="es">venir</span>.</li>
+        <li>„Dziś wieczorem" → <span class="es">esta noche</span>.</li>
+        <li>„Ale" → <span class="es">pero</span>.</li>
+        <li>„Jutro rano" → <span class="es">mañana por la mañana</span>.</li>
+        <li>„Mogą nas odwiedzić" → <span class="es">pueden visitarnos</span> („nas" jako „nos" dołączamy do bezokolicznika).</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">Nuestros amigos no pueden venir esta noche, pero mañana por la mañana pueden visitarnos.</span></div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">41</span><span class="question">Porównaj <em>ser</em> i <em>estar</em> w 5 zdaniach o mnie (użyj obu czasowników). <span class="level hard">trudne</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>5 zdań w 1. os. l. poj., mieszanka <em>ser</em> (cechy stałe) i <em>estar</em> (stan / miejsce).</p>
+      <h5>Szukane</h5>
+      <p>Zdania z poprawnym wyborem czasownika i wyjaśnieniem.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>Tożsamość / pochodzenie / zawód → <em>ser</em>.</li>
+        <li>Nastrój / lokalizacja / chwilowy stan → <em>estar</em>.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź (przykład):</b><br>
+        1. <span class="es">Soy Ana.</span> — Tożsamość (cecha stała) → <em>ser</em>.<br>
+        2. <span class="es">Soy de Polonia.</span> — Pochodzenie → <em>ser</em>.<br>
+        3. <span class="es">Soy estudiante.</span> — Zawód/rola → <em>ser</em>.<br>
+        4. <span class="es">Estoy en mi habitación.</span> — Miejsce → <em>estar</em>.<br>
+        5. <span class="es">Hoy estoy cansada.</span> — Nastrój/stan chwilowy → <em>estar</em>.
+      </div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">42</span><span class="question">Przetłumacz dłuższy tekst: „Moja rodzina jest duża. Mój tata pracuje rano, a moja mama po południu. Moi dziadkowie mieszkają blisko naszego domu. Wieczorem wszyscy razem jemy kolację." <span class="level hard">trudne</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>4 zdania, wiele zaimków dzierżawczych, <em>ser</em>, czasowniki regularne i <em>cenar</em>.</p>
+      <h5>Szukane</h5>
+      <p>Tłumaczenie.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>„Moja rodzina jest duża" → <span class="es">Mi familia es grande</span> (cecha stała → <em>ser</em>).</li>
+        <li>„Mój tata pracuje rano, a moja mama po południu" → <span class="es">Mi padre trabaja por la mañana y mi madre por la tarde</span>.</li>
+        <li>„Moi dziadkowie mieszkają blisko naszego domu" → <span class="es">Mis abuelos viven cerca de nuestra casa</span> („moi" l. mn. → mis; „naszego" r. ż. → nuestra).</li>
+        <li>„Wieczorem wszyscy razem jemy kolację" → <span class="es">Por la noche cenamos todos juntos</span>.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> <span class="es">Mi familia es grande. Mi padre trabaja por la mañana y mi madre por la tarde. Mis abuelos viven cerca de nuestra casa. Por la noche cenamos todos juntos.</span></div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">43</span><span class="question">Napisz krótkie zaproszenie do koleżanki — zaproś ją do siebie po południu, zapytaj, czy może przyjść, i opisz, co razem zrobicie (4–5 zdań). <span class="level hard">trudne</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Wypowiedź z użyciem: <em>poder</em> w pytaniu, <em>venir</em>, zaimek dzierżawczy, 1. os. l. mn., pora dnia.</p>
+      <h5>Szukane</h5>
+      <p>Krótki tekst zaproszenia.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>Wstęp-przywitanie i pytanie o możliwość przyjścia.</li>
+        <li>Podanie godziny i miejsca (<span class="es">mi casa</span>).</li>
+        <li>Plan aktywności w „my" (<em>nosotros</em>).</li>
+      </ol>
+      <div class="final"><b>Odpowiedź (przykład):</b><br>
+        <span class="es">¡Hola, Lucía! ¿Puedes venir a mi casa esta tarde? Mi madre prepara la merienda a las cinco. Podemos hacer los deberes juntas y después jugar con mis hermanos. ¡Hasta luego!</span>
+        <br><span class="pl-note">Cześć, Lucía! Czy możesz przyjść do mnie dziś po południu? Moja mama robi podwieczorek o piątej. Możemy razem odrobić lekcje, a potem pobawić się z moim rodzeństwem. Do zobaczenia!</span>
+      </div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">44</span><span class="question">Zidentyfikuj wszystkie czasowniki nieregularne w tekście i podaj ich bezokoliczniki: „Tengo dos hermanos. Voy al colegio con ellos. Mi hermano mayor puede conducir, pero mi hermana pequeña no. Siempre digo la verdad." <span class="level hard">trudne</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>Tekst z czterema czasownikami nieregularnymi.</p>
+      <h5>Szukane</h5>
+      <p>Lista form + bezokoliczników.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li><span class="es">tengo</span> → <em>tener</em> (yo + wymiana e→ie).</li>
+        <li><span class="es">voy</span> → <em>ir</em> (całkowicie nieregularny).</li>
+        <li><span class="es">puede</span> → <em>poder</em> (o → ue).</li>
+        <li><span class="es">digo</span> → <em>decir</em> (yo z „g" + e → i).</li>
+      </ol>
+      <div class="final"><b>Odpowiedź:</b> tengo → <em>tener</em>; voy → <em>ir</em>; puede → <em>poder</em>; digo → <em>decir</em>. <span class="pl-note">(Czasowniki regularne w tekście: <em>conducir</em> — tu jest bezokolicznik — nie liczymy jako formę odmienioną.)</span></div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="num">45</span><span class="question">Napisz 8 zdań opisujących twoją rodzinę używając: co najmniej 4 różnych zaimków dzierżawczych (<em>mi, mis, mi, nuestro/a…</em>) oraz 4 różnych czasowników nieregularnych. <span class="level hard">trudne</span></span></summary>
+    <div class="answer">
+      <h5>Dane</h5>
+      <p>8 zdań; pokrycie ≥4 zaimków dzierżawczych i ≥4 czasowników nieregularnych.</p>
+      <h5>Szukane</h5>
+      <p>Spójny opis rodziny.</p>
+      <h5>Rozwiązanie krok po kroku</h5>
+      <ol>
+        <li>Planuję zaimki: <em>mi, mis, nuestra, nuestros, su</em>.</li>
+        <li>Planuję czasowniki nieregularne: <em>ser, tener, ir, hacer, poder, querer</em>.</li>
+        <li>Budujemy zdania tak, by zaimki uzgadniały się z rzeczownikami.</li>
+      </ol>
+      <div class="final"><b>Odpowiedź (przykład):</b><br>
+        1. <span class="es">Mi familia es grande y simpática.</span> (zaimek: <em>mi</em>; czasownik: <em>ser</em>)<br>
+        2. <span class="es">Tengo dos hermanos y una hermana.</span> (<em>tener</em>)<br>
+        3. <span class="es">Mis padres trabajan mucho.</span> (<em>mis</em>)<br>
+        4. <span class="es">Mi madre es profesora y mi padre es médico.</span> (<em>ser</em>)<br>
+        5. <span class="es">Nuestra casa está cerca del colegio.</span> (<em>nuestra</em>; <em>estar</em> — też nieregularny)<br>
+        6. <span class="es">Los fines de semana vamos al parque con nuestros primos.</span> (<em>ir</em>, <em>nuestros</em>)<br>
+        7. <span class="es">Mi abuela hace las mejores galletas del mundo.</span> (<em>hacer</em>)<br>
+        8. <span class="es">Todos podemos estar juntos por la noche; eso me gusta mucho.</span> (<em>poder</em>)
+        <br><span class="pl-note">Zaimki: mi, mis, nuestra, nuestros (4) ✓. Czasowniki nieregularne: ser, tener, estar, ir, hacer, poder (6) ✓.</span>
+      </div>
+    </div>
+  </details>
+
+</section>
+
+<!-- PODSUMOWANIE -->
+<section class="summary-card">
+  <h3>✨ Szybka ściąga — co zapamiętać</h3>
+  <ul>
+    <li><b>Zaimki krótkie</b> — przed rzeczownikiem (<span class="es">mi libro</span>); <b>długie</b> — po rzeczowniku lub po <em>ser</em> (<span class="es">el libro es mío</span>).</li>
+    <li>Zaimek uzgadnia się <b>z rzeczownikiem</b>, nie z posiadaczem. Tylko <em>nuestro/a</em> i <em>vuestro/a</em> zmieniają rodzaj.</li>
+    <li><b>Reguła buta</b> — czasowniki z wymianą (e→ie, o→ue, e→i) zmieniają temat tylko w 4 osobach; <em>nosotros/vosotros</em> zostają „czyste".</li>
+    <li><b>SER</b> — cechy stałe (tożsamość, pochodzenie, zawód). <b>ESTAR</b> — stan, miejsce, nastrój.</li>
+    <li><b>Poder + bezokolicznik</b> — „mogę / nie mogę / czy mogę?". Bez „a" po <em>poder</em>.</li>
+    <li>„Kiedy?" → <span class="es">por la mañana / tarde / noche</span>. „O której?" → <span class="es">a las … de la mañana/tarde/noche</span>.</li>
+    <li>Czasowniki zwrotne (<em>-se</em>) wymagają zaimka: <em>me, te, se, nos, os, se</em>.</li>
+  </ul>
+</section>
+
+<footer>
+  <p>Karta powtórzeniowa · klasa 7 · hiszpański · <a href="../index.html" style="color:var(--red);text-decoration:none;font-weight:600">← powrót do listy kart</a></p>
+</footer>
+
+</div>
+</body>
+</html>
