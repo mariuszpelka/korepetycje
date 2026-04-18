@@ -1,6 +1,6 @@
   ---
   name: korepetycje-humanistyczne
-  description: Generuje materiał korepetycji humanistycznych z podanego przedmiotu dla ucznia szkoły podstawowej w formacie strony html
+  description: Generuje materiał korepetycji z przedmiotów humanistycznych (np. język polski, angielski, historia, muzyka, hiszpański) dla ucznia szkoły podstawowej w formacie strony html
   disable-model-invocation: true
   argument-hint: [przedmiot] [temat]
   ---
