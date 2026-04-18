@@ -241,6 +241,9 @@ footer{text-align:center;color:var(--muted);margin-top:40px;font-size:.88rem;opa
           <stop offset="0%" stop-color="#9ee3ff"/>
           <stop offset="100%" stop-color="#4cc9f0"/>
         </radialGradient>
+        <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <polygon points="0 0, 10 5, 0 10" fill="#43e8b6"/>
+        </marker>
       </defs>
       <!-- atom -->
       <g transform="translate(100,110)">
@@ -280,12 +283,6 @@ footer{text-align:center;color:var(--muted);margin-top:40px;font-size:.88rem;opa
       </g>
       <text x="550" y="185" text-anchor="middle" fill="#e9fbf4" font-size="15" font-weight="700">cząsteczka związku</text>
       <text x="550" y="202" text-anchor="middle" fill="#9fc5b7" font-size="12">H₂O — woda</text>
-
-      <defs>
-        <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-          <polygon points="0 0, 10 5, 0 10" fill="#43e8b6"/>
-        </marker>
-      </defs>
     </svg>
     <div class="svg-caption">Od pojedynczego atomu, przez cząsteczkę pierwiastka, do cząsteczki związku chemicznego.</div>
   </div>
@@ -320,21 +317,29 @@ footer{text-align:center;color:var(--muted);margin-top:40px;font-size:.88rem;opa
 
   <h3>Co znajdziesz w „pudełku" pierwiastka?</h3>
   <div class="svg-wrap">
-    <svg viewBox="0 0 360 220" role="img">
-      <rect x="60" y="30" width="240" height="170" rx="18" fill="#0d2e25" stroke="#06d6a0" stroke-width="2"/>
-      <text x="90" y="70" fill="#ffd166" font-size="18" font-weight="800">11</text>
-      <text x="180" y="120" text-anchor="middle" fill="#e9fbf4" font-size="52" font-weight="900" font-family="Fraunces">Na</text>
-      <text x="180" y="155" text-anchor="middle" fill="#9bf3d5" font-size="13">sód</text>
-      <text x="180" y="180" text-anchor="middle" fill="#9fc5b7" font-size="16" font-weight="700">23,0</text>
-      <!-- labels -->
-      <line x1="72" y1="60" x2="40" y2="40" stroke="#ffd166" stroke-width="1.5"/>
-      <text x="38" y="35" text-anchor="end" fill="#ffd166" font-size="11" font-weight="700">liczba atomowa Z</text>
-      <line x1="180" y1="165" x2="330" y2="155" stroke="#9bf3d5" stroke-width="1.5"/>
-      <text x="334" y="155" fill="#9bf3d5" font-size="11" font-weight="700">nazwa</text>
-      <line x1="180" y1="185" x2="330" y2="185" stroke="#9fc5b7" stroke-width="1.5"/>
-      <text x="334" y="189" fill="#9fc5b7" font-size="11" font-weight="700">masa atomowa</text>
-      <line x1="210" y1="108" x2="340" y2="90" stroke="#e9fbf4" stroke-width="1.5"/>
-      <text x="345" y="88" fill="#e9fbf4" font-size="11" font-weight="700">symbol</text>
+    <svg viewBox="0 0 640 280" role="img">
+      <!-- pudełko -->
+      <rect x="200" y="55" width="240" height="170" rx="18" fill="#0d2e25" stroke="#06d6a0" stroke-width="2"/>
+      <text x="222" y="90" fill="#ffd166" font-size="20" font-weight="800">11</text>
+      <text x="320" y="150" text-anchor="middle" fill="#e9fbf4" font-size="54" font-weight="900" font-family="Fraunces">Na</text>
+      <text x="320" y="185" text-anchor="middle" fill="#9bf3d5" font-size="14">sód</text>
+      <text x="320" y="212" text-anchor="middle" fill="#9fc5b7" font-size="17" font-weight="700">23,0</text>
+
+      <!-- etykieta: liczba atomowa Z (lewy-górny narożnik) -->
+      <line x1="217" y1="85" x2="165" y2="40" stroke="#ffd166" stroke-width="1.5"/>
+      <text x="160" y="34" text-anchor="end" fill="#ffd166" font-size="13" font-weight="700">liczba atomowa Z</text>
+
+      <!-- etykieta: symbol pierwiastka (prawa strona, na wysokości Na) -->
+      <line x1="355" y1="130" x2="475" y2="85" stroke="#e9fbf4" stroke-width="1.5"/>
+      <text x="482" y="80" fill="#e9fbf4" font-size="13" font-weight="700">symbol pierwiastka</text>
+
+      <!-- etykieta: nazwa polska (prawa strona) -->
+      <line x1="350" y1="182" x2="475" y2="162" stroke="#9bf3d5" stroke-width="1.5"/>
+      <text x="482" y="166" fill="#9bf3d5" font-size="13" font-weight="700">nazwa polska</text>
+
+      <!-- etykieta: masa atomowa (prawy-dolny narożnik) -->
+      <line x1="355" y1="213" x2="475" y2="235" stroke="#9fc5b7" stroke-width="1.5"/>
+      <text x="482" y="239" fill="#9fc5b7" font-size="13" font-weight="700">masa atomowa [u]</text>
     </svg>
     <div class="svg-caption">Typowe „pudełko" pierwiastka w układzie okresowym na przykładzie sodu.</div>
   </div>
