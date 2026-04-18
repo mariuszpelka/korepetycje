@@ -14,8 +14,11 @@ Zbiór kart powtórzeniowych dla uczniów klasy 7 szkoły podstawowej, po polsku
 
 Obecne karty:
 - `korepetycje-chemia-prawa-reakcje-chemiczne/` (~1700 linii)
+- `korepetycje-chemia-atomy-uklad-okresowy/` (~1230 linii)
 - `korepetycje-fizyka-dynamika-sily-ruch/` (~2300 linii)
 - `korepetycje-historia-swiat-po-wojnie/` (~780 linii, + `images/`)
+
+Strona startowa `/index.html` grupuje karty w sekcje per przedmiot — każda sekcja to `<section class="subject-group">` z nagłówkiem `.subject-head.<chem|phys|hist>` i licznikiem `.count`, a wewnątrz własna siatka `.courses` z kafelkami `<a class="course …">`.
 
 ## 3. Stack
 
@@ -38,8 +41,9 @@ Obecne karty:
 
 1. Utwórz katalog `korepetycje-<przedmiot>-<temat>/` z plikiem `index.html`
 2. Wzoruj się na istniejącej karcie z tego samego przedmiotu (tożsamy motyw kolorystyczny i struktura sekcji)
-3. Dodaj wpis do listy w głównym `/index.html` jako kolejny `<a class="course …">` z linkiem `<katalog>/index.html` (bezpośredni link do pliku, nie do katalogu)
-4. Treść wyłącznie po polsku; klasa docelowa podana w nagłówku `.kicker`
+3. Dodaj kafelek do głównego `/index.html` **wewnątrz odpowiedniej sekcji** `<section class="subject-group">` (Chemia / Fizyka / Historia) — nie tworzyć nowej sekcji dla istniejącego przedmiotu, nie wrzucać kafelka poza sekcje. Kafelek to `<a class="course <chem|phys|hist>">` z linkiem `<katalog>/index.html` (bezpośredni link do pliku, nie do katalogu). Pamiętaj o aktualizacji licznika `.count` w `.subject-head` (np. „3 karty")
+4. Nowy przedmiot (inny niż chemia/fizyka/historia) — dodaj nową `<section class="subject-group">` z własnym headerem i zdefiniuj zmienną koloru (`--<subject>`) oraz modyfikatory `.course.<subject>` / `.subject-head.<subject>` w `<style>`
+5. Treść wyłącznie po polsku; klasa docelowa podana w nagłówku `.kicker`
 
 ## 6. Git / PR workflow
 
