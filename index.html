@@ -16,6 +16,7 @@
   --chem:#06d6a0;
   --phys:#4cc9f0;
   --hist:#ef476f;
+  --lang:#ffa94d;
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:radial-gradient(1200px 800px at 10% -10%, #2a2f77 0%, transparent 60%),radial-gradient(1000px 700px at 90% 0%, #5b2a77 0%, transparent 55%),linear-gradient(180deg,#0f1226 0%,#0b0e20 100%);color:var(--ink);font-family:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;line-height:1.6;min-height:100vh}
@@ -51,6 +52,7 @@ h1{font-size:clamp(1.8rem,3.4vw,2.8rem);margin:.4em 0 .25em;line-height:1.15;pos
 .subject-head.chem{--color:var(--chem)}
 .subject-head.phys{--color:var(--phys)}
 .subject-head.hist{--color:var(--hist)}
+.subject-head.lang{--color:var(--lang)}
 
 .courses{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
 
@@ -80,6 +82,7 @@ h1{font-size:clamp(1.8rem,3.4vw,2.8rem);margin:.4em 0 .25em;line-height:1.15;pos
 .course.chem{--color:var(--chem)}
 .course.phys{--color:var(--phys)}
 .course.hist{--color:var(--hist)}
+.course.lang{--color:var(--lang)}
 
 footer{text-align:center;color:var(--muted);margin-top:50px;font-size:.9rem;opacity:.8}
 footer a{color:var(--accent);text-decoration:none}
@@ -97,7 +100,7 @@ footer a:hover{text-decoration:underline}
 <header class="hero">
   <span class="kicker">Klasa 7 · Karty powtórzeniowe</span>
   <h1>Korepetycje — zbiór kart do powtórek</h1>
-  <p class="sub">Interaktywne karty powtórzeniowe z chemii, fizyki i historii dla klasy 7. Każda karta zawiera teorię, przykłady oraz zestaw zadań z rozwiązaniami.</p>
+  <p class="sub">Interaktywne karty powtórzeniowe z chemii, fizyki, historii i hiszpańskiego dla klasy 7. Każda karta zawiera teorię, przykłady oraz zestaw zadań z rozwiązaniami.</p>
 </header>
 
 <div class="intro">
@@ -179,6 +182,30 @@ footer a:hover{text-decoration:underline}
       <div class="meta">
         <span class="pill">Klasa 7</span>
         <span class="pill">Rozdział 6</span>
+        <span class="pill">45 zadań</span>
+      </div>
+      <span class="cta">Otwórz kartę</span>
+    </a>
+
+  </div>
+</section>
+
+<section class="subject-group">
+  <header class="subject-head lang">
+    <span class="emoji">💬</span>
+    <h2>Hiszpański</h2>
+    <span class="count">1 karta</span>
+  </header>
+  <div class="courses">
+
+    <a class="course lang" href="korepetycje-hiszpanski-zaimki-poder-codziennosc/index.html">
+      <div class="emoji">💬</div>
+      <div class="subject">Hiszpański</div>
+      <h3>Zaimki dzierżawcze, czasowniki nieregularne, <em>poder</em> i codzienność</h3>
+      <p>Zaimki <em>mi/tu/su</em>, odmiany nieregularne (ser, estar, tener, ir, poder), wyrażanie pozwoleń i zakazów, pory dnia oraz codzienne czynności.</p>
+      <div class="meta">
+        <span class="pill">Klasa 7</span>
+        <span class="pill">Gramatyka + słownictwo</span>
         <span class="pill">45 zadań</span>
       </div>
       <span class="cta">Otwórz kartę</span>
