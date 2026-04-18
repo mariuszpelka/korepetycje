@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Korepetycje — klasa 7 · karty powtórzeniowe</title>
+<style>
+:root{
+  --bg:#0f1226;
+  --bg2:#161a3d;
+  --card:#1c2150;
+  --ink:#eef1ff;
+  --muted:#a7afd4;
+  --accent:#ffd166;
+  --line:rgba(255,255,255,.12);
+  --chem:#06d6a0;
+  --phys:#4cc9f0;
+  --hist:#ef476f;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:radial-gradient(1200px 800px at 10% -10%, #2a2f77 0%, transparent 60%),radial-gradient(1000px 700px at 90% 0%, #5b2a77 0%, transparent 55%),linear-gradient(180deg,#0f1226 0%,#0b0e20 100%);color:var(--ink);font-family:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;line-height:1.6;min-height:100vh}
+.container{max-width:1100px;margin:0 auto;padding:40px 22px 80px}
+
+header.hero{
+  background:linear-gradient(135deg,#ef476f 0%,#ffd166 35%,#06d6a0 70%,#4cc9f0 100%);
+  border-radius:24px;padding:42px 32px;margin-bottom:36px;color:#15183a;
+  box-shadow:0 20px 55px rgba(0,0,0,.5);
+  position:relative;overflow:hidden;
+}
+header.hero::after{
+  content:"";position:absolute;right:-90px;top:-90px;width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.35),transparent 70%);
+}
+header.hero::before{
+  content:"";position:absolute;left:-60px;bottom:-60px;width:180px;height:180px;border-radius:50%;
+  background:radial-gradient(circle,rgba(21,24,58,.25),transparent 70%);
+}
+.kicker{display:inline-block;background:#15183a;color:#ffd166;padding:6px 14px;border-radius:999px;font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+h1{font-size:clamp(1.8rem,3.4vw,2.8rem);margin:.4em 0 .25em;line-height:1.15;position:relative;z-index:1}
+.sub{font-size:1.1rem;opacity:.9;position:relative;z-index:1;max-width:640px}
+
+.intro{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 24px;margin-bottom:30px;color:var(--muted)}
+.intro b{color:var(--accent)}
+
+h2.section-title{color:var(--accent);font-size:1.35rem;margin:30px 0 16px;letter-spacing:.02em}
+
+.courses{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+
+.course{
+  background:var(--card);border:1px solid var(--line);border-radius:18px;
+  padding:24px 22px;position:relative;overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+  text-decoration:none;color:inherit;
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  display:flex;flex-direction:column;
+}
+.course:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.4);border-color:rgba(255,255,255,.25)}
+.course::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:5px;
+  background:var(--color,var(--accent));
+}
+.course .emoji{font-size:2.4rem;line-height:1;margin-bottom:8px}
+.course .subject{font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--color,var(--accent));margin-bottom:6px}
+.course h3{margin:0 0 10px;font-size:1.2rem;color:var(--ink)}
+.course p{margin:0 0 18px;color:var(--muted);font-size:.95rem;flex:1}
+.course .meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.course .pill{display:inline-block;background:rgba(255,255,255,.06);color:var(--ink);padding:4px 10px;border-radius:999px;font-size:.75rem;border:1px solid var(--line)}
+.course .cta{font-weight:700;color:var(--color,var(--accent));display:inline-flex;align-items:center;gap:6px;font-size:.95rem}
+.course .cta::after{content:"→";transition:transform .2s ease}
+.course:hover .cta::after{transform:translateX(4px)}
+
+.course.chem{--color:var(--chem)}
+.course.phys{--color:var(--phys)}
+.course.hist{--color:var(--hist)}
+
+footer{text-align:center;color:var(--muted);margin-top:50px;font-size:.9rem;opacity:.8}
+footer a{color:var(--accent);text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+@media(max-width:520px){
+  .container{padding:24px 16px 60px}
+  header.hero{padding:28px 22px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="hero">
+  <span class="kicker">Klasa 7 · Karty powtórzeniowe</span>
+  <h1>Korepetycje — zbiór kart do powtórek</h1>
+  <p class="sub">Interaktywne karty powtórzeniowe z chemii, fizyki i historii dla klasy 7. Każda karta zawiera teorię, przykłady oraz zestaw zadań z rozwiązaniami.</p>
+</header>
+
+<div class="intro">
+  <p>Wybierz przedmiot poniżej. Każda karta otwiera się jako pojedyncza strona — możesz ją <b>czytać, filtrować zadania według poziomu trudności</b> i sprawdzać odpowiedzi ukryte pod rozwijanymi panelami.</p>
+</div>
+
+<h2 class="section-title">📚 Dostępne karty</h2>
+
+<div class="courses">
+
+  <a class="course chem" href="korepetycje-chemia-prawa-reakcje-chemiczne/index.html">
+    <div class="emoji">⚗️</div>
+    <div class="subject">Chemia</div>
+    <h3>Prawa, reakcje i równania chemiczne</h3>
+    <p>Prawo zachowania masy, typy reakcji, bilansowanie równań, obliczenia stechiometryczne oraz zestaw ćwiczeń.</p>
+    <div class="meta">
+      <span class="pill">Klasa 7</span>
+      <span class="pill">Teoria + zadania</span>
+    </div>
+    <span class="cta">Otwórz kartę</span>
+  </a>
+
+  <a class="course phys" href="korepetycje-fizyka-dynamika-sily-ruch/index.html">
+    <div class="emoji">⚙️</div>
+    <div class="subject">Fizyka</div>
+    <h3>Dynamika — siły i ruch</h3>
+    <p>Trzy zasady dynamiki Newtona, tarcie, siła ciężkości, układy sił oraz zadania obliczeniowe z rozwiązaniami.</p>
+    <div class="meta">
+      <span class="pill">Klasa 7</span>
+      <span class="pill">Teoria + zadania</span>
+    </div>
+    <span class="cta">Otwórz kartę</span>
+  </a>
+
+  <a class="course hist" href="korepetycje-historia-swiat-po-wojnie/index.html">
+    <div class="emoji">🕊️</div>
+    <div class="subject">Historia</div>
+    <h3>Świat po I wojnie światowej</h3>
+    <p>Traktat wersalski, nowa mapa Europy, systemy totalitarne (komunizm, faszyzm, nazizm), droga ku II wojnie światowej.</p>
+    <div class="meta">
+      <span class="pill">Klasa 7</span>
+      <span class="pill">Rozdział 6</span>
+      <span class="pill">45 zadań</span>
+    </div>
+    <span class="cta">Otwórz kartę</span>
+  </a>
+
+</div>
+
+<footer>
+  <p>Kod źródłowy: <a href="https://github.com/mariuszpelka/korepetycje">github.com/mariuszpelka/korepetycje</a></p>
+</footer>
+
+</div>
+</body>
+</html>
