@@ -541,9 +541,29 @@ footer{text-align:center;color:var(--muted);margin-top:40px;font-size:.88rem;opa
   <div class="box warn"><span class="tag">zasada</span>Dla grup 1 i 2 — liczba elektronów walencyjnych jest równa numerowi grupy. Dla grup 13–18 — liczba elektronów walencyjnych = numer grupy minus 10.</div>
 
   <h3>Ile elektronów mieści się na każdej powłoce?</h3>
-  <div class="fml">$\text{powłoka K (1.):}\ \max\ 2\,e^- \quad\text{powłoka L (2.):}\ \max\ 8\,e^- \quad\text{powłoka M (3.):}\ \max\ 8\,e^-\ \text{(dla 20 pierwszych pierwiastków)}$</div>
+  <p>Maksymalna liczba elektronów na <em>n</em>-tej powłoce jest opisana <strong>ogólnym wzorem</strong>:</p>
 
-  <p>Powłoki zapełniają się po kolei: najpierw K, potem L, potem M.</p>
+  <div class="fml">$N_{\max}(n) = 2n^2$</div>
+
+  <p>gdzie $n$ — numer powłoki liczony od jądra: K = 1, L = 2, M = 3, N = 4, O = 5, P = 6, Q = 7.</p>
+
+  <div class="grid symbols">
+    <div class="cell"><b>K</b><span>$n=1$ → $2\cdot 1^2 = 2\,e^-$</span></div>
+    <div class="cell"><b>L</b><span>$n=2$ → $2\cdot 2^2 = 8\,e^-$</span></div>
+    <div class="cell"><b>M</b><span>$n=3$ → $2\cdot 3^2 = 18\,e^-$</span></div>
+    <div class="cell"><b>N</b><span>$n=4$ → $2\cdot 4^2 = 32\,e^-$</span></div>
+    <div class="cell"><b>O</b><span>$n=5$ → $2\cdot 5^2 = 50\,e^-$</span></div>
+    <div class="cell"><b>P</b><span>$n=6$ → $2\cdot 6^2 = 72\,e^-$</span></div>
+    <div class="cell"><b>Q</b><span>$n=7$ → $2\cdot 7^2 = 98\,e^-$</span></div>
+  </div>
+
+  <div class="box info"><span class="tag">uproszczenie dla klasy 7</span>
+    Dla <strong>pierwszych 20 pierwiastków</strong> (Z ≤ 20, do wapnia Ca) przyjmujemy regułę uproszczoną: powłoka M w tym zakresie mieści maksymalnie <strong>8 elektronów</strong>, a 9. i 10. elektron „od M" trafia już na powłokę N.<br><br>
+    Przykład: wapń (Ca, Z = 20) ma konfigurację <strong>2, 8, 8, 2</strong> — ostatnie 2 elektrony są na powłoce N, choć teoretycznie M mogłaby zmieścić ich jeszcze 10.<br><br>
+    <em>Dlaczego?</em> Każda powłoka dzieli się wewnętrznie na <em>podpowłoki</em> (s, p, d, f), które mają różne energie i zapełniają się w kolejności innej niż same powłoki. Podpowłokę 4s (z powłoki N) zapełnia się wcześniej niż 3d (z powłoki M). Dla pierwszych 20 pierwiastków wystarczy zapamiętać schemat <strong>2, 8, 8, 2</strong>. Pełny model fizyczny poznasz w liceum.
+  </div>
+
+  <p>Powłoki zapełniają się po kolei <strong>od najbliższej jądru</strong>: najpierw K, potem L, potem M, potem N. Kolejny elektron trafia na powłokę niżej dopiero wtedy, gdy poprzednia jest pełna (albo — dla 20 pierwszych pierwiastków — osiągnęła limit 8 e⁻).</p>
 
   <h3>Konfiguracja elektronowa — jak ją zapisać</h3>
   <div class="box example"><span class="tag">przykład — sód (Na, Z = 11)</span>
