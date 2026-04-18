@@ -101,6 +101,7 @@ section.theory em{color:var(--gold);font-style:normal;font-weight:600}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:14px 0}
 .grid .cell{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
 .grid .cell b{display:block;color:var(--chem-soft);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.grid.symbols .cell b{font-size:1.35rem;letter-spacing:0;text-transform:none;color:var(--chem)}
 .grid .cell span{color:var(--ink);font-weight:600}
 
 /* table for periodic table snippet */
@@ -410,7 +411,7 @@ footer{text-align:center;color:var(--muted);margin-top:40px;font-size:.88rem;opa
   <h3>Masa atomowa pierwiastka</h3>
   <p><strong>Masa atomowa</strong> to masa jednego atomu wyrażona w jednostkach <em>u</em>. Odczytujesz ją z układu okresowego — to zwykle najniższa liczba w „pudełku" pierwiastka.</p>
 
-  <div class="grid">
+  <div class="grid symbols">
     <div class="cell"><b>H</b><span>1 u</span></div>
     <div class="cell"><b>C</b><span>12 u</span></div>
     <div class="cell"><b>N</b><span>14 u</span></div>
