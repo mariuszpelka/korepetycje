@@ -36,6 +36,7 @@ Strona startowa `/index.html` grupuje karty w sekcje per przedmiot — każda se
 - Każda karta ma własną paletę (ciemny motyw z gradientami dla chemii i historii, jasny „vintage journal" dla fizyki) — nie narzucać jednolitego stylu między kartami
 - Zadania: rozwijane `<details class="q">` z poziomem trudności (`.level.easy` / `.mid` / `.hard`) i kluczem odpowiedzi w `<div class="answer">`
 - Chronologia: w treściach historycznych sekcje i timeline'y mają być uporządkowane rosnąco wg dat
+- **Nie stosuj `text-transform: uppercase / lowercase / capitalize` na szerokich selektorach obejmujących treść merytoryczną.** Wielkość liter w symbolach pierwiastków (Fe, Ca, Mg, Na), jednostkach SI (mA, kPa, Hz), wzorach chemicznych, skrótach i nazwach własnych jest częścią poprawnego zapisu — `uppercase` zamienia je na błędne (FE, CA, MG). Dla efektu „małych kapitalików" na etykietach UI używaj maksymalnie wąskiego selektora (np. `.stat-label`, `.meta .tag`, `.subject-head h2`), nigdy ogólnego w stylu `.grid .cell b` — przed dodaniem reguły sprawdź wszystkie pasujące wystąpienia w HTML
 
 ## 5. Dodawanie nowej karty
 
