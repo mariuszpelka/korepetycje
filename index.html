@@ -17,6 +17,7 @@
   --phys:#4cc9f0;
   --hist:#ef476f;
   --lang:#ffa94d;
+  --math:#f5c842;
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:radial-gradient(1200px 800px at 10% -10%, #2a2f77 0%, transparent 60%),radial-gradient(1000px 700px at 90% 0%, #5b2a77 0%, transparent 55%),linear-gradient(180deg,#0f1226 0%,#0b0e20 100%);color:var(--ink);font-family:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;line-height:1.6;min-height:100vh}
@@ -53,6 +54,7 @@ h1{font-size:clamp(1.8rem,3.4vw,2.8rem);margin:.4em 0 .25em;line-height:1.15;pos
 .subject-head.phys{--color:var(--phys)}
 .subject-head.hist{--color:var(--hist)}
 .subject-head.lang{--color:var(--lang)}
+.subject-head.math{--color:var(--math)}
 
 .courses{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
 
@@ -83,6 +85,7 @@ h1{font-size:clamp(1.8rem,3.4vw,2.8rem);margin:.4em 0 .25em;line-height:1.15;pos
 .course.phys{--color:var(--phys)}
 .course.hist{--color:var(--hist)}
 .course.lang{--color:var(--lang)}
+.course.math{--color:var(--math)}
 
 footer{text-align:center;color:var(--muted);margin-top:50px;font-size:.9rem;opacity:.8}
 footer a{color:var(--accent);text-decoration:none}
@@ -100,7 +103,7 @@ footer a:hover{text-decoration:underline}
 <header class="hero">
   <span class="kicker">Klasa 7 · Karty powtórzeniowe</span>
   <h1>Korepetycje — zbiór kart do powtórek</h1>
-  <p class="sub">Interaktywne karty powtórzeniowe z chemii, fizyki, historii i hiszpańskiego dla klasy 7. Każda karta zawiera teorię, przykłady oraz zestaw zadań z rozwiązaniami.</p>
+  <p class="sub">Interaktywne karty powtórzeniowe z chemii, fizyki, matematyki, historii i hiszpańskiego dla klasy 7. Każda karta zawiera teorię, przykłady oraz zestaw zadań z rozwiązaniami.</p>
 </header>
 
 <div class="intro">
@@ -159,6 +162,30 @@ footer a:hover{text-decoration:underline}
       <div class="meta">
         <span class="pill">Klasa 7</span>
         <span class="pill">Teoria + zadania</span>
+      </div>
+      <span class="cta">Otwórz kartę</span>
+    </a>
+
+  </div>
+</section>
+
+<section class="subject-group">
+  <header class="subject-head math">
+    <span class="emoji">∑</span>
+    <h2>Matematyka</h2>
+    <span class="count">1 karta</span>
+  </header>
+  <div class="courses">
+
+    <a class="course math" href="korepetycje-matematyka-potegi-notacja-wykladnicza/index.html">
+      <div class="emoji">∑</div>
+      <div class="subject">Matematyka</div>
+      <h3>Potęgi i notacja wykładnicza</h3>
+      <p>Definicja potęgi, mnożenie i dzielenie potęg, potęgowanie potęgi, potęgowanie iloczynu i ilorazu, notacja wykładnicza dla dużych i małych liczb.</p>
+      <div class="meta">
+        <span class="pill">Klasa 7</span>
+        <span class="pill">Teoria + zadania</span>
+        <span class="pill">45 zadań</span>
       </div>
       <span class="cta">Otwórz kartę</span>
     </a>

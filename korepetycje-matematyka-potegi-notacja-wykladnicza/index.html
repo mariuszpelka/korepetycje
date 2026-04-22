@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Potęgi i notacja wykładnicza — Matematyka klasa 7</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+
+<style>
+:root{
+  --bg:#0a0f24;
+  --bg-2:#0c132c;
+  --bg-3:#0e1633;
+  --panel:#121b3c;
+  --panel-2:#182247;
+  --panel-3:#1d2a57;
+  --line:#283464;
+  --line-soft:#1a2247;
+  --ink:#f1f3fb;
+  --ink-dim:#cacfe8;
+  --muted:#8791b8;
+  --muted-2:#6a74a0;
+  --gold:#f5c842;
+  --gold-soft:#ffe089;
+  --gold-deep:#d4a72c;
+  --mint:#5eead4;
+  --pink:#f472b6;
+  --cyan:#7dd3fc;
+  --violet:#a78bfa;
+  --danger:#fb7185;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.65;
+  min-height:100vh;
+  background-image:
+    radial-gradient(1200px 800px at 12% -8%, rgba(245,200,66,0.08) 0%, transparent 55%),
+    radial-gradient(1000px 700px at 95% 5%, rgba(94,234,212,0.06) 0%, transparent 55%),
+    radial-gradient(800px 600px at 50% 120%, rgba(167,139,250,0.07) 0%, transparent 55%),
+    linear-gradient(transparent 39px, rgba(40,52,100,0.14) 40px),
+    linear-gradient(90deg, transparent 39px, rgba(40,52,100,0.14) 40px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+}
+.container{max-width:1080px;margin:0 auto;padding:40px 22px 80px}
+
+/* ==================== HERO ==================== */
+header.hero{
+  position:relative;
+  padding:54px 32px 46px;
+  border-radius:22px;
+  background:
+    linear-gradient(135deg, rgba(245,200,66,0.10) 0%, rgba(94,234,212,0.06) 55%, transparent 100%),
+    linear-gradient(180deg, var(--panel-2) 0%, var(--panel) 100%);
+  border:1px solid var(--line);
+  overflow:hidden;
+  margin-bottom:40px;
+  box-shadow:0 25px 60px rgba(0,0,0,0.45);
+}
+header.hero::before{
+  content:"aⁿ";
+  position:absolute;
+  right:-20px;top:-30px;
+  font-family:"Fraunces",serif;
+  font-size:clamp(120px,22vw,260px);
+  color:rgba(245,200,66,0.07);
+  font-style:italic;
+  font-weight:600;
+  line-height:1;
+  pointer-events:none;
+}
+.kicker{
+  display:inline-block;
+  font-family:"JetBrains Mono",monospace;
+  font-size:.78rem;
+  font-weight:600;
+  letter-spacing:.18em;
+  color:var(--gold);
+  background:rgba(245,200,66,0.08);
+  padding:7px 14px;
+  border-radius:6px;
+  border:1px solid rgba(245,200,66,0.25);
+  margin-bottom:20px;
+  position:relative;z-index:2;
+}
+h1{
+  font-family:"Fraunces",serif;
+  font-weight:700;
+  font-size:clamp(2rem,4.5vw,3.4rem);
+  line-height:1.08;
+  margin:0 0 .5em;
+  color:var(--ink);
+  letter-spacing:-.01em;
+  position:relative;z-index:2;
+}
+h1 em{
+  font-style:italic;
+  color:var(--gold);
+  font-weight:600;
+}
+.lead{
+  font-size:1.12rem;
+  color:var(--ink-dim);
+  max-width:660px;
+  margin:0 0 26px;
+  position:relative;z-index:2;
+}
+.hero-stats{
+  display:flex;flex-wrap:wrap;gap:18px;
+  position:relative;z-index:2;
+  margin-top:8px;
+}
+.hero-stat{
+  background:rgba(10,15,36,0.55);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:12px 18px;
+  min-width:130px;
+}
+.hero-stat b{
+  display:block;
+  font-family:"Fraunces",serif;
+  font-size:1.7rem;
+  font-weight:700;
+  color:var(--gold);
+  line-height:1;
+}
+.hero-stat span{
+  display:block;
+  font-size:.78rem;
+  color:var(--muted);
+  margin-top:4px;
+  letter-spacing:.05em;
+}
+
+/* ==================== NAV ==================== */
+nav.toc{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:18px 22px;
+  margin-bottom:40px;
+}
+nav.toc h4{
+  margin:0 0 10px;
+  font-size:.78rem;
+  letter-spacing:.14em;
+  color:var(--muted);
+  font-weight:600;
+}
+nav.toc ol{
+  margin:0;padding:0;
+  list-style:none;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:4px 18px;
+  counter-reset:tocc;
+}
+nav.toc li{
+  counter-increment:tocc;
+  padding:6px 0;
+  border-bottom:1px solid var(--line-soft);
+}
+nav.toc a{
+  color:var(--ink-dim);
+  text-decoration:none;
+  font-size:.95rem;
+  display:flex;align-items:baseline;gap:10px;
+}
+nav.toc a::before{
+  content:counter(tocc,decimal-leading-zero);
+  font-family:"JetBrains Mono",monospace;
+  font-size:.78rem;
+  color:var(--gold-deep);
+  font-weight:600;
+}
+nav.toc a:hover{color:var(--gold)}
+
+/* ==================== SECTIONS ==================== */
+section.theory{
+  margin:48px 0;
+  scroll-margin-top:20px;
+}
+section.theory > .section-head{
+  display:flex;
+  align-items:baseline;
+  gap:18px;
+  margin-bottom:22px;
+  padding-bottom:14px;
+  border-bottom:1px solid var(--line);
+}
+.section-num{
+  font-family:"Fraunces",serif;
+  font-size:3rem;
+  font-weight:700;
+  color:var(--gold);
+  line-height:1;
+  font-style:italic;
+  min-width:2.2ch;
+}
+section.theory h2{
+  font-family:"Fraunces",serif;
+  font-weight:600;
+  font-size:clamp(1.35rem,2.6vw,1.8rem);
+  margin:0;
+  color:var(--ink);
+  line-height:1.2;
+  letter-spacing:-.005em;
+}
+section.theory h3{
+  font-family:"Fraunces",serif;
+  font-weight:600;
+  font-size:1.18rem;
+  color:var(--gold-soft);
+  margin:26px 0 10px;
+}
+section.theory p{margin:10px 0}
+section.theory em{font-style:italic;color:var(--gold-soft);font-weight:500}
+section.theory strong{color:var(--ink);font-weight:700}
+section.theory code{
+  font-family:"JetBrains Mono",monospace;
+  font-size:.92em;
+  background:rgba(125,211,252,0.08);
+  color:var(--cyan);
+  padding:2px 6px;
+  border-radius:4px;
+  border:1px solid rgba(125,211,252,0.15);
+}
+
+/* ==================== FORMULA BLOCKS ==================== */
+.fml{
+  background:linear-gradient(135deg, rgba(245,200,66,0.08), rgba(94,234,212,0.04));
+  border:1px solid rgba(245,200,66,0.25);
+  border-radius:14px;
+  padding:22px 28px;
+  margin:18px 0;
+  text-align:center;
+  font-size:1.15em;
+  position:relative;
+}
+.fml::before{
+  content:"wzór";
+  position:absolute;
+  top:-10px;left:18px;
+  font-family:"JetBrains Mono",monospace;
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:.14em;
+  color:var(--gold);
+  background:var(--bg);
+  padding:2px 10px;
+  border-radius:999px;
+  border:1px solid rgba(245,200,66,0.3);
+}
+.fml.alt{
+  background:linear-gradient(135deg, rgba(94,234,212,0.08), rgba(125,211,252,0.04));
+  border-color:rgba(94,234,212,0.25);
+}
+.fml.alt::before{
+  content:"przykład";
+  color:var(--mint);
+  border-color:rgba(94,234,212,0.3);
+}
+
+/* ==================== BOXES ==================== */
+.box{
+  position:relative;
+  border-radius:12px;
+  padding:16px 20px 16px 22px;
+  margin:18px 0;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-left:4px solid var(--gold);
+}
+.box .tag{
+  display:inline-block;
+  font-family:"JetBrains Mono",monospace;
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:.12em;
+  color:var(--gold);
+  margin-right:10px;
+  padding:2px 8px;
+  border-radius:4px;
+  background:rgba(245,200,66,0.1);
+  border:1px solid rgba(245,200,66,0.2);
+  vertical-align:baseline;
+}
+.box.info{border-left-color:var(--cyan)}
+.box.info .tag{color:var(--cyan);background:rgba(125,211,252,0.1);border-color:rgba(125,211,252,0.2)}
+.box.tip{border-left-color:var(--mint)}
+.box.tip .tag{color:var(--mint);background:rgba(94,234,212,0.1);border-color:rgba(94,234,212,0.2)}
+.box.warn{border-left-color:var(--pink)}
+.box.warn .tag{color:var(--pink);background:rgba(244,114,182,0.1);border-color:rgba(244,114,182,0.2)}
+.box.example{border-left-color:var(--gold-soft);background:var(--panel-2)}
+.box.example .tag{color:var(--gold-soft)}
+
+/* ==================== CARDS/GRID ==================== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:12px;
+  margin:16px 0;
+}
+.grid .cell{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:14px 16px;
+}
+.grid .cell b{
+  display:block;
+  font-family:"JetBrains Mono",monospace;
+  font-size:.75rem;
+  letter-spacing:.12em;
+  color:var(--gold);
+  margin-bottom:4px;
+  font-weight:600;
+}
+.grid .cell span{
+  color:var(--ink);
+  font-weight:500;
+  font-size:.95rem;
+}
+.grid.powers .cell{text-align:center}
+.grid.powers .cell b{font-family:"Fraunces",serif;font-size:1.25rem;letter-spacing:0;color:var(--gold);margin-bottom:6px;font-weight:600}
+
+/* ==================== SVG VIS ==================== */
+.vis{
+  margin:20px 0;
+  background:var(--bg-3);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:20px;
+  overflow:hidden;
+}
+.vis svg{display:block;max-width:100%;height:auto;margin:0 auto}
+.vis-caption{
+  color:var(--muted);
+  font-size:.85rem;
+  text-align:center;
+  margin-top:10px;
+  font-style:italic;
+}
+
+/* ==================== EXERCISES ==================== */
+.exercises-head{
+  background:
+    linear-gradient(135deg, rgba(245,200,66,0.15) 0%, rgba(167,139,250,0.08) 100%),
+    var(--panel);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:32px;
+  margin:50px 0 30px;
+  text-align:center;
+}
+.exercises-head h2{
+  font-family:"Fraunces",serif;
+  font-weight:700;
+  font-size:2rem;
+  margin:0 0 6px;
+  color:var(--ink);
+}
+.exercises-head p{color:var(--ink-dim);margin:0 0 14px}
+.level-tabs{
+  display:inline-flex;
+  gap:8px;
+  margin-top:4px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.level-tab{
+  font-family:"JetBrains Mono",monospace;
+  font-size:.8rem;
+  font-weight:600;
+  letter-spacing:.08em;
+  padding:6px 14px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:var(--bg-2);
+  color:var(--ink-dim);
+}
+.level-tab.easy{color:var(--mint);border-color:rgba(94,234,212,0.3);background:rgba(94,234,212,0.08)}
+.level-tab.mid{color:var(--gold);border-color:rgba(245,200,66,0.3);background:rgba(245,200,66,0.08)}
+.level-tab.hard{color:var(--pink);border-color:rgba(244,114,182,0.3);background:rgba(244,114,182,0.08)}
+
+.ex-group{margin:30px 0 10px}
+.ex-group h3{
+  font-family:"Fraunces",serif;
+  font-weight:600;
+  font-size:1.35rem;
+  margin:30px 0 16px;
+  color:var(--ink);
+  display:flex;align-items:center;gap:12px;
+}
+.ex-group h3::before{
+  content:"";
+  display:inline-block;
+  width:8px;height:22px;
+  border-radius:2px;
+}
+.ex-group.easy h3::before{background:var(--mint)}
+.ex-group.mid h3::before{background:var(--gold)}
+.ex-group.hard h3::before{background:var(--pink)}
+
+details.q{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-left:4px solid var(--gold);
+  border-radius:12px;
+  margin-bottom:12px;
+  overflow:hidden;
+  transition:border-color .2s ease;
+}
+details.q.easy{border-left-color:var(--mint)}
+details.q.mid{border-left-color:var(--gold)}
+details.q.hard{border-left-color:var(--pink)}
+details.q[open]{background:var(--panel-2)}
+details.q > summary{
+  padding:14px 20px;
+  cursor:pointer;
+  list-style:none;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+  user-select:none;
+}
+details.q > summary::-webkit-details-marker{display:none}
+details.q > summary::marker{display:none;content:""}
+.q-num{
+  font-family:"JetBrains Mono",monospace;
+  font-weight:600;
+  color:var(--muted);
+  min-width:2.8ch;
+  font-size:.95rem;
+}
+.q-badge{
+  font-family:"JetBrains Mono",monospace;
+  font-size:.7rem;
+  font-weight:600;
+  letter-spacing:.1em;
+  padding:3px 9px;
+  border-radius:999px;
+  border:1px solid currentColor;
+  opacity:.9;
+}
+details.q.easy .q-badge{color:var(--mint);background:rgba(94,234,212,0.1)}
+details.q.mid .q-badge{color:var(--gold);background:rgba(245,200,66,0.1)}
+details.q.hard .q-badge{color:var(--pink);background:rgba(244,114,182,0.1)}
+.q-text{flex:1;color:var(--ink);line-height:1.5}
+.q-expand{
+  color:var(--muted);
+  font-family:"JetBrains Mono",monospace;
+  font-size:.78rem;
+  opacity:.7;
+  transition:transform .2s ease;
+}
+details.q[open] .q-expand{transform:rotate(90deg);color:var(--gold)}
+
+.answer{
+  padding:8px 22px 22px;
+  border-top:1px solid var(--line-soft);
+  background:var(--bg-2);
+}
+.sol-block{margin-top:14px}
+.sol-block h4{
+  margin:0 0 6px;
+  font-family:"JetBrains Mono",monospace;
+  font-size:.74rem;
+  letter-spacing:.18em;
+  color:var(--gold);
+  font-weight:600;
+}
+.sol-block.final{
+  margin-top:18px;
+  padding:12px 16px;
+  background:rgba(94,234,212,0.08);
+  border:1px solid rgba(94,234,212,0.2);
+  border-radius:10px;
+}
+.sol-block.final h4{color:var(--mint)}
+.sol-block.final p{margin:4px 0;color:var(--ink);font-size:1.02em}
+.sol-block p{margin:4px 0;color:var(--ink-dim)}
+.steps{
+  padding-left:24px;
+  margin:6px 0;
+  color:var(--ink-dim);
+}
+.steps li{margin:6px 0}
+.steps li::marker{color:var(--gold);font-weight:600}
+
+/* ==================== FOOTER ==================== */
+footer{
+  text-align:center;
+  color:var(--muted);
+  margin-top:70px;
+  font-size:.88rem;
+  padding-top:30px;
+  border-top:1px solid var(--line-soft);
+}
+footer a{color:var(--gold);text-decoration:none}
+footer a:hover{text-decoration:underline}
+.back-link{
+  display:inline-block;
+  margin-bottom:16px;
+  color:var(--muted);
+  text-decoration:none;
+  font-size:.92rem;
+  font-family:"JetBrains Mono",monospace;
+}
+.back-link:hover{color:var(--gold)}
+
+@media(max-width:640px){
+  .container{padding:24px 16px 60px}
+  header.hero{padding:36px 24px}
+  .hero-stat{min-width:auto;flex:1}
+  .section-num{font-size:2.2rem}
+  .grid{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<a class="back-link" href="../index.html">← wróć do listy kart</a>
+
+<header class="hero">
+  <span class="kicker">Matematyka · Klasa 7</span>
+  <h1>Potęgi i notacja <em>wykładnicza</em></h1>
+  <p class="lead">Krótkie pigułki teorii o tym, czym jest potęga i jak działać na potęgach, plus 45 zadań z narastającą trudnością i rozpisanymi rozwiązaniami.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><b>45</b><span>zadań z kluczem</span></div>
+    <div class="hero-stat"><b>9</b><span>działów teorii</span></div>
+    <div class="hero-stat"><b>3</b><span>poziomy trudności</span></div>
+  </div>
+</header>
+
+<nav class="toc">
+  <h4>Plan karty</h4>
+  <ol>
+    <li><a href="#dzial-1">Czym jest potęga?</a></li>
+    <li><a href="#dzial-2">Mnożenie potęg o tej samej podstawie</a></li>
+    <li><a href="#dzial-3">Dzielenie potęg o tej samej podstawie</a></li>
+    <li><a href="#dzial-4">Potęgowanie potęgi</a></li>
+    <li><a href="#dzial-5">Potęgowanie iloczynu i ilorazu</a></li>
+    <li><a href="#dzial-6">Upraszczanie złożonych wyrażeń</a></li>
+    <li><a href="#dzial-7">Notacja wykładnicza — duże liczby</a></li>
+    <li><a href="#dzial-8">Notacja wykładnicza — małe liczby</a></li>
+    <li><a href="#zadania">Zestaw 45 zadań</a></li>
+  </ol>
+</nav>
+
+<!-- ==================== DZIAŁ 1 ==================== -->
+<section class="theory" id="dzial-1">
+  <div class="section-head">
+    <span class="section-num">1</span>
+    <h2>Czym jest potęga?</h2>
+  </div>
+
+  <p><strong>Potęga</strong> to skrócony zapis mnożenia tej samej liczby przez siebie. Zamiast pisać $2 \cdot 2 \cdot 2 \cdot 2 \cdot 2$, piszemy po prostu $2^5$ i czytamy „dwa do piątej".</p>
+
+  <div class="fml">$a^n = \underbrace{a \cdot a \cdot a \cdot \ldots \cdot a}_{n\ \text{razy}}$</div>
+
+  <div class="vis">
+    <svg viewBox="0 0 620 232" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Anatomia potęgi 3 do czwartej">
+      <defs>
+        <marker id="arr1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#f5c842"/>
+        </marker>
+      </defs>
+      <!-- Główny napis 3^4 -->
+      <text x="310" y="130" text-anchor="middle" font-family="Fraunces,serif" font-style="italic" font-weight="700" font-size="128" fill="#f1f3fb">3</text>
+      <text x="398" y="78" text-anchor="middle" font-family="Fraunces,serif" font-style="italic" font-weight="700" font-size="70" fill="#f5c842">4</text>
+      <!-- Linia do podstawy -->
+      <line x1="180" y1="180" x2="285" y2="130" stroke="#f5c842" stroke-width="1.6" marker-end="url(#arr1)"/>
+      <text x="170" y="200" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600" font-size="16" fill="#f5c842">podstawa</text>
+      <text x="170" y="216" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#8791b8">co mnożymy</text>
+      <!-- Linia do wykładnika -->
+      <line x1="490" y1="50" x2="420" y2="70" stroke="#5eead4" stroke-width="1.6" marker-end="url(#arr1)"/>
+      <text x="535" y="50" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600" font-size="16" fill="#5eead4">wykładnik</text>
+      <text x="535" y="66" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#8791b8">ile razy</text>
+    </svg>
+    <p class="vis-caption">Zapis $3^4$ czytamy „trzy do czwartej" — czyli trzy pomnożone przez siebie 4 razy: $3 \cdot 3 \cdot 3 \cdot 3 = 81$.</p>
+  </div>
+
+  <h3>Przypadki szczególne</h3>
+  <div class="grid powers">
+    <div class="cell"><b>$a^1$</b><span>$= a$</span></div>
+    <div class="cell"><b>$a^0$</b><span>$= 1$ (dla $a \ne 0$)</span></div>
+    <div class="cell"><b>$1^n$</b><span>$= 1$</span></div>
+    <div class="cell"><b>$0^n$</b><span>$= 0$ (dla $n > 0$)</span></div>
+  </div>
+
+  <div class="box info"><span class="tag">uwaga</span>
+    Dla liczb ujemnych: potęga o wykładniku <strong>parzystym</strong> daje wynik dodatni, a o wykładniku <strong>nieparzystym</strong> — ujemny. Przykład: $(-2)^2 = 4$, ale $(-2)^3 = -8$.
+  </div>
+
+  <div class="box example"><span class="tag">przykład</span>
+    <p>Intuicja: $2^3$ możesz wyobrazić sobie jako kostkę 2 × 2 × 2 — mała kosteczka składa się z $2^3 = 8$ jeszcze mniejszych kostek.</p>
+  </div>
+
+  <h3>Kolejne potęgi dwójki i dziesiątki</h3>
+  <p>Warto je znać na pamięć — pojawiają się wszędzie.</p>
+  <div class="grid powers">
+    <div class="cell"><b>$2^1$</b><span>$= 2$</span></div>
+    <div class="cell"><b>$2^2$</b><span>$= 4$</span></div>
+    <div class="cell"><b>$2^3$</b><span>$= 8$</span></div>
+    <div class="cell"><b>$2^4$</b><span>$= 16$</span></div>
+    <div class="cell"><b>$2^5$</b><span>$= 32$</span></div>
+    <div class="cell"><b>$2^{10}$</b><span>$= 1024$</span></div>
+  </div>
+  <div class="grid powers">
+    <div class="cell"><b>$10^1$</b><span>$= 10$</span></div>
+    <div class="cell"><b>$10^2$</b><span>$= 100$</span></div>
+    <div class="cell"><b>$10^3$</b><span>$= 1\,000$</span></div>
+    <div class="cell"><b>$10^4$</b><span>$= 10\,000$</span></div>
+    <div class="cell"><b>$10^6$</b><span>$= 1\,000\,000$</span></div>
+    <div class="cell"><b>$10^9$</b><span>$= 1\,000\,000\,000$</span></div>
+  </div>
+
+  <div class="box tip"><span class="tag">reguła</span>
+    $10^n$ to jedynka z $n$ zerami. Najszybszy sposób, by zapisać albo przeczytać dużą liczbę w postaci potęgi dziesiątki.
+  </div>
+</section>
+
+<!-- ==================== DZIAŁ 2 ==================== -->
+<section class="theory" id="dzial-2">
+  <div class="section-head">
+    <span class="section-num">2</span>
+    <h2>Mnożenie potęg o tej samej podstawie</h2>
+  </div>
+
+  <p>Gdy mnożymy potęgi o <strong>tej samej podstawie</strong>, wykładniki <strong>dodajemy</strong>.</p>
+
+  <div class="fml">$a^m \cdot a^n = a^{m+n}$</div>
+
+  <h3>Skąd ten wzór?</h3>
+  <p>Rozpisujemy obie potęgi — i widać, że to po prostu dłuższy iloczyn tej samej liczby:</p>
+
+  <div class="vis">
+    <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mnożenie potęg 2 do 3 razy 2 do 2 równa się 2 do 5">
+      <!-- Grupa 1: 2^3 rozwinięte -->
+      <g font-family="JetBrains Mono,monospace" font-weight="600">
+        <rect x="20" y="30" width="40" height="40" rx="6" fill="#1d2a57" stroke="#f5c842"/>
+        <text x="40" y="57" text-anchor="middle" font-size="20" fill="#f1f3fb">2</text>
+        <text x="72" y="57" text-anchor="middle" font-size="20" fill="#8791b8">·</text>
+        <rect x="84" y="30" width="40" height="40" rx="6" fill="#1d2a57" stroke="#f5c842"/>
+        <text x="104" y="57" text-anchor="middle" font-size="20" fill="#f1f3fb">2</text>
+        <text x="136" y="57" text-anchor="middle" font-size="20" fill="#8791b8">·</text>
+        <rect x="148" y="30" width="40" height="40" rx="6" fill="#1d2a57" stroke="#f5c842"/>
+        <text x="168" y="57" text-anchor="middle" font-size="20" fill="#f1f3fb">2</text>
+      </g>
+      <text x="104" y="95" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" fill="#f5c842">trzy dwójki = 2³</text>
+
+      <text x="210" y="57" text-anchor="middle" font-size="24" font-weight="700" fill="#f1f3fb" font-family="JetBrains Mono,monospace">·</text>
+
+      <!-- Grupa 2: 2^2 rozwinięte -->
+      <g font-family="JetBrains Mono,monospace" font-weight="600">
+        <rect x="230" y="30" width="40" height="40" rx="6" fill="#1d2a57" stroke="#5eead4"/>
+        <text x="250" y="57" text-anchor="middle" font-size="20" fill="#f1f3fb">2</text>
+        <text x="282" y="57" text-anchor="middle" font-size="20" fill="#8791b8">·</text>
+        <rect x="294" y="30" width="40" height="40" rx="6" fill="#1d2a57" stroke="#5eead4"/>
+        <text x="314" y="57" text-anchor="middle" font-size="20" fill="#f1f3fb">2</text>
+      </g>
+      <text x="282" y="95" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" fill="#5eead4">dwie dwójki = 2²</text>
+
+      <text x="370" y="57" text-anchor="middle" font-size="24" font-weight="700" fill="#f1f3fb" font-family="Inter,sans-serif">=</text>
+
+      <!-- Grupa 3: 2^5 -->
+      <g font-family="JetBrains Mono,monospace" font-weight="600">
+        <rect x="395" y="30" width="36" height="40" rx="6" fill="#1d2a57" stroke="#f472b6"/>
+        <text x="413" y="57" text-anchor="middle" font-size="18" fill="#f1f3fb">2</text>
+        <text x="439" y="57" text-anchor="middle" font-size="16" fill="#8791b8">·</text>
+        <rect x="449" y="30" width="36" height="40" rx="6" fill="#1d2a57" stroke="#f472b6"/>
+        <text x="467" y="57" text-anchor="middle" font-size="18" fill="#f1f3fb">2</text>
+        <text x="493" y="57" text-anchor="middle" font-size="16" fill="#8791b8">·</text>
+        <rect x="503" y="30" width="36" height="40" rx="6" fill="#1d2a57" stroke="#f472b6"/>
+        <text x="521" y="57" text-anchor="middle" font-size="18" fill="#f1f3fb">2</text>
+        <text x="547" y="57" text-anchor="middle" font-size="16" fill="#8791b8">·</text>
+        <rect x="557" y="30" width="36" height="40" rx="6" fill="#1d2a57" stroke="#f472b6"/>
+        <text x="575" y="57" text-anchor="middle" font-size="18" fill="#f1f3fb">2</text>
+        <text x="601" y="57" text-anchor="middle" font-size="16" fill="#8791b8">·</text>
+        <rect x="611" y="30" width="36" height="40" rx="6" fill="#1d2a57" stroke="#f472b6"/>
+        <text x="629" y="57" text-anchor="middle" font-size="18" fill="#f1f3fb">2</text>
+      </g>
+      <text x="521" y="95" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" fill="#f472b6">pięć dwójek = 2⁵</text>
+
+      <!-- Podsumowanie -->
+      <text x="350" y="160" text-anchor="middle" font-family="Fraunces,serif" font-style="italic" font-size="28" fill="#f1f3fb" font-weight="600">
+        2<tspan font-size="18" dy="-10">3</tspan><tspan dy="10"> · </tspan>2<tspan font-size="18" dy="-10">2</tspan><tspan dy="10"> = </tspan>2<tspan font-size="18" dy="-10">3+2</tspan><tspan dy="10"> = </tspan>2<tspan font-size="18" dy="-10">5</tspan>
+      </text>
+      <text x="350" y="195" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" fill="#8791b8">Trzy dwójki i dwie dwójki to razem pięć dwójek — wykładniki po prostu się dodają.</text>
+    </svg>
+  </div>
+
+  <div class="box example"><span class="tag">przykłady</span>
+    <p>$3^4 \cdot 3^2 = 3^{4+2} = 3^6$</p>
+    <p>$5^7 \cdot 5 = 5^7 \cdot 5^1 = 5^{7+1} = 5^8$</p>
+    <p>$x^2 \cdot x^3 \cdot x = x^{2+3+1} = x^6$</p>
+  </div>
+
+  <div class="box warn"><span class="tag">uważaj</span>
+    Ten wzór działa <strong>tylko przy tej samej podstawie</strong>. Wyrażenia $2^3 \cdot 5^4$ nie umiesz zapisać jako $10^\text{coś}$ — podstawy są różne i wykładniki w tym wzorze się nie spotkają.
+  </div>
+</section>
+
+<!-- ==================== DZIAŁ 3 ==================== -->
+<section class="theory" id="dzial-3">
+  <div class="section-head">
+    <span class="section-num">3</span>
+    <h2>Dzielenie potęg o tej samej podstawie</h2>
+  </div>
+
+  <p>Gdy dzielimy potęgi o <strong>tej samej podstawie</strong>, wykładniki <strong>odejmujemy</strong>.</p>
+
+  <div class="fml">$a^m : a^n = a^{m-n}\quad (a \ne 0)$</div>
+
+  <h3>Skąd ten wzór?</h3>
+  <p>W ułamku możemy skracać te same czynniki w liczniku i mianowniku:</p>
+
+  <div class="fml alt">$\dfrac{2^5}{2^3} = \dfrac{\cancel{2} \cdot \cancel{2} \cdot \cancel{2} \cdot 2 \cdot 2}{\cancel{2} \cdot \cancel{2} \cdot \cancel{2}} = 2 \cdot 2 = 2^2 = 2^{5-3}$</div>
+
+  <div class="box example"><span class="tag">przykłady</span>
+    <p>$7^9 : 7^4 = 7^{9-4} = 7^5$</p>
+    <p>$\dfrac{10^6}{10^2} = 10^{6-2} = 10^4 = 10\,000$</p>
+    <p>$\dfrac{a^8}{a^8} = a^{8-8} = a^0 = 1$ (dla $a \ne 0$)</p>
+  </div>
+
+  <div class="box tip"><span class="tag">wskazówka</span>
+    Zauważ, że $a^0 = 1$ wypływa naturalnie z tego wzoru: dzieląc potęgę przez samą siebie, zawsze dostajesz 1, więc $a^{n-n} = a^0$ <em>musi</em> być równe 1.
+  </div>
+</section>
+
+<!-- ==================== DZIAŁ 4 ==================== -->
+<section class="theory" id="dzial-4">
+  <div class="section-head">
+    <span class="section-num">4</span>
+    <h2>Potęgowanie potęgi</h2>
+  </div>
+
+  <p>Gdy potęgujemy potęgę, wykładniki <strong>mnożymy</strong>.</p>
+
+  <div class="fml">$(a^m)^n = a^{m \cdot n}$</div>
+
+  <h3>Skąd ten wzór?</h3>
+  <p>Potęgowanie to mnożenie — rozpisanie pokazuje, dlaczego wykładniki się mnożą:</p>
+
+  <div class="fml alt">$(2^3)^4 = 2^3 \cdot 2^3 \cdot 2^3 \cdot 2^3 = 2^{3+3+3+3} = 2^{4 \cdot 3} = 2^{12}$</div>
+
+  <p>Cztery razy dodać trójkę to tyle, co cztery razy trzy — więc zamiast dodawać, możemy od razu pomnożyć.</p>
+
+  <div class="box example"><span class="tag">przykłady</span>
+    <p>$(5^2)^3 = 5^{2 \cdot 3} = 5^6$</p>
+    <p>$(x^4)^5 = x^{4 \cdot 5} = x^{20}$</p>
+    <p>$(10^3)^2 = 10^{3 \cdot 2} = 10^6 = 1\,000\,000$</p>
+  </div>
+
+  <div class="box warn"><span class="tag">nie myl</span>
+    $2^3 \cdot 2^4 \ne (2^3)^4$. W pierwszym przypadku wykładniki <strong>dodajemy</strong> (mnożenie potęg o tej samej podstawie), w drugim — <strong>mnożymy</strong> (potęgowanie potęgi).
+    <br><br>
+    $2^3 \cdot 2^4 = 2^7 = 128$, ale $(2^3)^4 = 2^{12} = 4096$.
+  </div>
+</section>
+
+<!-- ==================== DZIAŁ 5 ==================== -->
+<section class="theory" id="dzial-5">
+  <div class="section-head">
+    <span class="section-num">5</span>
+    <h2>Potęgowanie iloczynu i ilorazu</h2>
+  </div>
+
+  <p>Potęga <strong>iloczynu</strong> to iloczyn potęg, a potęga <strong>ilorazu</strong> — iloraz potęg:</p>
+
+  <div class="fml">$(a \cdot b)^n = a^n \cdot b^n \qquad\quad \left(\dfrac{a}{b}\right)^n = \dfrac{a^n}{b^n}\quad (b \ne 0)$</div>
+
+  <h3>Skąd te wzory?</h3>
+  <p>Z samej definicji potęgi i z tego, że kolejność mnożenia nic nie zmienia:</p>
+  <div class="fml alt">$(2 \cdot 3)^3 = (2\cdot 3)(2 \cdot 3)(2 \cdot 3) = (2 \cdot 2 \cdot 2)(3 \cdot 3 \cdot 3) = 2^3 \cdot 3^3$</div>
+
+  <div class="box example"><span class="tag">przykłady</span>
+    <p>$(4 \cdot 5)^3 = 4^3 \cdot 5^3 = 64 \cdot 125 = 8000$ — łatwiej policzyć najpierw iloczyn: $(4 \cdot 5)^3 = 20^3 = 8000$.</p>
+    <p>$\left(\dfrac{6}{2}\right)^4 = \dfrac{6^4}{2^4}$ — łatwiej jednak uprościć nawias: $\left(\dfrac{6}{2}\right)^4 = 3^4 = 81$.</p>
+    <p>$(2a)^3 = 2^3 \cdot a^3 = 8a^3$.</p>
+  </div>
+
+  <div class="box tip"><span class="tag">trick</span>
+    Wzór działa <strong>w obie strony</strong>. Jeśli widzisz potęgi o tym samym wykładniku, możesz je połączyć:
+    $$2^5 \cdot 5^5 = (2 \cdot 5)^5 = 10^5 = 100\,000$$
+    To bardzo przydatny skrót w obliczeniach.
+  </div>
+</section>
+
+<!-- ==================== DZIAŁ 6 ==================== -->
+<section class="theory" id="dzial-6">
+  <div class="section-head">
+    <span class="section-num">6</span>
+    <h2>Upraszczanie złożonych wyrażeń</h2>
+  </div>
+
+  <p>W jednym wyrażeniu może występować wszystko naraz — mnożenie, dzielenie, potęgowanie potęgi, iloczyny. Działaj wtedy <strong>po kolei</strong>:</p>
+
+  <div class="box tip"><span class="tag">strategia</span>
+    <ol style="margin:6px 0;padding-left:22px">
+      <li>Usuń nawiasy z potęgowania potęgi i potęgowania iloczynu ($(a^m)^n$, $(ab)^n$).</li>
+      <li>Zbierz potęgi o tych samych podstawach.</li>
+      <li>Zastosuj dodawanie/odejmowanie wykładników (mnożenie/dzielenie potęg).</li>
+      <li>Na koniec oblicz wartość liczbową, jeśli trzeba.</li>
+    </ol>
+  </div>
+
+  <div class="box example"><span class="tag">przykład — krok po kroku</span>
+    <p>Uprość: $\dfrac{(2^3)^4 \cdot 2^5}{2^{10}}$</p>
+    <ol style="padding-left:22px;margin-top:4px;color:var(--ink-dim)">
+      <li>Rozbieramy nawias potęgowania potęgi: $(2^3)^4 = 2^{3 \cdot 4} = 2^{12}$.</li>
+      <li>Licznik: $2^{12} \cdot 2^5 = 2^{12+5} = 2^{17}$.</li>
+      <li>Dzielimy: $\dfrac{2^{17}}{2^{10}} = 2^{17-10} = 2^7$.</li>
+      <li>Wartość: $2^7 = 128$.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ==================== DZIAŁ 7 ==================== -->
+<section class="theory" id="dzial-7">
+  <div class="section-head">
+    <span class="section-num">7</span>
+    <h2>Notacja wykładnicza — duże liczby</h2>
+  </div>
+
+  <p>Bardzo duże liczby wygodnie zapisujemy w <strong>notacji wykładniczej</strong> (inaczej: wykładniczo‑dziesiętnej):</p>
+
+  <div class="fml">$a \cdot 10^n,\quad\text{gdzie } 1 \le a < 10,\ n \in \mathbb{N}$</div>
+
+  <p>$a$ to cyfra (lub liczba dziesiętna) od 1 do mniej niż 10, a $n$ mówi, ile miejsc przesunąć przecinek w prawo, by dostać „normalny" zapis.</p>
+
+  <h3>Jak zamienić liczbę na notację wykładniczą?</h3>
+  <ol style="padding-left:22px">
+    <li>Przesuwaj przecinek w lewo, aż przed przecinkiem zostanie <strong>dokładnie jedna cyfra niezerowa</strong>.</li>
+    <li>Policz, ile pozycji przesunąłeś — to jest wykładnik $n$.</li>
+  </ol>
+
+  <div class="box example"><span class="tag">przykład</span>
+    <p>Liczba $340\,000$. Przesuwamy przecinek: $340000 \to 3{,}40000$ — przesunęliśmy o 5 pozycji. Zapis: $340\,000 = 3{,}4 \cdot 10^5$.</p>
+    <p>Liczba $2\,500\,000 = 2{,}5 \cdot 10^6$.</p>
+  </div>
+
+  <div class="box info"><span class="tag">po co?</span>
+    Liczby takie jak masa Słońca ($\approx 2 \cdot 10^{30}$ kg) albo prędkość światła ($3 \cdot 10^8$ m/s) trudno zapisać i porównywać dziesiętnie. Notacja wykładnicza pokazuje <strong>rząd wielkości</strong> jednym spojrzeniem.
+  </div>
+
+  <div class="vis">
+    <svg viewBox="0 0 820 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Oś rzędów wielkości">
+      <defs>
+        <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#8791b8"/>
+        </marker>
+      </defs>
+      <!-- linia główna -->
+      <line x1="40" y1="140" x2="780" y2="140" stroke="#8791b8" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+      <!-- ticki i etykiety -->
+      <g font-family="JetBrains Mono,monospace" font-size="13" fill="#cacfe8" text-anchor="middle">
+        <!-- 10^-3 -->
+        <line x1="90" y1="134" x2="90" y2="146" stroke="#f472b6" stroke-width="2"/>
+        <text x="90" y="168" fill="#f472b6">10⁻³</text>
+        <text x="90" y="186" font-family="Inter,sans-serif" font-size="11" fill="#8791b8">0,001</text>
+        <text x="90" y="116" font-family="Inter,sans-serif" font-size="11" fill="#8791b8">mm (milimetr)</text>
+        <!-- 10^0 -->
+        <line x1="230" y1="134" x2="230" y2="146" stroke="#5eead4" stroke-width="2"/>
+        <text x="230" y="168" fill="#5eead4">10⁰</text>
+        <text x="230" y="186" font-family="Inter,sans-serif" font-size="11" fill="#8791b8">1</text>
+        <text x="230" y="116" font-family="Inter,sans-serif" font-size="11" fill="#8791b8">m (wzrost człowieka)</text>
+        <!-- 10^3 -->
+        <line x1="370" y1="134" x2="370" y2="146" stroke="#f5c842" stroke-width="2"/>
+        <text x="370" y="168" fill="#f5c842">10³</text>
+        <text x="370" y="186" font-family="Inter,sans-serif" font-size="11" fill="#8791b8">1 000</text>
+        <text x="370" y="116" font-family="Inter,sans-serif" font-size="11" fill="#8791b8">km (dystans)</text>
+        <!-- 10^6 -->
+        <line x1="510" y1="134" x2="510" y2="146" stroke="#f5c842" stroke-width="2"/>
+        <text x="510" y="168" fill="#f5c842">10⁶</text>
+        <text x="510" y="186" font-family="Inter,sans-serif" font-size="11" fill="#8791b8">1 000 000</text>
+        <text x="510" y="116" font-family="Inter,sans-serif" font-size="11" fill="#8791b8">milion</text>
+        <!-- 10^9 -->
+        <line x1="650" y1="134" x2="650" y2="146" stroke="#a78bfa" stroke-width="2"/>
+        <text x="650" y="168" fill="#a78bfa">10⁹</text>
+        <text x="650" y="186" font-family="Inter,sans-serif" font-size="11" fill="#8791b8">1 000 000 000</text>
+        <text x="650" y="116" font-family="Inter,sans-serif" font-size="11" fill="#8791b8">miliard</text>
+      </g>
+
+      <!-- oznaczenia kierunku -->
+      <text x="70" y="240" font-family="Inter,sans-serif" font-size="12" fill="#8791b8" text-anchor="middle">małe liczby</text>
+      <text x="70" y="256" font-family="Inter,sans-serif" font-size="11" fill="#8791b8" text-anchor="middle">(wykładniki ujemne)</text>
+      <text x="720" y="240" font-family="Inter,sans-serif" font-size="12" fill="#8791b8" text-anchor="middle">duże liczby</text>
+      <text x="720" y="256" font-family="Inter,sans-serif" font-size="11" fill="#8791b8" text-anchor="middle">(wykładniki dodatnie)</text>
+      <text x="410" y="248" font-family="Fraunces,serif" font-style="italic" font-size="15" fill="#f5c842" text-anchor="middle">im większy wykładnik, tym większy rząd wielkości</text>
+    </svg>
+    <p class="vis-caption">Każde kolejne „oczko" na osi to pomnożenie przez 10. Trzy oczka w prawo = tysiąc razy więcej.</p>
+  </div>
+</section>
+
+<!-- ==================== DZIAŁ 8 ==================== -->
+<section class="theory" id="dzial-8">
+  <div class="section-head">
+    <span class="section-num">8</span>
+    <h2>Notacja wykładnicza — małe liczby</h2>
+  </div>
+
+  <p>Bardzo małe liczby też zapisujemy w notacji wykładniczej, ale z wykładnikiem <strong>ujemnym</strong>. Definicja:</p>
+
+  <div class="fml">$10^{-n} = \dfrac{1}{10^n}$</div>
+
+  <p>Inaczej: $10^{-1} = \frac{1}{10} = 0{,}1$; $10^{-2} = \frac{1}{100} = 0{,}01$; $10^{-3} = \frac{1}{1000} = 0{,}001$ itd.</p>
+
+  <h3>Jak zapisać małą liczbę w notacji wykładniczej?</h3>
+  <ol style="padding-left:22px">
+    <li>Przesuwaj przecinek w <strong>prawo</strong>, aż przed przecinkiem będzie jedna cyfra niezerowa.</li>
+    <li>Policz, ile pozycji przesunąłeś — wykładnik będzie <strong>ujemny</strong> i równy tej liczbie pozycji.</li>
+  </ol>
+
+  <div class="box example"><span class="tag">przykład</span>
+    <p>Liczba $0{,}0056$. Przesuwamy przecinek w prawo: $0{,}0056 \to 5{,}6$ — przesunęliśmy o 3 pozycje. Zapis: $0{,}0056 = 5{,}6 \cdot 10^{-3}$.</p>
+    <p>$0{,}0000072 = 7{,}2 \cdot 10^{-6}$ (6 pozycji w prawo).</p>
+  </div>
+
+  <div class="box info"><span class="tag">po co?</span>
+    Rozmiary atomów, masy drobnych cząstek, czasy trwania bardzo szybkich procesów — wszystko to zapisujemy w notacji wykładniczej z ujemnymi wykładnikami.
+    Przykład: promień atomu wodoru $\approx 5{,}3 \cdot 10^{-11}$ m.
+  </div>
+
+  <div class="box tip"><span class="tag">reguła</span>
+    <strong>Wykładnik dodatni</strong> → liczba duża (jedynka z $n$ zerami razy coś).<br>
+    <strong>Wykładnik ujemny</strong> → liczba mała (ułamek $\frac{1}{10^n}$ razy coś).<br>
+    <strong>Wykładnik 0</strong> → liczba rzędu jedności (między 1 a 10).
+  </div>
+</section>
+
+<!-- ==================== ZADANIA ==================== -->
+<div class="exercises-head" id="zadania">
+  <h2>Zestaw 45 zadań</h2>
+  <p>Zadania w trzech poziomach trudności — kliknij zadanie, żeby zobaczyć rozwiązanie krok po kroku.</p>
+  <div class="level-tabs">
+    <span class="level-tab easy">łatwe · 1–15</span>
+    <span class="level-tab mid">średnie · 16–30</span>
+    <span class="level-tab hard">trudne · 31–45</span>
+  </div>
+</div>
+
+<!-- ---------- ŁATWE ---------- -->
+<div class="ex-group easy">
+  <h3>Łatwe — rozgrzewka (1–15)</h3>
+
+  <details class="q easy">
+    <summary><span class="q-num">1.</span><span class="q-badge">łatwe</span><span class="q-text">Oblicz: $2^4$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Potęga $2^4$ (podstawa $2$, wykładnik $4$).</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość potęgi.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Z definicji potęgi: $2^4 = 2 \cdot 2 \cdot 2 \cdot 2$.</li>
+          <li>$2 \cdot 2 = 4$, dalej $4 \cdot 2 = 8$, dalej $8 \cdot 2 = 16$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$2^4 = 16$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">2.</span><span class="q-badge">łatwe</span><span class="q-text">Oblicz: $5^3$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Potęga $5^3$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość potęgi.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>$5^3 = 5 \cdot 5 \cdot 5$.</li>
+          <li>$5 \cdot 5 = 25$, a $25 \cdot 5 = 125$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$5^3 = 125$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">3.</span><span class="q-badge">łatwe</span><span class="q-text">Oblicz: $10^4$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Potęga $10^4$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość potęgi.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>$10^4 = 10 \cdot 10 \cdot 10 \cdot 10$.</li>
+          <li>Reguła: $10^n$ to jedynka z $n$ zerami. Tu $n = 4$, więc zapisujemy jedynkę i cztery zera.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$10^4 = 10\,000$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">4.</span><span class="q-badge">łatwe</span><span class="q-text">Oblicz: $7^2$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Potęga $7^2$ (kwadrat liczby 7).</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość potęgi.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>$7^2 = 7 \cdot 7 = 49$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$7^2 = 49$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">5.</span><span class="q-badge">łatwe</span><span class="q-text">Zapisz w postaci potęgi: $3 \cdot 3 \cdot 3 \cdot 3 \cdot 3$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Iloczyn pięciu liczb $3$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Zapis iloczynu w postaci potęgi.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Liczymy, ile razy mnożona jest liczba 3 przez siebie — jest to 5 czynników.</li>
+          <li>Podstawa potęgi: $3$. Wykładnik: $5$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$3 \cdot 3 \cdot 3 \cdot 3 \cdot 3 = 3^5$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">6.</span><span class="q-badge">łatwe</span><span class="q-text">Zapisz w postaci potęgi: $8 \cdot 8 \cdot 8$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Iloczyn trzech liczb $8$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Zapis w postaci potęgi.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Podstawa $8$, mnożona $3$ razy, więc wykładnik $3$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$8 \cdot 8 \cdot 8 = 8^3$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">7.</span><span class="q-badge">łatwe</span><span class="q-text">Oblicz: $0^5$ oraz $1^{100}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Potęgi $0^5$ i $1^{100}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartości obu potęg.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>$0^5 = 0 \cdot 0 \cdot 0 \cdot 0 \cdot 0$ — wystarczy jeden czynnik 0, aby cały iloczyn wynosił 0.</li>
+          <li>$1^{100}$ — sto razy mnożymy $1$, a $1$ pomnożone przez $1$ to cały czas $1$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$0^5 = 0$, $\ \ 1^{100} = 1$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">8.</span><span class="q-badge">łatwe</span><span class="q-text">Oblicz: $4^1$ oraz $12^0$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Potęgi $4^1$ i $12^0$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartości potęg.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Reguła: $a^1 = a$. Zatem $4^1 = 4$.</li>
+          <li>Reguła: $a^0 = 1$ dla każdego $a \ne 0$. Zatem $12^0 = 1$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$4^1 = 4$, $\ \ 12^0 = 1$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">9.</span><span class="q-badge">łatwe</span><span class="q-text">Oblicz: $(-3)^2$ oraz $(-3)^3$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Potęgi liczby ujemnej $-3$ o wykładnikach $2$ i $3$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartości obu potęg.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>$(-3)^2 = (-3) \cdot (-3) = 9$ — minus razy minus daje plus.</li>
+          <li>$(-3)^3 = (-3) \cdot (-3) \cdot (-3) = 9 \cdot (-3) = -27$.</li>
+          <li>Wniosek: wykładnik parzysty → wynik dodatni; wykładnik nieparzysty → wynik ujemny.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$(-3)^2 = 9$, $\ \ (-3)^3 = -27$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">10.</span><span class="q-badge">łatwe</span><span class="q-text">Zapisz w postaci jednej potęgi: $2^3 \cdot 2^4$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Iloczyn potęg o tej samej podstawie $2$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Zapis w postaci jednej potęgi.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Wzór: $a^m \cdot a^n = a^{m+n}$.</li>
+          <li>$2^3 \cdot 2^4 = 2^{3+4} = 2^7$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$2^3 \cdot 2^4 = 2^7$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">11.</span><span class="q-badge">łatwe</span><span class="q-text">Zapisz w postaci jednej potęgi: $5^7 : 5^2$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Iloraz potęg o tej samej podstawie $5$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Zapis w postaci jednej potęgi.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Wzór: $a^m : a^n = a^{m-n}$ (dla $a \ne 0$).</li>
+          <li>$5^7 : 5^2 = 5^{7-2} = 5^5$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$5^7 : 5^2 = 5^5$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">12.</span><span class="q-badge">łatwe</span><span class="q-text">Zapisz w postaci jednej potęgi: $(3^2)^4$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Potęgowanie potęgi: $(3^2)^4$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Zapis w postaci jednej potęgi.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Wzór: $(a^m)^n = a^{m \cdot n}$.</li>
+          <li>$(3^2)^4 = 3^{2 \cdot 4} = 3^8$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$(3^2)^4 = 3^8$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">13.</span><span class="q-badge">łatwe</span><span class="q-text">Zapisz liczbę $1\,000\,000$ jako potęgę liczby 10</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Liczba: milion = $1\,000\,000$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Zapis w postaci $10^n$.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Liczymy zera po jedynce: $1\,000\,000$ — sześć zer.</li>
+          <li>Wykładnik $n$ jest równy liczbie zer: $n = 6$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$1\,000\,000 = 10^6$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">14.</span><span class="q-badge">łatwe</span><span class="q-text">Ile wynosi $2^{10}$?</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Potęga $2^{10}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość potęgi.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Warto pamiętać $2^5 = 32$.</li>
+          <li>$2^{10} = 2^5 \cdot 2^5 = 32 \cdot 32$.</li>
+          <li>$32 \cdot 32 = 32 \cdot 30 + 32 \cdot 2 = 960 + 64 = 1024$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$2^{10} = 1024$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">15.</span><span class="q-badge">łatwe</span><span class="q-text">Oblicz: $3^3 + 4^2$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Wyrażenie $3^3 + 4^2$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość wyrażenia.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Potęgujemy przed dodawaniem: $3^3 = 27$, $4^2 = 16$.</li>
+          <li>$27 + 16 = 43$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$3^3 + 4^2 = 43$</p></div>
+    </div>
+  </details>
+</div>
+
+<!-- ---------- ŚREDNIE ---------- -->
+<div class="ex-group mid">
+  <h3>Średnie — łączymy prawa działań (16–30)</h3>
+
+  <details class="q mid">
+    <summary><span class="q-num">16.</span><span class="q-badge">średnie</span><span class="q-text">Oblicz: $3^4 \cdot 3^2$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Iloczyn potęg o tej samej podstawie $3$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość wyrażenia.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Wzór: $a^m \cdot a^n = a^{m+n}$. Stąd $3^4 \cdot 3^2 = 3^{4+2} = 3^6$.</li>
+          <li>$3^3 = 27$, więc $3^6 = 3^3 \cdot 3^3 = 27 \cdot 27$.</li>
+          <li>$27 \cdot 27 = 27 \cdot 25 + 27 \cdot 2 = 675 + 54 = 729$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$3^4 \cdot 3^2 = 3^6 = 729$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">17.</span><span class="q-badge">średnie</span><span class="q-text">Oblicz: $2^9 : 2^6$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Iloraz potęg o tej samej podstawie $2$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość wyrażenia.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>$a^m : a^n = a^{m-n}$: $2^9 : 2^6 = 2^{9-6} = 2^3$.</li>
+          <li>$2^3 = 8$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$2^9 : 2^6 = 2^3 = 8$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">18.</span><span class="q-badge">średnie</span><span class="q-text">Zapisz w postaci jednej potęgi: $(2^3)^5 \cdot 2^2$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>$(2^3)^5 \cdot 2^2$ — potęgowanie potęgi i mnożenie o tej samej podstawie.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Zapis w postaci jednej potęgi liczby $2$.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Potęgowanie potęgi: $(2^3)^5 = 2^{3 \cdot 5} = 2^{15}$.</li>
+          <li>Mnożenie: $2^{15} \cdot 2^2 = 2^{15+2} = 2^{17}$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$(2^3)^5 \cdot 2^2 = 2^{17}$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">19.</span><span class="q-badge">średnie</span><span class="q-text">Oblicz: $(5 \cdot 2)^3$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Potęga iloczynu $(5 \cdot 2)^3$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość wyrażenia.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Sposób 1 — oblicz najpierw nawias: $5 \cdot 2 = 10$, więc $(5 \cdot 2)^3 = 10^3 = 1000$.</li>
+          <li>Sposób 2 — wzór $(a \cdot b)^n = a^n \cdot b^n$: $(5 \cdot 2)^3 = 5^3 \cdot 2^3 = 125 \cdot 8 = 1000$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$(5 \cdot 2)^3 = 1000$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">20.</span><span class="q-badge">średnie</span><span class="q-text">Oblicz: $\left(\dfrac{6}{2}\right)^4$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Potęga ilorazu $\left(\frac{6}{2}\right)^4$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość wyrażenia.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Najpierw upraszczamy nawias: $\frac{6}{2} = 3$.</li>
+          <li>$\left(\frac{6}{2}\right)^4 = 3^4 = 3 \cdot 3 \cdot 3 \cdot 3 = 81$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\left(\dfrac{6}{2}\right)^4 = 81$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">21.</span><span class="q-badge">średnie</span><span class="q-text">Zapisz w postaci jednej potęgi: $4^5 \cdot 3^5$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Iloczyn potęg o różnych podstawach, ale <em>tych samych wykładnikach</em>.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Zapis w postaci jednej potęgi.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Wzór $(a \cdot b)^n = a^n \cdot b^n$ czytany <em>w drugą stronę</em>: $a^n \cdot b^n = (a \cdot b)^n$.</li>
+          <li>$4^5 \cdot 3^5 = (4 \cdot 3)^5 = 12^5$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$4^5 \cdot 3^5 = 12^5$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">22.</span><span class="q-badge">średnie</span><span class="q-text">Oblicz: $\dfrac{2^{10}}{2^6}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Iloraz $\frac{2^{10}}{2^6}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość ilorazu.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>$\frac{2^{10}}{2^6} = 2^{10-6} = 2^4$.</li>
+          <li>$2^4 = 16$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\dfrac{2^{10}}{2^6} = 16$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">23.</span><span class="q-badge">średnie</span><span class="q-text">Zapisz w notacji wykładniczej: $340\,000$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Liczba $340\,000$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Zapis $a \cdot 10^n$, gdzie $1 \le a < 10$.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Przesuwamy przecinek w lewo, aż przed przecinkiem zostanie jedna cyfra niezerowa: $340000{,}0 \to 3{,}40000$.</li>
+          <li>Przesunęliśmy o $5$ pozycji, więc $n = 5$.</li>
+          <li>$a = 3{,}4$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$340\,000 = 3{,}4 \cdot 10^5$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">24.</span><span class="q-badge">średnie</span><span class="q-text">Zapisz w notacji wykładniczej: $2\,500\,000$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Liczba $2\,500\,000$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Zapis w notacji wykładniczej.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>$2\,500\,000 = 2{,}5 \cdot 1\,000\,000$.</li>
+          <li>$1\,000\,000 = 10^6$, więc $2\,500\,000 = 2{,}5 \cdot 10^6$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$2\,500\,000 = 2{,}5 \cdot 10^6$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">25.</span><span class="q-badge">średnie</span><span class="q-text">Zapisz w postaci dziesiętnej: $4{,}5 \cdot 10^3$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Liczba w notacji wykładniczej: $4{,}5 \cdot 10^3$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Zapis dziesiętny.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>$10^3 = 1000$.</li>
+          <li>$4{,}5 \cdot 1000 = 4500$ (mnożenie przez $10^n$ przesuwa przecinek o $n$ miejsc w prawo).</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$4{,}5 \cdot 10^3 = 4500$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">26.</span><span class="q-badge">średnie</span><span class="q-text">Zapisz w notacji wykładniczej: $0{,}0056$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Liczba $0{,}0056$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Zapis $a \cdot 10^n$, gdzie $1 \le a < 10$.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Przesuwamy przecinek w prawo, aż przed przecinkiem będzie jedna cyfra niezerowa: $0{,}0056 \to 5{,}6$.</li>
+          <li>Przesunęliśmy o $3$ pozycje w prawo — wykładnik jest ujemny: $n = -3$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$0{,}0056 = 5{,}6 \cdot 10^{-3}$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">27.</span><span class="q-badge">średnie</span><span class="q-text">Porównaj: $2^6$ i $4^3$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Potęgi $2^6$ i $4^3$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Która liczba jest większa (lub czy są równe).</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Sprowadzamy obie potęgi do tej samej podstawy: $4 = 2^2$.</li>
+          <li>$4^3 = (2^2)^3 = 2^{2 \cdot 3} = 2^6$.</li>
+          <li>Obie potęgi są identyczne: $2^6 = 64$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$2^6 = 4^3 = 64$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">28.</span><span class="q-badge">średnie</span><span class="q-text">Oblicz: $(2^2)^3 \cdot (2^3)^2$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Wyrażenie $(2^2)^3 \cdot (2^3)^2$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość wyrażenia.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>$(2^2)^3 = 2^{2 \cdot 3} = 2^6$.</li>
+          <li>$(2^3)^2 = 2^{3 \cdot 2} = 2^6$.</li>
+          <li>Mnożymy: $2^6 \cdot 2^6 = 2^{6+6} = 2^{12}$.</li>
+          <li>$2^{12} = 2^{10} \cdot 2^2 = 1024 \cdot 4 = 4096$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$(2^2)^3 \cdot (2^3)^2 = 2^{12} = 4096$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">29.</span><span class="q-badge">średnie</span><span class="q-text">Zapisz w postaci jednej potęgi: $\dfrac{a^7 \cdot a^3}{a^5}$ (dla $a \ne 0$)</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Wyrażenie $\frac{a^7 \cdot a^3}{a^5}$, $a \ne 0$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Zapis w postaci jednej potęgi zmiennej $a$.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Licznik: $a^7 \cdot a^3 = a^{7+3} = a^{10}$.</li>
+          <li>Iloraz: $\frac{a^{10}}{a^5} = a^{10-5} = a^5$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\dfrac{a^7 \cdot a^3}{a^5} = a^5$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">30.</span><span class="q-badge">średnie</span><span class="q-text">Oblicz: $3^2 \cdot 3^3 : 3^4$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Wyrażenie $3^2 \cdot 3^3 : 3^4$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość wyrażenia.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Mnożenie: $3^2 \cdot 3^3 = 3^{2+3} = 3^5$.</li>
+          <li>Dzielenie: $3^5 : 3^4 = 3^{5-4} = 3^1 = 3$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$3^2 \cdot 3^3 : 3^4 = 3$</p></div>
+    </div>
+  </details>
+</div>
+
+<!-- ---------- TRUDNE ---------- -->
+<div class="ex-group hard">
+  <h3>Trudne — łączone zadania i teksty (31–45)</h3>
+
+  <details class="q hard">
+    <summary><span class="q-num">31.</span><span class="q-badge">trudne</span><span class="q-text">Uprość: $\dfrac{(2^3)^4 \cdot 2^5}{2^{10}}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Wyrażenie $\frac{(2^3)^4 \cdot 2^5}{2^{10}}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość wyrażenia (najlepiej jako liczba).</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>$(2^3)^4 = 2^{12}$.</li>
+          <li>Licznik: $2^{12} \cdot 2^5 = 2^{17}$.</li>
+          <li>Iloraz: $\frac{2^{17}}{2^{10}} = 2^{17-10} = 2^7$.</li>
+          <li>$2^7 = 128$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\dfrac{(2^3)^4 \cdot 2^5}{2^{10}} = 2^7 = 128$</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">32.</span><span class="q-badge">trudne</span><span class="q-text">Uprość: $\left(\dfrac{a^5 \cdot a^2}{a^4}\right)^3$ (dla $a \ne 0$)</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Wyrażenie $\left(\frac{a^5 \cdot a^2}{a^4}\right)^3$, $a \ne 0$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Zapis w postaci jednej potęgi zmiennej $a$.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Najpierw wnętrze nawiasu. Licznik: $a^5 \cdot a^2 = a^7$.</li>
+          <li>Iloraz: $\frac{a^7}{a^4} = a^{7-4} = a^3$.</li>
+          <li>Potęgowanie potęgi: $(a^3)^3 = a^{3 \cdot 3} = a^9$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\left(\dfrac{a^5 \cdot a^2}{a^4}\right)^3 = a^9$</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">33.</span><span class="q-badge">trudne</span><span class="q-text">Oblicz: $\dfrac{6^8}{2^8 \cdot 3^6}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Wyrażenie $\frac{6^8}{2^8 \cdot 3^6}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość wyrażenia.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Rozkładamy licznik. Zauważamy, że $6 = 2 \cdot 3$, więc $6^8 = (2 \cdot 3)^8 = 2^8 \cdot 3^8$.</li>
+          <li>Całość: $\frac{2^8 \cdot 3^8}{2^8 \cdot 3^6} = \frac{3^8}{3^6} = 3^{8-6} = 3^2$.</li>
+          <li>$3^2 = 9$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\dfrac{6^8}{2^8 \cdot 3^6} = 9$</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">34.</span><span class="q-badge">trudne</span><span class="q-text">Który jest większy: $2^{30}$ czy $3^{20}$?</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Potęgi $2^{30}$ i $3^{20}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Która liczba jest większa.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Szukamy wspólnego dzielnika wykładników. $\mathrm{NWD}(30, 20) = 10$.</li>
+          <li>Sprowadzamy do wykładnika $10$: $2^{30} = (2^3)^{10} = 8^{10}$.</li>
+          <li>$3^{20} = (3^2)^{10} = 9^{10}$.</li>
+          <li>Porównujemy podstawy: $9 > 8$, więc $9^{10} > 8^{10}$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$3^{20} > 2^{30}$</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">35.</span><span class="q-badge">trudne</span><span class="q-text">Wyraź w notacji wykładniczej wynik: $(3 \cdot 10^5) \cdot (2 \cdot 10^3)$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Iloczyn liczb w notacji wykładniczej.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wynik w notacji wykładniczej $a \cdot 10^n$, gdzie $1 \le a < 10$.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Grupujemy liczby i potęgi dziesiątki: $(3 \cdot 2) \cdot (10^5 \cdot 10^3)$.</li>
+          <li>Mnożymy: $3 \cdot 2 = 6$; $10^5 \cdot 10^3 = 10^{5+3} = 10^8$.</li>
+          <li>Wynik $6 \cdot 10^8$ — liczba $a = 6$ spełnia warunek $1 \le a < 10$, więc zapis jest poprawny.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$(3 \cdot 10^5) \cdot (2 \cdot 10^3) = 6 \cdot 10^8$</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">36.</span><span class="q-badge">trudne</span><span class="q-text">Wyraź w notacji wykładniczej wynik: $\dfrac{6 \cdot 10^{12}}{3 \cdot 10^4}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Iloraz liczb w notacji wykładniczej.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wynik w notacji wykładniczej.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Dzielimy osobno liczby i osobno potęgi dziesiątki: $\frac{6}{3} \cdot \frac{10^{12}}{10^4}$.</li>
+          <li>$\frac{6}{3} = 2$; $\frac{10^{12}}{10^4} = 10^{12-4} = 10^8$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\dfrac{6 \cdot 10^{12}}{3 \cdot 10^4} = 2 \cdot 10^8$</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">37.</span><span class="q-badge">trudne</span><span class="q-text">Prędkość światła wynosi ok. $3 \cdot 10^8$ m/s. Ile metrów światło przebywa w ciągu 1 godziny?</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4>
+        <p>Prędkość światła: $v = 3 \cdot 10^8$ m/s.<br>Czas: $t = 1$ godzina $= 3600$ s.</p>
+      </div>
+      <div class="sol-block"><h4>Szukane</h4><p>Droga $s$ w metrach, wynik w notacji wykładniczej.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Wzór na drogę: $s = v \cdot t$.</li>
+          <li>Zapisujemy $3600$ wykładniczo: $3600 = 3{,}6 \cdot 10^3$.</li>
+          <li>$s = 3 \cdot 10^8 \cdot 3{,}6 \cdot 10^3 = (3 \cdot 3{,}6) \cdot 10^{8+3} = 10{,}8 \cdot 10^{11}$.</li>
+          <li>Przesuwamy przecinek, żeby $a$ spełniało $1 \le a < 10$: $10{,}8 \cdot 10^{11} = 1{,}08 \cdot 10^{12}$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$s \approx 1{,}08 \cdot 10^{12}$ m (ponad bilion metrów w jedną godzinę)</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">38.</span><span class="q-badge">trudne</span><span class="q-text">Masa atomu wodoru to około $1{,}67 \cdot 10^{-27}$ kg. Ile to gramów? Zapisz w notacji wykładniczej.</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Masa atomu wodoru: $m = 1{,}67 \cdot 10^{-27}$ kg.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Masa w gramach w notacji wykładniczej.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Przelicznik jednostek: $1$ kg $= 1000$ g $= 10^3$ g.</li>
+          <li>$m = 1{,}67 \cdot 10^{-27} \cdot 10^3$ g $= 1{,}67 \cdot 10^{-27+3}$ g.</li>
+          <li>$-27 + 3 = -24$, więc $m = 1{,}67 \cdot 10^{-24}$ g.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$m \approx 1{,}67 \cdot 10^{-24}$ g</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">39.</span><span class="q-badge">trudne</span><span class="q-text">Ile wynosi $2^5 \cdot 5^5$?</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Iloczyn $2^5 \cdot 5^5$ — potęgi o różnych podstawach, ale <em>tym samym wykładniku</em>.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość iloczynu.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Łączymy jak potęgę iloczynu: $2^5 \cdot 5^5 = (2 \cdot 5)^5$.</li>
+          <li>$2 \cdot 5 = 10$, więc $(2 \cdot 5)^5 = 10^5$.</li>
+          <li>$10^5 = 100\,000$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$2^5 \cdot 5^5 = 10^5 = 100\,000$</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">40.</span><span class="q-badge">trudne</span><span class="q-text">Uprość: $\dfrac{(2a)^3 \cdot (3a)^2}{a^4}$ (dla $a \ne 0$)</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Wyrażenie $\frac{(2a)^3 \cdot (3a)^2}{a^4}$, $a \ne 0$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Postać uproszczona.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>$(2a)^3 = 2^3 \cdot a^3 = 8 a^3$ (potęgowanie iloczynu).</li>
+          <li>$(3a)^2 = 3^2 \cdot a^2 = 9 a^2$.</li>
+          <li>Licznik: $8 a^3 \cdot 9 a^2 = (8 \cdot 9) \cdot a^{3+2} = 72 a^5$.</li>
+          <li>Iloraz: $\frac{72 a^5}{a^4} = 72 \cdot a^{5-4} = 72 a$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\dfrac{(2a)^3 \cdot (3a)^2}{a^4} = 72 a$</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">41.</span><span class="q-badge">trudne</span><span class="q-text">Oblicz: $\left(\dfrac{1}{2}\right)^4 \cdot 2^6$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Wyrażenie $\left(\frac{1}{2}\right)^4 \cdot 2^6$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość wyrażenia.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>$\left(\frac{1}{2}\right)^4 = \frac{1^4}{2^4} = \frac{1}{2^4}$.</li>
+          <li>$\frac{1}{2^4} \cdot 2^6 = \frac{2^6}{2^4} = 2^{6-4} = 2^2$.</li>
+          <li>$2^2 = 4$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\left(\dfrac{1}{2}\right)^4 \cdot 2^6 = 4$</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">42.</span><span class="q-badge">trudne</span><span class="q-text">Uprość: $\dfrac{10^7 \cdot 10^{-3}}{10^2}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Wyrażenie $\frac{10^7 \cdot 10^{-3}}{10^2}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość wyrażenia (w postaci potęgi $10$ i liczby).</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Mnożenie wykładników (licznik): $10^7 \cdot 10^{-3} = 10^{7 + (-3)} = 10^4$.</li>
+          <li>Dzielenie: $\frac{10^4}{10^2} = 10^{4-2} = 10^2$.</li>
+          <li>$10^2 = 100$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\dfrac{10^7 \cdot 10^{-3}}{10^2} = 10^2 = 100$</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">43.</span><span class="q-badge">trudne</span><span class="q-text">Jedna bakteria dzieli się co godzinę na dwie. Po 20 podziałach — ile bakterii będzie w kolonii? Zapisz wynik w notacji wykładniczej.</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Na początku $1$ bakteria; po każdym podziale liczba się podwaja; łącznie $20$ podziałów.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Liczba bakterii po 20 podziałach — w notacji wykładniczej.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Po 1 podziale: $2$. Po 2 podziałach: $2 \cdot 2 = 4 = 2^2$. Po $n$ podziałach: $2^n$.</li>
+          <li>Po 20 podziałach: $2^{20}$.</li>
+          <li>$2^{20} = 2^{10} \cdot 2^{10} = 1024 \cdot 1024$.</li>
+          <li>$1024 \cdot 1024 = 1\,048\,576$.</li>
+          <li>Notacja wykładnicza: $1\,048\,576 \approx 1{,}05 \cdot 10^6$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>Po 20 podziałach: $2^{20} = 1\,048\,576 \approx 1{,}05 \cdot 10^6$ bakterii (ponad milion).</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">44.</span><span class="q-badge">trudne</span><span class="q-text">Uprość i oblicz: $\dfrac{4^3 \cdot 4^5}{(4^2)^3}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Wyrażenie $\frac{4^3 \cdot 4^5}{(4^2)^3}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość wyrażenia.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Licznik: $4^3 \cdot 4^5 = 4^{3+5} = 4^8$.</li>
+          <li>Mianownik: $(4^2)^3 = 4^{2 \cdot 3} = 4^6$.</li>
+          <li>Iloraz: $\frac{4^8}{4^6} = 4^{8-6} = 4^2$.</li>
+          <li>$4^2 = 16$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\dfrac{4^3 \cdot 4^5}{(4^2)^3} = 16$</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">45.</span><span class="q-badge">trudne</span><span class="q-text">Ziemia waży około $6 \cdot 10^{24}$ kg, a Słońce — $2 \cdot 10^{30}$ kg. Ile razy Słońce jest cięższe od Ziemi?</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Masa Ziemi: $m_Z = 6 \cdot 10^{24}$ kg.<br>Masa Słońca: $m_S = 2 \cdot 10^{30}$ kg.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Stosunek $\frac{m_S}{m_Z}$ w notacji wykładniczej.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>$\frac{m_S}{m_Z} = \frac{2 \cdot 10^{30}}{6 \cdot 10^{24}}$.</li>
+          <li>Dzielimy osobno: $\frac{2}{6} \cdot \frac{10^{30}}{10^{24}}$.</li>
+          <li>$\frac{2}{6} = \frac{1}{3} \approx 0{,}333$.</li>
+          <li>$\frac{10^{30}}{10^{24}} = 10^{30-24} = 10^6$.</li>
+          <li>Wynik wstępny: $\approx 0{,}333 \cdot 10^6$.</li>
+          <li>Zamieniamy na poprawną notację wykładniczą ($1 \le a < 10$): $0{,}333 \cdot 10^6 = 3{,}33 \cdot 10^5$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>Słońce jest około $3{,}33 \cdot 10^5$ razy cięższe od Ziemi — czyli ponad <strong>300 tysięcy razy</strong>.</p></div>
+    </div>
+  </details>
+</div>
+
+<footer>
+  <p><a href="../index.html">← wróć do listy kart</a></p>
+  <p>Matematyka · klasa 7 · karta powtórzeniowa</p>
+</footer>
+
+</div>
+</body>
+</html>
