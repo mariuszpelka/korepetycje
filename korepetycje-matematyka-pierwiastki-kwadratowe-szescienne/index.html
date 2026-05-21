@@ -1,0 +1,1839 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pierwiastki kwadratowe i sześcienne — Matematyka klasa 7</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+
+<style>
+:root{
+  --bg:#0a0f24;
+  --bg-2:#0c132c;
+  --bg-3:#0e1633;
+  --panel:#121b3c;
+  --panel-2:#182247;
+  --panel-3:#1d2a57;
+  --line:#283464;
+  --line-soft:#1a2247;
+  --ink:#f1f3fb;
+  --ink-dim:#cacfe8;
+  --muted:#8791b8;
+  --muted-2:#6a74a0;
+  --gold:#f5c842;
+  --gold-soft:#ffe089;
+  --gold-deep:#d4a72c;
+  --mint:#5eead4;
+  --pink:#f472b6;
+  --cyan:#7dd3fc;
+  --violet:#a78bfa;
+  --danger:#fb7185;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.65;
+  min-height:100vh;
+  background-image:
+    radial-gradient(1200px 800px at 12% -8%, rgba(245,200,66,0.08) 0%, transparent 55%),
+    radial-gradient(1000px 700px at 95% 5%, rgba(94,234,212,0.06) 0%, transparent 55%),
+    radial-gradient(800px 600px at 50% 120%, rgba(167,139,250,0.07) 0%, transparent 55%),
+    linear-gradient(transparent 39px, rgba(40,52,100,0.14) 40px),
+    linear-gradient(90deg, transparent 39px, rgba(40,52,100,0.14) 40px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+}
+.container{max-width:1080px;margin:0 auto;padding:40px 22px 80px}
+
+/* ==================== HERO ==================== */
+header.hero{
+  position:relative;
+  padding:54px 32px 46px;
+  border-radius:22px;
+  background:
+    linear-gradient(135deg, rgba(245,200,66,0.10) 0%, rgba(94,234,212,0.06) 55%, transparent 100%),
+    linear-gradient(180deg, var(--panel-2) 0%, var(--panel) 100%);
+  border:1px solid var(--line);
+  overflow:hidden;
+  margin-bottom:40px;
+  box-shadow:0 25px 60px rgba(0,0,0,0.45);
+}
+header.hero::before{
+  content:"√a";
+  position:absolute;
+  right:-20px;top:-10px;
+  font-family:"Fraunces",serif;
+  font-size:clamp(120px,22vw,260px);
+  color:rgba(245,200,66,0.07);
+  font-style:italic;
+  font-weight:600;
+  line-height:1;
+  pointer-events:none;
+}
+.kicker{
+  display:inline-block;
+  font-family:"JetBrains Mono",monospace;
+  font-size:.78rem;
+  font-weight:600;
+  letter-spacing:.18em;
+  color:var(--gold);
+  background:rgba(245,200,66,0.08);
+  padding:7px 14px;
+  border-radius:6px;
+  border:1px solid rgba(245,200,66,0.25);
+  margin-bottom:20px;
+  position:relative;z-index:2;
+}
+h1{
+  font-family:"Fraunces",serif;
+  font-weight:700;
+  font-size:clamp(2rem,4.5vw,3.4rem);
+  line-height:1.08;
+  margin:0 0 .5em;
+  color:var(--ink);
+  letter-spacing:-.01em;
+  position:relative;z-index:2;
+}
+h1 em{
+  font-style:italic;
+  color:var(--gold);
+  font-weight:600;
+}
+.lead{
+  font-size:1.12rem;
+  color:var(--ink-dim);
+  max-width:660px;
+  margin:0 0 26px;
+  position:relative;z-index:2;
+}
+.hero-stats{
+  display:flex;flex-wrap:wrap;gap:18px;
+  position:relative;z-index:2;
+  margin-top:8px;
+}
+.hero-stat{
+  background:rgba(10,15,36,0.55);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:12px 18px;
+  min-width:130px;
+}
+.hero-stat b{
+  display:block;
+  font-family:"Fraunces",serif;
+  font-size:1.7rem;
+  font-weight:700;
+  color:var(--gold);
+  line-height:1;
+}
+.hero-stat span{
+  display:block;
+  font-size:.78rem;
+  color:var(--muted);
+  margin-top:4px;
+  letter-spacing:.05em;
+}
+
+/* ==================== NAV ==================== */
+nav.toc{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:18px 22px;
+  margin-bottom:40px;
+}
+nav.toc h4{
+  margin:0 0 10px;
+  font-size:.78rem;
+  letter-spacing:.14em;
+  color:var(--muted);
+  font-weight:600;
+}
+nav.toc ol{
+  margin:0;padding:0;
+  list-style:none;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:4px 18px;
+  counter-reset:tocc;
+}
+nav.toc li{
+  counter-increment:tocc;
+  padding:6px 0;
+  border-bottom:1px solid var(--line-soft);
+}
+nav.toc a{
+  color:var(--ink-dim);
+  text-decoration:none;
+  font-size:.95rem;
+  display:flex;align-items:baseline;gap:10px;
+}
+nav.toc a::before{
+  content:counter(tocc,decimal-leading-zero);
+  font-family:"JetBrains Mono",monospace;
+  font-size:.78rem;
+  color:var(--gold-deep);
+  font-weight:600;
+}
+nav.toc a:hover{color:var(--gold)}
+
+/* ==================== SECTIONS ==================== */
+section.theory{
+  margin:48px 0;
+  scroll-margin-top:20px;
+}
+section.theory > .section-head{
+  display:flex;
+  align-items:baseline;
+  gap:18px;
+  margin-bottom:22px;
+  padding-bottom:14px;
+  border-bottom:1px solid var(--line);
+}
+.section-num{
+  font-family:"Fraunces",serif;
+  font-size:3rem;
+  font-weight:700;
+  color:var(--gold);
+  line-height:1;
+  font-style:italic;
+  min-width:2.2ch;
+}
+section.theory h2{
+  font-family:"Fraunces",serif;
+  font-weight:600;
+  font-size:clamp(1.35rem,2.6vw,1.8rem);
+  margin:0;
+  color:var(--ink);
+  line-height:1.2;
+  letter-spacing:-.005em;
+}
+section.theory h3{
+  font-family:"Fraunces",serif;
+  font-weight:600;
+  font-size:1.18rem;
+  color:var(--gold-soft);
+  margin:26px 0 10px;
+}
+section.theory p{margin:10px 0}
+section.theory em{font-style:italic;color:var(--gold-soft);font-weight:500}
+section.theory strong{color:var(--ink);font-weight:700}
+section.theory code{
+  font-family:"JetBrains Mono",monospace;
+  font-size:.92em;
+  background:rgba(125,211,252,0.08);
+  color:var(--cyan);
+  padding:2px 6px;
+  border-radius:4px;
+  border:1px solid rgba(125,211,252,0.15);
+}
+
+/* ==================== FORMULA BLOCKS ==================== */
+.fml{
+  background:linear-gradient(135deg, rgba(245,200,66,0.08), rgba(94,234,212,0.04));
+  border:1px solid rgba(245,200,66,0.25);
+  border-radius:14px;
+  padding:22px 28px;
+  margin:18px 0;
+  text-align:center;
+  font-size:1.15em;
+  position:relative;
+}
+.fml::before{
+  content:"wzór";
+  position:absolute;
+  top:-10px;left:18px;
+  font-family:"JetBrains Mono",monospace;
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:.14em;
+  color:var(--gold);
+  background:var(--bg);
+  padding:2px 10px;
+  border-radius:999px;
+  border:1px solid rgba(245,200,66,0.3);
+}
+.fml.alt{
+  background:linear-gradient(135deg, rgba(94,234,212,0.08), rgba(125,211,252,0.04));
+  border-color:rgba(94,234,212,0.25);
+}
+.fml.alt::before{
+  content:"przykład";
+  color:var(--mint);
+  border-color:rgba(94,234,212,0.3);
+}
+
+/* ==================== BOXES ==================== */
+.box{
+  position:relative;
+  border-radius:12px;
+  padding:16px 20px 16px 22px;
+  margin:18px 0;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-left:4px solid var(--gold);
+}
+.box .tag{
+  display:inline-block;
+  font-family:"JetBrains Mono",monospace;
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:.12em;
+  color:var(--gold);
+  margin-right:10px;
+  padding:2px 8px;
+  border-radius:4px;
+  background:rgba(245,200,66,0.1);
+  border:1px solid rgba(245,200,66,0.2);
+  vertical-align:baseline;
+}
+.box.info{border-left-color:var(--cyan)}
+.box.info .tag{color:var(--cyan);background:rgba(125,211,252,0.1);border-color:rgba(125,211,252,0.2)}
+.box.tip{border-left-color:var(--mint)}
+.box.tip .tag{color:var(--mint);background:rgba(94,234,212,0.1);border-color:rgba(94,234,212,0.2)}
+.box.warn{border-left-color:var(--pink)}
+.box.warn .tag{color:var(--pink);background:rgba(244,114,182,0.1);border-color:rgba(244,114,182,0.2)}
+.box.example{border-left-color:var(--gold-soft);background:var(--panel-2)}
+.box.example .tag{color:var(--gold-soft)}
+
+/* ==================== CARDS/GRID ==================== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:12px;
+  margin:16px 0;
+}
+.grid .cell{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:14px 16px;
+}
+.grid .cell b{
+  display:block;
+  font-family:"JetBrains Mono",monospace;
+  font-size:.75rem;
+  letter-spacing:.12em;
+  color:var(--gold);
+  margin-bottom:4px;
+  font-weight:600;
+}
+.grid .cell span{
+  color:var(--ink);
+  font-weight:500;
+  font-size:.95rem;
+}
+.grid.powers .cell{text-align:center}
+.grid.powers .cell b{font-family:"Fraunces",serif;font-size:1.25rem;letter-spacing:0;color:var(--gold);margin-bottom:6px;font-weight:600}
+
+/* ==================== SVG VIS ==================== */
+.vis{
+  margin:20px 0;
+  background:var(--bg-3);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:20px;
+  overflow:hidden;
+}
+.vis svg{display:block;max-width:100%;height:auto;margin:0 auto}
+.vis-caption{
+  color:var(--muted);
+  font-size:.85rem;
+  text-align:center;
+  margin-top:10px;
+  font-style:italic;
+}
+
+/* ==================== EXERCISES ==================== */
+.exercises-head{
+  background:
+    linear-gradient(135deg, rgba(245,200,66,0.15) 0%, rgba(167,139,250,0.08) 100%),
+    var(--panel);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:32px;
+  margin:50px 0 30px;
+  text-align:center;
+}
+.exercises-head h2{
+  font-family:"Fraunces",serif;
+  font-weight:700;
+  font-size:2rem;
+  margin:0 0 6px;
+  color:var(--ink);
+}
+.exercises-head p{color:var(--ink-dim);margin:0 0 14px}
+.level-tabs{
+  display:inline-flex;
+  gap:8px;
+  margin-top:4px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.level-tab{
+  font-family:"JetBrains Mono",monospace;
+  font-size:.8rem;
+  font-weight:600;
+  letter-spacing:.08em;
+  padding:6px 14px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:var(--bg-2);
+  color:var(--ink-dim);
+}
+.level-tab.easy{color:var(--mint);border-color:rgba(94,234,212,0.3);background:rgba(94,234,212,0.08)}
+.level-tab.mid{color:var(--gold);border-color:rgba(245,200,66,0.3);background:rgba(245,200,66,0.08)}
+.level-tab.hard{color:var(--pink);border-color:rgba(244,114,182,0.3);background:rgba(244,114,182,0.08)}
+
+.ex-group{margin:30px 0 10px}
+.ex-group h3{
+  font-family:"Fraunces",serif;
+  font-weight:600;
+  font-size:1.35rem;
+  margin:30px 0 16px;
+  color:var(--ink);
+  display:flex;align-items:center;gap:12px;
+}
+.ex-group h3::before{
+  content:"";
+  display:inline-block;
+  width:8px;height:22px;
+  border-radius:2px;
+}
+.ex-group.easy h3::before{background:var(--mint)}
+.ex-group.mid h3::before{background:var(--gold)}
+.ex-group.hard h3::before{background:var(--pink)}
+
+details.q{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-left:4px solid var(--gold);
+  border-radius:12px;
+  margin-bottom:12px;
+  overflow:hidden;
+  transition:border-color .2s ease;
+}
+details.q.easy{border-left-color:var(--mint)}
+details.q.mid{border-left-color:var(--gold)}
+details.q.hard{border-left-color:var(--pink)}
+details.q[open]{background:var(--panel-2)}
+details.q > summary{
+  padding:14px 20px;
+  cursor:pointer;
+  list-style:none;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+  user-select:none;
+}
+details.q > summary::-webkit-details-marker{display:none}
+details.q > summary::marker{display:none;content:""}
+.q-num{
+  font-family:"JetBrains Mono",monospace;
+  font-weight:600;
+  color:var(--muted);
+  min-width:2.8ch;
+  font-size:.95rem;
+}
+.q-badge{
+  font-family:"JetBrains Mono",monospace;
+  font-size:.7rem;
+  font-weight:600;
+  letter-spacing:.1em;
+  padding:3px 9px;
+  border-radius:999px;
+  border:1px solid currentColor;
+  opacity:.9;
+}
+details.q.easy .q-badge{color:var(--mint);background:rgba(94,234,212,0.1)}
+details.q.mid .q-badge{color:var(--gold);background:rgba(245,200,66,0.1)}
+details.q.hard .q-badge{color:var(--pink);background:rgba(244,114,182,0.1)}
+.q-text{flex:1;color:var(--ink);line-height:1.5}
+.q-expand{
+  color:var(--muted);
+  font-family:"JetBrains Mono",monospace;
+  font-size:.78rem;
+  opacity:.7;
+  transition:transform .2s ease;
+}
+details.q[open] .q-expand{transform:rotate(90deg);color:var(--gold)}
+
+.answer{
+  padding:8px 22px 22px;
+  border-top:1px solid var(--line-soft);
+  background:var(--bg-2);
+}
+.sol-block{margin-top:14px}
+.sol-block h4{
+  margin:0 0 6px;
+  font-family:"JetBrains Mono",monospace;
+  font-size:.74rem;
+  letter-spacing:.18em;
+  color:var(--gold);
+  font-weight:600;
+}
+.sol-block.final{
+  margin-top:18px;
+  padding:12px 16px;
+  background:rgba(94,234,212,0.08);
+  border:1px solid rgba(94,234,212,0.2);
+  border-radius:10px;
+}
+.sol-block.final h4{color:var(--mint)}
+.sol-block.final p{margin:4px 0;color:var(--ink);font-size:1.02em}
+.sol-block p{margin:4px 0;color:var(--ink-dim)}
+.steps{
+  padding-left:24px;
+  margin:6px 0;
+  color:var(--ink-dim);
+}
+.steps li{margin:6px 0}
+.steps li::marker{color:var(--gold);font-weight:600}
+
+/* ==================== FOOTER ==================== */
+footer{
+  text-align:center;
+  color:var(--muted);
+  margin-top:70px;
+  font-size:.88rem;
+  padding-top:30px;
+  border-top:1px solid var(--line-soft);
+}
+footer a{color:var(--gold);text-decoration:none}
+footer a:hover{text-decoration:underline}
+.back-link{
+  display:inline-block;
+  margin-bottom:16px;
+  color:var(--muted);
+  text-decoration:none;
+  font-size:.92rem;
+  font-family:"JetBrains Mono",monospace;
+}
+.back-link:hover{color:var(--gold)}
+
+@media(max-width:640px){
+  .container{padding:24px 16px 60px}
+  header.hero{padding:36px 24px}
+  .hero-stat{min-width:auto;flex:1}
+  .section-num{font-size:2.2rem}
+  .grid{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<a class="back-link" href="../index.html">← wróć do listy kart</a>
+
+<header class="hero">
+  <span class="kicker">Matematyka · Klasa 7</span>
+  <h1>Pierwiastki kwadratowe i <em>sześcienne</em></h1>
+  <p class="lead">Definicje, własności i działania na pierwiastkach — wyłączanie czynnika, dodawanie wyrażeń, mnożenie nawiasów. Komplet teorii i 45 zadań z rozpisanymi rozwiązaniami.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><b>45</b><span>zadań z kluczem</span></div>
+    <div class="hero-stat"><b>9</b><span>działów teorii</span></div>
+    <div class="hero-stat"><b>3</b><span>poziomy trudności</span></div>
+  </div>
+</header>
+
+<nav class="toc">
+  <h4>Plan karty</h4>
+  <ol>
+    <li><a href="#dzial-1">Pierwiastek kwadratowy</a></li>
+    <li><a href="#dzial-2">Pierwiastek sześcienny</a></li>
+    <li><a href="#dzial-3">Pierwiastki niewymierne i ich szacowanie</a></li>
+    <li><a href="#dzial-4">Pierwiastek z iloczynu i ilorazu</a></li>
+    <li><a href="#dzial-5">Wyłączanie czynnika przed znak pierwiastka</a></li>
+    <li><a href="#dzial-6">Włączanie czynnika pod pierwiastek</a></li>
+    <li><a href="#dzial-7">Dodawanie i odejmowanie wyrażeń</a></li>
+    <li><a href="#dzial-8">Mnożenie wyrażeń z pierwiastkami</a></li>
+    <li><a href="#dzial-9">Pierwiastki w zadaniach geometrycznych</a></li>
+    <li><a href="#zadania">Zestaw 45 zadań</a></li>
+  </ol>
+</nav>
+
+<!-- ==================== DZIAŁ 1 ==================== -->
+<section class="theory" id="dzial-1">
+  <div class="section-head">
+    <span class="section-num">1</span>
+    <h2>Pierwiastek kwadratowy</h2>
+  </div>
+
+  <p><strong>Pierwiastek kwadratowy</strong> z liczby nieujemnej $a$ to taka liczba nieujemna $b$, że $b^2 = a$. Zapisujemy: $\sqrt{a} = b$.</p>
+
+  <div class="fml">$\sqrt{a} = b \iff b^2 = a \quad\text{przy } a \ge 0,\ b \ge 0$</div>
+
+  <p>Innymi słowy: pierwiastek to <em>odwrotność</em> potęgowania do kwadratu. Pytasz „jaką liczbę trzeba podnieść do kwadratu, żeby otrzymać $a$?" — odpowiedź to $\sqrt{a}$.</p>
+
+  <div class="vis">
+    <svg viewBox="0 0 640 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kwadrat o boku b i polu a — pierwiastek kwadratowy">
+      <defs>
+        <marker id="arrG1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#f5c842"/>
+        </marker>
+        <marker id="arrM1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#5eead4"/>
+        </marker>
+      </defs>
+      <!-- kwadrat -->
+      <rect x="200" y="50" width="180" height="180" rx="6" fill="rgba(245,200,66,0.08)" stroke="#f5c842" stroke-width="2"/>
+      <!-- pole -->
+      <text x="290" y="148" text-anchor="middle" font-family="Fraunces,serif" font-style="italic" font-size="42" fill="#ffe089" font-weight="700">a</text>
+      <text x="290" y="178" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" fill="#cacfe8">pole kwadratu</text>
+      <!-- bok dolny -->
+      <line x1="200" y1="248" x2="380" y2="248" stroke="#5eead4" stroke-width="1.6" marker-end="url(#arrM1)" marker-start="url(#arrM1)"/>
+      <text x="290" y="270" text-anchor="middle" font-family="Fraunces,serif" font-style="italic" font-size="22" fill="#5eead4" font-weight="700">b</text>
+      <!-- bok prawy -->
+      <line x1="400" y1="50" x2="400" y2="230" stroke="#5eead4" stroke-width="1.6" marker-end="url(#arrM1)" marker-start="url(#arrM1)"/>
+      <text x="418" y="148" text-anchor="start" font-family="Fraunces,serif" font-style="italic" font-size="22" fill="#5eead4" font-weight="700">b</text>
+      <!-- równanie po lewej -->
+      <text x="40" y="100" font-family="Fraunces,serif" font-size="22" fill="#f1f3fb" font-weight="600">jeśli pole = </text>
+      <text x="40" y="135" font-family="Fraunces,serif" font-size="32" fill="#ffe089" font-style="italic" font-weight="700">a</text>
+      <text x="40" y="180" font-family="Fraunces,serif" font-size="22" fill="#f1f3fb" font-weight="600">to bok =</text>
+      <text x="40" y="220" font-family="Fraunces,serif" font-size="32" fill="#5eead4" font-weight="700">√<tspan font-style="italic" font-size="28">a</tspan></text>
+      <!-- strzałka łącząca -->
+      <line x1="120" y1="200" x2="195" y2="240" stroke="#f5c842" stroke-width="1.4" marker-end="url(#arrG1)" stroke-dasharray="4 4"/>
+    </svg>
+    <p class="vis-caption">Pierwiastek kwadratowy z pola kwadratu to długość jego boku. Bok podniesiony do kwadratu daje pole — i to jest sens słowa „kwadratowy".</p>
+  </div>
+
+  <div class="box info"><span class="tag">ważne</span>
+    Pod pierwiastkiem kwadratowym <strong>nie wolno</strong> wpisać liczby ujemnej — $\sqrt{-4}$ nie istnieje w zbiorze liczb rzeczywistych. Dlaczego? Żadna liczba podniesiona do kwadratu nie da wartości ujemnej: $b^2 \ge 0$ dla każdego $b$.
+  </div>
+
+  <h3>Pierwiastki, które warto zapamiętać</h3>
+  <div class="grid powers">
+    <div class="cell"><b>$\sqrt{1}$</b><span>$= 1$</span></div>
+    <div class="cell"><b>$\sqrt{4}$</b><span>$= 2$</span></div>
+    <div class="cell"><b>$\sqrt{9}$</b><span>$= 3$</span></div>
+    <div class="cell"><b>$\sqrt{16}$</b><span>$= 4$</span></div>
+    <div class="cell"><b>$\sqrt{25}$</b><span>$= 5$</span></div>
+    <div class="cell"><b>$\sqrt{36}$</b><span>$= 6$</span></div>
+    <div class="cell"><b>$\sqrt{49}$</b><span>$= 7$</span></div>
+    <div class="cell"><b>$\sqrt{64}$</b><span>$= 8$</span></div>
+    <div class="cell"><b>$\sqrt{81}$</b><span>$= 9$</span></div>
+    <div class="cell"><b>$\sqrt{100}$</b><span>$= 10$</span></div>
+    <div class="cell"><b>$\sqrt{121}$</b><span>$= 11$</span></div>
+    <div class="cell"><b>$\sqrt{144}$</b><span>$= 12$</span></div>
+    <div class="cell"><b>$\sqrt{169}$</b><span>$= 13$</span></div>
+    <div class="cell"><b>$\sqrt{196}$</b><span>$= 14$</span></div>
+    <div class="cell"><b>$\sqrt{225}$</b><span>$= 15$</span></div>
+    <div class="cell"><b>$\sqrt{400}$</b><span>$= 20$</span></div>
+  </div>
+
+  <h3>Pierwiastki z ułamków i liczb dziesiętnych</h3>
+  <p>Liczba pod pierwiastkiem nie musi być całkowita — może być ułamkiem lub liczbą dziesiętną. Trick: rozpoznaj, czy wynik podniesiony do kwadratu daje liczbę pod pierwiastkiem.</p>
+
+  <div class="box example"><span class="tag">przykłady</span>
+    <p>$\sqrt{\dfrac{1}{4}} = \dfrac{1}{2}$ — bo $\left(\dfrac{1}{2}\right)^2 = \dfrac{1}{4}$.</p>
+    <p>$\sqrt{\dfrac{16}{81}} = \dfrac{4}{9}$ — bo $\left(\dfrac{4}{9}\right)^2 = \dfrac{16}{81}$.</p>
+    <p>$\sqrt{0{,}25} = 0{,}5$ — bo $0{,}5^2 = 0{,}25$.</p>
+    <p>$\sqrt{0{,}01} = 0{,}1$ — bo $0{,}1^2 = 0{,}01$.</p>
+  </div>
+
+  <h3>Własności potęgi i pierwiastka</h3>
+  <div class="fml">$\left(\sqrt{a}\right)^2 = a \qquad\quad \sqrt{a^2} = |a|$</div>
+  <p>Pierwsza tożsamość jest oczywista — jeśli pierwiastek z $a$ podniesiemy do kwadratu, wracamy do $a$. Druga ma haczyk: <strong>$\sqrt{a^2}$ to wartość bezwzględna $a$</strong>, a nie sam $a$, bo wynik pierwiastka musi być nieujemny.</p>
+
+  <div class="box warn"><span class="tag">uważaj</span>
+    $\sqrt{(-5)^2} = \sqrt{25} = 5$, a nie $-5$! Najpierw liczymy kwadrat (dostajemy liczbę dodatnią), potem pierwiastek (też dodatni). Dla liczb dodatnich problem znika: $\sqrt{5^2} = 5$.
+  </div>
+</section>
+
+<!-- ==================== DZIAŁ 2 ==================== -->
+<section class="theory" id="dzial-2">
+  <div class="section-head">
+    <span class="section-num">2</span>
+    <h2>Pierwiastek sześcienny</h2>
+  </div>
+
+  <p><strong>Pierwiastek sześcienny</strong> z liczby $a$ to taka liczba $b$, że $b^3 = a$. Zapisujemy: $\sqrt[3]{a} = b$.</p>
+
+  <div class="fml">$\sqrt[3]{a} = b \iff b^3 = a$</div>
+
+  <div class="vis">
+    <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sześcian o krawędzi b i objętości a — pierwiastek sześcienny">
+      <defs>
+        <marker id="arrG2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#a78bfa"/>
+        </marker>
+      </defs>
+      <!-- Ściana tylna -->
+      <polygon points="280,40 460,40 460,200 280,200" fill="rgba(167,139,250,0.05)" stroke="#6a74a0" stroke-width="1.2" stroke-dasharray="4 4"/>
+      <!-- Ściana górna -->
+      <polygon points="230,90 280,40 460,40 410,90" fill="rgba(167,139,250,0.10)" stroke="#a78bfa" stroke-width="2"/>
+      <!-- Ściana boczna prawa -->
+      <polygon points="460,40 460,200 410,250 410,90" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="2"/>
+      <!-- Ściana przednia -->
+      <polygon points="230,90 410,90 410,250 230,250" fill="rgba(167,139,250,0.14)" stroke="#a78bfa" stroke-width="2"/>
+      <!-- Objętość -->
+      <text x="320" y="180" text-anchor="middle" font-family="Fraunces,serif" font-style="italic" font-size="38" fill="#a78bfa" font-weight="700">a</text>
+      <text x="320" y="208" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#cacfe8">objętość</text>
+      <!-- Krawędź dolna -->
+      <text x="320" y="278" text-anchor="middle" font-family="Fraunces,serif" font-style="italic" font-size="20" fill="#5eead4" font-weight="700">b</text>
+      <line x1="234" y1="266" x2="406" y2="266" stroke="#5eead4" stroke-width="1.4"/>
+      <line x1="234" y1="262" x2="234" y2="270" stroke="#5eead4" stroke-width="1.4"/>
+      <line x1="406" y1="262" x2="406" y2="270" stroke="#5eead4" stroke-width="1.4"/>
+      <!-- Krawędź prawa -->
+      <text x="490" y="170" font-family="Fraunces,serif" font-style="italic" font-size="20" fill="#5eead4" font-weight="700">b</text>
+      <line x1="478" y1="100" x2="478" y2="240" stroke="#5eead4" stroke-width="1.4"/>
+      <line x1="474" y1="100" x2="482" y2="100" stroke="#5eead4" stroke-width="1.4"/>
+      <line x1="474" y1="240" x2="482" y2="240" stroke="#5eead4" stroke-width="1.4"/>
+      <!-- Strzałka łącząca -->
+      <line x1="468" y1="90" x2="510" y2="60" stroke="#5eead4" stroke-width="1.2" stroke-dasharray="3 3"/>
+      <!-- Tekst po lewej -->
+      <text x="40" y="100" font-family="Fraunces,serif" font-size="20" fill="#f1f3fb" font-weight="600">objętość =</text>
+      <text x="40" y="138" font-family="Fraunces,serif" font-size="30" fill="#a78bfa" font-style="italic" font-weight="700">a</text>
+      <text x="40" y="180" font-family="Fraunces,serif" font-size="20" fill="#f1f3fb" font-weight="600">krawędź =</text>
+      <text x="40" y="222" font-family="Fraunces,serif" font-size="30" fill="#5eead4" font-weight="700">∛<tspan font-style="italic" font-size="26">a</tspan></text>
+      <line x1="135" y1="195" x2="220" y2="225" stroke="#a78bfa" stroke-width="1.3" marker-end="url(#arrG2)" stroke-dasharray="4 4"/>
+    </svg>
+    <p class="vis-caption">Pierwiastek sześcienny z objętości sześcianu to długość jego krawędzi. Stąd nazwa „sześcienny" — krawędź podniesiona do trzeciej potęgi (sześcian) daje objętość.</p>
+  </div>
+
+  <div class="box info"><span class="tag">różnica</span>
+    Pierwiastek <strong>sześcienny</strong> — w odróżnieniu od kwadratowego — może być wzięty z dowolnej liczby, także <strong>ujemnej</strong>. To dlatego, że liczbę ujemną można podnieść do trzeciej potęgi i dostać ujemny wynik: $(-2)^3 = -8$.
+  </div>
+
+  <h3>Pierwiastki sześcienne, które warto zapamiętać</h3>
+  <div class="grid powers">
+    <div class="cell"><b>$\sqrt[3]{1}$</b><span>$= 1$</span></div>
+    <div class="cell"><b>$\sqrt[3]{8}$</b><span>$= 2$</span></div>
+    <div class="cell"><b>$\sqrt[3]{27}$</b><span>$= 3$</span></div>
+    <div class="cell"><b>$\sqrt[3]{64}$</b><span>$= 4$</span></div>
+    <div class="cell"><b>$\sqrt[3]{125}$</b><span>$= 5$</span></div>
+    <div class="cell"><b>$\sqrt[3]{216}$</b><span>$= 6$</span></div>
+    <div class="cell"><b>$\sqrt[3]{343}$</b><span>$= 7$</span></div>
+    <div class="cell"><b>$\sqrt[3]{512}$</b><span>$= 8$</span></div>
+    <div class="cell"><b>$\sqrt[3]{729}$</b><span>$= 9$</span></div>
+    <div class="cell"><b>$\sqrt[3]{1000}$</b><span>$= 10$</span></div>
+  </div>
+
+  <h3>Pierwiastek sześcienny z liczby ujemnej</h3>
+  <div class="fml">$\sqrt[3]{-a} = -\sqrt[3]{a}$</div>
+  <p>Minus „wychodzi" przed pierwiastek — bardzo wygodna zasada. Wystarczy znaleźć pierwiastek sześcienny z liczby dodatniej i dopisać minus.</p>
+
+  <div class="box example"><span class="tag">przykłady</span>
+    <p>$\sqrt[3]{-27} = -\sqrt[3]{27} = -3$ — bo $(-3)^3 = -27$.</p>
+    <p>$\sqrt[3]{-1} = -1$ — bo $(-1)^3 = -1$.</p>
+    <p>$\sqrt[3]{-\dfrac{8}{125}} = -\dfrac{2}{5}$ — bo $\left(-\dfrac{2}{5}\right)^3 = -\dfrac{8}{125}$.</p>
+    <p>$\sqrt[3]{0} = 0$, $\sqrt[3]{0{,}001} = 0{,}1$ (bo $0{,}1^3 = 0{,}001$).</p>
+  </div>
+
+  <h3>Własności potęgi i pierwiastka sześciennego</h3>
+  <div class="fml">$\left(\sqrt[3]{a}\right)^3 = a \qquad\quad \sqrt[3]{a^3} = a$</div>
+  <p>W przypadku pierwiastka sześciennego nie ma problemu z wartością bezwzględną — jeśli $a$ jest ujemne, to i $\sqrt[3]{a^3}$ jest ujemne. Wynik <strong>zachowuje znak</strong>.</p>
+</section>
+
+<!-- ==================== DZIAŁ 3 ==================== -->
+<section class="theory" id="dzial-3">
+  <div class="section-head">
+    <span class="section-num">3</span>
+    <h2>Pierwiastki niewymierne i ich szacowanie</h2>
+  </div>
+
+  <p>Nie każda liczba pod pierwiastkiem daje „ładny" wynik. Większość pierwiastków to liczby <strong>niewymierne</strong> — nieskończone, nieokresowe rozwinięcia dziesiętne, których nie da się zapisać jako ułamek zwykły.</p>
+
+  <div class="box info"><span class="tag">definicja</span>
+    Liczba <strong>niewymierna</strong> to taka, której rozwinięcie dziesiętne nie jest okresowe ani skończone. Klasyczne przykłady: $\sqrt{2},\ \sqrt{3},\ \sqrt{5},\ \pi$.
+  </div>
+
+  <div class="grid">
+    <div class="cell"><b>$\sqrt{2}$</b><span>$\approx 1{,}41$</span></div>
+    <div class="cell"><b>$\sqrt{3}$</b><span>$\approx 1{,}73$</span></div>
+    <div class="cell"><b>$\sqrt{5}$</b><span>$\approx 2{,}24$</span></div>
+    <div class="cell"><b>$\sqrt{6}$</b><span>$\approx 2{,}45$</span></div>
+    <div class="cell"><b>$\sqrt{7}$</b><span>$\approx 2{,}65$</span></div>
+    <div class="cell"><b>$\sqrt{10}$</b><span>$\approx 3{,}16$</span></div>
+  </div>
+
+  <h3>Szacowanie pierwiastka między dwiema liczbami naturalnymi</h3>
+  <p>Żeby oszacować $\sqrt{n}$, znajdź dwa <em>sąsiednie</em> kwadraty liczb naturalnych, między którymi leży $n$:</p>
+
+  <div class="fml alt">jeśli $\quad k^2 < n < (k+1)^2,\quad$ to $\quad k < \sqrt{n} < k+1$</div>
+
+  <div class="vis">
+    <svg viewBox="0 0 700 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Oś liczbowa z położeniem √45">
+      <defs>
+        <marker id="arrAxis" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#cacfe8"/>
+        </marker>
+      </defs>
+      <!-- Oś -->
+      <line x1="40" y1="100" x2="660" y2="100" stroke="#cacfe8" stroke-width="1.5" marker-end="url(#arrAxis)"/>
+      <!-- Ticki -->
+      <g font-family="JetBrains Mono,monospace" font-size="14" fill="#cacfe8" text-anchor="middle">
+        <line x1="100" y1="94" x2="100" y2="106" stroke="#cacfe8" stroke-width="2"/>
+        <text x="100" y="128">5</text>
+        <line x1="220" y1="94" x2="220" y2="106" stroke="#cacfe8" stroke-width="2"/>
+        <text x="220" y="128">6</text>
+        <line x1="380" y1="94" x2="380" y2="106" stroke="#cacfe8" stroke-width="2"/>
+        <text x="380" y="128">7</text>
+        <line x1="520" y1="94" x2="520" y2="106" stroke="#cacfe8" stroke-width="2"/>
+        <text x="520" y="128">8</text>
+      </g>
+      <!-- √45 -->
+      <line x1="320" y1="60" x2="320" y2="100" stroke="#f5c842" stroke-width="2"/>
+      <circle cx="320" cy="100" r="6" fill="#f5c842"/>
+      <text x="320" y="50" text-anchor="middle" font-family="Fraunces,serif" font-style="italic" font-size="22" fill="#f5c842" font-weight="700">√45</text>
+      <text x="320" y="156" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#8791b8">≈ 6,71</text>
+      <!-- Pokazujemy 6² = 36 i 7² = 49 -->
+      <text x="160" y="78" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#5eead4">6² = 36</text>
+      <text x="450" y="78" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#5eead4">7² = 49</text>
+      <!-- Etykiety porównawcze -->
+      <text x="220" y="170" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#a78bfa">36 &lt; 45</text>
+      <text x="380" y="170" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#a78bfa">45 &lt; 49</text>
+    </svg>
+    <p class="vis-caption">$45$ leży między $36 = 6^2$ a $49 = 7^2$, więc $\sqrt{45}$ leży między $6$ a $7$.</p>
+  </div>
+
+  <div class="box example"><span class="tag">przykład</span>
+    <p>Między jakimi liczbami naturalnymi leży $\sqrt{70}$?</p>
+    <p>Szukamy: $k^2 < 70 < (k+1)^2$. Najbliższe kwadraty: $8^2 = 64$ i $9^2 = 81$. Czyli $64 < 70 < 81$, więc $8 < \sqrt{70} < 9$.</p>
+  </div>
+
+  <div class="box tip"><span class="tag">trick</span>
+    Często pierwiastek liczy się łatwiej, gdy <em>wiesz, ile mniej więcej powinno wyjść</em>. Jeśli wynik $\sqrt{200}$ ma wyjść między 14 a 15, a otrzymasz 22 — zaraz wiesz, że coś się popsuło.
+  </div>
+
+  <h3>Wartości pierwiastków przydatne w obliczeniach</h3>
+  <p>Wystarczą zwykle dwie liczby — i każde przybliżenie szacujesz mnożąc przez nie:</p>
+  <div class="fml">$\sqrt{2} \approx 1{,}41 \qquad\quad \sqrt{3} \approx 1{,}73$</div>
+
+  <div class="box example"><span class="tag">przykład</span>
+    <p>$\sqrt{50} = \sqrt{25 \cdot 2} = \sqrt{25} \cdot \sqrt{2} = 5\sqrt{2} \approx 5 \cdot 1{,}41 = 7{,}05$.</p>
+    <p>$2\sqrt{3} + \sqrt{3} = 3\sqrt{3} \approx 3 \cdot 1{,}73 = 5{,}19$.</p>
+  </div>
+</section>
+
+<!-- ==================== DZIAŁ 4 ==================== -->
+<section class="theory" id="dzial-4">
+  <div class="section-head">
+    <span class="section-num">4</span>
+    <h2>Pierwiastek z iloczynu i ilorazu</h2>
+  </div>
+
+  <p>Dwa najważniejsze wzory działań na pierwiastkach. Działają w obie strony — można je łączyć w iloczyn lub rozdzielać.</p>
+
+  <div class="fml">
+    $\sqrt{a \cdot b} = \sqrt{a} \cdot \sqrt{b} \qquad\quad \sqrt{\dfrac{a}{b}} = \dfrac{\sqrt{a}}{\sqrt{b}}$
+    <br><span style="display:inline-block;margin-top:8px;font-size:.85em;color:var(--muted)">$a \ge 0,\ b \ge 0$ (dla ilorazu: $b > 0$)</span>
+  </div>
+
+  <p>Dla pierwiastka sześciennego — analogicznie, ale <em>bez ograniczeń</em> na znak (oprócz $b \ne 0$ przy dzieleniu):</p>
+
+  <div class="fml">$\sqrt[3]{a \cdot b} = \sqrt[3]{a} \cdot \sqrt[3]{b} \qquad\quad \sqrt[3]{\dfrac{a}{b}} = \dfrac{\sqrt[3]{a}}{\sqrt[3]{b}}$</div>
+
+  <h3>Po co to jest?</h3>
+  <p>Pierwiastki, których nie umiemy obliczyć „w głowie", często da się <em>rozłożyć</em> na łatwiejsze:</p>
+
+  <div class="box example"><span class="tag">przykłady</span>
+    <p>$\sqrt{4900} = \sqrt{49 \cdot 100} = \sqrt{49} \cdot \sqrt{100} = 7 \cdot 10 = 70$.</p>
+    <p>$\sqrt{1{,}21} = \sqrt{\dfrac{121}{100}} = \dfrac{\sqrt{121}}{\sqrt{100}} = \dfrac{11}{10} = 1{,}1$.</p>
+    <p>$\sqrt[3]{-27\,000} = -\sqrt[3]{27 \cdot 1000} = -\sqrt[3]{27} \cdot \sqrt[3]{1000} = -3 \cdot 10 = -30$.</p>
+    <p>$\sqrt{2} \cdot \sqrt{8} = \sqrt{2 \cdot 8} = \sqrt{16} = 4$ (rozdziel pierwiastek, jeśli pomaga).</p>
+  </div>
+
+  <div class="box warn"><span class="tag">uważaj</span>
+    Wzór nie działa dla <strong>sumy</strong> ani <strong>różnicy</strong>: $\sqrt{a + b} \ne \sqrt{a} + \sqrt{b}$. Sprawdź: $\sqrt{9 + 16} = \sqrt{25} = 5$, ale $\sqrt{9} + \sqrt{16} = 3 + 4 = 7$. To zupełnie inne wyniki!
+  </div>
+
+  <h3>Mnożenie pierwiastków tego samego stopnia</h3>
+  <div class="fml alt">$\sqrt{5} \cdot \sqrt{20} = \sqrt{5 \cdot 20} = \sqrt{100} = 10$</div>
+  <p>Czasem dwa „brzydkie" pierwiastki dają zaskakująco prosty wynik. Spróbuj rozpoznać iloczyn pod pierwiastkami przed obliczeniem.</p>
+</section>
+
+<!-- ==================== DZIAŁ 5 ==================== -->
+<section class="theory" id="dzial-5">
+  <div class="section-head">
+    <span class="section-num">5</span>
+    <h2>Wyłączanie czynnika przed znak pierwiastka</h2>
+  </div>
+
+  <p>Pierwiastki niewymierne (jak $\sqrt{50}$, $\sqrt{72}$) zwykle <em>upraszczamy</em>, wyłączając z nich tyle, ile się da. To znaczy: rozkładamy liczbę pod pierwiastkiem na <strong>iloczyn kwadratu</strong> (lub sześcianu) i <strong>reszty</strong>.</p>
+
+  <div class="fml">$\sqrt{k^2 \cdot m} = k\sqrt{m} \qquad\quad \sqrt[3]{k^3 \cdot m} = k\sqrt[3]{m}$</div>
+
+  <h3>Strategia w trzech krokach</h3>
+  <div class="box tip"><span class="tag">jak to robić</span>
+    <ol style="margin:6px 0;padding-left:22px">
+      <li>Znajdź <strong>największy kwadrat</strong> (przy $\sqrt{}$) lub <strong>sześcian</strong> (przy $\sqrt[3]{}$), który dzieli liczbę pod pierwiastkiem.</li>
+      <li>Rozłóż liczbę na iloczyn: kwadrat (sześcian) razy reszta.</li>
+      <li>Wyciągnij pierwiastek z kwadratu/sześcianu — to liczba „przed pierwiastkiem". Reszta zostaje pod pierwiastkiem.</li>
+    </ol>
+  </div>
+
+  <div class="vis">
+    <svg viewBox="0 0 760 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Wyłączanie czynnika z pierwiastka √50 = 5√2">
+      <defs>
+        <marker id="arrW" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#f5c842"/>
+        </marker>
+      </defs>
+      <!-- Krok 1: √50 -->
+      <text x="60" y="80" font-family="Fraunces,serif" font-style="italic" font-size="36" fill="#f1f3fb" font-weight="700">√50</text>
+      <text x="80" y="170" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" fill="#8791b8">co dzieli 50?</text>
+      <text x="80" y="190" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" fill="#5eead4">25 = 5² ✓</text>
+      <!-- strzałka -->
+      <line x1="135" y1="68" x2="195" y2="68" stroke="#f5c842" stroke-width="1.5" marker-end="url(#arrW)"/>
+      <!-- Krok 2: rozkład -->
+      <text x="210" y="80" font-family="Fraunces,serif" font-style="italic" font-size="32" fill="#f1f3fb" font-weight="700">√<tspan font-size="32">(</tspan>25·2<tspan font-size="32">)</tspan></text>
+      <text x="290" y="170" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" fill="#8791b8">rozkład na iloczyn</text>
+      <text x="290" y="190" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" fill="#a78bfa">kwadrat · reszta</text>
+      <!-- strzałka -->
+      <line x1="395" y1="68" x2="455" y2="68" stroke="#f5c842" stroke-width="1.5" marker-end="url(#arrW)"/>
+      <!-- Krok 3: rozdzielenie -->
+      <text x="470" y="80" font-family="Fraunces,serif" font-style="italic" font-size="32" fill="#f1f3fb" font-weight="700">√25 · √2</text>
+      <text x="540" y="170" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" fill="#8791b8">pierwiastek z iloczynu</text>
+      <text x="540" y="190" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" fill="#5eead4">√25 = 5</text>
+      <!-- strzałka -->
+      <line x1="612" y1="68" x2="635" y2="68" stroke="#f5c842" stroke-width="1.5" marker-end="url(#arrW)"/>
+      <!-- Wynik -->
+      <text x="660" y="80" font-family="Fraunces,serif" font-size="36" fill="#f5c842" font-weight="700">5</text>
+      <text x="688" y="80" font-family="Fraunces,serif" font-style="italic" font-size="32" fill="#f1f3fb" font-weight="700">√2</text>
+      <text x="678" y="170" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" fill="#8791b8">wynik</text>
+    </svg>
+    <p class="vis-caption">Wyłączamy 5 przed pierwiastek, bo $50 = 25 \cdot 2$, a $\sqrt{25} = 5$. Pod pierwiastkiem zostaje 2.</p>
+  </div>
+
+  <div class="box example"><span class="tag">przykłady</span>
+    <p>$\sqrt{72} = \sqrt{36 \cdot 2} = \sqrt{36} \cdot \sqrt{2} = 6\sqrt{2}$.</p>
+    <p>$\sqrt{200} = \sqrt{100 \cdot 2} = 10\sqrt{2}$.</p>
+    <p>$\sqrt{252} = \sqrt{36 \cdot 7} = 6\sqrt{7}$ (rozkład: $252 = 4 \cdot 63 = 4 \cdot 9 \cdot 7 = 36 \cdot 7$).</p>
+    <p>$\sqrt[3]{16} = \sqrt[3]{8 \cdot 2} = \sqrt[3]{8} \cdot \sqrt[3]{2} = 2\sqrt[3]{2}$.</p>
+    <p>$\sqrt[3]{-54} = -\sqrt[3]{54} = -\sqrt[3]{27 \cdot 2} = -3\sqrt[3]{2}$.</p>
+  </div>
+
+  <div class="box info"><span class="tag">rada</span>
+    Jeśli nie widzisz od razu największego kwadratu, <strong>rozłóż liczbę na czynniki pierwsze</strong>. Każda <em>para</em> tych samych czynników to kwadrat — i taką parę wyciągasz przed pierwiastek.
+    <br><br>
+    Przykład: $\sqrt{252}$ — rozkład $252 = 2^2 \cdot 3^2 \cdot 7$. Pary $2 \cdot 2$ i $3 \cdot 3$ wychodzą jako $2 \cdot 3 = 6$, a $7$ zostaje pod pierwiastkiem: $\sqrt{252} = 6\sqrt{7}$.
+  </div>
+</section>
+
+<!-- ==================== DZIAŁ 6 ==================== -->
+<section class="theory" id="dzial-6">
+  <div class="section-head">
+    <span class="section-num">6</span>
+    <h2>Włączanie czynnika pod pierwiastek</h2>
+  </div>
+
+  <p>Operacja <strong>odwrotna</strong> do wyłączania — czasem chcemy wszystko schować pod jeden pierwiastek, np. żeby porównać dwie liczby albo uprościć dalsze obliczenia.</p>
+
+  <div class="fml">$k\sqrt{m} = \sqrt{k^2 \cdot m} \qquad\quad k\sqrt[3]{m} = \sqrt[3]{k^3 \cdot m}$</div>
+
+  <p>Liczbę przed pierwiastkiem <em>podnosimy</em> do takiej samej potęgi, jak stopień pierwiastka, i mnożymy przez to, co jest pod pierwiastkiem.</p>
+
+  <div class="box example"><span class="tag">przykłady</span>
+    <p>$3\sqrt{5} = \sqrt{9 \cdot 5} = \sqrt{45}$.</p>
+    <p>$2\sqrt{7} = \sqrt{4 \cdot 7} = \sqrt{28}$.</p>
+    <p>$5\sqrt{2} = \sqrt{25 \cdot 2} = \sqrt{50}$ (sprawdzenie poprzedniego działu — w drugą stronę).</p>
+    <p>$2\sqrt[3]{3} = \sqrt[3]{8 \cdot 3} = \sqrt[3]{24}$.</p>
+    <p>$\dfrac{1}{2}\sqrt{12} = \sqrt{\dfrac{1}{4} \cdot 12} = \sqrt{3}$.</p>
+  </div>
+
+  <div class="box tip"><span class="tag">do czego to przydatne?</span>
+    Włączanie pod pierwiastek pozwala <strong>porównywać</strong> liczby. Co większe: $4\sqrt{2}$ czy $3\sqrt{3}$?
+    <br><br>
+    Włączamy oba pod pierwiastek: $4\sqrt{2} = \sqrt{32}$, $3\sqrt{3} = \sqrt{27}$. Skoro $32 > 27$, to $\sqrt{32} > \sqrt{27}$, czyli $4\sqrt{2} > 3\sqrt{3}$.
+  </div>
+</section>
+
+<!-- ==================== DZIAŁ 7 ==================== -->
+<section class="theory" id="dzial-7">
+  <div class="section-head">
+    <span class="section-num">7</span>
+    <h2>Dodawanie i odejmowanie wyrażeń z pierwiastkami</h2>
+  </div>
+
+  <p>Wyrażenia z pierwiastkami zachowują się jak <strong>literki</strong> w algebrze. Dodajemy i odejmujemy tylko <em>podobne</em> wyrażenia — czyli takie, które mają <strong>ten sam pierwiastek</strong>.</p>
+
+  <div class="fml">$a\sqrt{x} + b\sqrt{x} = (a+b)\sqrt{x}$</div>
+
+  <div class="box example"><span class="tag">przykłady — proste</span>
+    <p>$2\sqrt{3} + 5\sqrt{3} = (2+5)\sqrt{3} = 7\sqrt{3}$.</p>
+    <p>$9\sqrt{6} - \sqrt{6} = (9-1)\sqrt{6} = 8\sqrt{6}$.</p>
+    <p>$3\sqrt{5} + 5\sqrt{5} - 2\sqrt{5} = (3+5-2)\sqrt{5} = 6\sqrt{5}$.</p>
+  </div>
+
+  <div class="box warn"><span class="tag">UWAGA — nie wolno!</span>
+    $\sqrt{2} + \sqrt{3} \ne \sqrt{5}$. Suma pierwiastków z różnych liczb <strong>nie jest</strong> pierwiastkiem z sumy. Sprawdź sam: $\sqrt{2} \approx 1{,}41$, $\sqrt{3} \approx 1{,}73$, suma $\approx 3{,}14$. Natomiast $\sqrt{5} \approx 2{,}24$. Zupełnie inne liczby.
+  </div>
+
+  <h3>Strategia: wyłącz, potem dodaj</h3>
+  <p>Często pierwiastki <em>wydają się</em> różne, ale po uproszczeniu okazują się te same. Najpierw <strong>uprość każdy pierwiastek</strong> przez wyłączenie czynnika, dopiero potem dodawaj.</p>
+
+  <div class="box example"><span class="tag">przykład — krok po kroku</span>
+    <p>Uprość: $\sqrt{12} + \sqrt{27}$.</p>
+    <ol style="padding-left:22px;margin-top:4px;color:var(--ink-dim)">
+      <li>Wyłączamy czynnik z pierwszego: $\sqrt{12} = \sqrt{4 \cdot 3} = 2\sqrt{3}$.</li>
+      <li>Wyłączamy czynnik z drugiego: $\sqrt{27} = \sqrt{9 \cdot 3} = 3\sqrt{3}$.</li>
+      <li>Teraz mamy podobne wyrazy: $2\sqrt{3} + 3\sqrt{3} = 5\sqrt{3}$.</li>
+    </ol>
+  </div>
+
+  <div class="box example"><span class="tag">jeszcze jeden</span>
+    <p>$\sqrt{50} - \sqrt{8} + \sqrt{18}$</p>
+    <p>$= 5\sqrt{2} - 2\sqrt{2} + 3\sqrt{2}$</p>
+    <p>$= (5 - 2 + 3)\sqrt{2} = 6\sqrt{2}$.</p>
+  </div>
+</section>
+
+<!-- ==================== DZIAŁ 8 ==================== -->
+<section class="theory" id="dzial-8">
+  <div class="section-head">
+    <span class="section-num">8</span>
+    <h2>Mnożenie wyrażeń z pierwiastkami</h2>
+  </div>
+
+  <p>Mnożymy wyrażenia tak, jak w algebrze: <strong>rozdzielnie</strong> — każdy wyraz z pierwszego nawiasu mnożymy przez każdy wyraz z drugiego.</p>
+
+  <h3>Mnożenie pojedyncze (rozdzielność)</h3>
+  <div class="fml">$a(b + \sqrt{c}) = ab + a\sqrt{c}$</div>
+
+  <div class="box example"><span class="tag">przykłady</span>
+    <p>$\sqrt{5}(3 - \sqrt{5}) = 3\sqrt{5} - \sqrt{5}\cdot\sqrt{5} = 3\sqrt{5} - 5$.</p>
+    <p>$\sqrt{2}(5\sqrt{2} - 3) = 5\sqrt{2}\cdot\sqrt{2} - 3\sqrt{2} = 5 \cdot 2 - 3\sqrt{2} = 10 - 3\sqrt{2}$.</p>
+  </div>
+
+  <h3>Mnożenie dwóch sum/różnic</h3>
+  <div class="fml">$(a + b)(c + d) = ac + ad + bc + bd$</div>
+
+  <p>Dla wyrażeń z pierwiastkami szczególnie ważne są dwa <strong>wzory skróconego mnożenia</strong>:</p>
+
+  <div class="fml">
+    $(a + b)^2 = a^2 + 2ab + b^2$
+    <br>$(a - b)^2 = a^2 - 2ab + b^2$
+    <br>$(a + b)(a - b) = a^2 - b^2$
+  </div>
+
+  <div class="box example"><span class="tag">kwadrat sumy</span>
+    <p>$(\sqrt{5} + 2)^2 = (\sqrt{5})^2 + 2\cdot\sqrt{5}\cdot 2 + 2^2 = 5 + 4\sqrt{5} + 4 = 9 + 4\sqrt{5}$.</p>
+  </div>
+
+  <div class="box example"><span class="tag">różnica kwadratów (super wzór!)</span>
+    <p>$(\sqrt{3} + \sqrt{2})(\sqrt{3} - \sqrt{2}) = (\sqrt{3})^2 - (\sqrt{2})^2 = 3 - 2 = 1$.</p>
+    <p>$(2\sqrt{3} - 1)(2\sqrt{3} + 1) = (2\sqrt{3})^2 - 1^2 = 4 \cdot 3 - 1 = 11$.</p>
+  </div>
+
+  <div class="box tip"><span class="tag">obserwacja</span>
+    Wzór $(a+b)(a-b) = a^2 - b^2$ jest niezwykle użyteczny — gdy w nawiasach są pierwiastki, ich kwadraty <em>znikają</em> i wynik często jest liczbą wymierną. To podstawa „usuwania pierwiastków z mianownika" w starszych klasach.
+  </div>
+</section>
+
+<!-- ==================== DZIAŁ 9 ==================== -->
+<section class="theory" id="dzial-9">
+  <div class="section-head">
+    <span class="section-num">9</span>
+    <h2>Pierwiastki w zadaniach geometrycznych</h2>
+  </div>
+
+  <p>Tam, gdzie w geometrii widzisz pole albo objętość, prawie zawsze pojawia się <em>pierwiastek</em> — bo długość boku/krawędzi to <strong>odwrotność</strong> potęgowania.</p>
+
+  <div class="vis">
+    <svg viewBox="0 0 700 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kwadrat o polu 50 i sześcian o objętości 125">
+      <!-- Kwadrat: pole 50 -->
+      <rect x="50" y="60" width="140" height="140" rx="6" fill="rgba(245,200,66,0.10)" stroke="#f5c842" stroke-width="2"/>
+      <text x="120" y="140" text-anchor="middle" font-family="Fraunces,serif" font-size="20" fill="#ffe089" font-weight="700">pole = 50</text>
+      <text x="120" y="220" text-anchor="middle" font-family="Fraunces,serif" font-style="italic" font-size="20" fill="#5eead4" font-weight="700">a = √50 = 5√2</text>
+      <!-- równa się -->
+      <text x="240" y="135" text-anchor="middle" font-family="Inter,sans-serif" font-size="24" fill="#8791b8">↔</text>
+      <!-- Sześcian: objętość 125 -->
+      <g transform="translate(330, 0)">
+        <polygon points="60,90 200,90 200,210 60,210" fill="rgba(167,139,250,0.14)" stroke="#a78bfa" stroke-width="2"/>
+        <polygon points="60,90 100,50 240,50 200,90" fill="rgba(167,139,250,0.10)" stroke="#a78bfa" stroke-width="2"/>
+        <polygon points="200,90 240,50 240,170 200,210" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="2"/>
+        <text x="130" y="160" text-anchor="middle" font-family="Fraunces,serif" font-size="18" fill="#a78bfa" font-weight="700">obj. = 125</text>
+        <text x="130" y="220" text-anchor="middle" font-family="Fraunces,serif" font-style="italic" font-size="20" fill="#5eead4" font-weight="700">a = ∛125 = 5</text>
+      </g>
+    </svg>
+    <p class="vis-caption">Pole kwadratu = bok². Objętość sześcianu = krawędź³. Pierwiastkowanie cofa potęgowanie.</p>
+  </div>
+
+  <div class="box example"><span class="tag">przykład 1</span>
+    <p>Pole kwadratu wynosi $50\ \text{cm}^2$. Jaką długość ma jego bok?</p>
+    <p>Z definicji: $a^2 = 50$, czyli $a = \sqrt{50} = 5\sqrt{2}\ \text{cm}$.</p>
+    <p>Przybliżenie: $a \approx 5 \cdot 1{,}41 = 7{,}05\ \text{cm}$.</p>
+  </div>
+
+  <div class="box example"><span class="tag">przykład 2</span>
+    <p>Objętość sześcianu wynosi $216\ \text{cm}^3$. Jaką długość ma krawędź?</p>
+    <p>$a^3 = 216$, czyli $a = \sqrt[3]{216} = 6\ \text{cm}$.</p>
+  </div>
+
+  <div class="box example"><span class="tag">przykład 3 — prostopadłościan</span>
+    <p>Jaką długość ma krawędź sześcianu o tej samej objętości, co prostopadłościan o wymiarach $2 \cdot 0{,}5 \cdot 0{,}25\ \text{m}$?</p>
+    <p>Objętość prostopadłościanu: $V = 2 \cdot 0{,}5 \cdot 0{,}25 = 0{,}25\ \text{m}^3$.</p>
+    <p>Krawędź sześcianu o tej objętości: $a = \sqrt[3]{0{,}25}\ \text{m}$.</p>
+    <p>Możemy zapisać $0{,}25 = \dfrac{1}{4}$ i sprawdzić, że $\left(\dfrac{1}{\sqrt[3]{4}}\right)^3 = \dfrac{1}{4}$, więc $a = \dfrac{1}{\sqrt[3]{4}}\ \text{m}$. Po przeliczeniu na cm: $a \approx 63\ \text{cm}$.</p>
+  </div>
+</section>
+
+<!-- ==================== ZADANIA ==================== -->
+<div class="exercises-head" id="zadania">
+  <h2>Zestaw 45 zadań</h2>
+  <p>Rozłożone od najprostszych do trudnych. Każde zadanie ma rozpisane rozwiązanie — dane, szukane, krok po kroku oraz odpowiedź.</p>
+  <div class="level-tabs">
+    <span class="level-tab easy">15 łatwych</span>
+    <span class="level-tab mid">15 średnich</span>
+    <span class="level-tab hard">15 trudnych</span>
+  </div>
+</div>
+
+<div class="ex-group easy">
+  <h3>Zadania łatwe (1–15)</h3>
+
+  <details class="q easy">
+    <summary><span class="q-num">1.</span><span class="q-badge">łatwe</span><span class="q-text">Oblicz: $\sqrt{25}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Pierwiastek kwadratowy z $25$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość $\sqrt{25}$.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Szukamy nieujemnej liczby, której kwadrat wynosi $25$.</li>
+          <li>Próbujemy: $5^2 = 25$ ✓.</li>
+          <li>Zatem $\sqrt{25} = 5$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt{25} = 5$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">2.</span><span class="q-badge">łatwe</span><span class="q-text">Oblicz: $\sqrt{81}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Pierwiastek kwadratowy z $81$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość $\sqrt{81}$.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Szukamy nieujemnej liczby $b$, dla której $b^2 = 81$.</li>
+          <li>$9^2 = 9 \cdot 9 = 81$ ✓.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt{81} = 9$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">3.</span><span class="q-badge">łatwe</span><span class="q-text">Oblicz: $\sqrt[3]{8}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Pierwiastek sześcienny z $8$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość $\sqrt[3]{8}$.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Szukamy liczby $b$, dla której $b^3 = 8$.</li>
+          <li>$2^3 = 2 \cdot 2 \cdot 2 = 8$ ✓.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt[3]{8} = 2$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">4.</span><span class="q-badge">łatwe</span><span class="q-text">Oblicz: $\sqrt[3]{-27}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Pierwiastek sześcienny z liczby ujemnej: $-27$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość $\sqrt[3]{-27}$.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Pierwiastek sześcienny z liczby ujemnej istnieje (w przeciwieństwie do kwadratowego).</li>
+          <li>Korzystamy z wzoru: $\sqrt[3]{-a} = -\sqrt[3]{a}$.</li>
+          <li>$\sqrt[3]{-27} = -\sqrt[3]{27} = -3$, bo $(-3)^3 = -27$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt[3]{-27} = -3$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">5.</span><span class="q-badge">łatwe</span><span class="q-text">Oblicz: $\sqrt{\dfrac{16}{49}}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Pierwiastek kwadratowy z ułamka $\dfrac{16}{49}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość $\sqrt{\dfrac{16}{49}}$.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Korzystamy z wzoru $\sqrt{\dfrac{a}{b}} = \dfrac{\sqrt{a}}{\sqrt{b}}$.</li>
+          <li>$\sqrt{\dfrac{16}{49}} = \dfrac{\sqrt{16}}{\sqrt{49}} = \dfrac{4}{7}$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt{\dfrac{16}{49}} = \dfrac{4}{7}$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">6.</span><span class="q-badge">łatwe</span><span class="q-text">Oblicz: $\sqrt{0{,}04}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Pierwiastek z liczby dziesiętnej $0{,}04$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość $\sqrt{0{,}04}$.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Zamieniamy na ułamek: $0{,}04 = \dfrac{4}{100}$.</li>
+          <li>$\sqrt{\dfrac{4}{100}} = \dfrac{\sqrt{4}}{\sqrt{100}} = \dfrac{2}{10} = 0{,}2$.</li>
+          <li>Sprawdzenie: $0{,}2^2 = 0{,}04$ ✓.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt{0{,}04} = 0{,}2$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">7.</span><span class="q-badge">łatwe</span><span class="q-text">Oblicz: $\sqrt[3]{125}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Pierwiastek sześcienny z $125$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość $\sqrt[3]{125}$.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Szukamy $b$, dla którego $b^3 = 125$.</li>
+          <li>$5^3 = 125$ ✓.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt[3]{125} = 5$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">8.</span><span class="q-badge">łatwe</span><span class="q-text">Oblicz: $\sqrt{169}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Pierwiastek z $169$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość $\sqrt{169}$.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>$13^2 = 13 \cdot 13 = 169$ ✓.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt{169} = 13$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">9.</span><span class="q-badge">łatwe</span><span class="q-text">Oblicz: $\sqrt[3]{-\dfrac{8}{27}}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Pierwiastek sześcienny z ujemnego ułamka $-\dfrac{8}{27}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość pierwiastka.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Wyciągamy minus przed pierwiastek: $\sqrt[3]{-\dfrac{8}{27}} = -\sqrt[3]{\dfrac{8}{27}}$.</li>
+          <li>Pierwiastek z ułamka: $-\dfrac{\sqrt[3]{8}}{\sqrt[3]{27}} = -\dfrac{2}{3}$.</li>
+          <li>Sprawdzenie: $\left(-\dfrac{2}{3}\right)^3 = -\dfrac{8}{27}$ ✓.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt[3]{-\dfrac{8}{27}} = -\dfrac{2}{3}$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">10.</span><span class="q-badge">łatwe</span><span class="q-text">Oblicz: $\sqrt{121} + \sqrt{100}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Suma dwóch pierwiastków: $\sqrt{121} + \sqrt{100}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość sumy.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Liczymy każdy pierwiastek osobno: $\sqrt{121} = 11$ (bo $11^2 = 121$).</li>
+          <li>$\sqrt{100} = 10$ (bo $10^2 = 100$).</li>
+          <li>$11 + 10 = 21$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt{121} + \sqrt{100} = 21$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">11.</span><span class="q-badge">łatwe</span><span class="q-text">Oblicz: $\sqrt[3]{64} - \sqrt[3]{1}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Różnica pierwiastków sześciennych: $\sqrt[3]{64} - \sqrt[3]{1}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość różnicy.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>$\sqrt[3]{64} = 4$ (bo $4^3 = 64$).</li>
+          <li>$\sqrt[3]{1} = 1$ (bo $1^3 = 1$).</li>
+          <li>$4 - 1 = 3$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt[3]{64} - \sqrt[3]{1} = 3$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">12.</span><span class="q-badge">łatwe</span><span class="q-text">Oblicz: $\sqrt{0{,}25}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Pierwiastek z $0{,}25$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość $\sqrt{0{,}25}$.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>$0{,}25 = \dfrac{1}{4}$.</li>
+          <li>$\sqrt{\dfrac{1}{4}} = \dfrac{1}{2} = 0{,}5$.</li>
+          <li>Sprawdzenie: $0{,}5^2 = 0{,}25$ ✓.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt{0{,}25} = 0{,}5$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">13.</span><span class="q-badge">łatwe</span><span class="q-text">Oblicz: $(\sqrt{7})^2$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Pierwiastek z $7$ podniesiony do kwadratu.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość $(\sqrt{7})^2$.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Z definicji pierwiastka: jeśli $b = \sqrt{7}$, to $b^2 = 7$.</li>
+          <li>Podnoszenie do kwadratu znosi pierwiastek kwadratowy.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$(\sqrt{7})^2 = 7$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">14.</span><span class="q-badge">łatwe</span><span class="q-text">Oblicz: $\sqrt{2 \cdot 8}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Pierwiastek z iloczynu $2 \cdot 8$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość pierwiastka.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Najpierw obliczamy iloczyn pod pierwiastkiem: $2 \cdot 8 = 16$.</li>
+          <li>$\sqrt{16} = 4$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt{2 \cdot 8} = \sqrt{16} = 4$</p></div>
+    </div>
+  </details>
+
+  <details class="q easy">
+    <summary><span class="q-num">15.</span><span class="q-badge">łatwe</span><span class="q-text">Oblicz: $\sqrt{36} \cdot \sqrt{4}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Iloczyn dwóch pierwiastków: $\sqrt{36} \cdot \sqrt{4}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość iloczynu.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Liczymy każdy pierwiastek osobno: $\sqrt{36} = 6$, $\sqrt{4} = 2$.</li>
+          <li>$6 \cdot 2 = 12$.</li>
+          <li>Można też skorzystać ze wzoru: $\sqrt{36} \cdot \sqrt{4} = \sqrt{36 \cdot 4} = \sqrt{144} = 12$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt{36} \cdot \sqrt{4} = 12$</p></div>
+    </div>
+  </details>
+
+</div>
+
+<div class="ex-group mid">
+  <h3>Zadania średnie (16–30)</h3>
+
+  <details class="q mid">
+    <summary><span class="q-num">16.</span><span class="q-badge">średnie</span><span class="q-text">Wyłącz czynnik przed znak pierwiastka: $\sqrt{50}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Pierwiastek $\sqrt{50}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Zapis $\sqrt{50}$ z wyłączonym czynnikiem.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Szukamy największego kwadratu, który dzieli $50$: jest to $25 = 5^2$.</li>
+          <li>$50 = 25 \cdot 2$.</li>
+          <li>$\sqrt{50} = \sqrt{25 \cdot 2} = \sqrt{25} \cdot \sqrt{2} = 5\sqrt{2}$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt{50} = 5\sqrt{2}$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">17.</span><span class="q-badge">średnie</span><span class="q-text">Wyłącz czynnik: $\sqrt{72}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Pierwiastek $\sqrt{72}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Postać z wyłączonym czynnikiem.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Największy kwadrat dzielący $72$: $36 = 6^2$.</li>
+          <li>$72 = 36 \cdot 2$.</li>
+          <li>$\sqrt{72} = \sqrt{36} \cdot \sqrt{2} = 6\sqrt{2}$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt{72} = 6\sqrt{2}$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">18.</span><span class="q-badge">średnie</span><span class="q-text">Wyłącz czynnik: $\sqrt{200}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Pierwiastek $\sqrt{200}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Postać z wyłączonym czynnikiem.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Największy kwadrat dzielący $200$: $100 = 10^2$.</li>
+          <li>$200 = 100 \cdot 2$.</li>
+          <li>$\sqrt{200} = \sqrt{100} \cdot \sqrt{2} = 10\sqrt{2}$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt{200} = 10\sqrt{2}$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">19.</span><span class="q-badge">średnie</span><span class="q-text">Wyłącz czynnik: $\sqrt[3]{54}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Pierwiastek sześcienny $\sqrt[3]{54}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Postać z wyłączonym czynnikiem.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Szukamy największego sześcianu dzielącego $54$. Sześciany to: $1, 8, 27, 64, \ldots$. Pasuje $27 = 3^3$.</li>
+          <li>$54 = 27 \cdot 2$.</li>
+          <li>$\sqrt[3]{54} = \sqrt[3]{27 \cdot 2} = \sqrt[3]{27} \cdot \sqrt[3]{2} = 3\sqrt[3]{2}$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt[3]{54} = 3\sqrt[3]{2}$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">20.</span><span class="q-badge">średnie</span><span class="q-text">Wyłącz czynnik: $\sqrt[3]{-16}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Pierwiastek sześcienny z liczby ujemnej: $\sqrt[3]{-16}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Postać z wyłączonym czynnikiem.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Wyciągamy minus przed pierwiastek: $\sqrt[3]{-16} = -\sqrt[3]{16}$.</li>
+          <li>Największy sześcian dzielący $16$: $8 = 2^3$.</li>
+          <li>$16 = 8 \cdot 2$.</li>
+          <li>$-\sqrt[3]{16} = -\sqrt[3]{8 \cdot 2} = -\sqrt[3]{8} \cdot \sqrt[3]{2} = -2\sqrt[3]{2}$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt[3]{-16} = -2\sqrt[3]{2}$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">21.</span><span class="q-badge">średnie</span><span class="q-text">Włącz czynnik pod pierwiastek: $3\sqrt{5}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Wyrażenie $3\sqrt{5}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Postać $\sqrt{n}$ (wszystko pod pierwiastkiem).</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Liczbę przed pierwiastkiem podnosimy do kwadratu (bo stopień pierwiastka to $2$): $3^2 = 9$.</li>
+          <li>Mnożymy przez liczbę pod pierwiastkiem: $9 \cdot 5 = 45$.</li>
+          <li>$3\sqrt{5} = \sqrt{9 \cdot 5} = \sqrt{45}$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$3\sqrt{5} = \sqrt{45}$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">22.</span><span class="q-badge">średnie</span><span class="q-text">Włącz czynnik pod pierwiastek: $2\sqrt{7}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Wyrażenie $2\sqrt{7}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Postać $\sqrt{n}$.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>$2^2 = 4$.</li>
+          <li>$4 \cdot 7 = 28$.</li>
+          <li>$2\sqrt{7} = \sqrt{4 \cdot 7} = \sqrt{28}$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$2\sqrt{7} = \sqrt{28}$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">23.</span><span class="q-badge">średnie</span><span class="q-text">Włącz czynnik pod pierwiastek: $2\sqrt[3]{3}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Wyrażenie $2\sqrt[3]{3}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Postać $\sqrt[3]{n}$.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Stopień pierwiastka to $3$, więc liczbę przed pierwiastkiem podnosimy do trzeciej potęgi: $2^3 = 8$.</li>
+          <li>$8 \cdot 3 = 24$.</li>
+          <li>$2\sqrt[3]{3} = \sqrt[3]{8 \cdot 3} = \sqrt[3]{24}$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$2\sqrt[3]{3} = \sqrt[3]{24}$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">24.</span><span class="q-badge">średnie</span><span class="q-text">Oblicz: $5\sqrt{3} + 2\sqrt{3}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Suma podobnych wyrażeń z pierwiastkiem $\sqrt{3}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Uproszczona postać sumy.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Oba wyrażenia mają tę samą część pierwiastkową $\sqrt{3}$ — możemy dodać liczby przed pierwiastkiem.</li>
+          <li>$5\sqrt{3} + 2\sqrt{3} = (5 + 2)\sqrt{3} = 7\sqrt{3}$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$5\sqrt{3} + 2\sqrt{3} = 7\sqrt{3}$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">25.</span><span class="q-badge">średnie</span><span class="q-text">Oblicz: $7\sqrt{6} - 4\sqrt{6}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Różnica wyrażeń z pierwiastkiem $\sqrt{6}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Uproszczona postać.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Pierwiastek pod oboma wyrazami jest taki sam: $\sqrt{6}$.</li>
+          <li>$7\sqrt{6} - 4\sqrt{6} = (7 - 4)\sqrt{6} = 3\sqrt{6}$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$7\sqrt{6} - 4\sqrt{6} = 3\sqrt{6}$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">26.</span><span class="q-badge">średnie</span><span class="q-text">Oblicz: $3\sqrt{5} + 5\sqrt{5} - 2\sqrt{5}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Suma i różnica wyrażeń z pierwiastkiem $\sqrt{5}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Uproszczona postać.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Wszystkie wyrazy mają ten sam pierwiastek $\sqrt{5}$.</li>
+          <li>Dodajemy/odejmujemy liczby przed pierwiastkiem: $3 + 5 - 2 = 6$.</li>
+          <li>Wynik: $6\sqrt{5}$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$3\sqrt{5} + 5\sqrt{5} - 2\sqrt{5} = 6\sqrt{5}$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">27.</span><span class="q-badge">średnie</span><span class="q-text">Oblicz: $\sqrt{12} + \sqrt{27}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Suma pierwiastków $\sqrt{12}$ i $\sqrt{27}$ — pozornie różne, ale po uproszczeniu mają tę samą część pierwiastkową.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Uproszczona suma.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Wyłączamy czynnik z pierwszego: $\sqrt{12} = \sqrt{4 \cdot 3} = 2\sqrt{3}$.</li>
+          <li>Wyłączamy czynnik z drugiego: $\sqrt{27} = \sqrt{9 \cdot 3} = 3\sqrt{3}$.</li>
+          <li>Mamy podobne wyrazy: $2\sqrt{3} + 3\sqrt{3} = 5\sqrt{3}$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt{12} + \sqrt{27} = 5\sqrt{3}$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">28.</span><span class="q-badge">średnie</span><span class="q-text">Oblicz: $\sqrt{8} + \sqrt{18} - \sqrt{2}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Suma i różnica trzech pierwiastków.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Uproszczona wartość.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>$\sqrt{8} = \sqrt{4 \cdot 2} = 2\sqrt{2}$.</li>
+          <li>$\sqrt{18} = \sqrt{9 \cdot 2} = 3\sqrt{2}$.</li>
+          <li>$\sqrt{2}$ zostaje bez zmian: $1\sqrt{2}$.</li>
+          <li>Sumujemy: $2\sqrt{2} + 3\sqrt{2} - \sqrt{2} = (2 + 3 - 1)\sqrt{2} = 4\sqrt{2}$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt{8} + \sqrt{18} - \sqrt{2} = 4\sqrt{2}$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">29.</span><span class="q-badge">średnie</span><span class="q-text">Oblicz: $\sqrt{2} \cdot \sqrt{8}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Iloczyn dwóch pierwiastków $\sqrt{2}$ i $\sqrt{8}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość iloczynu.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Korzystamy ze wzoru: $\sqrt{a} \cdot \sqrt{b} = \sqrt{a \cdot b}$.</li>
+          <li>$\sqrt{2} \cdot \sqrt{8} = \sqrt{2 \cdot 8} = \sqrt{16}$.</li>
+          <li>$\sqrt{16} = 4$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt{2} \cdot \sqrt{8} = 4$</p></div>
+    </div>
+  </details>
+
+  <details class="q mid">
+    <summary><span class="q-num">30.</span><span class="q-badge">średnie</span><span class="q-text">Oblicz: $(2\sqrt{3})^2$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Kwadrat wyrażenia $2\sqrt{3}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość kwadratu.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Potęga iloczynu: $(2\sqrt{3})^2 = 2^2 \cdot (\sqrt{3})^2$.</li>
+          <li>$2^2 = 4$.</li>
+          <li>$(\sqrt{3})^2 = 3$ (z definicji pierwiastka kwadratowego).</li>
+          <li>$4 \cdot 3 = 12$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$(2\sqrt{3})^2 = 12$</p></div>
+    </div>
+  </details>
+
+</div>
+
+<div class="ex-group hard">
+  <h3>Zadania trudne (31–45)</h3>
+
+  <details class="q hard">
+    <summary><span class="q-num">31.</span><span class="q-badge">trudne</span><span class="q-text">Uprość: $\sqrt{48} - \sqrt{27} + \sqrt{12}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Wyrażenie złożone z trzech pierwiastków $\sqrt{48}$, $\sqrt{27}$, $\sqrt{12}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Uproszczona postać.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>$\sqrt{48} = \sqrt{16 \cdot 3} = 4\sqrt{3}$.</li>
+          <li>$\sqrt{27} = \sqrt{9 \cdot 3} = 3\sqrt{3}$.</li>
+          <li>$\sqrt{12} = \sqrt{4 \cdot 3} = 2\sqrt{3}$.</li>
+          <li>Wszystkie mają wspólny pierwiastek $\sqrt{3}$.</li>
+          <li>$4\sqrt{3} - 3\sqrt{3} + 2\sqrt{3} = (4 - 3 + 2)\sqrt{3} = 3\sqrt{3}$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt{48} - \sqrt{27} + \sqrt{12} = 3\sqrt{3}$</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">32.</span><span class="q-badge">trudne</span><span class="q-text">Uprość: $3\sqrt{50} - 2\sqrt{32} + \sqrt{8}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Wyrażenie z czynnikami przed pierwiastkami.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Uproszczona postać.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Najpierw upraszczamy pierwiastki: $\sqrt{50} = 5\sqrt{2}$, $\sqrt{32} = \sqrt{16 \cdot 2} = 4\sqrt{2}$, $\sqrt{8} = 2\sqrt{2}$.</li>
+          <li>Podstawiamy: $3\sqrt{50} - 2\sqrt{32} + \sqrt{8} = 3 \cdot 5\sqrt{2} - 2 \cdot 4\sqrt{2} + 2\sqrt{2}$.</li>
+          <li>$= 15\sqrt{2} - 8\sqrt{2} + 2\sqrt{2}$.</li>
+          <li>$= (15 - 8 + 2)\sqrt{2} = 9\sqrt{2}$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$3\sqrt{50} - 2\sqrt{32} + \sqrt{8} = 9\sqrt{2}$</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">33.</span><span class="q-badge">trudne</span><span class="q-text">Oblicz: $(\sqrt{3} + \sqrt{2})(\sqrt{3} - \sqrt{2})$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Iloczyn dwóch nawiasów typu $(a+b)(a-b)$ z pierwiastkami.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość iloczynu.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Rozpoznajemy wzór różnicy kwadratów: $(a + b)(a - b) = a^2 - b^2$, gdzie $a = \sqrt{3}$, $b = \sqrt{2}$.</li>
+          <li>$(\sqrt{3})^2 - (\sqrt{2})^2 = 3 - 2 = 1$.</li>
+          <li>Wynik to liczba wymierna — pierwiastki „znikły".</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$(\sqrt{3} + \sqrt{2})(\sqrt{3} - \sqrt{2}) = 1$</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">34.</span><span class="q-badge">trudne</span><span class="q-text">Oblicz: $(\sqrt{5} + 2)^2$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Kwadrat sumy: $(\sqrt{5} + 2)^2$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Rozwinięta postać.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Korzystamy ze wzoru: $(a + b)^2 = a^2 + 2ab + b^2$, gdzie $a = \sqrt{5}$, $b = 2$.</li>
+          <li>$a^2 = (\sqrt{5})^2 = 5$.</li>
+          <li>$2ab = 2 \cdot \sqrt{5} \cdot 2 = 4\sqrt{5}$.</li>
+          <li>$b^2 = 2^2 = 4$.</li>
+          <li>Suma: $5 + 4\sqrt{5} + 4 = 9 + 4\sqrt{5}$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$(\sqrt{5} + 2)^2 = 9 + 4\sqrt{5}$</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">35.</span><span class="q-badge">trudne</span><span class="q-text">Oblicz: $(2\sqrt{3} - 1)(2\sqrt{3} + 1)$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Iloczyn $(a - b)(a + b)$, gdzie $a = 2\sqrt{3}$, $b = 1$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość iloczynu.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Wzór różnicy kwadratów: $(a - b)(a + b) = a^2 - b^2$.</li>
+          <li>$a^2 = (2\sqrt{3})^2 = 2^2 \cdot (\sqrt{3})^2 = 4 \cdot 3 = 12$.</li>
+          <li>$b^2 = 1^2 = 1$.</li>
+          <li>$a^2 - b^2 = 12 - 1 = 11$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$(2\sqrt{3} - 1)(2\sqrt{3} + 1) = 11$</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">36.</span><span class="q-badge">trudne</span><span class="q-text">Oblicz: $\sqrt{12 \cdot 48}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Pierwiastek z iloczynu $12 \cdot 48$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość pierwiastka.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Sposób 1 — rozdzielenie pierwiastka: $\sqrt{12 \cdot 48} = \sqrt{12} \cdot \sqrt{48} = 2\sqrt{3} \cdot 4\sqrt{3} = 8 \cdot 3 = 24$.</li>
+          <li>Sposób 2 — bezpośrednio: $12 \cdot 48 = 576$, a $\sqrt{576} = 24$ (bo $24^2 = 576$).</li>
+          <li>Oba podejścia dają ten sam wynik.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt{12 \cdot 48} = 24$</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">37.</span><span class="q-badge">trudne</span><span class="q-text">Pole kwadratu wynosi $50\ \text{cm}^2$. Jaką długość ma jego bok? Podaj wynik dokładny i przybliżony (przyjmij $\sqrt{2} \approx 1{,}41$).</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Pole kwadratu: $P = 50\ \text{cm}^2$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Długość boku $a$.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Pole kwadratu: $P = a^2$, czyli $a = \sqrt{P}$.</li>
+          <li>$a = \sqrt{50}\ \text{cm}$.</li>
+          <li>Upraszczamy: $\sqrt{50} = \sqrt{25 \cdot 2} = 5\sqrt{2}\ \text{cm}$.</li>
+          <li>Przybliżenie: $5 \cdot 1{,}41 = 7{,}05\ \text{cm}$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>Bok kwadratu: $a = 5\sqrt{2}\ \text{cm} \approx 7{,}05\ \text{cm}$.</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">38.</span><span class="q-badge">trudne</span><span class="q-text">Objętość sześcianu wynosi $125\ \text{cm}^3$. Jaką długość ma jego krawędź?</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Objętość sześcianu: $V = 125\ \text{cm}^3$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Długość krawędzi $a$.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Objętość sześcianu: $V = a^3$, czyli $a = \sqrt[3]{V}$.</li>
+          <li>$a = \sqrt[3]{125}\ \text{cm}$.</li>
+          <li>$\sqrt[3]{125} = 5$ (bo $5^3 = 125$).</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>Krawędź sześcianu: $a = 5\ \text{cm}$.</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">39.</span><span class="q-badge">trudne</span><span class="q-text">Mamy dwa kwadraty: jeden o polu $18\ \text{cm}^2$, drugi o polu $8\ \text{cm}^2$. Oblicz sumę długości ich boków.</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Pole pierwszego kwadratu: $P_1 = 18\ \text{cm}^2$.<br>Pole drugiego: $P_2 = 8\ \text{cm}^2$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Suma długości boków $a_1 + a_2$.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Bok pierwszego: $a_1 = \sqrt{18} = \sqrt{9 \cdot 2} = 3\sqrt{2}\ \text{cm}$.</li>
+          <li>Bok drugiego: $a_2 = \sqrt{8} = \sqrt{4 \cdot 2} = 2\sqrt{2}\ \text{cm}$.</li>
+          <li>Suma: $3\sqrt{2} + 2\sqrt{2} = 5\sqrt{2}\ \text{cm}$.</li>
+          <li>Przybliżenie: $5 \cdot 1{,}41 = 7{,}05\ \text{cm}$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>Suma boków: $5\sqrt{2}\ \text{cm} \approx 7{,}05\ \text{cm}$.</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">40.</span><span class="q-badge">trudne</span><span class="q-text">Między jakimi liczbami naturalnymi leży $\sqrt{45}$?</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Liczba $\sqrt{45}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Dwie kolejne liczby naturalne $k$ i $k+1$, między którymi leży $\sqrt{45}$.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Szukamy najbliższych kwadratów liczb naturalnych otaczających $45$.</li>
+          <li>$6^2 = 36$, $7^2 = 49$.</li>
+          <li>$36 < 45 < 49$, więc $\sqrt{36} < \sqrt{45} < \sqrt{49}$.</li>
+          <li>$6 < \sqrt{45} < 7$.</li>
+          <li>Dokładniej: $\sqrt{45} \approx 6{,}71$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt{45}$ leży między $6$ a $7$.</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">41.</span><span class="q-badge">trudne</span><span class="q-text">Oszacuj wartość $\sqrt{75}$. Przyjmij $\sqrt{3} \approx 1{,}73$.</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Liczba $\sqrt{75}$, przybliżenie $\sqrt{3} \approx 1{,}73$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Przybliżona wartość $\sqrt{75}$.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Wyłączamy czynnik: $\sqrt{75} = \sqrt{25 \cdot 3} = 5\sqrt{3}$.</li>
+          <li>Podstawiamy przybliżenie: $5 \cdot 1{,}73 = 8{,}65$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt{75} = 5\sqrt{3} \approx 8{,}65$.</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">42.</span><span class="q-badge">trudne</span><span class="q-text">Oblicz: $\sqrt[3]{-27} \cdot \sqrt[3]{-8} + \sqrt[3]{64}$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Wyrażenie z pierwiastkami sześciennymi (część z liczb ujemnych).</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość wyrażenia.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Liczymy każdy pierwiastek: $\sqrt[3]{-27} = -3$, $\sqrt[3]{-8} = -2$, $\sqrt[3]{64} = 4$.</li>
+          <li>Mnożenie: $(-3) \cdot (-2) = 6$ (minus razy minus daje plus).</li>
+          <li>Dodawanie: $6 + 4 = 10$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt[3]{-27} \cdot \sqrt[3]{-8} + \sqrt[3]{64} = 10$</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">43.</span><span class="q-badge">trudne</span><span class="q-text">Uprość wyrażenie: $\sqrt{a^2} + \sqrt[3]{b^3}$ dla $a > 0$ i dowolnego $b$.</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Wyrażenie $\sqrt{a^2} + \sqrt[3]{b^3}$ przy założeniach $a > 0$, $b \in \mathbb{R}$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Uproszczona postać.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Z własności pierwiastka kwadratowego: $\sqrt{a^2} = |a|$.</li>
+          <li>Ponieważ $a > 0$, to $|a| = a$, czyli $\sqrt{a^2} = a$.</li>
+          <li>Pierwiastek sześcienny zachowuje znak: $\sqrt[3]{b^3} = b$ (zawsze, bez znaczenia czy $b$ dodatnie czy ujemne).</li>
+          <li>Suma: $a + b$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$\sqrt{a^2} + \sqrt[3]{b^3} = a + b$ (dla $a > 0$).</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">44.</span><span class="q-badge">trudne</span><span class="q-text">Uprość: $(3 + \sqrt{2})(3 - \sqrt{2}) - (\sqrt{5} + 1)(\sqrt{5} - 1)$</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Różnica dwóch iloczynów typu $(a+b)(a-b)$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Wartość wyrażenia.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Pierwszy iloczyn — wzór różnicy kwadratów: $(3 + \sqrt{2})(3 - \sqrt{2}) = 3^2 - (\sqrt{2})^2 = 9 - 2 = 7$.</li>
+          <li>Drugi iloczyn: $(\sqrt{5} + 1)(\sqrt{5} - 1) = (\sqrt{5})^2 - 1^2 = 5 - 1 = 4$.</li>
+          <li>Różnica: $7 - 4 = 3$.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>$(3 + \sqrt{2})(3 - \sqrt{2}) - (\sqrt{5} + 1)(\sqrt{5} - 1) = 3$</p></div>
+    </div>
+  </details>
+
+  <details class="q hard">
+    <summary><span class="q-num">45.</span><span class="q-badge">trudne</span><span class="q-text">Działka ma kształt kwadratu o polu $200\ \text{m}^2$. Jaką długość ma bok działki? Podaj wynik dokładny (w postaci pierwiastka) i przybliżony, korzystając z $\sqrt{2} \approx 1{,}41$.</span><span class="q-expand">▸</span></summary>
+    <div class="answer">
+      <div class="sol-block"><h4>Dane</h4><p>Pole kwadratowej działki: $P = 200\ \text{m}^2$.</p></div>
+      <div class="sol-block"><h4>Szukane</h4><p>Długość boku $a$ — dokładnie i w przybliżeniu.</p></div>
+      <div class="sol-block"><h4>Rozwiązanie krok po kroku</h4>
+        <ol class="steps">
+          <li>Pole kwadratu: $P = a^2 = 200$, więc $a = \sqrt{200}$.</li>
+          <li>Wyłączamy czynnik: $\sqrt{200} = \sqrt{100 \cdot 2} = 10\sqrt{2}\ \text{m}$.</li>
+          <li>Przybliżenie: $10 \cdot 1{,}41 = 14{,}1\ \text{m}$.</li>
+          <li>Sprawdzenie: $14{,}1^2 = 198{,}81 \approx 200$ ✓.</li>
+        </ol>
+      </div>
+      <div class="sol-block final"><h4>Odpowiedź</h4><p>Bok działki: $a = 10\sqrt{2}\ \text{m} \approx 14{,}1\ \text{m}$.</p></div>
+    </div>
+  </details>
+
+</div>
+
+<footer>
+  <p><a href="../index.html">← wróć do listy kart</a></p>
+  <p>Matematyka · klasa 7 · karta powtórzeniowa</p>
+</footer>
+
+</div>
+</body>
+</html>
